@@ -1,0 +1,38 @@
+.list {
+	display: flex;
+	gap: 15px;
+	margin-bottom: 30px;
+
+	li {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+// Карты цветов
+$primary-colors: (
+  red: var(--color-primary-red),
+  orange: var(--color-primary-orange),
+  blue: var(--color-primary-blue),
+  green: var(--color-primary-green)
+);
+
+$soft-colors: (
+  red: var(--color-soft-red),
+  orange: var(--color-soft-orange),
+  blue: var(--color-soft-blue),
+  green: var(--color-soft-green)
+);
+
+// Генерация классов
+@each $name, $value in $primary-colors {
+  .primary-#{$name} {
+    background-color: #{$value};
+  }
+}
+
+@each $name, $value in $soft-colors {
+  .soft-#{$name} {
+    background-color: #{$value};
+  }
+}
