@@ -1,0 +1,157 @@
+.about {
+	padding: 50px 0;
+	background: white;
+}
+
+.inner {
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+}
+
+.title {
+	--right: 30%;
+	--width: 30px;
+	--height: 24px;
+
+	--radius: 100%;
+	--border-w: 5px;
+	--color: red;
+
+	display: block;
+	font-size: 52px;
+	margin-bottom: 40px;
+	padding: 15px 40px 20px;
+	border: 5px solid red;
+	border-right: none;
+	border-radius: 22px 0 0 22px;
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+
+		width: 90%;
+		height: 5px;
+
+		top: -5px;
+		right: 0;
+
+		background-color: white;
+		z-index: 1;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+
+		width: var(--right);
+		height: 5px;
+
+		bottom: -5px;
+		right: 0;
+
+		background-color: white;
+		z-index: 1;
+	}
+
+	.curve {
+		display: block;
+	
+		position: absolute;
+		width: var(--width);
+		height: var(--height);
+		border: var(--border-w) solid var(--color);
+		border-top: none;
+		border-left: none;
+		border-radius: 0 0 var(--radius) 0;
+		background: transparent;
+
+		right: var(--right);
+		bottom: 0;
+		translate: 100% var(--border-w);
+		z-index: 2;
+	
+		&::before {
+			content: "";
+			position: absolute;
+			top: calc(-1 * var(--height));
+			left: 100%;
+			width: var(--width);
+			height: var(--height);
+			border: var(--border-w) solid var(--color);
+			border-bottom: none;
+			border-right: none;
+			border-radius: var(--radius) 0 0 0;
+
+			translate: 0px calc(var(--border-w) * -1);
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			width: 250px;
+			height: var(--border-w);
+			top: calc(var(--height) * -1 - var(--border-w));
+			left: calc(var(--width) * 2 - var(--border-w));
+			background-color: var(--color);
+		}
+	}
+
+	.titleDecor {
+		position: absolute;
+		right: 0;
+		bottom: 50%;
+		z-index: 10;
+  }
+}
+
+
+
+.text {
+	position: relative;
+  background: transparent;
+  border: none;
+  color: inherit;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: 10px;
+
+	font-size: 28px;
+
+	width: 50%;
+
+	padding: 10px;
+
+	border-radius: 12px;
+	
+  p {
+    mix-blend-mode: difference;
+    color: white;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.decor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: black;
+	clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  z-index: 0;
+}
+
+.visual {
+	height: auto;
+	border-radius: 20px;
+
+	img {
+		border-radius: 20px;
+		height: 100%;
+	}
+}

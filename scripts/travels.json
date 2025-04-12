@@ -1,0 +1,178 @@
+[
+  {
+    "city": "Munich",
+    "country": "Germany",
+    "startDate": "12-06-2024",
+    "endDate": "25-06-2024",
+    "budget": 1500,
+    "rating": 4,
+    "imagePath": "/images/travels/munich.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Tokyo",
+    "country": "Japan",
+    "startDate": "05-09-2022",
+    "endDate": "14-09-2022",
+    "budget": 2400,
+    "rating": 4,
+    "imagePath": "/images/travels/tokyo.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "startDate": "15-04-2023",
+    "endDate": "22-04-2023",
+    "budget": 1000,
+    "rating": 3,
+    "imagePath": "/images/travels/lisbon.jpg",
+    "layout": "vertical",
+    "isMock": true
+  },
+  {
+    "city": "Athens",
+    "country": "Greece",
+    "startDate": "01-07-2025",
+    "endDate": "10-07-2025",
+    "budget": 1200,
+    "rating": 5,
+    "imagePath": "/images/travels/athens.jpg",
+    "layout": "vertical",
+    "isMock": true
+  },
+  {
+    "city": "Reykjavik",
+    "country": "Iceland",
+    "startDate": "03-01-2024",
+    "endDate": "10-01-2024",
+    "budget": 2200,
+    "rating": 5,
+    "imagePath": "/images/travels/reykjavik.jpg",
+    "layout": "vertical",
+    "isMock": true
+  },
+  {
+    "city": "Seville",
+    "country": "Spain",
+    "startDate": "15-05-2023",
+    "endDate": "25-05-2023",
+    "budget": 1300,
+    "rating": 4,
+    "imagePath": "/images/travels/seville.jpg",
+    "layout": "vertical",
+    "isMock": true
+  },
+  {
+    "city": "New York",
+    "country": "USA",
+    "startDate": "10-10-2023",
+    "endDate": "18-10-2023",
+    "budget": 3500,
+    "rating": 4,
+    "imagePath": "/images/travels/new-york.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Cape Town",
+    "country": "South Africa",
+    "startDate": "05-03-2022",
+    "endDate": "15-03-2022",
+    "budget": 1800,
+    "rating": 5,
+    "imagePath": "/images/travels/cape-town.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Bologna ",
+    "country": "Italy",
+    "startDate": "12-08-2023",
+    "endDate": "20-08-2023",
+    "budget": 1400,
+    "rating": 4,
+    "imagePath": "/images/travels/bologna.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "startDate": "20-11-2022",
+    "endDate": "30-11-2022",
+    "budget": 1100,
+    "rating": 3,
+    "imagePath": "/images/travels/chiang-mai.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "startDate": "01-02-2023",
+    "endDate": "12-02-2023",
+    "budget": 1700,
+    "rating": 4,
+    "imagePath": "/images/travels/buenos-aires.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Sydney",
+    "country": "Australia",
+    "startDate": "18-12-2023",
+    "endDate": "31-12-2023",
+    "budget": 3000,
+    "rating": 5,
+    "imagePath": "/images/travels/sydney.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Québec City",
+    "country": "Canada",
+    "startDate": "07-06-2024",
+    "endDate": "15-06-2024",
+    "budget": 1600,
+    "rating": 4,
+    "imagePath": "/images/travels/quebec.jpg",
+    "layout": "vertical",
+    "isMock": true
+  },
+  {
+    "city": "Bergen",
+    "country": "Norway",
+    "startDate": "10-01-2023",
+    "endDate": "18-01-2023",
+    "budget": 2000,
+    "rating": 5,
+    "imagePath": "/images/travels/bergen.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Maafushi",
+    "country": "Maldives",
+    "startDate": "10-02-2024",
+    "endDate": "17-02-2024",
+    "budget": 2100,
+    "rating": 5,
+    "imagePath": "/images/travels/maafushi.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  },
+  {
+    "city": "Chefchaouen",
+    "country": "Morocco",
+    "startDate": "03-10-2023",
+    "endDate": "12-10-2023",
+    "budget": 1300,
+    "rating": 4,
+    "imagePath": "/images/travels/chefchaouen.jpg",
+    "layout": "horizontal",
+    "isMock": true
+  }
+]

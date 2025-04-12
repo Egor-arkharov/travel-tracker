@@ -1,12 +1,17 @@
-// import Image from "next/image";
 import Hero from "@/components/Hero/Hero";
-import Travels from "@/components/Travels/Travels";
+import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
+import About from "@/components/About/About";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Travels />
+      <Hero
+        title="Track & Relive Your Journeys"
+        subtitle="Capture your travels, map your routes, and keep your memories in one place."
+        image="/images/hero-bg.jpg"
+      />
+      <About />
+			<TravelsPage mode={"compact"} />
     </>
   );
 }

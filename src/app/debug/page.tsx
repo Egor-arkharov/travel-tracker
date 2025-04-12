@@ -1,25 +1,48 @@
 import styles from "./style.module.scss";
 
-export default async function Trips() {
+export default function TripsColors() {
+  const colorGroups = [
+    "green",
+    "red",
+    "blue",
+    "purple",
+    "yellow",
+    "grey",
+  ];
 
-	return (
-		<div className={styles.wrapper}>
-			Светлые цвета
-			<ul className={styles.list}>
-				<li className={styles['soft-red']}></li>
-				<li className={styles['soft-blue']}></li>
-				<li className={styles['soft-orange']}></li>
-				<li className={styles['soft-green']}></li>
-			</ul>
+  return (
+    <div className={styles.wrapper}>
+      <h2>Цветовая палитра</h2>
 
-			Темные цвета
-			<ul className={styles.list}>
-				<li className={styles['primary-red']}></li>
-				<li className={styles['primary-blue']}></li>
-				<li className={styles['primary-orange']}></li>
-				<li className={styles['primary-green']}></li>
-			</ul>
+      <div className={styles.group}>
+        <p>Основные</p>
+        <ul className={styles.list}>
+          <li className={styles.green}></li>
+          <li className={styles.yellow}></li>
+          <li className={styles.red}></li>
+        </ul>
+      </div>
 
-		</div>
-	);
+      <div className={styles.group}>
+        <p>Фоновые</p>
+        <ul className={styles.list}>
+          <li className={styles.beige}></li>
+          <li className={styles.papaya}></li>
+          <li className={styles.latte}></li>
+        </ul>
+      </div>
+
+
+      {colorGroups.map((group) => (
+        <div className={styles.group} key={group}>
+          <p>{group[0].toUpperCase() + group.slice(1)}</p>
+          <ul className={styles.list}>
+            <li className={styles[`${group}-soft`]}></li>
+            <li className={styles[`${group}-light`]}></li>
+            <li className={styles[`${group}-dark`]}></li>
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
 }

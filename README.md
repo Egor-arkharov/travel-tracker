@@ -35,3 +35,20 @@ git clone "link"
 cd travel-tracker
 npm install
 npm run dev
+
+
+
+Честно говоря мне и компонент поповера не очень нравится.
+Структура твоя не нравится. давай:
+/components/Toolbar/
+	Toolbar.tsx
+	Toolbar.module.scss
+	sortOptions.ts
+	viewOptions.ts
+	/ Popover /
+		Popover.tsx
+		Popover.module.scss
+	/ Dropdown /
+		Dropdown.tsx
+		DropdownPanel.module.scss
+

@@ -1,38 +1,118 @@
-.list {
-	display: flex;
-	gap: 15px;
-	margin-bottom: 30px;
-
-	li {
-		width: 50px;
-		height: 50px;
-	}
+.wrapper {
+  padding: 40px;
 }
 
-// Карты цветов
-$primary-colors: (
-  red: var(--color-primary-red),
-  orange: var(--color-primary-orange),
-  blue: var(--color-primary-blue),
-  green: var(--color-primary-green)
+.group {
+  margin-bottom: 30px;
+
+  p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 15px;
+
+  li {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+// Фоновые цвета (без hover)
+$bg-colors: (
+  beige: var(--color-bg-beige),
+  papaya: var(--color-bg-papaya),
+  latte: var(--color-bg-light)
 );
 
-$soft-colors: (
-  red: var(--color-soft-red),
-  orange: var(--color-soft-orange),
-  blue: var(--color-soft-blue),
-  green: var(--color-soft-green)
-);
-
-// Генерация классов
-@each $name, $value in $primary-colors {
-  .primary-#{$name} {
+@each $name, $value in $bg-colors {
+  .#{$name} {
     background-color: #{$value};
   }
 }
 
-@each $name, $value in $soft-colors {
-  .soft-#{$name} {
+// Основные цвета + hover/active
+.green {
+  background-color: var(--color-green);
+
+  &:hover {
+    background-color: var(--color-green-hover);
+  }
+
+  &:active {
+    background-color: var(--color-green-active);
+  }
+}
+
+.yellow {
+  background-color: var(--color-yellow);
+
+  &:hover {
+    background-color: var(--color-yellow-hover);
+  }
+
+  &:active {
+    background-color: var(--color-yellow-active);
+  }
+}
+
+.red {
+  background-color: var(--color-red);
+
+  &:hover {
+    background-color: var(--color-red-hover);
+  }
+
+  &:active {
+    background-color: var(--color-red-active);
+  }
+}
+
+// Карта цветов
+$color-map: (
+  green-soft: var(--green-soft),
+  green-light: var(--green-light),
+  green-dark: var(--green-dark),
+
+  red-soft: var(--red-soft),
+  red-light: var(--red-light),
+  red-dark: var(--red-dark),
+
+  blue-soft: var(--blue-soft),
+  blue-light: var(--blue-light),
+  blue-dark: var(--blue-dark),
+
+  purple-soft: var(--purple-soft),
+  purple-light: var(--purple-light),
+  purple-dark: var(--purple-dark),
+
+  yellow-soft: var(--yellow-soft),
+  yellow-light: var(--yellow-light),
+  yellow-dark: var(--yellow-dark),
+
+  grey-soft: var(--grey-soft),
+  grey-light: var(--grey-light),
+  grey-dark: var(--grey-dark)
+);
+
+// Генерация классов
+@each $name, $value in $color-map {
+  .#{$name} {
     background-color: #{$value};
   }
 }

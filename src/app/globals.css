@@ -2,17 +2,53 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  --color-primary-red: #fe0000;
-  --color-primary-orange: #fe822a;
-  --color-primary-blue: #006D77;
-  --color-primary-green: #049e02;
+  /* Основные */
+  --color-green: #317039;
+  --color-yellow: #F1BE49;
+  --color-red: #CC4B24;
 
-  --color-soft-red: #FFDDD2;
-  --color-soft-blue: #e0e8ff;
-  --color-soft-orange: #fcfbdc;
-  --color-soft-green: #83C5BE;
+  /* Hover */
+  --color-green-hover: #275D30;
+  --color-yellow-hover: #D9A931;
+  --color-red-hover: #B43F1F;
+
+  /* Active */
+  --color-green-active: #1D4C24;
+  --color-yellow-active: #C18F24;
+  --color-red-active: #9D331A;
+
+  /* Фоны */
+  --color-bg-beige: #F8EDD9;
+  --color-bg-papaya: #FFF1D4;
+  --color-bg-light: #FFFBEA;
 
   --header-h: 60px;
+
+
+
+  --green-soft: #E8F9DF;
+  --green-light: #A9EA87;
+  --green-dark: #71DD37;
+
+  --red-soft: #FFE0DB;
+  --red-light: #FF8B77;
+  --red-dark: #FF3E1D;
+
+  --blue-soft: #D6F5FC;
+  --blue-light: #9AE7F7;
+  --blue-dark: #04C3EC;
+
+  --purple-soft: #E7E7FF;
+  --purple-light: #C3C4FF;
+  --purple-dark: #696CFF;
+
+  --yellow-soft: #FFE5B4;
+  --yellow-light: #FFD480;
+  --yellow-dark: #FFB318;
+
+  --grey-soft: #EBEDF0;
+  --grey-light: #8592A3;
+  --grey-dark: #8592A3;
 }
 
 
@@ -26,17 +62,16 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
-
-/* body {
-  color: var(--foreground);
-  background: var(--background);
-} */
 
 body {
   display: grid;
   grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
   min-height: 100svh;
+
+  color: var(--foreground);
+  background: var(--background);
 }
 
 .layout {
@@ -50,8 +85,18 @@ header {
   height: var(--header-h);
 }
 
+.layout {
+  padding-top: var(--header-h);
+}
+
 main {
   flex-grow: 1;
+  padding-bottom: 100px;
+}
+
+h2 {
+  font-size: 50px;
+  margin-bottom: 50px;
 }
 
 
@@ -67,8 +112,6 @@ li {
 }
 
 
-
 a {
-  color: inherit;
   text-decoration: none;
 }

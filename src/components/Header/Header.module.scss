@@ -1,15 +1,53 @@
 .header {
+	background-color: transparent;
+	border-radius: 0 0 12px 12px;
+}
+
+.header {
+	height: var(--header-h);
+  position: absolute;
+  top: 0;
+	left: 0;
+  width: 100%;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+	display: grid;
+	grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
+
+	.inner {
+		grid-column: 2;
+	}
+}
+
+.inner {
 	display: flex;
-	justify-content: space-between;
+			align-items: center;
+			justify-content: space-between;
+}
 
-	padding: 20px 30px;
+.fixed {
+  position: fixed;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-	background-color: lightblue;
+	.title,
+	.link {
+		color: black;
+	}
 }
 
 .title {
 	font-weight: 700;
 	font-size: 24px;
+	color: white;
+	// color: black;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	gap: 50px;
 }
 
 .list {
@@ -19,15 +57,21 @@
 
 .link {
 	font-size: 18px;
-	color: black;
+	font-weight: 700;
 	transition: color 0.1s ease;
 
-	@include hover {
-		color: coral;
-	}
+  // color: --blue-soft;
+	color: white;
+
+  &:hover {
+    color: var(--blue-light);
+  }
+
+  &:active {
+    color: var(--blue-dark);
+  }
 
 	&.active {
-		color: blue;
-		color: $color-1;
+    color: var(--blue-dark);
 	}
 }

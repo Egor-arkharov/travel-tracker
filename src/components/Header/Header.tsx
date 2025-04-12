@@ -1,16 +1,48 @@
 // components/Header.tsx
 "use client"
 
+import { useEffect, useState } from "react";
+import AuthButton from "@/components/Auth/Auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const pathname = usePathname();
+  const [fixed, setFixed] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+  
+    if (!hero) {
+      setFixed(true); // фикс на внутренних страницах
+      return;
+    }
+  
+    const observer = new IntersectionObserver(
+      ([entry]) => setFixed(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+  
+    observer.observe(hero);
+  
+    // начальное состояние (на случай, если hero уже вне вьюпорта)
+    setFixed(!(hero.getBoundingClientRect().top >= 0));
+  
+    return () => observer.disconnect();
+  }, [pathname]);
+  
 
   return (
-    <header className={styles.header}>
-      <p className={styles.title}>
+    <motion.header
+    className={`${styles.header} ${fixed ? styles.fixed : ""}`}
+    initial={{ y: -80, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.5 }}
+  >
+    <div className={styles.inner}>
+    <p className={styles.title}>
         Travel Tracker
       </p>
       <nav className={styles.nav}>
@@ -26,11 +58,11 @@ const Header = () => {
           </li>
           <li className={styles.item}>
             <Link
-              href="/trips"
-              className={`${styles.link} ${pathname === "/trips" ? styles.active : ""
+              href="/example"
+              className={`${styles.link} ${pathname === "/example" ? styles.active : ""
                 }`}
             >
-              All trips
+              Example
             </Link>
           </li>
           <li className={styles.item}>
@@ -43,8 +75,13 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+
+        <AuthButton />
       </nav>
-    </header>
+    </div>
+
+  </motion.header>
+
   );
 };
 

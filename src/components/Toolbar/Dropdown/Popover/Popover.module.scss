@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: #f4f4f4;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background: #eaeaea;
+  }
+}
+
+.dropdownWrapper {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: unset;
+  right: 0;
+  z-index: 1;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dropdownContent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  min-width: 240px;
+}

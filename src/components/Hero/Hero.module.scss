@@ -1,58 +1,82 @@
 .hero {
 	position: relative;
-	height: calc(80svh - var(--header-h));
+	height: calc(90svh - var(--header-h));
+	padding-top: 45px;
 
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
+	text-align: center;
+}
 
-	padding-top: 100px;
+.background {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 100vw;
+	height: calc(100% + var(--header-h));
+	translate: -50vw calc(var(--header-h)* -1);
+	
+	// background-image: url('/images/hero-bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 100vw;
-    height: calc(100% + var(--header-h));
-		translate: -50vw calc(var(--header-h)* -1);
-		
-		background-image: url('/images/hero-bg.jpg');
-		background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+	filter: brightness(0.6);
+	z-index: -1;
+}
 
-		filter: brightness(0.6);
-		z-index: -1;
-	}
+.backgroundExample {
+  background-position: center center;
+}
+
+.inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
 }
 
 .title {
+	margin-bottom: 15px;
 	font-size: 60px;
 	line-height: 1.1;
-	margin-bottom: 20px;
 	color: white;
+	white-space: nowrap;
 }
 
 .subtitle {
 	font-size: 40px;
+	line-height: 1;
 	text-wrap: balance;
 	color: white;
+	width: 60%;
 }
 
 .primaryButton {
-	margin-top: 60px;
+	display: flex;
 
-	font-size: 18px;
+	height: fit-content;
+	margin-top: 70px;
+	padding: 14px 30px;
 
-	padding: 12px 20px;
-	border-radius: 6px;
-	text-decoration: none;
+	font-size: 20px;
 	font-weight: bold;
-	background-color: var(--color-primary-blue);
-	color: #fff;
+
+	text-decoration: none;
+
+	color: black;
+	background-color: var(--green-soft);
+	border-radius: 12px;
+
 
 	@include hover {
-		background: lightblue
+		background-color: var(--green-light);
+	}
+
+	&:active {
+		background-color: var(--green-dark);
 	}
 }

@@ -2,16 +2,38 @@
 import Link from "next/link";
 import styles from "./Hero.module.scss";
 
-const Hero = () => {
+interface HeroProps {
+	title: string;
+	subtitle: string;
+	image: string;
+	buttonText?: string;
+	buttonHref?: string;
+	variant?: "default" | "example";
+}
+
+const Hero = ({
+	title,
+	subtitle,
+	image,
+	buttonText = "Create a trip",
+	buttonHref = "/#",
+	variant,
+}: HeroProps) => {
 	return (
-		<section className={styles.hero}>
-				<h1 className={styles.title}>
-					Track & Relive Your Journeys
-				</h1>
-				<p className={styles.subtitle}>
-					Capture your travels, map your routes, and keep your memories in one place.
-				</p>
-				<Link href="/#" className={styles.primaryButton}>Create a trip</Link>
+		<section className={styles.hero} id="hero">
+			<div
+				className={`${styles.background} ${variant === "example" ? styles.backgroundExample : ""}`}
+				style={{ backgroundImage: `url(${image})` }}
+			/>
+			<div className={styles.inner}>
+				<h1 className={styles.title}>{title}</h1>
+				<p className={styles.subtitle}>{subtitle}</p>
+				{buttonText && (
+					<Link href={buttonHref} className={styles.primaryButton}>
+						{buttonText}
+					</Link>
+				)}
+			</div>
 		</section>
 	);
 };

@@ -1,0 +1,45 @@
+// components/TravelCard.tsx
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Travel } from "@/types/travel";
+import styles from "./TravelCard.module.scss";
+
+const TravelCard = ({ travel }: { travel: Travel }) => {
+  return (
+    <div className={styles.card}>
+      <div className={styles.inner}>
+        {(travel.imageUrl || travel.imagePath) && (
+          <div className={styles.imageWrapper}>
+            <motion.div
+              className={styles.imageDecorWrapper}
+              initial={{ scale: 1.2, y: -20 }}
+              whileInView={{ scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Image
+                src={(travel.isMock ? travel.imagePath : travel.imageUrl) as string}
+                alt={travel.city}
+                width={400}
+                height={300}
+                className={styles.image}
+              />
+            </motion.div>
+          </div>
+        )}
+        <div className={styles.info}>
+          <h3>{travel.country}</h3>
+          <p>City: {travel.city}</p>
+          <p>Date: {travel.startDate} – {travel.endDate}</p>
+          <p>Budget: ${travel.budget}</p>
+          <p>Rating: {travel.rating}</p>
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default TravelCard;
