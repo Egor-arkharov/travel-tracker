@@ -14,7 +14,7 @@ const TravelsGrid = ({ travels, view }: { travels: Travel[]; view: string }) => 
       {grouped.map((group, index) => (
         <ul key={index} className={`${styles[view]}`}>
           {group.map((travel) => (
-            <li key={travel.id} className={`${styles.card} ${styles[travel.layout ?? "default"]}`}>
+            <li key={travel.id} className={`${styles.card}`}>
               <TravelCard travel={travel} />
             </li>
           ))}

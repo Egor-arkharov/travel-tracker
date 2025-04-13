@@ -7,7 +7,6 @@
     "budget": 1500,
     "rating": 4,
     "imagePath": "/images/travels/munich.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -18,7 +17,6 @@
     "budget": 2400,
     "rating": 4,
     "imagePath": "/images/travels/tokyo.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -29,7 +27,6 @@
     "budget": 1000,
     "rating": 3,
     "imagePath": "/images/travels/lisbon.jpg",
-    "layout": "vertical",
     "isMock": true
   },
   {
@@ -40,7 +37,6 @@
     "budget": 1200,
     "rating": 5,
     "imagePath": "/images/travels/athens.jpg",
-    "layout": "vertical",
     "isMock": true
   },
   {
@@ -51,7 +47,6 @@
     "budget": 2200,
     "rating": 5,
     "imagePath": "/images/travels/reykjavik.jpg",
-    "layout": "vertical",
     "isMock": true
   },
   {
@@ -62,7 +57,6 @@
     "budget": 1300,
     "rating": 4,
     "imagePath": "/images/travels/seville.jpg",
-    "layout": "vertical",
     "isMock": true
   },
   {
@@ -73,7 +67,6 @@
     "budget": 3500,
     "rating": 4,
     "imagePath": "/images/travels/new-york.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -84,7 +77,6 @@
     "budget": 1800,
     "rating": 5,
     "imagePath": "/images/travels/cape-town.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -95,7 +87,6 @@
     "budget": 1400,
     "rating": 4,
     "imagePath": "/images/travels/bologna.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -106,7 +97,6 @@
     "budget": 1100,
     "rating": 3,
     "imagePath": "/images/travels/chiang-mai.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -117,7 +107,6 @@
     "budget": 1700,
     "rating": 4,
     "imagePath": "/images/travels/buenos-aires.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -128,7 +117,6 @@
     "budget": 3000,
     "rating": 5,
     "imagePath": "/images/travels/sydney.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -139,7 +127,6 @@
     "budget": 1600,
     "rating": 4,
     "imagePath": "/images/travels/quebec.jpg",
-    "layout": "vertical",
     "isMock": true
   },
   {
@@ -150,7 +137,6 @@
     "budget": 2000,
     "rating": 5,
     "imagePath": "/images/travels/bergen.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -161,7 +147,6 @@
     "budget": 2100,
     "rating": 5,
     "imagePath": "/images/travels/maafushi.jpg",
-    "layout": "horizontal",
     "isMock": true
   },
   {
@@ -172,7 +157,6 @@
     "budget": 1300,
     "rating": 4,
     "imagePath": "/images/travels/chefchaouen.jpg",
-    "layout": "horizontal",
     "isMock": true
   }
 ]

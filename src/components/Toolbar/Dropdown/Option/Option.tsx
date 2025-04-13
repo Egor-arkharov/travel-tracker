@@ -22,7 +22,7 @@ const OptionButton = ({
       className={`${styles.button} ${active ? styles.active : ""} ${colorClass ? styles[colorClass] : ""}`}
       onClick={onClick}
     >
-      <Icon className={styles.icon} />
+      <Icon className={styles.icon} width={22} height={22} />
       <div className={styles.labelRow}>
         <span className={styles.label}>{label}</span>
         {direction && (

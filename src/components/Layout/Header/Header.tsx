@@ -67,6 +67,15 @@ const Header = () => {
           </li>
           <li className={styles.item}>
             <Link
+              href="/create"
+              className={`${styles.link} ${pathname === "/create" ? styles.active : ""
+                }`}
+            >
+              Create
+            </Link>
+          </li>
+          <li className={styles.item}>
+            <Link
               href="/debug"
               className={`${styles.link} ${pathname === "/debug" ? styles.active : ""
                 }`}

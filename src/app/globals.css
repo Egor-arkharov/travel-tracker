@@ -115,3 +115,13 @@ li {
 a {
   text-decoration: none;
 }
+
+.icon--filled {
+  color: gold;
+	fill: gold;
+}
+
+.icon--outlined {
+  color: #ccc;
+	fill: #ccc;
+}

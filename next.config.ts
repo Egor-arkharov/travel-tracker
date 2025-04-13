@@ -3,7 +3,6 @@ import path from 'path';
 const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
-    additionalData: `@import "@/styles/global.scss";`,
     includePaths: [path.join(__dirname, 'src', 'styles')],
   },
   images: {

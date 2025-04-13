@@ -71,9 +71,8 @@
 	background-color: var(--green-soft);
 	border-radius: 12px;
 
-
-	@include hover {
-		background-color: var(--green-light);
+	&:hover {
+		background-color: var(--green-light);;
 	}
 
 	&:active {

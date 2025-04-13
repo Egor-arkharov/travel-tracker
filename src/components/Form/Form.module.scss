@@ -1,0 +1,92 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.wrapper{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	gap: 15px;
+
+	img {
+		width: 400px;
+	}
+}
+
+.label {
+	width: 500px;
+}
+
+.input {
+	flex-grow: 1;
+}
+
+.wrapperRange {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rangeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rangeWrapper {
+  position: relative;
+  flex-grow: 1;
+
+	input[type="range"] {
+		width: 100%;
+		appearance: none;
+		height: 6px;
+		background: #eee;
+		border-radius: 4px;
+		outline: none;
+	
+		&::-webkit-slider-thumb {
+			appearance: none;
+			width: 16px;
+			height: 16px;
+			background: #7c3aed;
+			border-radius: 50%;
+			cursor: pointer;
+			border: none;
+			margin-top: -5px;
+		}
+	
+		&::-moz-range-thumb {
+			width: 16px;
+			height: 16px;
+			background: #7c3aed;
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+	}
+	
+}
+
+
+.bubble {
+  position: absolute;
+	top: -25px;
+  transform: translateX(-50%);
+  background: #7c3aed;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.numberInput {
+  width: 100px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
