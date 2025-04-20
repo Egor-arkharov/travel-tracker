@@ -4,7 +4,7 @@ import { useState } from "react";
 import RatingIcon from "@/components/icons/rating.svg";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./Form.module.scss";
+import styles from "./_Form.module.scss";
 
 const RatingField = () => {
   const dispatch = useAppDispatch();
@@ -21,14 +21,14 @@ const RatingField = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <fieldset  className={styles.fieldset}>
       <label className={styles.label}>Rating</label>
-      <div className={styles.input} style={{ display: "flex", gap: 4 }}>
+
+      <div className={`${styles.fieldBody} ${styles.rating}`}>
         {[1, 2, 3, 4, 5].map((star) => {
           const isFilled = hovered !== null
             ? star <= hovered
             : star <= rating;
-
           return (
             <button
               key={star}
@@ -48,7 +48,7 @@ const RatingField = () => {
           );
         })}
       </div>
-    </div>
+    </fieldset>
   );
 };
 

@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./Form.module.scss";
+import styles from "./_Form.module.scss";
 
 const ImagePathField = () => {
   const dispatch = useAppDispatch();
@@ -31,27 +31,26 @@ const ImagePathField = () => {
   }, [previewUrl]);
 
   return (
-    <div className={styles.wrapper}>
+    <fieldset  className={styles.fieldset}>
       <label className={styles.label} htmlFor="image">Upload Image</label>
-      <input
-        type="file"
-        accept="image/*"
-        id="image"
-        onChange={handleFileChange}
-        ref={fileInputRef}
-				className={styles.input}
-      />
+      
+      <div className={styles.fieldBody}>
+        <input
+          type="file"
+          accept="image/*"
+          id="image"
+          onChange={handleFileChange}
+          ref={fileInputRef}
+        	className={styles.imageInput}
+        />
 
-      {previewUrl && (
-        <div style={{ marginTop: "8px" }}>
-          <img
-            src={previewUrl}
-            alt="Preview"
-            style={{ borderRadius: "6px" }}
-          />
-        </div>
-      )}
-    </div>
+        {previewUrl && (
+          <div className={styles.imagePreview}>  
+            <img src={previewUrl} alt="Your image preview" />
+          </div>
+        )}
+      </div>
+    </fieldset>
   );
 };
 

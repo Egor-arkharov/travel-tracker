@@ -1,12 +1,13 @@
 "use client";
 import { APILoader } from "@googlemaps/extended-component-library/react";
-import styles from "./Form.module.scss";
-import CityInput from "./CityInput";
-import DateRangeField from "./DateRangeField";
+import styles from "./_Form.module.scss";
+import CityField from "./CityField";
+import DateField from "./DateField";
 import RatingField from "./RatingField";
 import BudgetField from "./BudgetField";
 import DescriptionField from "./DescriptionField";
-import ImagePathField from "./ImagePathField";
+import ImageField from "./ImageField";
+import SubmitButton from "./SubmitButton";
 
 const CreateForm = () => {
 
@@ -15,12 +16,13 @@ const CreateForm = () => {
       <h2>Create trip</h2>
       <APILoader apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en"/>
       <form className={styles.form}>
-        <CityInput />
-        <DateRangeField />
+        <CityField />
+        <DateField />
         <RatingField />
         <BudgetField />
         <DescriptionField />
-        <ImagePathField />
+        <ImageField />
+        <SubmitButton />
       </form>
     </>
 

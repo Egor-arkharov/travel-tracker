@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./Form.module.scss";
+import styles from "./_Form.module.scss";
 
 const MIN = 0;
 const MAX = 10000;
@@ -13,7 +13,7 @@ const BudgetField = () => {
   const dispatch = useAppDispatch();
   const budget = useAppSelector((state) => state.travelForm.budget);
   const [local, setLocal] = useState(budget);
-  const rangeRef = useRef<HTMLInputElement>(null);
+  const budgetRef = useRef<HTMLInputElement>(null);
   const bubbleRef = useRef<HTMLDivElement>(null);
 
   const handleInput = (value: number) => {
@@ -23,9 +23,9 @@ const BudgetField = () => {
 
   // 🪄 Смещаем bubble по значению
   useEffect(() => {
-    const range = rangeRef.current;
+    const budget = budgetRef.current;
     const bubble = bubbleRef.current;
-    if (!range || !bubble) return;
+    if (!budget || !bubble) return;
 
     const percent = ((local - MIN) / (MAX - MIN)) * 100;
     const offset = 16 - (percent / 100) * 32; // смещение, чтобы центрировать
@@ -33,40 +33,43 @@ const BudgetField = () => {
   }, [local]);
 
   return (
-    <div className={styles.wrapper}>
-      <label className={styles.label} htmlFor="budget">Budget ($)</label>
-      <div className={`${styles.rangeRow} ${styles.input}`}>
-        <span>{MIN}$</span>
+    <fieldset  className={styles.fieldset}>
+      <label className={styles.label} htmlFor="budget">Budget</label>
 
-        <div className={styles.rangeWrapper}>
-          <input
-            id="budget"
-            type="range"
-            min={MIN}
-            max={MAX}
-            step={STEP}
-            value={local}
-            onChange={(e) => handleInput(+e.target.value)}
-            ref={rangeRef}
-          />
-          <div ref={bubbleRef} className={styles.bubble}>
-            {local}$
+      <div className={`${styles.fieldBody} ${styles.budget}`}>
+        <div className={styles.budgetRow}>
+          <span>{MIN}$</span>
+
+          <div className={styles.budgetLine}>
+            <input
+              id="budget"
+              type="range"
+              min={MIN}
+              max={MAX}
+              step={STEP}
+              value={local}
+              onChange={(e) => handleInput(+e.target.value)}
+              ref={budgetRef}
+            />
+            <div ref={bubbleRef} className={styles.budgetBubble}>
+              {local}$
+            </div>
           </div>
+
+          <span>{MAX}$</span>
         </div>
 
-        <span>{MAX}$</span>
+        <input
+          type="number"
+          min={MIN}
+          max={MAX}
+          step={STEP}
+          value={local}
+          onChange={(e) => handleInput(+e.target.value)}
+          className={styles.budgetNumberInput}
+        />
       </div>
-
-      <input
-        type="number"
-        min={MIN}
-        max={MAX}
-        step={STEP}
-        value={local}
-        onChange={(e) => handleInput(+e.target.value)}
-        className={styles.numberInput}
-      />
-    </div>
+    </fieldset>
   );
 };
 

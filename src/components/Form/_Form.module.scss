@@ -1,0 +1,213 @@
+.form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 100px 100px 260px;
+	grid-gap: 70px 50px;
+}
+
+.fieldset {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+
+	border: none;
+}
+
+.label {
+	font-size: 26px;
+	font-weight: bold;
+	color: var(--purple-dark);
+}
+
+.fieldBody {
+	position: relative;
+	flex-grow: 1;
+
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+}
+
+@mixin inputDecor {
+	width: 100%;
+	height: 100%;
+
+	padding: 4px 8px;
+
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+
+	border: 1px solid #80868b;
+	border-radius: 4px;
+	color: var(--input-color);
+
+	&:focus {
+		outline: 2px solid var(--gmpx-color-primary);
+	}
+}
+
+.inputWrapper {
+	position: relative;
+	width: 100%;
+	border-radius: 4px;
+
+	&::before {
+		content: '';
+		position: absolute;
+
+		top: 0;
+		left: 0;
+
+		width: 35px;
+		height: 100%;
+
+		box-sizing: border-box;
+		border-radius: 4px 0 0 4px;
+		border: 1px solid #80868b;
+		border-right: none;
+		background-color: grey;
+		z-index: 1;
+	}
+
+	.react-datepicker-wrapper {
+		width: 100%;
+	}
+}
+
+.input {
+	position: relative;
+
+	max-height: 150px;
+
+	@include inputDecor;
+
+	padding: calc(var(--gmpx-font-size-base, 0.875rem) * 0.75) calc(var(--gmpx-font-size-base, 0.875rem) * 2.5);
+}
+
+.cityInput {
+	width: 100%;
+}
+
+.cityStorageValue {
+	position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--input-color);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 2;
+
+	top: 0;
+}
+
+.rating {
+	display: flex;
+	gap: 4px;
+}
+
+.budget {
+	display: flex;
+	align-items: center;
+	gap: 50px;
+	width: 100%;
+}
+
+.budgetRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+	flex-grow: 1;
+}
+
+.budgetLine {
+  position: relative;
+  flex-grow: 1;
+
+	input[type="range"] {
+		width: 100%;
+		appearance: none;
+		height: 6px;
+		background: #eee;
+		border-radius: 4px;
+		outline: none;
+	
+		&::-webkit-slider-thumb {
+			appearance: none;
+			width: 16px;
+			height: 16px;
+			background: var(--input-focus-color);
+			border-radius: 50%;
+			cursor: pointer;
+			border: none;
+			margin-top: -5px;
+		}
+	
+		&::-moz-budget-thumb {
+			width: 16px;
+			height: 16px;
+			background: var(--input-focus-color);
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+	}
+	
+}
+
+.budgetBubble {
+  position: absolute;
+	top: -25px;
+  transform: translateX(-50%);
+  background: var(--input-focus-color);
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.budgetNumberInput {
+	@include inputDecor;
+	width: 100px;
+}
+
+.textarea {
+	@include inputDecor;
+	resize: none;
+	scrollbar-gutter: stable;
+}
+
+.imageInput {
+	@include inputDecor;
+
+	cursor: pointer;
+
+	border: 2px dashed #80868b;
+
+	&:focus {
+		outline: none;
+		border-color:  var(--gmpx-color-primary);
+	}
+}
+
+.imagePreview {
+	position: absolute;
+	bottom: 4px;
+	left: 8px;
+	
+	width: 280px;
+	height: 140px;
+	z-index: -1;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 4px;
+	}
+}

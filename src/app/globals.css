@@ -49,6 +49,20 @@
   --grey-soft: #EBEDF0;
   --grey-light: #8592A3;
   --grey-dark: #8592A3;
+
+
+
+
+
+
+  /* Fonts */
+  --input-font-size: 14px;
+  --input-color: black;
+  --input-focus-color: var(--purple-dark);
+
+  --gmpx-font-size-base: var(--input-font-size);
+  --gmpx-color-on-surface: var(--input-color);
+  --gmpx-color-primary: var(--input-focus-color);
 }
 
 
@@ -124,4 +138,8 @@ a {
 .icon--outlined {
   color: #ccc;
 	fill: #ccc;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
 }

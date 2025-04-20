@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./Form.module.scss";
+import styles from "./_Form.module.scss";
 
 const DateRangeField = () => {
   const dispatch = useAppDispatch();
@@ -24,18 +24,24 @@ const DateRangeField = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <label className={styles.label}>Date range</label>
-      <DatePicker
-				className={styles.input}
-        selected={range[0]}
-        onChange={handleChange}
-        startDate={range[0]}
-        endDate={range[1]}
-        selectsRange
-        inline
-      />
-    </div>
+    <fieldset className={styles.fieldset}>
+      <label className={styles.label}>Date</label>
+      
+      <div className={styles.fieldBody}>
+        <div className={styles.inputWrapper}>
+          <DatePicker
+            className={styles.input}
+            selected={range[0]}
+            onChange={handleChange}
+            startDate={range[0]}
+            endDate={range[1]}
+            selectsRange
+            placeholderText="Select trip dates"
+          />
+        </div>
+      </div>
+
+    </fieldset>
   );
 };
 

@@ -3,7 +3,7 @@
 import Hero from "@/components/Hero/Hero";
 import dynamic from "next/dynamic";
 
-const Form = dynamic(() => import("@/components/Form/Form"), { ssr: false });
+const Form = dynamic(() => import("@/components/Form/_Form"), { ssr: false });
 
 export default function Create() {
   return (
