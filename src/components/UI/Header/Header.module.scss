@@ -1,0 +1,156 @@
+.header {
+	/* --- General --- */
+	--decor-border-left-w: 4px; /* Ширина левой линии и отступ нижней */
+	--decor-border-top-h: 10px; /* Высота верхней линии */
+	--decor-bg-color: #000000; /* Цвет внешней рамки clip-path */
+	--decor-top-visible-line-width: 10%; /* Ширина верхней линии при раскрытии */
+
+	/* --- Reveal Animation --- */
+	--top-duration: 0.3s;
+	--left-duration: 0.3s;
+
+	--bottom-duration: 1s;
+	--bottom-delay: calc(var(--top-duration) + var(--left-duration));
+	--bottom-translate: 110;
+
+	--icon-right: 30;
+	--icon-left: calc(100 - var(--icon-right));
+	--icon-move: calc(var(--bottom-translate) - var(--icon-left));
+	--icon-duration: calc(var(--bottom-duration) * (var(--icon-move) / var(--bottom-translate)));
+	--icon-delay: calc(var(--bottom-delay) + var(--bottom-duration) * (var(--icon-left) / var(--bottom-translate)) - 0.1s);
+	
+
+	position: relative;
+	margin-block: 50px;
+	min-height: 130px;
+	display: flex;
+	align-items: center;
+	padding-block: 20px;
+	padding-inline-start: 30px;
+}
+
+.headerBorder {
+	pointer-events: none;
+
+	&::before {
+		content: "";
+		position: absolute;
+	
+		width: 100%;
+		height: 100%;
+	
+		top	: 0;
+		left: 0;
+
+		// background-color: var(--decor-bg-color);
+		background: linear-gradient(90deg,#f78c6b,#ef476f,#118ab2,#83d483);
+
+		/* Generated from Figma */
+		clip-path: polygon(10.498px 1px, calc(100% - 0px) 1px, calc(100% - 0px) calc(100% - 27.059px), calc(50% - -66.377px) calc(100% - 27.059px), calc(50% - -66.377px) calc(100% - 27.059px), calc(50% - -65.200454px) calc(100% - 26.949771px), calc(50% - -63.872792px) calc(100% - 26.662768px), calc(50% - -62.458778px) calc(100% - 26.170817px), calc(50% - -61.023176px) calc(100% - 25.446744px), calc(50% - -59.63075px) calc(100% - 24.463375px), calc(50% - -58.346264px) calc(100% - 23.193536px), calc(50% - -57.234482px) calc(100% - 21.610053px), calc(50% - -56.360168px) calc(100% - 19.685752px), calc(50% - -55.788086px) calc(100% - 17.393459px), calc(50% - -55.583px) calc(100% - 14.706px), calc(50% - -55.583px) calc(100% - 14.706px), calc(50% - -55.435369px) calc(100% - 11.973825px), calc(50% - -55.023552px) calc(100% - 9.5568px), calc(50% - -54.394163px) calc(100% - 7.441875px), calc(50% - -53.593816px) calc(100% - 5.616px), calc(50% - -52.669125px) calc(100% - 4.066125px), calc(50% - -51.666704px) calc(100% - 2.7792px), calc(50% - -50.633167px) calc(100% - 1.742175px), calc(50% - -49.615128px) calc(100% - 0.942px), calc(50% - -48.659201px) calc(100% - 0.36562499999999px), calc(50% - -47.812px) calc(100% - 0px), 12.657px calc(100% - 0px), 12.657px calc(100% - 0px), 10.284058px calc(100% - 0.24823599999999px), 8.229824px calc(100% - 0.94068799999999px), 6.475386px calc(100% - 1.998972px), 5.001832px calc(100% - 3.344704px), 3.79025px calc(100% - 4.8995px), 2.821728px calc(100% - 6.584976px), 2.077354px calc(100% - 8.322748px), 1.538216px calc(100% - 10.034432px), 1.185402px calc(100% - 11.641644px), 1px calc(100% - 13.066px), 1px 15.118px, 1px 15.118px, 1.180462px 12.217501px, 1.683856px 9.711808px, 2.453194px 7.576927px, 3.431488px 5.788864px, 4.56175px 4.323625px, 5.786992px 3.157216px, 7.050226px 2.265643px, 8.294464px 1.624912px, 9.462718px 1.211029px, 10.498px 1px); 
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+	
+		width: 100%;
+		height: calc(100% - 3px);
+		
+		top: 2px;
+		left: 2px;
+
+		background-color: var(--background);
+
+		/* Generated from Figma */
+		clip-path: polygon(10.498px 1px, 76.5521px 1px, calc(100% - 1px) 1px, calc(100% - 1px) calc(100% - 28.0588px), calc(100% - 134px) calc(100% - 28.0588px), calc(100% - 272.047px) calc(100% - 28.0588px), calc(50% - -61.877px) calc(100% - 28.0588px), calc(50% - -61.877px) calc(100% - 28.0588px), calc(50% - -60.700454px) calc(100% - 27.9495738px), calc(50% - -59.372792px) calc(100% - 27.6625784px), calc(50% - -57.958778px) calc(100% - 27.1706386px), calc(50% - -56.523176px) calc(100% - 26.4465792px), calc(50% - -55.13075px) calc(100% - 25.463225px), calc(50% - -53.846264px) calc(100% - 24.1934008px), calc(50% - -52.734482px) calc(100% - 22.6099314px), calc(50% - -51.860168px) calc(100% - 20.6856416px), calc(50% - -51.288086px) calc(100% - 18.3933562px), calc(50% - -51.083px) calc(100% - 15.7059px), calc(50% - -51.083px) calc(100% - 15.7059px), calc(50% - -50.935369px) calc(100% - 12.9737143px), calc(50% - -50.523552px) calc(100% - 10.5567104px), calc(50% - -49.894163px) calc(100% - 8.4418281px), calc(50% - -49.093816px) calc(100% - 6.6160072px), calc(50% - -48.169125px) calc(100% - 5.0661875px), calc(50% - -47.166704px) calc(100% - 3.7793088px), calc(50% - -46.133167px) calc(100% - 2.7423109px), calc(50% - -45.115128px) calc(100% - 1.9421336px), calc(50% - -44.159201px) calc(100% - 1.3657167px), calc(50% - -43.312px) calc(100% - 1px), 12.6566px calc(100% - 1px), 12.6566px calc(100% - 1px), 10.2837043px calc(100% - 1.2482464px), 8.2295088px calc(100% - 1.9407232px), 6.4751039px calc(100% - 2.9990368px), 5.00158px calc(100% - 4.3447936px), 3.7900275px calc(100% - 5.8996px), 2.8215368px calc(100% - 7.5850624px), 2.0771983px calc(100% - 9.3227872px), 1.5381024px calc(100% - 11.0343808px), 1.1853395px calc(100% - 12.6414496px), 1px calc(100% - 14.0656px), 1px 15.4118px, 1px 15.1176px, 1px 15.1176px, 1.18046146px 12.21714325px, 1.68385408px 9.7115072px, 2.45319022px 7.57669215px, 3.43148224px 5.7886984px, 4.5617425px 4.32352625px, 5.78698336px 3.157176px, 7.05021718px 2.26564795px, 8.29445632px 1.6249424px, 9.46271314px 1.21105965px, 10.498px 1px); 
+
+
+	}
+}
+
+.headerUnderDecorTopLeft {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: var(--decor-top-visible-line-width);
+	height: var(--decor-border-top-h);
+
+	background-color: var(--background);
+	transition: var(--top-duration) ease-in-out;
+
+	.anim & {
+		width: 0%;
+	}
+}
+
+.headerUnderDecorTopRight {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	width: calc(100% - var(--decor-top-visible-line-width));
+	height: var(--decor-border-top-h);
+
+	background-color: var(--background);
+	z-index: 1;
+}
+
+.headerUnderDecorLeft {
+	//left
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	width: var(--decor-border-left-w);
+	height: 100%;
+
+	background-color: var(--background);
+
+	transition: height var(--left-duration) var(--top-duration) ease-in-out;
+
+	.anim & {
+		height: 0;
+	}
+}
+
+.headerUnderDecorBottom {
+	//bottom
+	position: absolute;
+	bottom: 0;
+	left: var(--decor-border-left-w);
+
+	width: calc(100% - var(--decor-border-left-w));
+	height: calc(100% - var(--decor-border-top-h));
+
+	z-index: 1;
+
+	background-color: var(--background);
+	
+	transition: transform var(--bottom-duration) var(--bottom-delay) ease-in-out;
+
+	.anim & {
+		transform: translateX(calc(var(--bottom-translate) * 1%));
+	}
+}
+
+.headerIcon {
+	position: absolute;
+	top: 50%;
+	right: calc(var(--icon-right) * 1%);
+
+	z-index: 0;
+
+	transform: translate(50%, -50%);
+	transition: right var(--icon-duration) var(--icon-delay) ease-in-out;
+
+	.anim & {
+		right: 0;
+	}
+}
+
+.headerText {
+	position: relative;
+	z-index: 1;
+	width: 50%;
+}

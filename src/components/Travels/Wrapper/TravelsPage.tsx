@@ -11,6 +11,7 @@ import { filterTravels } from "@/utils/filterTravels";
 import { sortTravels } from "@/utils/sortTravels";
 import Link from "next/link";
 import styles from "./Travels.module.scss";
+import Header from "@/components/UI/Header/Header";
 
 const TravelsPage = ({
   mode = "full",
@@ -57,7 +58,7 @@ const TravelsPage = ({
 
   return (
     <section>
-      <h2>My Travels</h2>
+      <Header title="My Travels" icon="train" />
 
       {mode === "full" && (
         <Toolbar

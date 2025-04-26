@@ -1,15 +1,13 @@
 // components/About.tsx
 import Image from "next/image";
+
+import Header from "@/components/UI/Header/Header";
 import styles from "./About.module.scss";
 
 const About = () => {
 	return (
 		<section className={styles.about}>
-			<h2 className={styles.title}>
-				<span>Your journeys, beautifully documented</span>
-				<span className={styles.curve}></span>
-				<span className={styles.titleDecor}>✈️</span>
-			</h2>
+			<Header title="Your beautiful journeys" icon="plane" />
 
 			<div className={styles.inner}>
 				<div className={styles.text}>
