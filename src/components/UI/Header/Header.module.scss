@@ -9,16 +9,9 @@
 	--top-duration: 0.3s;
 	--left-duration: 0.3s;
 
-	--bottom-duration: 1s;
-	--bottom-delay: calc(var(--top-duration) + var(--left-duration));
-	--bottom-translate: 110;
+	--bottom-icon-duration: 1s;
+	--bottom-icon-delay: calc(var(--top-duration) + var(--left-duration));
 
-	--icon-right: 30;
-	--icon-left: calc(100 - var(--icon-right));
-	--icon-move: calc(var(--bottom-translate) - var(--icon-left));
-	--icon-duration: calc(var(--bottom-duration) * (var(--icon-move) / var(--bottom-translate)));
-	--icon-delay: calc(var(--bottom-delay) + var(--bottom-duration) * (var(--icon-left) / var(--bottom-translate)) - 0.1s);
-	
 
 	position: relative;
 	margin-block: 50px;
@@ -127,25 +120,44 @@
 
 	background-color: var(--background);
 	
-	transition: transform var(--bottom-duration) var(--bottom-delay) ease-in-out;
+	transition: left var(--bottom-icon-duration) var(--bottom-icon-delay) ease-in-out;
 
 	.anim & {
-		transform: translateX(calc(var(--bottom-translate) * 1%));
+		left: 110%;
 	}
 }
 
 .headerIcon {
 	position: absolute;
 	top: 50%;
-	right: calc(var(--icon-right) * 1%);
+	left: var(--decor-border-left-w);
+
+	width: fit-content;
+	height: fit-content;
+
+	translate: -50% -50%;
+	opacity: 0;
 
 	z-index: 0;
 
-	transform: translate(50%, -50%);
-	transition: right var(--icon-duration) var(--icon-delay) ease-in-out;
-
 	.anim & {
 		right: 0;
+		animation: iconReveal var(--bottom-icon-duration) var(--bottom-icon-delay) ease-in-out forwards;
+
+		@keyframes iconReveal {
+			60% {
+				opacity: 0;
+			}
+
+			75% {
+				opacity: 1;
+			}
+
+			to {
+				opacity: 1;
+				left: 100%;
+			}
+		}
 	}
 }
 

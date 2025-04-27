@@ -1,10 +1,12 @@
 // store/store.ts
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import authReducer from "./slices/authSlice";
 import travelFormReducer from "./slices/travelFormSlice";
 
 export const store = configureStore({
   reducer: {
     travelForm: travelFormReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

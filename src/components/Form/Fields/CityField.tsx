@@ -1,15 +1,20 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useState, useCallback } from "react";
 import { PlacePicker } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./_Form.module.scss";
+import { FieldRef } from "@/types/formField";
+import { createValidator } from "@/utils/createValidator";
+import styles from "../Form.module.scss";
 
-const CityField = () => {
+const CityField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
   const { city, country } = useAppSelector((state) => state.travelForm);
+
+  const [error, setError] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
+
   const hasValue = !!city || !!country;
 
   const handlePlaceChange = useCallback((e: any) => {
@@ -29,11 +34,28 @@ const CityField = () => {
     dispatch(updateField({ key: "lng", value: lng }));
 
     setIsTyping(false);
+    setError(null);
   }, [dispatch]);
 
   const handleInput = () => {
     if (!isTyping) setIsTyping(true);
   };
+
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      if (!city) {
+        setError("Введите город");
+        return false;
+      }
+      setError(null);
+      return true;
+    },
+    reset: () => {
+      setError(null);
+      setIsTyping(false);
+    }
+  }));
+  
 
   return (
     <fieldset className={styles.fieldset}>
@@ -54,9 +76,13 @@ const CityField = () => {
             className={styles.cityInput}
           />
         </div>
+
+        {error && <p className={styles.errorMessage}>{error}</p>}
       </div>
     </fieldset>
   );
-};
+});
+
+CityField.displayName = "CityField";
 
 export default CityField;

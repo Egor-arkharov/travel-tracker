@@ -5,7 +5,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Auth.module.scss";
-import AuthIcon from "@/components/icons/auth.svg";
+import { UserIcon } from "@/components/icons";
 import { User } from "firebase/auth";
 
 
@@ -59,7 +59,7 @@ const AuthButton = () => {
     </button>
   ) : (
     <button className={styles.loginButton} onClick={handleLogin}>
-      <AuthIcon width={20} height={20} />
+      <UserIcon width={20} height={20} />
       <span>Login</span>
     </button>
   );

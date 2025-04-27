@@ -2,13 +2,13 @@
 // "use client"
 
 
-const LOGIN = () => {
+const PROFILE = () => {
 
   return (
 		<>
-			PAGE LOGIN
+			PROFILE Page
 		</>
   );
 };
 
-export default LOGIN;
+export default PROFILE;

@@ -11,7 +11,7 @@ interface HeroProps {
 	image: string;
 	buttonText?: string;
 	buttonHref?: string;
-	variant?: "default" | "example";
+	backgroundPosition?: string;
 }
 
 const Hero = ({
@@ -20,22 +20,29 @@ const Hero = ({
 	image,
 	buttonText = "Create a trip",
 	buttonHref = "/#",
-	variant,
+	backgroundPosition = "center",
 }: HeroProps) => {
 	return (
 		<section className={styles.hero} id="hero">
 			<div
-				className={`${styles.background} ${variant === "example" ? styles.backgroundExample : ""}`}
-				style={{ backgroundImage: `url(${image})` }}
+				className={styles.background}
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundPosition: backgroundPosition,
+        }}
 			/>
 			<div className={styles.inner}>
 				<h1 className={styles.title}>{title}</h1>
 				<p className={styles.subtitle}>{subtitle}</p>
-				{buttonText && (
-					<Link href={buttonHref} className={styles.primaryButton}>
-						{buttonText}
-					</Link>
-				)}
+				<div className={styles.buttons}>
+					{buttonText && (
+						<Link href={buttonHref} className={styles.primaryButton}>
+							{buttonText}
+						</Link>
+					)}
+					<button className={styles.primaryButton}>Log in</button>
+				</div>
+
 			</div>
 		</section>
 	);

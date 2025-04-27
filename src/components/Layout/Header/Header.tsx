@@ -2,11 +2,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import AuthButton from "@/components/Auth/Auth";
+// import AuthButton from "@/components/Auth/Auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { motion } from "framer-motion";
+import UserMenu from "@/components/User/UserMenu/UserMenu";
 
 const Header = () => {
   const pathname = usePathname();
@@ -84,8 +85,10 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+        
+        <UserMenu />
 
-        <AuthButton />
+        {/* <AuthButton /> */}
       </nav>
     </div>
 

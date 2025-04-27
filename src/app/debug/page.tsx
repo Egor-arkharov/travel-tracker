@@ -1,4 +1,5 @@
 import styles from "./style.module.scss";
+import Header from "@/components/UI/Header/Header";
 
 export default function TripsColors() {
   const colorGroups = [
@@ -12,7 +13,7 @@ export default function TripsColors() {
 
   return (
     <div className={styles.wrapper}>
-      <h2>Цветовая палитра</h2>
+      <Header title="Цветовая палитра" icon="plane" />
 
       <div className={styles.group}>
         <p>Основные</p>

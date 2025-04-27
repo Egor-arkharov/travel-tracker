@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Travel } from "@/types/travel";
 
-// Убираем поля, которые не нужны в форме и ДОБАВЛЯЕМ imageFile вручную
 export type TravelFormState = Omit<Travel, "id" | "isMock"> & {
   imageFile: File | null;
 };
@@ -21,7 +20,6 @@ const defaultState: TravelFormState = {
   imageFile: null,
 };
 
-// ⚠️ Получение из localStorage только в функции (чтобы избежать ошибки при SSR)
 const getInitialState = (): TravelFormState => {
   if (typeof window === "undefined") return defaultState;
 
@@ -50,11 +48,9 @@ const travelFormSlice = createSlice({
       action: PayloadAction<{ key: K; value: TravelFormState[K] }>
     ) => {
       const { key, value } = action.payload;
-
-      console.log(key, value);
       state[key] = value;
     },
-    resetForm: () => defaultState,
+    resetForm: () => ({ ...defaultState }), // 🔥 Тут главное изменение
   },
 });
 

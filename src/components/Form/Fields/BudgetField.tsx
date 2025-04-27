@@ -1,39 +1,59 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./_Form.module.scss";
+import { FieldRef } from "@/types/formField";
+import styles from "@/components/Form/Form.module.scss";
 
 const MIN = 0;
 const MAX = 10000;
 const STEP = 100;
 
-const BudgetField = () => {
+const BudgetField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
   const budget = useAppSelector((state) => state.travelForm.budget);
   const [local, setLocal] = useState(budget);
+  const [error, setError] = useState<string | null>(null);
+
   const budgetRef = useRef<HTMLInputElement>(null);
   const bubbleRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    validate: () => {
+      if (local <= 0) {
+        setError("Укажите бюджет поездки");
+        return false;
+      }
+      setError(null);
+      return true;
+    },
+    reset: () => {
+      setError(null);
+      setLocal(0);
+    }
+  }));
+  
+  
 
   const handleInput = (value: number) => {
     setLocal(value);
     dispatch(updateField({ key: "budget", value }));
+    setError(null);
   };
 
-  // 🪄 Смещаем bubble по значению
   useEffect(() => {
     const budget = budgetRef.current;
     const bubble = bubbleRef.current;
     if (!budget || !bubble) return;
 
     const percent = ((local - MIN) / (MAX - MIN)) * 100;
-    const offset = 16 - (percent / 100) * 32; // смещение, чтобы центрировать
+    const offset = 16 - (percent / 100) * 32;
     bubble.style.left = `calc(${percent}% + ${offset}px)`;
   }, [local]);
 
   return (
-    <fieldset  className={styles.fieldset}>
+    <fieldset className={styles.fieldset}>
       <label className={styles.label} htmlFor="budget">Budget</label>
 
       <div className={`${styles.fieldBody} ${styles.budget}`}>
@@ -69,8 +89,12 @@ const BudgetField = () => {
           className={styles.budgetNumberInput}
         />
       </div>
+
+      {error && <p className={styles.errorMessage}>{error}</p>}
     </fieldset>
   );
-};
+});
+
+BudgetField.displayName = "BudgetField";
 
 export default BudgetField;

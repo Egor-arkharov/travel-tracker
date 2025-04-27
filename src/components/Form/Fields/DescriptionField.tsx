@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import styles from "./_Form.module.scss";
+import styles from "@/components/Form/Form.module.scss";
 
 const DescriptionField = () => {
   const dispatch = useAppDispatch();

@@ -11,6 +11,8 @@
 	justify-content: space-between;
 	gap: 20px;
 
+	position: relative;
+
 	border: none;
 }
 
@@ -84,6 +86,12 @@
 	@include inputDecor;
 
 	padding: calc(var(--gmpx-font-size-base, 0.875rem) * 0.75) calc(var(--gmpx-font-size-base, 0.875rem) * 2.5);
+}
+
+.errorMessage {
+	position: absolute;
+	color: #e00;
+	top: 105%;
 }
 
 .cityInput {
@@ -210,4 +218,25 @@
 		object-fit: cover;
 		border-radius: 4px;
 	}
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.submitButton,
+.resetButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
 }
