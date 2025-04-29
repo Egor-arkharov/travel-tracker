@@ -3,24 +3,27 @@
 import { useState, useEffect } from "react";
 import Hero from "@/components/Hero/Hero";
 import Link from "next/link";
+// import TravelsGrid from "@/components/Travels/Wrapper/TravelsGrid";
+import { Travel } from "@/types/travel";
 import styles from "./style.module.scss";
 import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
+import Header from "@/components/UI/Header/Header";
+import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 
 const Trips = () => {
-  // Заглушки на будущее:
-  const isDemoMode = true; 
-  const user = null; 
-  const [trips, setTrips] = useState<any[]>([]);
+  const [trips, setTrips] = useState<Travel[]>([]);
 
   useEffect(() => {
-    if (isDemoMode) {
-      const savedTrips = JSON.parse(localStorage.getItem("travel_demo_trips") || "[]");
-      setTrips(savedTrips);
-    } else {
-      // потом будем грузить трипы с Firebase
-      setTrips([]);
+    const storedTrips = localStorage.getItem("trips");
+    if (storedTrips) {
+      try {
+        const parsedTrips = JSON.parse(storedTrips);
+        setTrips(parsedTrips);
+      } catch (error) {
+        console.error("Ошибка чтения trips из localStorage:", error);
+      }
     }
-  }, [isDemoMode]);
+  }, []);
 
   return (
     <>
@@ -34,8 +37,7 @@ const Trips = () => {
 
       <section className={styles.tripsSection}>
         <div className="container">
-
-        <DemoNotice />
+          <DemoNotice />
 
           {trips.length === 0 ? (
             <div className={styles.emptyState}>
@@ -45,14 +47,7 @@ const Trips = () => {
               </Link>
             </div>
           ) : (
-            <div className={styles.tripsGrid}>
-              {/* Здесь потом будет вывод трипов */}
-              {trips.map((trip, index) => (
-                <div key={index} className={styles.tripCard}>
-                  {trip.title || "Trip title"}
-                </div>
-              ))}
-            </div>
+            <TravelsPage mode="full" source="local" />
           )}
         </div>
       </section>

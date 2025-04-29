@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetForm } from "@/store/slices/travelFormSlice";
+import { TravelFormState } from "@/store/slices/travelFormSlice";
 import styles from "./Form.module.scss";
 
 import Header from "@/components/UI/Header/Header";
@@ -26,6 +27,7 @@ const Form = () => {
   const imageRef = useRef<any>(null);
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [savedTrip, setSavedTrip] = useState<TravelFormState | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,13 +42,32 @@ const Form = () => {
 
     const isFormValid = validations.every(Boolean);
 
+    console.log(isFormValid, validations);
+
     if (!isFormValid) {
       return;
     }
 
     console.log("Форма валидна! Отправляем...");
 
-    setShowSuccessModal(true);
+    try {
+      const existing = JSON.parse(localStorage.getItem("trips") || "[]");
+      const newTrip = {
+        ...form,
+        id: Date.now(),
+        isMock: false,
+      };
+
+      localStorage.setItem("trips", JSON.stringify([...existing, newTrip]));
+
+      localStorage.removeItem("travelForm");
+      dispatch(resetForm());
+
+      setSavedTrip(newTrip);
+      setShowSuccessModal(true);
+    } catch (error) {
+      console.error("Failed to save trip:", error);
+    }
   };
 
   const handleReset = () => {
@@ -56,8 +77,8 @@ const Form = () => {
     budgetRef.current?.reset?.();
     imageRef.current?.reset?.();
 
+    localStorage.removeItem("travelForm");
     dispatch(resetForm());
-    setShowSuccessModal(false);
   };
 
   const handleCloseModal = () => {
@@ -86,7 +107,9 @@ const Form = () => {
         </div>
       </form>
 
-      <Preview open={showSuccessModal} onClose={handleCloseModal} trip={form} />
+      {savedTrip && (
+        <Preview open={showSuccessModal} onClose={handleCloseModal} trip={savedTrip} />
+      )}
     </>
   );
 };

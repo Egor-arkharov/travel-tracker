@@ -48,9 +48,11 @@ const travelFormSlice = createSlice({
       action: PayloadAction<{ key: K; value: TravelFormState[K] }>
     ) => {
       const { key, value } = action.payload;
+
+      console.log("travelFormSlice", key, value);
       state[key] = value;
     },
-    resetForm: () => ({ ...defaultState }), // 🔥 Тут главное изменение
+    resetForm: () => ({ ...defaultState }),
   },
 });
 

@@ -1,57 +1,59 @@
 "use client";
 
-import { forwardRef, useImperativeHandle, useRef, useState, useEffect } from "react";
+import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import { FieldRef } from "@/types/formField"; // Тип рефа
+import { FieldRef } from "@/types/formField"; // Просто тип validate
 import styles from "@/components/Form/Form.module.scss";
 
 const ImageField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const imageUrl = useAppSelector((state) => state.travelForm.imageUrl);
-
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
+  const storeImageUrl = useAppSelector((state) => state.travelForm.imageUrl); // берем из стора
+  const [previewUrl, setPreviewUrl] = useState<string | null>(storeImageUrl || null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const url = URL.createObjectURL(file);
-    setPreviewUrl(url);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64data = reader.result as string;
 
-    dispatch(updateField({ key: "imageFile", value: file }));
-    dispatch(updateField({ key: "imagePath", value: file.name }));
-    dispatch(updateField({ key: "imageUrl", value: "" }));
+      dispatch(updateField({ key: "imageUrl", value: base64data }));
+      dispatch(updateField({ key: "imagePath", value: file.name }));
+      dispatch(updateField({ key: "imageFile", value: file }));
 
-    setError(null); // сбрасываем ошибку, если выбрали файл
+      setPreviewUrl(base64data);
+      setError(null);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   useImperativeHandle(ref, () => ({
     validate: () => {
-      if (!previewUrl && !imageUrl) {
-        setError("Добавьте картинку");
+      if (!previewUrl) {
+        setError("Upload an image");
         return false;
       }
       setError(null);
       return true;
     },
     reset: () => {
-      setError(null);
       setPreviewUrl(null);
       if (fileInputRef.current) {
-        fileInputRef.current.value = ""; // сбросить файл в input type="file"
+        fileInputRef.current.value = "";
       }
+      setError(null);
     }
   }));
-  
 
   useEffect(() => {
     return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl); // очищаем превью при размонтировании
+      if (previewUrl?.startsWith("blob:")) {
+        URL.revokeObjectURL(previewUrl);
       }
     };
   }, [previewUrl]);
@@ -59,7 +61,7 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
   return (
     <fieldset className={styles.fieldset}>
       <label className={styles.label} htmlFor="image">Upload Image</label>
-      
+
       <div className={styles.fieldBody}>
         <input
           type="file"
@@ -75,7 +77,6 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
             <img src={previewUrl} alt="Your image preview" />
           </div>
         )}
-
         {error && <p className={styles.errorMessage}>{error}</p>}
       </div>
     </fieldset>

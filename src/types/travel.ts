@@ -12,6 +12,7 @@ export interface Travel {
   rating: number;
   imagePath: string;
   imageUrl?: string;
+  previewUrl?: string;
   isMock: boolean;
   description?: string;
 }

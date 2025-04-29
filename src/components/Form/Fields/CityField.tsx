@@ -44,7 +44,7 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (!city) {
-        setError("Введите город");
+        setError("Enter the city");
         return false;
       }
       setError(null);
@@ -55,7 +55,7 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
       setIsTyping(false);
     }
   }));
-  
+
 
   return (
     <fieldset className={styles.fieldset}>

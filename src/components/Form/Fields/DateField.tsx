@@ -21,7 +21,7 @@ const DateField = forwardRef<FieldRef>((_, ref) => {
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (!range[0] || !range[1]) {
-        setError("Выберите даты поездки");
+        setError("Select the trip dates");
         return false;
       }
       setError(null);
@@ -32,7 +32,7 @@ const DateField = forwardRef<FieldRef>((_, ref) => {
       setRange([null, null]);
     }
   }));
-  
+
 
   const handleChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;

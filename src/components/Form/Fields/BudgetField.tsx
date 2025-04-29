@@ -22,7 +22,7 @@ const BudgetField = forwardRef<FieldRef>((_, ref) => {
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (local <= 0) {
-        setError("Укажите бюджет поездки");
+        setError("Specify the trip budget");
         return false;
       }
       setError(null);
@@ -33,8 +33,8 @@ const BudgetField = forwardRef<FieldRef>((_, ref) => {
       setLocal(0);
     }
   }));
-  
-  
+
+
 
   const handleInput = (value: number) => {
     setLocal(value);

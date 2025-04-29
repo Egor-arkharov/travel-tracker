@@ -15,8 +15,10 @@ import Header from "@/components/UI/Header/Header";
 
 const TravelsPage = ({
   mode = "full",
+  source = "firebase", // добавляем дефолт
 }: {
   mode?: "full" | "compact";
+  source?: "firebase" | "local";
 }) => {
   const [travels, setTravels] = useState<Travel[]>([]);
   const [search, setSearch] = useState("");
@@ -25,31 +27,44 @@ const TravelsPage = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "travels"));
-      const storage = getStorage();
+      if (source === "firebase") {
+        const querySnapshot = await getDocs(collection(db, "travels"));
+        const storage = getStorage();
 
-      const data: Travel[] = await Promise.all(
-        querySnapshot.docs.map(async (doc) => {
-          const d = doc.data() as Travel;
-          d.id = doc.id;
+        const data: Travel[] = await Promise.all(
+          querySnapshot.docs.map(async (doc) => {
+            const d = doc.data() as Travel;
+            d.id = doc.id;
 
-          if (d.isMock) return d;
+            if (d.isMock) return d;
 
+            try {
+              const imageRef = ref(storage, d.imagePath);
+              const url = await getDownloadURL(imageRef);
+              return { ...d, imageUrl: url };
+            } catch {
+              return { ...d, imageUrl: "" };
+            }
+          })
+        );
+
+        setTravels(data);
+      } else {
+        const saved = localStorage.getItem("trips");
+        if (saved) {
           try {
-            const imageRef = ref(storage, d.imagePath);
-            const url = await getDownloadURL(imageRef);
-            return { ...d, imageUrl: url };
-          } catch {
-            return { ...d, imageUrl: "" };
+            const localData = JSON.parse(saved) as Travel[];
+            setTravels(localData);
+          } catch (error) {
+            console.error("Ошибка чтения trips:", error);
           }
-        })
-      );
-
-      setTravels(data);
+        }
+      }
     };
 
     fetchData();
-  }, []);
+  }, [source]);
+
 
   const filtered = useMemo(() => filterTravels(travels, search), [travels, search]);
   const sorted = useMemo(() => sortTravels(filtered, sort), [filtered, sort]);
@@ -75,11 +90,11 @@ const TravelsPage = ({
 
       {mode === "compact" && (
         <Link
-            href="/example"
-            className={styles.link}
-          >
-            See all travels →
-          </Link>
+          href="/example"
+          className={styles.link}
+        >
+          See all travels →
+        </Link>
       )}
     </section>
   );

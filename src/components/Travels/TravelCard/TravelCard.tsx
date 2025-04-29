@@ -1,4 +1,3 @@
-// components/TravelCard.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -7,10 +6,18 @@ import { Travel } from "@/types/travel";
 import styles from "./TravelCard.module.scss";
 
 const TravelCard = ({ travel }: { travel: Travel }) => {
+  let imageSrc: string | undefined;
+
+  if (travel.isMock) {
+    imageSrc = travel.imagePath; // из public
+  } else if (travel.imageUrl) {
+    imageSrc = travel.imageUrl; // firebase или демо
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.inner}>
-        {(travel.imageUrl || travel.imagePath) && (
+        {imageSrc && (
           <div className={styles.imageWrapper}>
             <motion.div
               className={styles.imageDecorWrapper}
@@ -20,7 +27,7 @@ const TravelCard = ({ travel }: { travel: Travel }) => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <Image
-                src={(travel.isMock ? travel.imagePath : travel.imageUrl) as string}
+                src={imageSrc}
                 alt={travel.city}
                 width={400}
                 height={300}
@@ -37,7 +44,6 @@ const TravelCard = ({ travel }: { travel: Travel }) => {
           <p>Rating: {travel.rating}</p>
         </div>
       </div>
-
     </div>
   );
 };

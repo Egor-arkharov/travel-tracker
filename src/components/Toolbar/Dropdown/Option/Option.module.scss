@@ -13,6 +13,11 @@
     font-weight: bold;
     background: #eaeaea;
   }
+
+  svg {
+    fill: currentColor;
+    stroke: currentColor;
+  }
 }
 
 .icon {
@@ -48,7 +53,22 @@
 }
 
 /* Цвета по желанию */
-.purple.active { color: #7c3aed; background: #f3e8ff; }
-.green.active  { color: #16a34a; background: #dcfce7; }
-.orange.active { color: #ea580c; background: #ffedd5; }
-.blue.active   { color: #0284c7; background: #e0f2fe; }
+.purple.active {
+  color: #7c3aed;
+  background: #f3e8ff;
+}
+
+.green.active {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.orange.active {
+  color: #ea580c;
+  background: #ffedd5;
+}
+
+.blue.active {
+  color: #0284c7;
+  background: #e0f2fe;
+}
