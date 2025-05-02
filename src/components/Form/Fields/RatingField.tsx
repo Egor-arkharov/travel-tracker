@@ -18,7 +18,7 @@ const RatingField = forwardRef<FieldRef>((_, ref) => {
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (!localRating || localRating < 1) {
-        setError("Поставьте рейтинг");
+        setError("Give a rating");
         return false;
       }
       setError(null);
@@ -33,7 +33,7 @@ const RatingField = forwardRef<FieldRef>((_, ref) => {
   const handleClick = (value: number) => {
     const newRating = (localRating === value) ? 0 : value;
     setLocalRating(newRating);
-    dispatch(updateField({ key: "rating", value: newRating }));
+    dispatch(updateField({ path: "rating", value: newRating }));
     setError(null);
   };
 

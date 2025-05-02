@@ -1,3 +1,4 @@
-export interface FieldRef {
+export type FieldRef = {
   validate: () => boolean;
-}
+  reset?: () => void;
+};

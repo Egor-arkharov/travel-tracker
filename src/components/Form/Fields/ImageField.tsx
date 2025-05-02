@@ -8,7 +8,7 @@ import styles from "@/components/Form/Form.module.scss";
 
 const ImageField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const storeImageUrl = useAppSelector((state) => state.travelForm.imageUrl); // берем из стора
+  const storeImageUrl = useAppSelector((state) => state.travelForm.media.imageUrl);
   const [previewUrl, setPreviewUrl] = useState<string | null>(storeImageUrl || null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
@@ -21,9 +21,9 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
     reader.onloadend = () => {
       const base64data = reader.result as string;
 
-      dispatch(updateField({ key: "imageUrl", value: base64data }));
-      dispatch(updateField({ key: "imagePath", value: file.name }));
-      dispatch(updateField({ key: "imageFile", value: file }));
+      dispatch(updateField({ path: "media.imageUrl", value: base64data }));
+      dispatch(updateField({ path: "media.imagePath", value: file.name }));
+      dispatch(updateField({ path: "media.imageFile", value: file }));
 
       setPreviewUrl(base64data);
       setError(null);

@@ -11,7 +11,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredPaths: ["travelForm.imageFile"],
+        ignoredPaths: ["travelForm.media.imageFile"],
         ignoredActionPaths: ["payload.value"],
       },
     }),
@@ -21,7 +21,7 @@ store.subscribe(() => {
   const state = store.getState().travelForm;
   const { imageFile, ...serializableData } = state;
 
-  localStorage.setItem("travelForm", JSON.stringify(serializableData));
+  localStorage.setItem("localForm", JSON.stringify(serializableData));
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -15,69 +15,91 @@ import BudgetField from "./Fields/BudgetField";
 import DescriptionField from "./Fields/DescriptionField";
 import ImageField from "./Fields/ImageField";
 import Preview from "./Preview/Preview";
+import { FieldRef } from "@/types/formField";
 
 const Form = () => {
   const dispatch = useAppDispatch();
   const form = useAppSelector((state) => state.travelForm);
 
-  const cityRef = useRef<any>(null);
-  const dateRef = useRef<any>(null);
-  const ratingRef = useRef<any>(null);
-  const budgetRef = useRef<any>(null);
-  const imageRef = useRef<any>(null);
+  const fieldRefs = useRef<FieldRef[]>([]);
+  fieldRefs.current = [];
 
+  const registerRef = (ref: FieldRef | null) => {
+    if (ref) {
+      fieldRefs.current.push(ref);
+    }
+  };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [savedTrip, setSavedTrip] = useState<TravelFormState | null>(null);
+
+  const isReadyToSubmit =
+    form.location.city &&
+    form.location.country &&
+    form.dates.start &&
+    form.dates.end &&
+    form.budget > 0 &&
+    form.rating > 0 &&
+    form.media.imageUrl;
+
+  const isFormDirty =
+    form.location.city ||
+    form.location.country ||
+    form.dates.start ||
+    form.dates.end ||
+    form.budget > 0 ||
+    form.rating > 0 ||
+    form.description ||
+    form.media.imageUrl;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const validations = [
-      cityRef.current?.validate(),
-      dateRef.current?.validate(),
-      ratingRef.current?.validate(),
-      budgetRef.current?.validate(),
-      imageRef.current?.validate()
-    ];
-
+    const validations = fieldRefs.current.map((ref) => ref.validate());
     const isFormValid = validations.every(Boolean);
 
-    console.log(isFormValid, validations);
-
     if (!isFormValid) {
+      setFormErrors(["Please fill in all required fields."]);
       return;
     }
 
-    console.log("Форма валидна! Отправляем...");
+    setIsSubmitting(true);
+    setFormErrors([]);
 
     try {
       const existing = JSON.parse(localStorage.getItem("trips") || "[]");
+      
+      // клонируем и удаляем imageFile
+      const formClone = structuredClone(form);
+      formClone.media.imageFile = null;
+
       const newTrip = {
-        ...form,
+        ...formClone,
         id: Date.now(),
-        isMock: false,
+        meta: { ...formClone.meta, isMock: false },
       };
 
       localStorage.setItem("trips", JSON.stringify([...existing, newTrip]));
+      localStorage.removeItem("localForm");
 
-      localStorage.removeItem("travelForm");
       dispatch(resetForm());
+      fieldRefs.current.forEach((ref) => ref.reset?.());
 
       setSavedTrip(newTrip);
       setShowSuccessModal(true);
     } catch (error) {
       console.error("Failed to save trip:", error);
+      setFormErrors(["Something went wrong. Try again."]);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleReset = () => {
-    cityRef.current?.reset?.();
-    dateRef.current?.reset?.();
-    ratingRef.current?.reset?.();
-    budgetRef.current?.reset?.();
-    imageRef.current?.reset?.();
-
-    localStorage.removeItem("travelForm");
+    fieldRefs.current.forEach((ref) => ref.reset?.());
+    localStorage.removeItem("localForm");
     dispatch(resetForm());
   };
 
@@ -92,18 +114,34 @@ const Form = () => {
       <APILoader apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <CityField ref={cityRef} />
-        <DateField ref={dateRef} />
-        <RatingField ref={ratingRef} />
-        <BudgetField ref={budgetRef} />
+        <CityField ref={registerRef} />
+        <DateField ref={registerRef} />
+        <RatingField ref={registerRef} />
+        <BudgetField ref={registerRef} />
         <DescriptionField />
-        <ImageField ref={imageRef} />
+        <ImageField ref={registerRef} />
 
         <div className={styles.buttons}>
-          <button type="submit" className={styles.submitButton}>Submit</button>
-          <button type="button" onClick={handleReset} className={styles.resetButton}>
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={isSubmitting || !isReadyToSubmit}
+          >
+            {isSubmitting ? "Submitting…" : "Submit"}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleReset}
+            className={styles.resetButton}
+            disabled={isSubmitting || !isFormDirty}
+          >
             Reset
           </button>
+
+          {formErrors.length > 0 && (
+            <p className={styles.errorMessage}>{formErrors[0]}</p>
+          )}
         </div>
       </form>
 

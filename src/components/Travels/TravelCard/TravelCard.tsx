@@ -8,10 +8,10 @@ import styles from "./TravelCard.module.scss";
 const TravelCard = ({ travel }: { travel: Travel }) => {
   let imageSrc: string | undefined;
 
-  if (travel.isMock) {
-    imageSrc = travel.imagePath; // из public
-  } else if (travel.imageUrl) {
-    imageSrc = travel.imageUrl; // firebase или демо
+  if (travel.meta.isMock) {
+    imageSrc = travel.media.imagePath; // из public
+  } else if (travel.media.imageUrl) {
+    imageSrc = travel.media.imageUrl; // firebase или демо
   }
 
   return (
@@ -28,7 +28,7 @@ const TravelCard = ({ travel }: { travel: Travel }) => {
             >
               <Image
                 src={imageSrc}
-                alt={travel.city}
+                alt={travel.location.city}
                 width={400}
                 height={300}
                 className={styles.image}
@@ -37,9 +37,9 @@ const TravelCard = ({ travel }: { travel: Travel }) => {
           </div>
         )}
         <div className={styles.info}>
-          <h3>{travel.country}</h3>
-          <p>City: {travel.city}</p>
-          <p>Date: {travel.startDate} – {travel.endDate}</p>
+          <h3>{travel.location.country}</h3>
+          <p>City: {travel.location.city}</p>
+          <p>Date: {travel.dates.start} – {travel.dates.end}</p>
           <p>Budget: ${travel.budget}</p>
           <p>Rating: {travel.rating}</p>
         </div>

@@ -10,11 +10,11 @@ import styles from "../Form.module.scss";
 
 const DateField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const { startDate, endDate } = useAppSelector((state) => state.travelForm);
+  const { start, end } = useAppSelector((state) => state.travelForm.dates);
 
   const [range, setRange] = useState<[Date | null, Date | null]>([
-    startDate ? new Date(startDate) : null,
-    endDate ? new Date(endDate) : null,
+    start ? new Date(start) : null,
+    end ? new Date(end) : null,
   ]);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,8 +38,8 @@ const DateField = forwardRef<FieldRef>((_, ref) => {
     const [start, end] = dates;
     setRange([start, end]);
 
-    dispatch(updateField({ key: "startDate", value: start?.toISOString().split("T")[0] ?? "" }));
-    dispatch(updateField({ key: "endDate", value: end?.toISOString().split("T")[0] ?? "" }));
+    dispatch(updateField({ path: "dates.start", value: start?.toISOString().split("T")[0] ?? "" }));
+    dispatch(updateField({ path: "dates.end", value: end?.toISOString().split("T")[0] ?? "" }));
 
     setError(null);
   };

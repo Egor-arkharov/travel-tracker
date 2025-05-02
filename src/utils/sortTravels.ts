@@ -1,8 +1,7 @@
 import { Travel } from "@/types/travel";
 
-function parseDMY(dateStr: string): number {
-  const [day, month, year] = dateStr.split("-").map(Number);
-  return new Date(year, month - 1, day).getTime();
+function parseISO(dateStr: string): number {
+  return new Date(dateStr).getTime();
 }
 
 export function sortTravels(travels: Travel[], sort: string): Travel[] {
@@ -10,14 +9,29 @@ export function sortTravels(travels: Travel[], sort: string): Travel[] {
 
   return [...travels].sort((a, b) => {
     if (key === "date") {
-      // Сортируем по startDate
-      const aDate = parseDMY(a.startDate);
-      const bDate = parseDMY(b.startDate);
+      const aDate = parseISO(a.dates.start);
+      const bDate = parseISO(b.dates.start);
       return direction === "asc" ? aDate - bDate : bDate - aDate;
     }
 
-    const aVal = a[key as keyof Travel];
-    const bVal = b[key as keyof Travel];
+    // поддержка сортировки по вложенным ключам
+    const getValue = (t: Travel): any => {
+      switch (key) {
+        case "city":
+          return t.location.city;
+        case "country":
+          return t.location.country;
+        case "budget":
+          return t.budget;
+        case "rating":
+          return t.rating;
+        default:
+          return "";
+      }
+    };
+
+    const aVal = getValue(a);
+    const bVal = getValue(b);
 
     if (typeof aVal === "string" && typeof bVal === "string") {
       return direction === "asc"

@@ -38,7 +38,7 @@ const BudgetField = forwardRef<FieldRef>((_, ref) => {
 
   const handleInput = (value: number) => {
     setLocal(value);
-    dispatch(updateField({ key: "budget", value }));
+    dispatch(updateField({ path: "budget", value }));
     setError(null);
   };
 

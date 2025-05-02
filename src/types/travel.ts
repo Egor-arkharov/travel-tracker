@@ -2,17 +2,35 @@
 
 export interface Travel {
   id?: string;
-  country: string;
-  city: string;
-  lat?: number;
-  lng?: number;
-  startDate: string;
-  endDate: string;
+
+  location: {
+    city: string;
+    country: string;
+    lat?: number;
+    lng?: number;
+  };
+
+  dates: {
+    start: string;
+    end: string;
+  };
+
   budget: number;
   rating: number;
-  imagePath: string;
-  imageUrl?: string;
-  previewUrl?: string;
-  isMock: boolean;
+
+  media: {
+    imagePath: string;
+    imageUrl?: string;
+    previewUrl?: string;
+  };
+
   description?: string;
+
+  meta: {
+    isMock: boolean;
+  };
+}
+
+export interface FirestoreTravel extends Omit<Travel, "id"> {
+  uid?: string;
 }

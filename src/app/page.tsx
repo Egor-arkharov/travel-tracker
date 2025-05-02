@@ -13,7 +13,7 @@ const Home = () => {
         backgroundPosition="center 30%" 
       />
       <About />
-			<TravelsPage mode={"compact"} />
+			<TravelsPage mode={"compact"} source="mock" />
     </>
   );
 }

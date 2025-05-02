@@ -3,8 +3,8 @@ import { getFirestore } from "firebase-admin/firestore";
 import fs from "fs";
 import path from "path";
 
-// Загружаем ключ
-const serviceAccountPath = path.join(__dirname, "../serviceAccountKey.json");
+// Путь к serviceAccountKey
+const serviceAccountPath = path.resolve(__dirname, "../serviceAccountKey.json");
 const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
 
 // Инициализация
@@ -15,7 +15,7 @@ initializeApp({
 const db = getFirestore();
 
 const clearMockTravels = async () => {
-  const snapshot = await db.collection("travels").where("isMock", "==", true).get();
+  const snapshot = await db.collection("travels").where("meta.isMock", "==", true).get();
 
   if (snapshot.empty) {
     console.log("🔍 No mock travels found.");

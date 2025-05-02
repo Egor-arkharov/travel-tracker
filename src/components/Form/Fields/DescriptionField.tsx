@@ -18,7 +18,7 @@ const DescriptionField = () => {
           rows={4}
           value={description}
           onChange={(e) =>
-            dispatch(updateField({ key: "description", value: e.target.value }))
+            dispatch(updateField({ path: "description", value: e.target.value }))
           }
           placeholder="Describe your trip…"
           className={`${styles.textarea}`}

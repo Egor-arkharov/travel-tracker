@@ -1,162 +1,306 @@
 [
   {
-    "city": "Munich",
-    "country": "Germany",
-    "startDate": "12-06-2024",
-    "endDate": "25-06-2024",
+    "location": {
+      "city": "Munich",
+      "country": "Germany"
+    },
+    "dates": {
+      "start": "2024-06-12",
+      "end": "2024-06-25"
+    },
     "budget": 1500,
     "rating": 4,
-    "imagePath": "/images/travels/munich.jpg",
-    "isMock": true
+    "description": "Explore historic architecture, beer gardens, and Bavarian charm.",
+    "media": {
+      "imagePath": "/images/travels/munich.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Tokyo",
-    "country": "Japan",
-    "startDate": "05-09-2022",
-    "endDate": "14-09-2022",
+    "location": {
+      "city": "Tokyo",
+      "country": "Japan"
+    },
+    "dates": {
+      "start": "2022-09-05",
+      "end": "2022-09-14"
+    },
     "budget": 2400,
     "rating": 4,
-    "imagePath": "/images/travels/tokyo.jpg",
-    "isMock": true
+    "description": "Dive into the future while exploring traditional temples in Tokyo.",
+    "media": {
+      "imagePath": "/images/travels/tokyo.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Lisbon",
-    "country": "Portugal",
-    "startDate": "15-04-2023",
-    "endDate": "22-04-2023",
+    "location": {
+      "city": "Lisbon",
+      "country": "Portugal"
+    },
+    "dates": {
+      "start": "2023-04-15",
+      "end": "2023-04-22"
+    },
     "budget": 1000,
     "rating": 3,
-    "imagePath": "/images/travels/lisbon.jpg",
-    "isMock": true
+    "description": "Enjoy sunny hills, pastel buildings, and fresh seafood in Lisbon.",
+    "media": {
+      "imagePath": "/images/travels/lisbon.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Athens",
-    "country": "Greece",
-    "startDate": "01-07-2025",
-    "endDate": "10-07-2025",
+    "location": {
+      "city": "Athens",
+      "country": "Greece"
+    },
+    "dates": {
+      "start": "2025-07-01",
+      "end": "2025-07-10"
+    },
     "budget": 1200,
     "rating": 5,
-    "imagePath": "/images/travels/athens.jpg",
-    "isMock": true
+    "description": "Wander through the ruins of ancient Greece under the Athenian sun.",
+    "media": {
+      "imagePath": "/images/travels/athens.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Reykjavik",
-    "country": "Iceland",
-    "startDate": "03-01-2024",
-    "endDate": "10-01-2024",
+    "location": {
+      "city": "Reykjavik",
+      "country": "Iceland"
+    },
+    "dates": {
+      "start": "2024-01-03",
+      "end": "2024-01-10"
+    },
     "budget": 2200,
     "rating": 5,
-    "imagePath": "/images/travels/reykjavik.jpg",
-    "isMock": true
+    "description": "Experience Iceland's capital with northern lights and hot springs.",
+    "media": {
+      "imagePath": "/images/travels/reykjavik.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Seville",
-    "country": "Spain",
-    "startDate": "15-05-2023",
-    "endDate": "25-05-2023",
+    "location": {
+      "city": "Seville",
+      "country": "Spain"
+    },
+    "dates": {
+      "start": "2023-05-15",
+      "end": "2023-05-25"
+    },
     "budget": 1300,
     "rating": 4,
-    "imagePath": "/images/travels/seville.jpg",
-    "isMock": true
+    "description": "Lose yourself in flamenco rhythms and Moorish palaces.",
+    "media": {
+      "imagePath": "/images/travels/seville.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "New York",
-    "country": "USA",
-    "startDate": "10-10-2023",
-    "endDate": "18-10-2023",
+    "location": {
+      "city": "New York",
+      "country": "USA"
+    },
+    "dates": {
+      "start": "2023-10-10",
+      "end": "2023-10-18"
+    },
     "budget": 3500,
     "rating": 4,
-    "imagePath": "/images/travels/new-york.jpg",
-    "isMock": true
+    "description": "Live fast in the city that never sleeps! Skyscrapers and hot dogs.",
+    "media": {
+      "imagePath": "/images/travels/new-york.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Cape Town",
-    "country": "South Africa",
-    "startDate": "05-03-2022",
-    "endDate": "15-03-2022",
+    "location": {
+      "city": "Cape Town",
+      "country": "South Africa"
+    },
+    "dates": {
+      "start": "2022-03-05",
+      "end": "2022-03-15"
+    },
     "budget": 1800,
     "rating": 5,
-    "imagePath": "/images/travels/cape-town.jpg",
-    "isMock": true
+    "description": "Hike Table Mountain and watch penguins on golden beaches.",
+    "media": {
+      "imagePath": "/images/travels/cape-town.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Bologna ",
-    "country": "Italy",
-    "startDate": "12-08-2023",
-    "endDate": "20-08-2023",
+    "location": {
+      "city": "Bologna",
+      "country": "Italy"
+    },
+    "dates": {
+      "start": "2023-08-12",
+      "end": "2023-08-20"
+    },
     "budget": 1400,
     "rating": 4,
-    "imagePath": "/images/travels/bologna.jpg",
-    "isMock": true
+    "description": "",
+    "media": {
+      "imagePath": "/images/travels/bologna.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Chiang Mai",
-    "country": "Thailand",
-    "startDate": "20-11-2022",
-    "endDate": "30-11-2022",
+    "location": {
+      "city": "Chiang Mai",
+      "country": "Thailand"
+    },
+    "dates": {
+      "start": "2022-11-20",
+      "end": "2022-11-30"
+    },
     "budget": 1100,
     "rating": 3,
-    "imagePath": "/images/travels/chiang-mai.jpg",
-    "isMock": true
+    "description": "Temple-hop and night market your way through northern Thailand.",
+    "media": {
+      "imagePath": "/images/travels/chiang-mai.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Buenos Aires",
-    "country": "Argentina",
-    "startDate": "01-02-2023",
-    "endDate": "12-02-2023",
+    "location": {
+      "city": "Buenos Aires",
+      "country": "Argentina"
+    },
+    "dates": {
+      "start": "2023-02-01",
+      "end": "2023-02-12"
+    },
     "budget": 1700,
     "rating": 4,
-    "imagePath": "/images/travels/buenos-aires.jpg",
-    "isMock": true
+    "description": "Tango your nights away and enjoy vibrant Argentine culture.",
+    "media": {
+      "imagePath": "/images/travels/buenos-aires.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Sydney",
-    "country": "Australia",
-    "startDate": "18-12-2023",
-    "endDate": "31-12-2023",
+    "location": {
+      "city": "Sydney",
+      "country": "Australia"
+    },
+    "dates": {
+      "start": "2023-12-18",
+      "end": "2023-12-31"
+    },
     "budget": 3000,
     "rating": 5,
-    "imagePath": "/images/travels/sydney.jpg",
-    "isMock": true
+    "description": "Catch waves, views, and kangaroos in Australia's iconic city.",
+    "media": {
+      "imagePath": "/images/travels/sydney.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Québec City",
-    "country": "Canada",
-    "startDate": "07-06-2024",
-    "endDate": "15-06-2024",
+    "location": {
+      "city": "Québec City",
+      "country": "Canada"
+    },
+    "dates": {
+      "start": "2024-06-07",
+      "end": "2024-06-15"
+    },
     "budget": 1600,
     "rating": 4,
-    "imagePath": "/images/travels/quebec.jpg",
-    "isMock": true
+    "description": "Wander cobbled streets and French charm in Canada's old town.",
+    "media": {
+      "imagePath": "/images/travels/quebec.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Bergen",
-    "country": "Norway",
-    "startDate": "10-01-2023",
-    "endDate": "18-01-2023",
+    "location": {
+      "city": "Bergen",
+      "country": "Norway"
+    },
+    "dates": {
+      "start": "2023-01-10",
+      "end": "2023-01-18"
+    },
     "budget": 2000,
     "rating": 5,
-    "imagePath": "/images/travels/bergen.jpg",
-    "isMock": true
+    "description": "Sail between fjords and pastel harbors in Norways coastal gem.",
+    "media": {
+      "imagePath": "/images/travels/bergen.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Maafushi",
-    "country": "Maldives",
-    "startDate": "10-02-2024",
-    "endDate": "17-02-2024",
+    "location": {
+      "city": "Maafushi",
+      "country": "Maldives"
+    },
+    "dates": {
+      "start": "2024-02-10",
+      "end": "2024-02-17"
+    },
     "budget": 2100,
     "rating": 5,
-    "imagePath": "/images/travels/maafushi.jpg",
-    "isMock": true
+    "description": "Snorkel turquoise waters and relax on white sand beaches.",
+    "media": {
+      "imagePath": "/images/travels/maafushi.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   },
   {
-    "city": "Chefchaouen",
-    "country": "Morocco",
-    "startDate": "03-10-2023",
-    "endDate": "12-10-2023",
+    "location": {
+      "city": "Chefchaouen",
+      "country": "Morocco"
+    },
+    "dates": {
+      "start": "2023-10-03",
+      "end": "2023-10-12"
+    },
     "budget": 1300,
     "rating": 4,
-    "imagePath": "/images/travels/chefchaouen.jpg",
-    "isMock": true
+    "description": "Step into Morocco blue dream and explore mountain alleys.",
+    "media": {
+      "imagePath": "/images/travels/chefchaouen.jpg"
+    },
+    "meta": {
+      "isMock": true
+    }
   }
 ]

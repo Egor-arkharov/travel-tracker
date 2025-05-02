@@ -5,12 +5,11 @@ import { PlacePicker } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
 import { FieldRef } from "@/types/formField";
-import { createValidator } from "@/utils/createValidator";
 import styles from "../Form.module.scss";
 
 const CityField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const { city, country } = useAppSelector((state) => state.travelForm);
+  const { city, country } = useAppSelector((state) => state.travelForm.location);
 
   const [error, setError] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
@@ -28,10 +27,10 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
     const lat = place?.location?.lat?.();
     const lng = place?.location?.lng?.();
 
-    dispatch(updateField({ key: "city", value: city }));
-    dispatch(updateField({ key: "country", value: country }));
-    dispatch(updateField({ key: "lat", value: lat }));
-    dispatch(updateField({ key: "lng", value: lng }));
+    dispatch(updateField({ path: "location.city", value: city }));
+    dispatch(updateField({ path: "location.country", value: country }));
+    dispatch(updateField({ path: "location.lat", value: lat }));
+    dispatch(updateField({ path: "location.lng", value: lng }));
 
     setIsTyping(false);
     setError(null);

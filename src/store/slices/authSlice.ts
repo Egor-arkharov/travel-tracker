@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface User {
-  uid: string;
-  displayName: string;
-  email: string;
-  photoURL: string;
-}
+import { User } from "@/types/user";
 
 interface AuthState {
   user: User | null;
@@ -21,9 +15,23 @@ export const authSlice = createSlice({
   reducers: {
     login(state, action: PayloadAction<User>) {
       state.user = action.payload;
+
+      console.log("ji??")
+
+      if (typeof window !== "undefined") {
+        console.log("ji 2??")
+        localStorage.removeItem("trips");
+        localStorage.removeItem("localForm");
+      }
     },
     logout(state) {
       state.user = null;
+      console.log("ji 3??")
+      if (typeof window !== "undefined") {
+        console.log("ji 4??")
+        localStorage.removeItem("trips");
+        localStorage.removeItem("localForm");
+      }
     },
   },
 });

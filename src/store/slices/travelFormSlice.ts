@@ -1,30 +1,40 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Travel } from "@/types/travel";
 
-export type TravelFormState = Omit<Travel, "id" | "isMock"> & {
-  imageFile: File | null;
-};
+export interface TravelFormState extends Omit<Travel, "id"> {
+  media: Travel["media"] & { imageFile: File | null };
+}
 
 const defaultState: TravelFormState = {
-  country: "",
-  city: "",
-  startDate: "",
-  endDate: "",
+  location: {
+    city: "",
+    country: "",
+    lat: 0,
+    lng: 0,
+  },
+  dates: {
+    start: "",
+    end: "",
+  },
   budget: 0,
   rating: 0,
-  lat: 0,
-  lng: 0,
-  imagePath: "",
-  imageUrl: "",
+  media: {
+    imagePath: "",
+    imageUrl: "",
+    previewUrl: "",
+    imageFile: null,
+  },
   description: "",
-  imageFile: null,
+  meta: {
+    isMock: false,
+  },
 };
 
 const getInitialState = (): TravelFormState => {
   if (typeof window === "undefined") return defaultState;
 
   try {
-    const saved = localStorage.getItem("travelForm");
+    const saved = localStorage.getItem("localForm");
     if (saved) {
       return {
         ...defaultState,
@@ -43,14 +53,28 @@ const travelFormSlice = createSlice({
   name: "travelForm",
   initialState: getInitialState(),
   reducers: {
-    updateField: <K extends keyof TravelFormState>(
-      state: TravelFormState,
-      action: PayloadAction<{ key: K; value: TravelFormState[K] }>
+    updateField: (
+      state,
+      action: PayloadAction<{ path: string; value: any }>
     ) => {
-      const { key, value } = action.payload;
+      const { path, value } = action.payload;
 
-      console.log("travelFormSlice", key, value);
-      state[key] = value;
+      console.log(path, value);
+
+      if (typeof path !== "string") {
+        console.warn("updateField: invalid path", path);
+        return;
+      }
+
+      const keys = path.split(".");
+    
+      let current: any = state;
+      
+      for (let i = 0; i < keys.length - 1; i++) {
+        current = current[keys[i]];
+      }
+    
+      current[keys[keys.length - 1]] = value;
     },
     resetForm: () => ({ ...defaultState }),
   },
