@@ -8,6 +8,7 @@ import { auth, provider } from "@/app/firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { login, logout } from "@/store/slices/authSlice";
+import { mapFirebaseUserToUser } from "@/lib/firebase/mapFirebaseUser";
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -24,12 +25,7 @@ const UserMenu = () => {
 
       console.log(user);
 
-      dispatch(login({
-        uid: user.uid,
-        displayName: user.displayName || "No name",
-        email: user.email || "",
-        photoURL: user.photoURL || "",
-      }));
+      dispatch(login(mapFirebaseUserToUser(result.user)));
     } catch (err) {
       console.error("Login error:", err);
     }

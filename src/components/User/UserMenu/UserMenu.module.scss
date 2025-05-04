@@ -60,15 +60,11 @@
   text-decoration: none;
   white-space: nowrap;
 
+  width: 100%;
+  text-align: center;
+
   &:hover {
     background: #f7f7f7;
-  }
-
-  button {
-    all: unset;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
   }
 }
 

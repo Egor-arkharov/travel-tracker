@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Travel } from "@/types/travel";
-
-export interface TravelFormState extends Omit<Travel, "id"> {
-  media: Travel["media"] & { imageFile: File | null };
-}
+import { TravelFormState } from "@/types/travel";
 
 const defaultState: TravelFormState = {
   location: {
@@ -39,7 +35,11 @@ const getInitialState = (): TravelFormState => {
       return {
         ...defaultState,
         ...JSON.parse(saved),
-        imageFile: null,
+        media: {
+          ...defaultState.media,
+          ...JSON.parse(saved).media,
+          imageFile: null,
+        },
       };
     }
   } catch (error) {
@@ -53,27 +53,13 @@ const travelFormSlice = createSlice({
   name: "travelForm",
   initialState: getInitialState(),
   reducers: {
-    updateField: (
-      state,
-      action: PayloadAction<{ path: string; value: any }>
-    ) => {
+    updateField: (state, action: PayloadAction<{ path: string; value: any }>) => {
       const { path, value } = action.payload;
-
-      console.log(path, value);
-
-      if (typeof path !== "string") {
-        console.warn("updateField: invalid path", path);
-        return;
-      }
-
       const keys = path.split(".");
-    
       let current: any = state;
-      
       for (let i = 0; i < keys.length - 1; i++) {
         current = current[keys[i]];
       }
-    
       current[keys[keys.length - 1]] = value;
     },
     resetForm: () => ({ ...defaultState }),

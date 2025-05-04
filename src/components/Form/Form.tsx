@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetForm } from "@/store/slices/travelFormSlice";
-import { TravelFormState } from "@/store/slices/travelFormSlice";
 import styles from "./Form.module.scss";
 
 import Header from "@/components/UI/Header/Header";
@@ -15,11 +14,16 @@ import BudgetField from "./Fields/BudgetField";
 import DescriptionField from "./Fields/DescriptionField";
 import ImageField from "./Fields/ImageField";
 import Preview from "./Preview/Preview";
+
 import { FieldRef } from "@/types/formField";
+import { saveTrip } from "@/lib/trips/save/saveTrip";
+import { Travel } from "@/types/travel";
 
 const Form = () => {
   const dispatch = useAppDispatch();
+
   const form = useAppSelector((state) => state.travelForm);
+  const user = useAppSelector((state) => state.auth.user);
 
   const fieldRefs = useRef<FieldRef[]>([]);
   fieldRefs.current = [];
@@ -33,7 +37,8 @@ const Form = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [savedTrip, setSavedTrip] = useState<TravelFormState | null>(null);
+  const [savedTrip, setSavedTrip] = useState<Travel | null>(null);
+
 
   const isReadyToSubmit =
     form.location.city &&
@@ -54,7 +59,7 @@ const Form = () => {
     form.description ||
     form.media.imageUrl;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const validations = fieldRefs.current.map((ref) => ref.validate());
@@ -69,25 +74,11 @@ const Form = () => {
     setFormErrors([]);
 
     try {
-      const existing = JSON.parse(localStorage.getItem("trips") || "[]");
+      const saved = await saveTrip(form, user);
       
-      // клонируем и удаляем imageFile
-      const formClone = structuredClone(form);
-      formClone.media.imageFile = null;
-
-      const newTrip = {
-        ...formClone,
-        id: Date.now(),
-        meta: { ...formClone.meta, isMock: false },
-      };
-
-      localStorage.setItem("trips", JSON.stringify([...existing, newTrip]));
-      localStorage.removeItem("localForm");
-
       dispatch(resetForm());
       fieldRefs.current.forEach((ref) => ref.reset?.());
-
-      setSavedTrip(newTrip);
+      setSavedTrip(saved);
       setShowSuccessModal(true);
     } catch (error) {
       console.error("Failed to save trip:", error);

@@ -1,5 +1,3 @@
-// types/travel.ts
-
 export interface Travel {
   id?: string;
 
@@ -32,5 +30,12 @@ export interface Travel {
 }
 
 export interface FirestoreTravel extends Omit<Travel, "id"> {
-  uid?: string;
+  uid: string;
+  createdAt: number;
+}
+
+export interface TravelFormState extends Omit<Travel, "id"> {
+  media: Travel["media"] & {
+    imageFile: File | null;
+  };
 }

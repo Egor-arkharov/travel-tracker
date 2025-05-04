@@ -36,8 +36,6 @@ const TravelsPage = ({
     <section>
       <Header title="My Travels" icon="train" />
 
-
-
       {loading ? (
         <p>Loading...</p>
       ) : trips.length === 0 ? (
@@ -52,7 +50,7 @@ const TravelsPage = ({
             search={search}
             onSearchChange={setSearch}
             sort={sort}
-            onSortChange={setSort}      
+            onSortChange={setSort}
             view={view}
             onViewChange={setView}
           />

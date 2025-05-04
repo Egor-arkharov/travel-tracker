@@ -16,19 +16,14 @@ export const authSlice = createSlice({
     login(state, action: PayloadAction<User>) {
       state.user = action.payload;
 
-      console.log("ji??")
-
       if (typeof window !== "undefined") {
-        console.log("ji 2??")
         localStorage.removeItem("trips");
         localStorage.removeItem("localForm");
       }
     },
     logout(state) {
       state.user = null;
-      console.log("ji 3??")
       if (typeof window !== "undefined") {
-        console.log("ji 4??")
         localStorage.removeItem("trips");
         localStorage.removeItem("localForm");
       }

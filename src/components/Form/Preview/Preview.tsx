@@ -1,12 +1,13 @@
 "use client";
 
-import { TravelFormState } from "@/store/slices/travelFormSlice";
+// import { TravelFormState } from "@/store/slices/travelFormSlice";
 import styles from "./Preview.module.scss";
+import { Travel } from "@/types/travel";
 
 interface PreviewModalProps {
   open: boolean;
   onClose: () => void;
-  trip: TravelFormState;
+  trip: Travel;
 }
 
 const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
@@ -29,13 +30,13 @@ const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
           <p><b>Rating:</b> {trip.rating} ⭐</p>
 
           {trip.media.imageUrl && (
-  <img
-    src={trip.media.imageUrl}           
-    alt="Trip preview"
-    width="100%"
-    style={{ borderRadius: "8px", marginTop: "10px" }}
-  />
-)}
+            <img
+              src={trip.media.imageUrl}           
+              alt="Trip preview"
+              width="100%"
+              style={{ borderRadius: "8px", marginTop: "10px" }}
+            />
+          )}
         </div>
 
         <a href="/trips" className={styles.goToTripsButton}>
