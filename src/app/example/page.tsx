@@ -5,15 +5,13 @@ export default function Example() {
 	return (
 		<>
 			<Hero
-				title="My Travel Diary (example)"
-				subtitle="All your trips, in one beautiful place. (example)"
+        title="My Travel Collection"
+        subtitle="All your adventures — neatly organized and ready to explore"
 				image="/images/hero/hero-2.jpg"
-				buttonText="Add a new trip"
-				buttonHref="/create"
-				backgroundPosition="center 30%" 
+				backgroundPosition="center 50%" 
 			/>
 			<TravelsPage source="mock"/>
-		</>
+		</>		
 	);
 }
 

@@ -12,11 +12,10 @@ const Trips = () => {
   return (
     <>
       <Hero
-        title="Track & Relive Your Journeys"
-        subtitle="Capture your travels, map your routes, and keep your memories in one place."
-        image="/images/hero/hero-6.jpg"
-        buttonHref="/create"
-        backgroundPosition="center 30%"
+        title="Your Adventures"
+        subtitle="Browse through all your past trips, memories, and stories"
+        image="/images/hero/hero-5.jpg"
+        backgroundPosition="center 100%"
       />
 
       <section className={styles.tripsSection}>

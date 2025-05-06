@@ -1,11 +1,6 @@
 @use "@/styles/global" as *;
 
 .header {
-	background-color: transparent;
-	border-radius: 0 0 12px 12px;
-}
-
-.header {
 	height: var(--header-h);
   position: absolute;
   top: 0;
@@ -16,6 +11,9 @@
 
 	display: grid;
 	grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
+
+	background-color: transparent;
+	border-radius: 0 0 12px 12px;
 
 	.inner {
 		grid-column: 2;
@@ -55,25 +53,43 @@
 .list {
 	display: flex;
 	gap: 10px;
+
+	&::before {
+		content: "";
+		position: absolute;
+
+		height: 2px;
+		bottom: 13px;
+
+		background-color: var(--blue-soft);
+
+		left: anchor(--active left);
+		right: anchor(--active right, 0);
+		transition: left 0.3s, right 0.3s;
+
+		.fixed & {
+			background-color: var(--blue-light);
+		}
+	}
 }
 
 .link {
 	font-size: 18px;
 	font-weight: 700;
 	transition: color 0.1s ease;
-
-  // color: --blue-soft;
 	color: white;
 
-  &:hover {
-    color: var(--blue-light);
-  }
+  &:hover,
+  &:active,
+	&.active {
+    color: var(--blue-soft);
 
-  &:active {
-    color: var(--blue-dark);
-  }
+		.fixed & {
+			color: var(--blue-light);
+		}
+	}
 
 	&.active {
-    color: var(--blue-dark);
+		anchor-name: --active;
 	}
 }

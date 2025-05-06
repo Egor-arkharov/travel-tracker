@@ -24,6 +24,8 @@ const TravelsPage = ({
 
   const { trips, loading } = useTripsData(source, user);
 
+  console.log(trips, source);
+
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("date");
   const [view, setView] = useState("grid");

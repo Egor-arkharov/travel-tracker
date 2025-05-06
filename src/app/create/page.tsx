@@ -10,11 +10,9 @@ export default function Create() {
   return (
     <>
       <Hero
-        title="Create trip"
-        subtitle="Create your trip"
+        title="Start a New Journey"
+        subtitle="Fill in the details and add your next unforgettable trip"
 				image="/images/hero/hero-3.jpg"
-        buttonText="Add a new trip"
-        buttonHref="/create"
         backgroundPosition="center 100%" 
       />
       <DemoNotice />

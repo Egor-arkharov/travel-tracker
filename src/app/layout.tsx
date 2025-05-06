@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import RootProvider from "@/providers/RootProvider";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
+import { nunito, readexPro } from "./fonts";
 import "./globals.css";
-
 
 export const metadata: Metadata = {
   title: "Travel Tracker Egor",
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${nunito.variable} ${readexPro.variable}`}>
       <body>
         <RootProvider>
           <div className="layout">
@@ -29,3 +29,4 @@ export default function RootLayout({
     </html>
   );
 }
+

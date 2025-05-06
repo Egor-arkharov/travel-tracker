@@ -1,4 +1,7 @@
 :root {
+  --font-body: 'Nunito', sans-serif;
+  --font-heading: 'Readex Pro', sans-serif;
+
   --background: #ffffff;
   --foreground: #171717;
 
@@ -34,13 +37,13 @@
   --red-light: #FF8B77;
   --red-dark: #FF3E1D;
 
-  --blue-soft: #D6F5FC;
-  --blue-light: #9AE7F7;
-  --blue-dark: #04C3EC;
+  --blue-soft: #9AE7F7;
+  --blue-light: #00719a;
+  --blue-dark: #00456e;
 
-  --purple-soft: #E7E7FF;
-  --purple-light: #C3C4FF;
-  --purple-dark: #696CFF;
+  --purple-soft: #C3C4FF;
+  --purple-light: #5154e7;
+  --purple-dark: #3336c9;
 
   --yellow-soft: #FFE5B4;
   --yellow-light: #FFD480;
@@ -49,11 +52,6 @@
   --grey-soft: #EBEDF0;
   --grey-light: #8592A3;
   --grey-dark: #8592A3;
-
-
-
-
-
 
   /* Fonts */
   --input-font-size: 14px;
@@ -86,6 +84,8 @@ body {
 
   color: var(--foreground);
   background: var(--background);
+
+  font-family: var(--font-body);
 }
 
 .layout {
@@ -108,32 +108,17 @@ main {
   padding-bottom: 100px;
 }
 
+h1,
+h2,
+h3 {
+font-family: var(--font-heading);
+font-weight: 700;
+}
+
 h2 {
   position: relative;
   font-size: 50px;
 } 
-
-/* h2 span {
-  width: 80%;
-  text-wrap: balance;
-} */
-
-/* h2:before {
-  content: "";
-  position: absolute;
-
-  width: 100%;
-  height: 100%;
-
-  top	: 0;
-  left: 0;
-
-  background-image: url("data:image/svg+xml,%3Csvg width='847' height='62' viewBox='0 0 847 62' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M95.1341 1H12.834C8.88933 1.39216 1 4.76471 1 15.1176C1 25.4706 1 19.6274 1 15.4118V47.9344C1.44826 52.2896 4.98053 61 15.5235 61H565.805C569.032 60.1176 575.487 55.9412 575.487 46.2941C575.487 36.6471 584.452 34.0392 588.935 33.9412H675H847' stroke='black'/%3E%3C/svg%3E%0A");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left;
-} */
-
 
 ul {
   margin: 0;
@@ -145,7 +130,6 @@ li {
   margin: 0;
   padding: 0;
 }
-
 
 a {
   text-decoration: none;
