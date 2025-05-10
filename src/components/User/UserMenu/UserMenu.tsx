@@ -1,38 +1,146 @@
-import { useState } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./UserMenu.module.scss";
-import { UserIcon } from "@/components/icons";
+import {
+  UserIcon,
+  PlaneIcon,
+  PlusIcon,
+  LogInIcon,
+  LogOutIcon,
+} from "@/components/icons";
 import { useAuth } from "@/hooks/useAuth";
 
-const UserMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface UserMenuProps {
+  fixed?: boolean;
+}
+
+const UserMenu = ({ fixed }: UserMenuProps) => {
   const { user, login, logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: none)");
+
+    const detect = () => {
+      setIsTouch(media.matches);
+    };
+
+    detect();
+
+    window.addEventListener("resize", detect);
+    media.addEventListener("change", detect);
+
+    return () => {
+      window.removeEventListener("resize", detect);
+      media.removeEventListener("change", detect);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (
+        isTouch &&
+        isOpen &&
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [isOpen, isTouch]);
+
+  const handleClick = () => setIsOpen((prev) => !prev);
 
   return (
-    <div className={styles.wrapper}>
-      <button className={styles.button} onClick={() => setIsOpen(p => !p)}>
-        <div className={styles.avatar}>
-          {user?.photoURL ? (
-            <img src={user.photoURL} alt="avatar" className={styles.avatarImage} />
-          ) : (
-            <UserIcon width={22} height={22} />
-          )}
-        </div>
+    <div
+      ref={wrapperRef}
+      className={`${styles.wrapper} ${fixed ? styles.fixed : ""} ${
+        isOpen ? styles["is-open"] : ""
+      }`}
+      {...(!isTouch && {
+        onMouseEnter: () => setIsOpen(true),
+        onMouseLeave: () => setIsOpen(false),
+      })}
+    >
+      <button className={styles.button} onClick={handleClick}>
+        {user?.photoURL && (
+          <div className={styles.avatar}>
+            <img
+              src={user.photoURL}
+              alt="avatar"
+              className={styles.avatarImage}
+            />
+          </div>
+        )}
         <span className={styles.name}>{user?.displayName || "Demo"}</span>
       </button>
 
-      {isOpen && (
-        <div className={styles.menu}>
-          <Link href="/profile" className={styles.menuItem}>My Profile</Link>
-          <Link href="/trips" className={styles.menuItem}>My Trips</Link>
-          <Link href="/create" className={styles.menuItem}>Add Trip</Link>
-          {user ? (
-            <button onClick={logout} className={styles.menuItem}>Logout</button>
-          ) : (
-            <button onClick={login} className={styles.menuItem}>Login</button>
-          )}
-        </div>
-      )}
+      <div className={styles.menu}>
+        <Link
+          href="/profile"
+          className={styles.menuItem}
+          onClick={() => setIsOpen(false)}
+        >
+          <span className={styles.menuItemText}>My Profile</span>
+          <span className={styles.menuItemIcon}>
+            <UserIcon width={22} height={22} />
+          </span>
+        </Link>
+        <Link
+          href="/trips"
+          className={styles.menuItem}
+          onClick={() => setIsOpen(false)}
+        >
+          <span className={styles.menuItemText}>My Trips</span>
+          <span className={styles.menuItemIcon}>
+            <PlaneIcon width={22} height={22} />
+          </span>
+        </Link>
+        <Link
+          href="/create"
+          className={styles.menuItem}
+          onClick={() => setIsOpen(false)}
+        >
+          <span className={styles.menuItemText}>Add Trip</span>
+          <span className={styles.menuItemIcon}>
+            <PlusIcon width={22} height={22} />
+          </span>
+        </Link>
+        {user ? (
+          <button
+            onClick={() => {
+              logout();
+              setIsOpen(false);
+            }}
+            className={styles.menuItem}
+          >
+            <span className={styles.menuItemText}>Log out</span>
+            <span className={styles.menuItemIcon}>
+              <LogOutIcon width={22} height={22} />
+            </span>
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              login();
+              // setIsOpen(false);
+            }}
+            className={styles.menuItem}
+          >
+            <span className={styles.menuItemText}>Log in</span>
+            <span className={styles.menuItemIcon}>
+              <LogInIcon width={22} height={22} />
+            </span>
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@
 "use client"
 
 import { useEffect, useState } from "react";
-// import AuthButton from "@/components/Auth/Auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
@@ -17,7 +16,7 @@ const Header = () => {
     const hero = document.getElementById("hero");
   
     if (!hero) {
-      setFixed(true); // фикс на внутренних страницах
+      setFixed(true);
       return;
     }
   
@@ -86,9 +85,7 @@ const Header = () => {
           </li>
         </ul>
         
-        <UserMenu />
-
-        {/* <AuthButton /> */}
+        <UserMenu fixed={fixed} />
       </nav>
     </div>
 
