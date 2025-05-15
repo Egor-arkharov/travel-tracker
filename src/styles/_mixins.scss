@@ -1,7 +1,32 @@
+// _mixins
+
+@use "./variables" as *;
+
 @mixin hover {
 	@media (hover: hover) {
 		&:hover {
 			@content;
 		}
 	}
+}
+
+@mixin media-max($key) {
+  @media (width <= map-get($breakpoints, $key)) {
+    @content;
+  }
+}
+
+@mixin media-min($key) {
+  @media (width >= map-get($breakpoints, $key)) {
+    @content;
+  }
+}
+
+@mixin media-between($minKey, $maxKey) {
+  $min: map-get($breakpoints, $minKey);
+  $max: map-get($breakpoints, $maxKey);
+
+  @media (min-width: calc(#{$min} + 1px)) and (max-width: $max) {
+    @content;
+  }
 }

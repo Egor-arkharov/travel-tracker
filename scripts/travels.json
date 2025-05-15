@@ -2,7 +2,9 @@
   {
     "location": {
       "city": "Munich",
-      "country": "Germany"
+      "country": "Germany",
+      "lat": 48.1351,
+      "lng": 11.5820
     },
     "dates": {
       "start": "2024-06-12",
@@ -21,7 +23,9 @@
   {
     "location": {
       "city": "Tokyo",
-      "country": "Japan"
+      "country": "Japan",
+      "lat": 35.6895,
+      "lng": 139.6917
     },
     "dates": {
       "start": "2022-09-05",
@@ -40,7 +44,9 @@
   {
     "location": {
       "city": "Lisbon",
-      "country": "Portugal"
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lng": -9.1393
     },
     "dates": {
       "start": "2023-04-15",
@@ -59,7 +65,9 @@
   {
     "location": {
       "city": "Athens",
-      "country": "Greece"
+      "country": "Greece",
+      "lat": 37.9838,
+      "lng": 23.7275
     },
     "dates": {
       "start": "2025-07-01",
@@ -78,7 +86,9 @@
   {
     "location": {
       "city": "Reykjavik",
-      "country": "Iceland"
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lng": -21.9426
     },
     "dates": {
       "start": "2024-01-03",
@@ -97,7 +107,9 @@
   {
     "location": {
       "city": "Seville",
-      "country": "Spain"
+      "country": "Spain",
+      "lat": 37.3891,
+      "lng": -5.9845
     },
     "dates": {
       "start": "2023-05-15",
@@ -116,7 +128,9 @@
   {
     "location": {
       "city": "New York",
-      "country": "USA"
+      "country": "USA",
+      "lat": 40.7128,
+      "lng": -74.0060
     },
     "dates": {
       "start": "2023-10-10",
@@ -135,7 +149,9 @@
   {
     "location": {
       "city": "Cape Town",
-      "country": "South Africa"
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lng": 18.4241
     },
     "dates": {
       "start": "2022-03-05",
@@ -154,7 +170,9 @@
   {
     "location": {
       "city": "Bologna",
-      "country": "Italy"
+      "country": "Italy",
+      "lat": 44.4949,
+      "lng": 11.3426
     },
     "dates": {
       "start": "2023-08-12",
@@ -173,7 +191,9 @@
   {
     "location": {
       "city": "Chiang Mai",
-      "country": "Thailand"
+      "country": "Thailand",
+      "lat": 18.7883,
+      "lng": 98.9853
     },
     "dates": {
       "start": "2022-11-20",
@@ -192,7 +212,9 @@
   {
     "location": {
       "city": "Buenos Aires",
-      "country": "Argentina"
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lng": -58.3816
     },
     "dates": {
       "start": "2023-02-01",
@@ -211,7 +233,9 @@
   {
     "location": {
       "city": "Sydney",
-      "country": "Australia"
+      "country": "Australia",
+      "lat": -33.8688,
+      "lng": 151.2093
     },
     "dates": {
       "start": "2023-12-18",
@@ -230,7 +254,9 @@
   {
     "location": {
       "city": "Québec City",
-      "country": "Canada"
+      "country": "Canada",
+      "lat": 46.8139,
+      "lng": -71.2080
     },
     "dates": {
       "start": "2024-06-07",
@@ -249,7 +275,9 @@
   {
     "location": {
       "city": "Bergen",
-      "country": "Norway"
+      "country": "Norway",
+      "lat": 60.3913,
+      "lng": 5.3221
     },
     "dates": {
       "start": "2023-01-10",
@@ -268,7 +296,9 @@
   {
     "location": {
       "city": "Maafushi",
-      "country": "Maldives"
+      "country": "Maldives",
+      "lat": 3.9422,
+      "lng": 73.4898
     },
     "dates": {
       "start": "2024-02-10",
@@ -287,7 +317,9 @@
   {
     "location": {
       "city": "Chefchaouen",
-      "country": "Morocco"
+      "country": "Morocco",
+      "lat": 35.1715,
+      "lng": -5.2692
     },
     "dates": {
       "start": "2023-10-03",

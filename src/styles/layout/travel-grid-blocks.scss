@@ -1,0 +1,177 @@
+@use "../mixins" as *;
+
+// Блок тип 4 - ОБЫЧНЫЙ
+.block-type-4-normal {
+	&-pos-1 {
+		grid-column: 1 / span 2;
+		grid-row: span 2;
+	}
+
+	&-pos-2 {
+		grid-column: 3 / span 2;
+		grid-row: span 1;
+	}
+
+	&-pos-3 {
+		grid-column: 5 / span 2;
+		grid-row: span 1;
+	}
+
+	&-pos-4 {
+		grid-column: 3 / span 4;
+		grid-row: span 1;
+	}
+}
+
+// Блок тип 4 - ЗЕРКАЛЬНЫЙ
+.block-type-4-mirrored {
+	&-pos-1 {
+		grid-column: 1 / span 4;
+		grid-row: span 1;
+	}
+
+	&-pos-2 {
+		grid-column: 1 / span 2;
+		grid-row: span 1;
+	}
+
+	&-pos-3 {
+		grid-column: 3 / span 2;
+		grid-row: span 1;
+	}
+
+	&-pos-4 {
+		grid-column: 5 / span 2;
+		grid-row: span 2;
+	}
+}
+
+// Блок тип 3 - ОБЫЧНЫЙ
+.block-type-3-normal {
+	&-pos-1 {
+		grid-column: 1 / span 2;
+		grid-row: span 2;
+	}
+
+	&-pos-2 {
+		grid-column: 3 / span 4;
+		grid-row: span 1;
+	}
+
+	&-pos-3 {
+		grid-column: 3 / span 4;
+		grid-row: span 1;
+	}
+}
+
+// Блок тип 3 - ЗЕРКАЛЬНЫЙ
+.block-type-3-mirrored {
+	&-pos-1 {
+		grid-column: 1 / span 4;
+		grid-row: span 1;
+	}
+
+	&-pos-2 {
+		grid-column: 1 / span 4;
+		grid-row: span 1;
+	}
+
+	&-pos-3 {
+		grid-column: 5 / span 2;
+		grid-row: span 2;
+	}
+}
+
+// Блок тип 2 - ОБЫЧНЫЙ
+.block-type-2-normal {
+	&-pos-1 {
+		grid-column: 1 / span 3;
+		grid-row: span 1;
+	}
+
+	&-pos-2 {
+		grid-column: 4 / span 3;
+		grid-row: span 1;
+	}
+}
+
+// Блок тип 2 - ЗЕРКАЛЬНЫЙ
+.block-type-2-mirrored {
+	&-pos-1 {
+		grid-column: 1 / span 3;
+		grid-row: span 1;
+	}
+
+	&-pos-2 {
+		grid-column: 4 / span 3;
+		grid-row: span 1;
+	}
+}
+
+// Блок тип 1 (одна карточка)
+.block-type-1-normal-pos-1,
+.block-type-1-mirrored-pos-1 {
+	grid-column: 1 / span 3;
+	grid-row: span 1;
+}
+
+@include media-max(md) {
+	.block-type-3-sm-normal {
+		&-pos-1 {
+			grid-column: 1 / span 2;
+			grid-row: span 2;
+		}
+
+		&-pos-2 {
+			grid-column: 3 / span 2;
+			grid-row: span 2;
+		}
+
+		&-pos-3 {
+			grid-column: 1 / span 4;
+			grid-row: span 1;
+		}
+	}
+
+	.block-type-3-sm-mirrored {
+		&-pos-1 {
+			grid-column: 1 / span 4;
+			grid-row: span 1;
+		}
+
+		&-pos-2 {
+			grid-column: 1 / span 2;
+			grid-row: span 2;
+		}
+
+		&-pos-3 {
+			grid-column: 3 / span 2;
+			grid-row: span 2;
+		}
+	}
+
+	.block-type-2-sm-normal {
+		&-pos-1 {
+			grid-column: 1 / span 4;
+			grid-row: span 1;
+		}
+
+		&-pos-2 {
+			grid-column: 1 / span 4;
+			grid-row: span 1;
+		}
+	}
+
+	.block-type-2-sm-mirrored {
+		&-pos-1 {
+			grid-column: 1 / span 2;
+			grid-row: span 2;
+		}
+
+		&-pos-2 {
+			grid-column: 3 / span 2;
+			grid-row: span 2;
+		}
+
+	}
+}

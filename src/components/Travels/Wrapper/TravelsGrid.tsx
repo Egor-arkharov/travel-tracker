@@ -1,26 +1,34 @@
+// TravelsGrid.tsx
 import TravelCard from "../TravelCard/TravelCard";
 import styles from "./Travels.module.scss";
 import { Travel } from "@/types/travel";
 
-const TravelsGrid = ({ travels, view }: { travels: Travel[]; view: string }) => {
+type TravelWithGridClass = Travel & {
+  gridItemClassName?: string;
+};
 
-  const grouped: Travel[][] = [];
-  for (let i = 0; i < travels.length; i += 4) {
-    grouped.push(travels.slice(i, i + 4));
+// Определяем props для TravelsGrid
+interface TravelsGridProps {
+  travelsWithClasses: TravelWithGridClass[];
+  view: string;
+}
+
+const TravelsGrid = ({ travelsWithClasses, view }: TravelsGridProps) => {
+  if (!travelsWithClasses || travelsWithClasses.length === 0) {
+    return null;
   }
 
   return (
-    <>
-      {grouped.map((group, index) => (
-        <ul key={index} className={`${styles[view]}`}>
-          {group.map((travel) => (
-            <li key={travel.id} className={`${styles.card}`}>
-              <TravelCard travel={travel} />
-            </li>
-          ))}
-        </ul>
+    <ul className={`${styles[view]}`}>
+      {travelsWithClasses.map((travel) => (
+        <li
+          key={travel.id}
+          className={travel.gridItemClassName || styles.cardItem}
+        >
+          <TravelCard travel={travel} view={view} /> {/* TravelCard ожидает обычный объект Travel */}
+        </li>
       ))}
-    </>
+    </ul>
   );
 };
 

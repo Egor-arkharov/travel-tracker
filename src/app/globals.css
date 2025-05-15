@@ -74,6 +74,9 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+html {
   scrollbar-gutter: stable;
 }
 
@@ -88,18 +91,15 @@ body {
   font-family: var(--font-body);
 }
 
-.layout {
-  grid-column: 2;
-
-  display: flex;
-  flex-direction: column;
-}
-
 header {
   height: var(--header-h);
 }
 
 .layout {
+  grid-column: 2;
+
+  display: flex;
+  flex-direction: column;
   padding-top: var(--header-h);
 }
 
@@ -111,14 +111,14 @@ main {
 h1,
 h2,
 h3 {
-font-family: var(--font-heading);
-font-weight: 700;
+  font-family: var(--font-heading);
+  font-weight: 700;
 }
 
 h2 {
   position: relative;
   font-size: 50px;
-} 
+}
 
 ul {
   margin: 0;
@@ -137,12 +137,12 @@ a {
 
 .icon--filled {
   color: gold;
-	fill: gold;
+  fill: gold;
 }
 
 .icon--outlined {
   color: #ccc;
-	fill: #ccc;
+  fill: #ccc;
 }
 
 .react-datepicker-wrapper {

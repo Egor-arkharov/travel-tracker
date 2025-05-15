@@ -22,6 +22,11 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
     const getComponent = (type: string) =>
       place?.addressComponents?.find((c: any) => c.types.includes(type))?.longText ?? "";
 
+
+    console.log(place.addressComponents);
+    console.log(place.displayName?.text);
+    console.log(place.types);
+
     const city = getComponent("locality");
     const country = getComponent("country");
     const lat = place?.location?.lat?.();
