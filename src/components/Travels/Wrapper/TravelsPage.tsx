@@ -1,9 +1,9 @@
-// TravelsPage.tsx
+// Travels/Wrapper/TravelsPage.tsx
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
 import { useTripsData } from "@/hooks/useTripsData";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { filterTravels } from "@/utils/filterTravels";
 import { sortTravels } from "@/utils/sortTravels";
 import TravelsGrid from "./TravelsGrid";
@@ -12,12 +12,21 @@ import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
 import Header from "@/components/UI/Header/Header";
 import Link from "next/link";
 import styles from "./Travels.module.scss";
-import TravelsMap from "../TravelMap/TravelsPage";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
+import { LayoutGroup, AnimatePresence } from "framer-motion";
 import {
   applyGridClassesToTravels,
   resolveGridPattern
 } from "@/lib/layout/tripsGridPattern";
+import TravelModal from "../TravelModal/TravelModal";
+import { Travel } from "@/types/travel";
+import TravelsMap from "../TravelMap/TravelsMap";
+import { useRouter, useSearchParams } from "next/navigation";
+
+
+interface TravelWithGridClass extends Travel {
+  gridItemClassName?: string;
+}
 
 const TravelsPage = ({
   mode = "full",
@@ -30,34 +39,27 @@ const TravelsPage = ({
   const source = propSource ?? (user ? "firebase" : "local");
 
   const { trips, loading } = useTripsData(source, user);
-
   const windowWidth = useWindowWidth();
-
-  console.log(trips, source);
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("date");
-  const [view, setView] = useState("grid");
+  const [view, setView] = useState("grid"); // 'grid' или 'list'
 
   const filtered = useMemo(() => filterTravels(trips, search), [trips, search]);
   const sorted = useMemo(() => sortTravels(filtered, sort), [filtered, sort]);
-  const visibleTravels = mode === "compact" ? sorted.slice(0, 4) : sorted;
+  const visibleTravels: Travel[] = mode === "compact" ? sorted.slice(0, 4) : sorted;
 
-  // Генерация классов для грид-сетки
-  const travelsWithGridClasses = useMemo(() => {
-    // Дефолтное состояние, если у нас не грид сетка ИЛИ нет трипов ИЛИ ширина меньше 500
+  const travelsWithGridClasses: TravelWithGridClass[] = useMemo(() => {
     if (view !== "grid" || visibleTravels.length === 0 || windowWidth <= 500) {
       return visibleTravels.map((travel) => ({
         ...travel,
         gridItemClassName: styles.cardItem,
       }));
     }
-
     const { blockSizes, suffix } = resolveGridPattern(
       visibleTravels.length,
       windowWidth
     );
-
     return applyGridClassesToTravels(
       visibleTravels,
       blockSizes,
@@ -65,6 +67,21 @@ const TravelsPage = ({
       styles
     );
   }, [visibleTravels, view, windowWidth]);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const selectedId = searchParams.get("id");
+  const selectedTravel = useMemo(
+    () => visibleTravels.find((t) => t.id === selectedId) || null,
+    [selectedId, visibleTravels]
+  );
+
+  const handleCloseModal = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("id");
+    router.push(`?${params.toString()}`, { scroll: false });
+  }, [router, searchParams]);
 
 
   return (
@@ -91,14 +108,32 @@ const TravelsPage = ({
             />
           )}
 
+
           {mode === "full" && visibleTravels.length > 0 && (
             <TravelsMap travels={visibleTravels} />
           )}
 
-          <TravelsGrid
-            travelsWithClasses={travelsWithGridClasses}
-            view={view}
-          />
+          <LayoutGroup>
+            <TravelsGrid
+              travelsWithClasses={travelsWithGridClasses}
+              view={view}
+              onSelect={(id) => {
+                router.push(`?id=${id}`, { scroll: false });
+              }}
+              selectedId={selectedId}
+            />
+
+            <AnimatePresence>
+              {selectedId && selectedTravel && (
+                <TravelModal
+                  key={selectedId}
+                  travel={selectedTravel}
+                  onClose={handleCloseModal}
+                  imageLayoutId={`image-${selectedId}`}
+                />
+              )}
+            </AnimatePresence>
+          </LayoutGroup>
         </>
       )}
 

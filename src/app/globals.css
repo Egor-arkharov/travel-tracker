@@ -76,7 +76,7 @@ body {
   overflow-x: hidden;
 }
 
-html {
+html  {
   scrollbar-gutter: stable;
 }
 

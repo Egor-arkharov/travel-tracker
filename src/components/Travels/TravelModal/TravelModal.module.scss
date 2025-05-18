@@ -1,0 +1,40 @@
+// Travels/TravelModal/TravelModal.module.scss
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 90svw;
+  height: 80svh;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.modalInner {
+  display: flex;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+}
+
+.modalInfo {
+  width: 40%;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

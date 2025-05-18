@@ -51,6 +51,8 @@ const TravelsMap = ({ travels }: { travels: Travel[] }) => {
 
 	if (!isLoaded) return <p>Loading map...</p>;
 
+	const imageSrc = activeTrip?.media.imagePath ?? activeTrip?.media.imageUrl;
+
 	return (
 		<div className={styles.map}>
 			<GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4}>
@@ -79,9 +81,9 @@ const TravelsMap = ({ travels }: { travels: Travel[] }) => {
 							onCloseClick={() => setActiveTrip(null)}
 						>
 							<div className={styles.mapCard}>
-								{activeTrip.meta.isMock && activeTrip.media.imagePath && (
+								{imageSrc && (
 									<img
-										src={activeTrip.media.imagePath}
+										src={imageSrc}
 										alt={activeTrip.location.city}
 										className={styles.image}
 									/>
