@@ -11,7 +11,7 @@ export default function Example() {
 				backgroundPosition="center 50%" 
 			/>
 			<TravelsPage source="mock"/>
-		</>		
+		</>
 	);
 }
 

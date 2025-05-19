@@ -12,6 +12,13 @@
   // border-radius: 12px;
   overflow: hidden;
   height: 100%;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+
+  @include hover {
+    translate: 0 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  }
 }
 
 .link {

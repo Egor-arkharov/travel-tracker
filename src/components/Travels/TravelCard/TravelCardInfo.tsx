@@ -16,10 +16,11 @@ import { forwardRef } from "react";
 interface TravelInfoProps {
   travel: Travel;
   mode?: "card" | "modal";
+  onDelete?: () => void;
 }
 
 const TravelInfo = forwardRef<HTMLDivElement, TravelInfoProps>(
-  ({ travel, mode = "card" }, ref) => {
+  ({ travel, mode = "card", onDelete }, ref) => {
     const isModal = mode === "modal";
 
     return (
@@ -54,8 +55,21 @@ const TravelInfo = forwardRef<HTMLDivElement, TravelInfoProps>(
               </p>
             )}
             <div className={styles.actions}>
-              <button className={styles.actionsEdit}>Edit</button>
-              <button className={styles.actionsRemove}>Remove</button>
+              <button
+                className={styles.actionsEdit}
+                disabled={travel.meta.isMock}
+              >
+                Edit
+              </button>
+              <button
+                className={styles.actionsRemove}
+                disabled={travel.meta.isMock}
+                onClick={() => {
+                if (!travel.meta.isMock && onDelete) onDelete();
+              }}
+              >
+                Remove
+              </button>
             </div>
           </>
         )}

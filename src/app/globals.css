@@ -135,6 +135,13 @@ a {
   text-decoration: none;
 }
 
+button {
+  &:disabled {
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+  }
+}
+
 .icon--filled {
   color: gold;
   fill: gold;

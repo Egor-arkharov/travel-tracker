@@ -1,3 +1,5 @@
+// travelfromslice
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TravelFormState } from "@/types/travel";
 
@@ -18,7 +20,7 @@ const defaultState: TravelFormState = {
     imagePath: "",
     imageUrl: "",
     previewUrl: "",
-    imageFile: null,
+    imageFile: null as File | null,
   },
   description: "",
   meta: {

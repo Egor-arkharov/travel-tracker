@@ -23,7 +23,10 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
       place?.addressComponents?.find((c: any) => c.types.includes(type))?.longText ?? "";
 
 
-    console.log(place.addressComponents);
+    if (place?.addressComponents) {
+      console.log(place.addressComponents);
+    }
+
     console.log(place.displayName?.text);
     console.log(place.types);
 

@@ -2,31 +2,56 @@
 import TravelCard from "../TravelCard/TravelCard";
 import styles from "./Travels.module.scss";
 import { Travel } from "@/types/travel";
-
-interface TravelWithGridClass extends Travel {
-  gridItemClassName?: string;
-}
+import {
+  applyGridClassesToTravels,
+  resolveGridPattern
+} from "@/lib/layout/tripsGridPattern";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
+import { useMemo } from "react";
 
 interface TravelsGridProps {
-  travelsWithClasses: TravelWithGridClass[];
+  travels: Travel[];
   view: string;
   onSelect: (id: string) => void;
-  selectedId: string | null; // 👈 добавь
+  selectedId: string | null;
 }
 
 const TravelsGrid = ({
-  travelsWithClasses,
+  travels,
   view,
   onSelect,
   selectedId,
 }: TravelsGridProps) => {
-  if (!travelsWithClasses || travelsWithClasses.length === 0) {
+  const windowWidth = useWindowWidth();
+
+  const travelsWithGridClasses = useMemo(() => {
+    if (view !== "grid" || travels.length === 0 || windowWidth <= 500) {
+      return travels.map((travel) => ({
+        ...travel,
+        gridItemClassName: styles.cardItem,
+      }));
+    }
+
+    const { blockSizes, suffix } = resolveGridPattern(
+      travels.length,
+      windowWidth
+    );
+
+    return applyGridClassesToTravels(
+      travels,
+      blockSizes,
+      suffix,
+      styles
+    );
+  }, [travels, view, windowWidth]);
+
+  if (!travels || travels.length === 0) {
     return <p>No travels to display matching your criteria.</p>;
   }
 
   return (
     <ul className={`${styles[view]} ${styles.travelsGridContainer}`}>
-      {travelsWithClasses.map((travel) => (
+      {travelsWithGridClasses.map((travel) => (
         <li
           key={travel.id}
           className={travel.gridItemClassName || styles.cardItem}

@@ -12,12 +12,16 @@ import { overlayVariants, modalContainerVariants, contentVariants } from "./anim
 interface TravelModalProps {
   travel: Travel;
   onClose: () => void;
+  onDelete: () => void;
   imageLayoutId: string;
+  isDeleting: boolean;
 }
 
 const TravelModal = ({
   travel,
   onClose,
+  onDelete,
+  isDeleting,
   imageLayoutId,
 }: TravelModalProps) => {
   useEffect(() => {
@@ -39,16 +43,15 @@ const TravelModal = ({
         className={styles.overlay}
         onClick={onClose}
         variants={overlayVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
+        initial="visible"
+        animate={isDeleting ? "deleting" : "visible"}
       />
 
       <motion.div
-        className={styles.modal}
+        className={`${styles.modal} ${isDeleting ? styles.deleting : ""}`}
         variants={modalContainerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={isDeleting ? "visible" : "hidden"}
+        animate={isDeleting ? "deleting" : "visible"}
         exit="exit"
       >
         <div className={styles.modalInner} data-mode="modal">
@@ -63,6 +66,7 @@ const TravelModal = ({
             <TravelInfo
               travel={travel}
               mode="modal"
+              onDelete={onDelete}
             />
           </motion.div>
         </div>
