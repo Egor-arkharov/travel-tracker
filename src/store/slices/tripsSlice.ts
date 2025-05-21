@@ -5,58 +5,59 @@ import { AppThunk } from "../index";
 import { deleteTripFromFirebase } from "@/lib/trips/delete/deleteTripFromFirebase";
 
 interface TripsState {
-  trips: Travel[];
+  mock: Travel[];
+  user: Travel[];
   loading: boolean;
-  source: "local" | "firebase" | "mock";
+  loaded: boolean;
 }
 
 const initialState: TripsState = {
-  trips: [],
-  loading: true,
-  source: "local", // по умолчанию
+  mock: [],
+  user: [],
+  loading: false,
+  loaded: false,
 };
 
 const tripsSlice = createSlice({
   name: "trips",
   initialState,
   reducers: {
-    setTrips(state, action: PayloadAction<Travel[]>) {
-      state.trips = action.payload;
-      state.loading = false;
+    setMockTrips: (state, action: PayloadAction<Travel[]>) => {
+      state.mock = action.payload;
     },
-    deleteTripLocal(state, action: PayloadAction<string>) {
-      state.trips = state.trips.filter((trip) => trip.id !== action.payload);
+    setUserTrips: (state, action: PayloadAction<Travel[]>) => {
+      state.user = action.payload;
     },
-    setLoading(state, action: PayloadAction<boolean>) {
+    setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    setLoaded: (state, action: PayloadAction<boolean>) => {
+      state.loaded = action.payload;
+    },
+    removeUserTrip: (state, action: PayloadAction<string>) => {
+      state.user = state.user.filter((t) => t.id !== action.payload);
+    },
+    resetTrips: () => initialState,
   },
 });
 
-export const { setTrips, deleteTripLocal, setLoading } = tripsSlice.actions;
+export const { setMockTrips, setUserTrips, setLoading, setLoaded, resetTrips, removeUserTrip } = tripsSlice.actions;
 export default tripsSlice.reducer;
 
-// ✅ Thunk
 export const deleteTrip = (id: string): AppThunk => async (dispatch, getState) => {
   const state = getState();
-  const trip = state.trips.trips.find((t) => t.id === id);
+  const allTrips = [...state.trips.user, ...state.trips.mock];
+  const trip = allTrips.find((t) => t.id === id);
   const uid = state.auth.user?.uid;
 
-  if (!trip) return;
-
-  if (trip.meta.isMock) return; // нельзя удалять мок
-
+  if (!trip || trip.meta.isMock) return;
 
   if (uid) {
-    console.log("Удаляем поездку из Firebase");
-
-    // пользователь залогинен → удаляем из Firebase
     await deleteTripFromFirebase(uid, id);
-    dispatch(deleteTripLocal(id));
+    dispatch(removeUserTrip(id));
   } else {
-    // иначе → удаляем локально
-    const updated = state.trips.trips.filter((t) => t.id !== id);
+    const updated = state.trips.user.filter((t) => t.id !== id);
     localStorage.setItem("trips", JSON.stringify(updated));
-    dispatch(deleteTripLocal(id));
+    dispatch(removeUserTrip(id));
   }
 };

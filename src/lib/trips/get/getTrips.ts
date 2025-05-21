@@ -4,6 +4,7 @@ import { getLocal } from "./getLocal";
 import { Travel } from "@/types/travel";
 import { User } from "@/types/user";
 
+// ⚠️ Deprecated
 export const getTrips = async (
   source: "local" | "firebase" | "mock",
   user: User | null

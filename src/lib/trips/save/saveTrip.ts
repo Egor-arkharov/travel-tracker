@@ -5,11 +5,12 @@ import { saveLocal } from "./saveLocal";
 
 export const saveTrip = async (
   form: TravelFormState,
-  user: User | null
+  user: User | null,
+  isEditMode: boolean
 ) => {
   if (user) {
-    return await saveFirebase(form, user);
+    return await saveFirebase(form, user, isEditMode);
   } else {
-    return saveLocal(form);
+    return saveLocal(form, isEditMode);
   }
 };

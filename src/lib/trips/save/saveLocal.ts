@@ -1,21 +1,32 @@
-import { TravelFormState } from "@/types/travel";
-import { Travel } from "@/types/travel";
+import { TravelFormState, Travel } from "@/types/travel";
 
-export const saveLocal = (form: TravelFormState) => {
-  const existing = JSON.parse(localStorage.getItem("trips") || "[]");
-
+export const saveLocal = (form: TravelFormState, isEditMode: boolean): Travel => {
   const formClone = structuredClone(form);
   formClone.media.imageFile = null;
 
-  const newTrip: Travel = {
-    ...formClone,
-    id: Date.now().toString(),
-    meta: { ...formClone.meta, isMock: false },
-  };
+  const allTrips: Travel[] = JSON.parse(localStorage.getItem("trips") || "[]");
 
-  localStorage.setItem("trips", JSON.stringify([...existing, newTrip]));
+  let newTrip: Travel;
+
+  if (isEditMode && form.id) {
+    newTrip = {
+      ...formClone,
+      id: form.id,
+      meta: { ...formClone.meta, isMock: false },
+    };
+
+    const updated = allTrips.map((t) => (t.id === form.id ? newTrip : t));
+    localStorage.setItem("trips", JSON.stringify(updated));
+  } else {
+    newTrip = {
+      ...formClone,
+      id: Date.now().toString(),
+      meta: { ...formClone.meta, isMock: false },
+    };
+
+    localStorage.setItem("trips", JSON.stringify([...allTrips, newTrip]));
+  }
+
   localStorage.removeItem("localForm");
-
   return newTrip;
 };
-

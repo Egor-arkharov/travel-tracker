@@ -35,6 +35,7 @@ export interface FirestoreTravel extends Omit<Travel, "id"> {
 }
 
 export interface TravelFormState extends Omit<Travel, "id"> {
+  id?: string;
   media: Travel["media"] & {
     imageFile: File | null;
   };

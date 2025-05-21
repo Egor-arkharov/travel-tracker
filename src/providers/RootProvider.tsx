@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "@/store";
-import AuthProvider from "./AuthProvider";
+import AppInitializer from "./AppInitializer";
 
 interface Props {
   children: ReactNode;
@@ -12,9 +12,9 @@ interface Props {
 const RootProvider = ({ children }: Props) => {
   return (
     <ReduxProvider store={store}>
-      <AuthProvider>
+      <AppInitializer>
         {children}
-      </AuthProvider>
+      </AppInitializer>
     </ReduxProvider>
   );
 };

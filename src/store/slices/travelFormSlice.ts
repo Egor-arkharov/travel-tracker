@@ -1,9 +1,10 @@
 // travelfromslice
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TravelFormState } from "@/types/travel";
+import { Travel, TravelFormState } from "@/types/travel";
 
 const defaultState: TravelFormState = {
+  id: "",
   location: {
     city: "",
     country: "",
@@ -65,8 +66,33 @@ const travelFormSlice = createSlice({
       current[keys[keys.length - 1]] = value;
     },
     resetForm: () => ({ ...defaultState }),
+    setAllFields: (state, action: PayloadAction<Travel>) => {
+      const trip = action.payload;
+
+      state.id = trip.id ?? "";
+
+      state.location = {
+        city: trip.location.city,
+        country: trip.location.country,
+        lat: trip.location.lat,
+        lng: trip.location.lng,
+      };
+
+      state.dates = {
+        start: trip.dates.start,
+        end: trip.dates.end,
+      };
+      
+      state.rating = trip.rating;
+      state.budget = trip.budget;
+      state.description = trip.description ?? "";
+      state.media.imageUrl = trip.media.imageUrl || "";
+      state.media.imagePath = trip.media.imagePath || "";
+      state.media.imageFile = null;
+      state.meta.isMock = trip.meta?.isMock ?? false;
+    }
   },
 });
 
-export const { updateField, resetForm } = travelFormSlice.actions;
+export const { updateField, resetForm, setAllFields } = travelFormSlice.actions;
 export default travelFormSlice.reducer;

@@ -2,11 +2,8 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setTrips, deleteTrip, setLoading } from "@/store/slices/tripsSlice";
-import { getTrips } from "@/lib/trips/get/getTrips";
-
-
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { deleteTrip } from "@/store/slices/tripsSlice";
+import { useCallback, useMemo, useState } from "react";
 import { filterTravels } from "@/utils/filterTravels";
 import { sortTravels } from "@/utils/sortTravels";
 import TravelsGrid from "./TravelsGrid";
@@ -24,26 +21,25 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const TravelsPage = ({
   mode = "full",
-  source: propSource,
+  source,
 }: {
   mode?: "full" | "compact";
   source?: "firebase" | "local" | "mock";
 }) => {
-  const user = useAppSelector((state) => state.auth.user);
-  const source = propSource ?? (user ? "firebase" : "local");
+  // const user = useAppSelector((state) => state.auth.user);
 
   const dispatch = useAppDispatch();
-  const trips = useAppSelector((state) => state.trips.trips);
+
+  const userTrips = useAppSelector((state) => state.trips.user);
+  const mockTrips = useAppSelector((state) => state.trips.mock);
   const loading = useAppSelector((state) => state.trips.loading);
 
-  useEffect(() => {
-    const load = async () => {
-      dispatch(setLoading(true));
-      const result = await getTrips(source, user);
-      dispatch(setTrips(result));
-    };
-    load();
-  }, [dispatch, source, user]);
+  const trips: Travel[] =
+    source === "mock"
+      ? mockTrips
+      : userTrips;
+
+
 
   console.log("Trips data:", trips);
 
@@ -72,17 +68,17 @@ const TravelsPage = ({
     router.push(`?${params.toString()}`, { scroll: false });
   }, [router, searchParams]);
 
-const handleDelete = useCallback(() => {
-  if (!selectedTravel || selectedTravel.meta.isMock) return;
+  const handleDelete = useCallback(() => {
+    if (!selectedTravel || selectedTravel.meta.isMock) return;
 
-  setIsDeleting(true);
+    setIsDeleting(true);
 
-  setTimeout(() => {
-    dispatch(deleteTrip(selectedTravel.id!));
-    setIsDeleting(false);
-    handleCloseModal();
-  }, 600);
-}, [selectedTravel, dispatch, handleCloseModal]);
+    setTimeout(() => {
+      dispatch(deleteTrip(selectedTravel.id!));
+      setIsDeleting(false);
+      handleCloseModal();
+    }, 600);
+  }, [selectedTravel, dispatch, handleCloseModal]);
 
 
   return (

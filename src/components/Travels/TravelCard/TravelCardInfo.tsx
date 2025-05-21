@@ -12,6 +12,7 @@ import {
 import styles from "./TravelCard.module.scss";
 import { Travel } from "@/types/travel";
 import { forwardRef } from "react";
+import TravelCardActions from "./TravelCardActions";
 
 interface TravelInfoProps {
   travel: Travel;
@@ -54,23 +55,7 @@ const TravelInfo = forwardRef<HTMLDivElement, TravelInfoProps>(
                 <span>{travel.description}</span>
               </p>
             )}
-            <div className={styles.actions}>
-              <button
-                className={styles.actionsEdit}
-                disabled={travel.meta.isMock}
-              >
-                Edit
-              </button>
-              <button
-                className={styles.actionsRemove}
-                disabled={travel.meta.isMock}
-                onClick={() => {
-                if (!travel.meta.isMock && onDelete) onDelete();
-              }}
-              >
-                Remove
-              </button>
-            </div>
+            <TravelCardActions travel={travel} onDelete={onDelete} />
           </>
         )}
       </div>

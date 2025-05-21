@@ -1,6 +1,10 @@
+//components/Form/Form.tsx
+
 "use client";
 
-import { useRef, useState } from "react";
+
+import { useRef, useState, useEffect } from "react";
+import { setAllFields } from "@/store/slices/travelFormSlice";
 import { APILoader } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetForm } from "@/store/slices/travelFormSlice";
@@ -19,8 +23,27 @@ import { FieldRef } from "@/types/formField";
 import { saveTrip } from "@/lib/trips/save/saveTrip";
 import { Travel } from "@/types/travel";
 
-const Form = () => {
+interface FormProps {
+  isEditMode?: boolean;
+  initialTrip?: Travel;
+}
+
+const Form = ({ isEditMode = false, initialTrip }: FormProps) => {
+
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!isEditMode) {
+      dispatch(resetForm());
+      return;
+    }
+
+    if (isEditMode && initialTrip) {
+      dispatch(setAllFields(initialTrip));
+    }
+  }, [isEditMode, initialTrip, dispatch]);
+
+  console.log('form', initialTrip);
 
   const form = useAppSelector((state) => state.travelForm);
   const user = useAppSelector((state) => state.auth.user);
@@ -74,7 +97,7 @@ const Form = () => {
     setFormErrors([]);
 
     try {
-      const saved = await saveTrip(form, user);
+      const saved = await saveTrip(form, user, isEditMode);
       
       dispatch(resetForm());
       fieldRefs.current.forEach((ref) => ref.reset?.());
@@ -100,7 +123,7 @@ const Form = () => {
 
   return (
     <>
-      <Header title="Create trip" icon="car" />
+      <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" />
 
       <APILoader apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
 
@@ -118,7 +141,7 @@ const Form = () => {
             className={styles.submitButton}
             disabled={isSubmitting || !isReadyToSubmit}
           >
-            {isSubmitting ? "Submitting…" : "Submit"}
+            {isSubmitting ? "Saving…" : isEditMode ? "Save" : "Submit"}
           </button>
 
           <button
