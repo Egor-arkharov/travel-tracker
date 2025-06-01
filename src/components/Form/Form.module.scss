@@ -1,3 +1,25 @@
+@use "@/styles/global" as *;
+
+@mixin inputDecor {
+	width: 100%;
+	height: 100%;
+
+	padding: 4px 8px;
+
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+
+	border: 1px solid #80868b;
+	border-radius: 4px;
+	color: var(--input-color);
+
+	&:focus {
+		outline: 2px solid var(--gmpx-color-primary);
+	}
+}
+
+
 .form {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -31,50 +53,69 @@
 	width: 100%;
 }
 
-@mixin inputDecor {
-	width: 100%;
-	height: 100%;
-
-	padding: 4px 8px;
-
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: inherit;
-
-	border: 1px solid #80868b;
-	border-radius: 4px;
-	color: var(--input-color);
-
-	&:focus {
-		outline: 2px solid var(--gmpx-color-primary);
-	}
-}
-
 .inputWrapper {
 	position: relative;
 	width: 100%;
 	border-radius: 4px;
 
-	&::before {
+	&::before,
+	&::after {
 		content: '';
 		position: absolute;
 
 		top: 0;
-		left: 0;
 
 		width: 35px;
 		height: 100%;
 
 		box-sizing: border-box;
-		border-radius: 4px 0 0 4px;
+
 		border: 1px solid #80868b;
-		border-right: none;
-		background-color: grey;
+		background-color: white;
 		z-index: 1;
+	}
+
+	&::before {
+		left: 0;
+		border-right: none;
+		border-radius: 4px 0 0 4px;
+	}
+
+	&::after {
+		right: 0;
+		border-left: none;
+		border-radius: 0 4px 4px 0;
+	}
+
+	.inputIcon {
+		position: absolute;
+		left: 8px;
+		top: 50%;
+		translate: 0 -50%;
+		z-index: 1;
+		color: black;
 	}
 
 	.react-datepicker-wrapper {
 		width: 100%;
+	}
+
+	.customClear {
+		position: absolute;
+		width: 35px;
+		height: 100%;
+		right: 0;
+		z-index: 2;
+		background: transparent;
+		border: none;
+		font-size: 26px;
+		cursor: pointer;
+
+		z-index: 2;
+
+		&:hover {
+			color: #333;
+		}
 	}
 }
 
@@ -100,16 +141,12 @@
 
 .cityStorageValue {
 	position: absolute;
-  top: 50%;
-  left: 40px;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: var(--input-color);
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 2;
+	bottom: -25px;
+	left: 35px;
 
-	top: 0;
+	font-size: 0.85em;
+	color: var(--input-color);
+	z-index: 2;
 }
 
 .rating {
@@ -122,66 +159,66 @@
 	align-items: center;
 	gap: 50px;
 	width: 100%;
-}
 
-.budgetRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-	flex-grow: 1;
-}
-
-.budgetLine {
-  position: relative;
-  flex-grow: 1;
-
-	input[type="range"] {
-		width: 100%;
-		appearance: none;
-		height: 6px;
-		background: #eee;
-		border-radius: 4px;
-		outline: none;
-	
-		&::-webkit-slider-thumb {
-			appearance: none;
-			width: 16px;
-			height: 16px;
-			background: var(--input-focus-color);
-			border-radius: 50%;
-			cursor: pointer;
-			border: none;
-			margin-top: -5px;
-		}
-	
-		&::-moz-budget-thumb {
-			width: 16px;
-			height: 16px;
-			background: var(--input-focus-color);
-			border: none;
-			border-radius: 50%;
-			cursor: pointer;
-		}
+	.budgetRow {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		flex-grow: 1;
 	}
-	
-}
 
-.budgetBubble {
-  position: absolute;
-	top: -25px;
-  transform: translateX(-50%);
-  background: var(--input-focus-color);
-  color: white;
-  padding: 2px 6px;
-  font-size: 12px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
+	.budgetLine {
+		position: relative;
+		flex-grow: 1;
 
-.budgetNumberInput {
-	@include inputDecor;
-	width: 100px;
+		input[type="range"] {
+			width: 100%;
+			appearance: none;
+			height: 6px;
+			background: #eee;
+			border-radius: 4px;
+			outline: none;
+
+			&::-webkit-slider-thumb {
+				appearance: none;
+				width: 16px;
+				height: 16px;
+				background: var(--input-focus-color);
+				border-radius: 50%;
+				cursor: pointer;
+				border: none;
+				margin-top: -5px;
+			}
+
+			&::-moz-budget-thumb {
+				width: 16px;
+				height: 16px;
+				background: var(--input-focus-color);
+				border: none;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+		}
+
+	}
+
+	.budgetBubble {
+		position: absolute;
+		top: -25px;
+		transform: translateX(-50%);
+		background: var(--input-focus-color);
+		color: white;
+		padding: 2px 6px;
+		font-size: 12px;
+		border-radius: 4px;
+		white-space: nowrap;
+	}
+
+	.budgetNumberInput {
+		@include inputDecor;
+		width: 100px;
+	}
 }
 
 .textarea {
@@ -190,54 +227,84 @@
 	scrollbar-gutter: stable;
 }
 
-.imageInput {
-	@include inputDecor;
+.image {
+	.imageInput {
+		@include inputDecor;
 
-	cursor: pointer;
+		cursor: pointer;
 
-	border: 2px dashed #80868b;
+		color: transparent;
+		border: 2px dashed #80868b;
 
-	&:focus {
-		outline: none;
-		border-color:  var(--gmpx-color-primary);
+		&:focus {
+			outline: none;
+			border-color: var(--gmpx-color-primary);
+		}
+
+		&::-webkit-file-upload-button,
+		&::file-selector-button {
+			visibility: hidden;
+		}
 	}
-}
 
-.imagePreview {
-	position: absolute;
-	bottom: 4px;
-	left: 8px;
-	
-	width: 280px;
-	height: 140px;
-	z-index: -1;
+	.imagePreview {
+		position: absolute;
+		bottom: 4px;
+		left: 8px;
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 4px;
+		width: 280px;
+		height: 140px;
+		z-index: -1;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 4px;
+		}
+	}
+
+	.imageMessage {
+		position: absolute;
+		top: 10px;
+		left: 12px;
+
+		color: black;
+
+		z-index: -1;
 	}
 }
 
 .buttons {
 	position: relative;
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
+	display: flex;
+	gap: 12px;
+	margin-top: 24px;
 }
 
-.submitButton,
-.resetButton {
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.inputError {
+	outline: 1px solid red;
+	animation: shake 0.25s ease;
+}
 
-  &:hover {
-    background-color: #e0e0e0;
-  }
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+
+	25% {
+		transform: translateX(-4px);
+	}
+
+	50% {
+		transform: translateX(4px);
+	}
+
+	75% {
+		transform: translateX(-4px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
 }

@@ -13,7 +13,7 @@ export default function TripsColors() {
 
   return (
     <div className={styles.wrapper}>
-      <Header title="Цветовая палитра" icon="plane" />
+      <Header title="Debug" icon="plane" />
 
       <div className={styles.group}>
         <p>Основные</p>
@@ -44,6 +44,12 @@ export default function TripsColors() {
           </ul>
         </div>
       ))}
+
+      <button className="button button--primary">Primary</button>
+      <button className="button button--danger">Danger</button>
+      <button className="button button--secondary">Secondary</button>
+      <button className="button button--ghost">Ghost</button>
     </div>
+
   );
 }

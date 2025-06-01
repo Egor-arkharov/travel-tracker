@@ -122,7 +122,7 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
             className={styles.menuItem}
           >
             <span className={styles.menuItemText}>Log out</span>
-            <span className={styles.menuItemIcon}>
+            <span className={`${styles.menuItemIcon} ${styles.menuItemIconReverse}`}>
               <LogOutIcon width={22} height={22} />
             </span>
           </button>
@@ -135,7 +135,7 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
             className={styles.menuItem}
           >
             <span className={styles.menuItemText}>Log in</span>
-            <span className={styles.menuItemIcon}>
+            <span className={`${styles.menuItemIcon} ${styles.menuItemIconReverse}`}>
               <LogInIcon width={22} height={22} />
             </span>
           </button>

@@ -3,7 +3,7 @@
 import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/travelFormSlice";
-import { FieldRef } from "@/types/formField"; // Просто тип validate
+import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
 const ImageField = forwardRef<FieldRef>((_, ref) => {
@@ -62,7 +62,7 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
     <fieldset className={styles.fieldset}>
       <label className={styles.label} htmlFor="image">Upload Image</label>
 
-      <div className={styles.fieldBody}>
+      <div className={`${styles.fieldBody} ${styles.image}`}>
         <input
           type="file"
           accept="image/*"
@@ -77,6 +77,9 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
             <img src={previewUrl} alt="Your image preview" />
           </div>
         )}
+
+        {<p className={styles.imageMessage}>{previewUrl ? "Change image" : "Choose an image to upload"}</p>}
+
         {error && <p className={styles.errorMessage}>{error}</p>}
       </div>
     </fieldset>

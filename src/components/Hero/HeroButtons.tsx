@@ -12,18 +12,18 @@ const HeroButtons = () => {
   return (
     <div className={styles.buttons}>
       {!isCreatePage && (
-        <Link href="/create" className={styles.primaryButton}>Create a trip</Link>
+        <Link href="/create" className="button button--primary button--large">Create a trip</Link>
       )}
 
       {isCreatePage && (
-        <Link href="/profile" className={styles.primaryButton}>My Profile</Link>
+        <Link href="/profile" className="button button--primary button--large">My Profile</Link>
       )}
 
       {!isLoggedIn ? (
-        <button className={styles.secondaryButton} onClick={login}>Log in</button>
+        <button className="button button--secondary button--large" onClick={login}>Log in</button>
       ) : (
         !isCreatePage && (
-          <Link href="/profile" className={styles.secondaryButton}>My Profile</Link>
+          <Link href="/profile" className="button button--secondary button--large">My Profile</Link>
         )
       )}
     </div>

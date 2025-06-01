@@ -1,3 +1,5 @@
+@use "@/styles/global" as *;
+
 .hero {
 	position: relative;
 	height: calc(90svh - var(--header-h));
@@ -57,73 +59,4 @@
 	gap: 10px;
 
 	margin-top: 70px;
-}
-
-.primaryButton {
-	appearance: none;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	margin: 0;
-	padding: 15px 30px;
-
-	font-family: var(--font-body);
-	font-size: 20px;
-	font-weight: 700;
-
-	text-decoration: none;
-
-	color: white;
-	background-color: var(--blue-light);
-	border: none;
-	border-radius: 12px;
-	outline: none;
-
-	cursor: pointer;
-
-	transition: scale 0.2s ease;
-
-	&:hover {
-		background-color: var(--blue-dark);
-	}
-
-	&:active {
-		background-color: var(--blue-dark);
-		scale: 0.95;
-	}
-}
-
-.secondaryButton {
-	appearance: none;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	margin: 0;
-	padding: 15px 30px;
-
-	font-family: var(--font-body);
-	font-size: 20px;
-	font-weight: 700;
-
-	text-decoration: none;
-
-	color: black;
-	background-color: var(--green-soft);
-	border: none;
-	border-radius: 12px;
-	outline: none;
-
-	cursor: pointer;
-
-	&:hover {
-		background-color: var(--green-light);;
-	}
-
-	&:active {
-		background-color: var(--green-dark);
-	}
 }

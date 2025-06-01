@@ -3,7 +3,7 @@ import RootProvider from "@/providers/RootProvider";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
 import { nunito, readexPro } from "./fonts";
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Travel Tracker Egor",

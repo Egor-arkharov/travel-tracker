@@ -1,10 +1,13 @@
 "use client";
 
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useParams, useRouter } from "next/navigation";
 import Form from "@/components/Form/Form";
+import { resetForm, setAllFields } from "@/store/slices/travelFormSlice";
+
 
 const EditPage = () => {
+  const dispatch = useAppDispatch();
 
   const { id } = useParams();
   const router = useRouter();
@@ -22,6 +25,9 @@ const EditPage = () => {
     router.push("/");
     return null;
   }
+
+  dispatch(resetForm());
+  dispatch(setAllFields(trip));
 
   return <Form isEditMode initialTrip={trip} />;
 };

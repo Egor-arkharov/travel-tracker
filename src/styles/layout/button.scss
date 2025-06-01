@@ -1,0 +1,140 @@
+@use "../mixins" as *;
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: 0;
+	padding: 12px 26px;
+
+	font-size: 19px;
+	font-weight: 700;
+	font-family: var(--font-body);
+	text-decoration: none;
+
+	border-radius: 12px;
+	border: 5px solid transparent;
+	cursor: pointer;
+	outline: none;
+
+	transition:
+		scale 0.2s ease,
+		color 0.2s ease,
+		background-color 0.2s ease,
+		border 0.2s ease;
+
+	color: var(--clr);
+	background-color: var(--bg);
+	border: 5px solid var(--brdr);
+
+	@include hover {
+		color: var(--hover-clr);
+		background-color: var(--hover-bg);
+		border-color: var(--hover-brdr);
+	}
+
+	&:focus-visible {
+		color: var(--focus-clr);
+		background-color: var(--focus-bg);
+		border-color: var(--focus-brdr);
+
+		outline: 1px solid var(--focus-outline);
+		outline-offset: 2px;
+		scale: 0.95;
+	}
+
+	&:active {
+		color: var(--active-clr);
+		background-color: var(--active-bg);
+		border-color: var(--active-brdr);
+		scale: 0.95;
+	}
+
+	&:disabled,
+	&[aria-disabled="true"] {
+		opacity: 0.6;
+		pointer-events: none;
+	}
+}
+
+.button--large {
+	padding: 15px 30px;
+	font-size: 20px;
+}
+
+.button--primary {
+	--clr: var(--background);
+	--bg: var(--blue-light);
+	--brdr: var(--blue-light);
+
+	--hover-clr: var(--background);
+	--hover-bg: var(--blue-dark);
+	--hover-brdr: var(--blue-dark);
+
+	--focus-clr: var(--background);
+	--focus-bg: var(--blue-dark);
+	--focus-brdr: var(--blue-dark);
+	--focus-outline: var(--background);
+
+	--active-clr: var(--background);
+	--active-bg: var(--blue-dark);
+	--active-brdr: var(--blue-dark);
+}
+
+.button--secondary {
+	--clr: var(--color-green);
+	--bg: var(--background);
+	--brdr: var(--color-green);
+
+	--hover-clr: var(--background);
+	--hover-bg: var(--color-green);
+	--hover-brdr: var(--color-green);
+
+	--focus-clr: var(--background);
+	--focus-bg: var(--color-green);
+	--focus-brdr: var(--color-green);
+	--focus-outline: var(--background);
+
+	--active-clr: var(--background);
+	--active-bg: var(--color-green);
+	--active-brdr: var(--color-green);
+}
+
+.button--triary {
+	--clr: var(--background);
+	--bg: var(--purple-light);
+	--brdr: var(--purple-light);
+
+	--hover-clr: var(--background);
+	--hover-bg: var(--purple-dark);
+	--hover-brdr: var(--purple-dark);
+
+	--focus-clr: var(--background);
+	--focus-bg: var(--purple-dark);
+	--focus-brdr: var(--purple-dark);
+	--focus-outline: var(--foreground);
+
+	--active-clr: var(--background);
+	--active-bg: var(--purple-dark);
+	--active-brdr: var(--purple-dark);
+}
+
+.button--danger {
+	--clr: var(--color-red);
+	--bg: var(--background);
+	--brdr: var(--color-red);
+
+	--hover-clr: var(--background);
+	--hover-bg: var(--color-red);
+	--hover-brdr: var(--color-red);
+
+	--focus-clr: var(--background);
+	--focus-bg: var(--color-red);
+	--focus-brdr: var(--color-red);
+	--focus-outline: var(--foreground);
+
+	--active-clr: var(--background);
+	--active-bg: var(--color-red);
+	--active-brdr: var(--color-red);
+}

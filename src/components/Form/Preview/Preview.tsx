@@ -1,6 +1,5 @@
 "use client";
 
-// import { TravelFormState } from "@/store/slices/travelFormSlice";
 import styles from "./Preview.module.scss";
 import { Travel } from "@/types/travel";
 
@@ -12,8 +11,6 @@ interface PreviewModalProps {
 
 const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
   if (!open) return null;
-
-  console.log(trip)
 
   return (
     <dialog open className={styles.modal} onClick={onClose}>

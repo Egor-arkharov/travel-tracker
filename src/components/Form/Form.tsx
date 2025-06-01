@@ -1,12 +1,8 @@
-//components/Form/Form.tsx
-
 "use client";
 
-
-import { useRef, useState, useEffect } from "react";
-import { setAllFields } from "@/store/slices/travelFormSlice";
+import { useEffect } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { resetForm } from "@/store/slices/travelFormSlice";
 import styles from "./Form.module.scss";
 
@@ -18,9 +14,11 @@ import BudgetField from "./Fields/BudgetField";
 import DescriptionField from "./Fields/DescriptionField";
 import ImageField from "./Fields/ImageField";
 import Preview from "./Preview/Preview";
+import FormActions from "./FormActions";
 
-import { FieldRef } from "@/types/formField";
-import { saveTrip } from "@/lib/trips/save/saveTrip";
+import { useTravelFormLogic } from "@/hooks/useTravelFormLogic";
+import { usePreviewModal } from "@/hooks/usePreviewModal";
+
 import { Travel } from "@/types/travel";
 
 interface FormProps {
@@ -28,103 +26,50 @@ interface FormProps {
   initialTrip?: Travel;
 }
 
-const Form = ({ isEditMode = false, initialTrip }: FormProps) => {
-
+const Form = ({ isEditMode = false }: FormProps) => {
   const dispatch = useAppDispatch();
 
+  const {
+    isModalOpen: showSuccessModal,
+    activeTrip: savedTrip,
+    openModal: showPreviewForTrip,
+    closeModal: handleCloseModal,
+  } = usePreviewModal();
+
+  const {
+    isSubmitting,
+    formErrors,
+    registerRef,
+    handleSubmit,
+    handleReset,
+    isReadyToSubmit,
+    isFormDirty,
+  } = useTravelFormLogic({
+    isEditMode,
+    onSuccess: showPreviewForTrip,
+  });
+
   useEffect(() => {
-    if (!isEditMode) {
+    if (!isEditMode && !localStorage.getItem("localForm")) {
       dispatch(resetForm());
-      return;
     }
+  }, [isEditMode, dispatch]);
 
-    if (isEditMode && initialTrip) {
-      dispatch(setAllFields(initialTrip));
-    }
-  }, [isEditMode, initialTrip, dispatch]);
-
-  console.log('form', initialTrip);
-
-  const form = useAppSelector((state) => state.travelForm);
-  const user = useAppSelector((state) => state.auth.user);
-
-  const fieldRefs = useRef<FieldRef[]>([]);
-  fieldRefs.current = [];
-
-  const registerRef = (ref: FieldRef | null) => {
-    if (ref) {
-      fieldRefs.current.push(ref);
-    }
-  };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formErrors, setFormErrors] = useState<string[]>([]);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [savedTrip, setSavedTrip] = useState<Travel | null>(null);
-
-
-  const isReadyToSubmit =
-    form.location.city &&
-    form.location.country &&
-    form.dates.start &&
-    form.dates.end &&
-    form.budget > 0 &&
-    form.rating > 0 &&
-    form.media.imageUrl;
-
-  const isFormDirty =
-    form.location.city ||
-    form.location.country ||
-    form.dates.start ||
-    form.dates.end ||
-    form.budget > 0 ||
-    form.rating > 0 ||
-    form.description ||
-    form.media.imageUrl;
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const validations = fieldRefs.current.map((ref) => ref.validate());
-    const isFormValid = validations.every(Boolean);
-
-    if (!isFormValid) {
-      setFormErrors(["Please fill in all required fields."]);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setFormErrors([]);
-
-    try {
-      const saved = await saveTrip(form, user, isEditMode);
-      
+  // Очистка формы после успешного создания
+  useEffect(() => {
+    if (showSuccessModal) {
       dispatch(resetForm());
-      fieldRefs.current.forEach((ref) => ref.reset?.());
-      setSavedTrip(saved);
-      setShowSuccessModal(true);
-    } catch (error) {
-      console.error("Failed to save trip:", error);
-      setFormErrors(["Something went wrong. Try again."]);
-    } finally {
-      setIsSubmitting(false);
+      localStorage.removeItem("localForm");
     }
-  };
+  }, [showSuccessModal, dispatch]);
 
-  const handleReset = () => {
-    fieldRefs.current.forEach((ref) => ref.reset?.());
-    localStorage.removeItem("localForm");
-    dispatch(resetForm());
-  };
-
-  const handleCloseModal = () => {
-    setShowSuccessModal(false);
-  };
+  // useLayoutEffect(() => {
+  //   clearFieldRefs();
+  // });
 
   return (
     <>
       <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" />
-
       <APILoader apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -135,28 +80,14 @@ const Form = ({ isEditMode = false, initialTrip }: FormProps) => {
         <DescriptionField />
         <ImageField ref={registerRef} />
 
-        <div className={styles.buttons}>
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={isSubmitting || !isReadyToSubmit}
-          >
-            {isSubmitting ? "Saving…" : isEditMode ? "Save" : "Submit"}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleReset}
-            className={styles.resetButton}
-            disabled={isSubmitting || !isFormDirty}
-          >
-            Reset
-          </button>
-
-          {formErrors.length > 0 && (
-            <p className={styles.errorMessage}>{formErrors[0]}</p>
-          )}
-        </div>
+        <FormActions
+          isSubmitting={isSubmitting}
+          isEditMode={isEditMode}
+          isReadyToSubmit={isReadyToSubmit}
+          isFormDirty={isFormDirty}
+          formErrors={formErrors}
+          onReset={handleReset}
+        />
       </form>
 
       {savedTrip && (
