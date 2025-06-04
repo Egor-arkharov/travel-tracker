@@ -1,9 +1,9 @@
-// travelfromslice
+// formslice
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Travel, TravelFormState } from "@/types/travel";
+import { Travel, formState } from "@/types/travel";
 
-const defaultState: TravelFormState = {
+const defaultState: formState = {
   id: "",
   location: {
     city: "",
@@ -29,7 +29,7 @@ const defaultState: TravelFormState = {
   },
 };
 
-const getInitialState = (): TravelFormState => {
+const getInitialState = (): formState => {
   if (typeof window === "undefined") return defaultState;
 
   try {
@@ -52,17 +52,22 @@ const getInitialState = (): TravelFormState => {
   return defaultState;
 };
 
-const travelFormSlice = createSlice({
-  name: "travelForm",
+const formSlice = createSlice({
+  name: "form",
   initialState: getInitialState(),
   reducers: {
-    updateField: (state, action: PayloadAction<{ path: string; value: any }>) => {
+    updateField: (state, action: PayloadAction<{ path: string; value: unknown }>) => {
       const { path, value } = action.payload;
       const keys = path.split(".");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let current: any = state;
+
       for (let i = 0; i < keys.length - 1; i++) {
         current = current[keys[i]];
       }
+
+      // console.log(action, current[keys[keys.length - 1]])
+
       current[keys[keys.length - 1]] = value;
     },
     resetForm: () => ({ ...defaultState }),
@@ -94,5 +99,5 @@ const travelFormSlice = createSlice({
   },
 });
 
-export const { updateField, resetForm, setAllFields } = travelFormSlice.actions;
-export default travelFormSlice.reducer;
+export const { updateField, resetForm, setAllFields } = formSlice.actions;
+export default formSlice.reducer;

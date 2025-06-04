@@ -5,6 +5,7 @@ import styles from "./style.module.scss";
 import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import { useAppSelector } from "@/store/hooks";
+import { Suspense } from "react";
 
 const Trips = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -22,7 +23,10 @@ const Trips = () => {
         <div className="container">
           <DemoNotice />
 
-          <TravelsPage mode="full" source={user ? "firebase" : "local"} />
+          <Suspense fallback={<div>Loading travels...</div>}>
+            <TravelsPage mode="full" source={user ? "firebase" : "local"} />
+          </Suspense>
+
         </div>
       </section>
     </>

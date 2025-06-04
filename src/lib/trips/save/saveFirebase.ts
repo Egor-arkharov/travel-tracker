@@ -5,11 +5,11 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { Travel, FirestoreTravel, TravelFormState } from "@/types/travel";
+import { Travel, FirestoreTravel, formState } from "@/types/travel";
 import { User } from "@/types/user";
 
 export const saveFirebase = async (
-  form: TravelFormState,
+  form: formState,
   user: User,
   isEditMode: boolean
 ): Promise<Travel> => {
@@ -25,6 +25,7 @@ export const saveFirebase = async (
     imageUrl = await getDownloadURL(imgRef);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { imageFile, previewUrl, ...cleanMedia } = form.media;
 
   const tripData: FirestoreTravel = {

@@ -4,7 +4,7 @@ import { ReactNode, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useAppDispatch } from "@/store/hooks";
 import { mapFirebaseUserToUser } from "@/lib/firebase/mapFirebaseUser";
-import { login, logout } from "@/store/slices/authSlice";
+import { login } from "@/store/slices/authSlice";
 import { setLoading, setMockTrips, setUserTrips, setLoaded } from "@/store/slices/tripsSlice";
 import { getFirebase } from "@/lib/trips/get/getFirebase";
 import { getLocal } from "@/lib/trips/get/getLocal";

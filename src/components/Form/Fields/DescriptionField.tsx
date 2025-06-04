@@ -1,12 +1,12 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import styles from "@/components/Form/Form.module.scss";
 
 const DescriptionField = () => {
   const dispatch = useAppDispatch();
-  const description = useAppSelector((state) => state.travelForm.description || "");
+  const description = useAppSelector((state) => state.form.description || "");
 
   return (
     <fieldset className={styles.fieldset}>

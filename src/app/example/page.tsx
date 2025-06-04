@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Hero from "@/components/Hero/Hero";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 
@@ -10,7 +11,9 @@ export default function Example() {
 				image="/images/hero/hero-2.jpg"
 				backgroundPosition="center 50%" 
 			/>
-			<TravelsPage source="mock"/>
+			<Suspense fallback={<div>Loading travels...</div>}>
+				<TravelsPage source="mock"/>
+			</Suspense>
 		</>
 	);
 }

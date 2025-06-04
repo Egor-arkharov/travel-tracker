@@ -14,8 +14,7 @@ export function sortTravels(travels: Travel[], sort: string): Travel[] {
       return direction === "asc" ? aDate - bDate : bDate - aDate;
     }
 
-    // поддержка сортировки по вложенным ключам
-    const getValue = (t: Travel): any => {
+    const getValue = (t: Travel): string | number => {
       switch (key) {
         case "city":
           return t.location.city;

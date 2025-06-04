@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero/Hero";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import About from "@/components/About/About";
+import { Suspense } from "react";
 
 const Home = () => {
   return (
@@ -12,7 +13,9 @@ const Home = () => {
         backgroundPosition="center 30%" 
       />
       <About />
-			<TravelsPage mode={"compact"} source="mock" />
+      <Suspense fallback={<div>Loading travels...</div>}>
+      		<TravelsPage mode={"compact"} source="mock" />
+      </Suspense>
     </>
   );
 }

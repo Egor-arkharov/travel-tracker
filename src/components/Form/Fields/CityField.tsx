@@ -10,14 +10,22 @@ import {
 } from "react";
 import { PlacePicker } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "../Form.module.scss";
 import { CountryIcon } from "@/components/icons";
 
+type PlaceObject = {
+  addressComponents?: { types: string[]; longText: string }[];
+  location?: {
+    lat?: () => number;
+    lng?: () => number;
+  };
+};
+
 const CityField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const { city, country } = useAppSelector((state) => state.travelForm.location);
+  const { city, country } = useAppSelector((state) => state.form.location);
 
   const [error, setError] = useState<string | null>(null);
   const [pickerKey, setPickerKey] = useState(0);
@@ -25,28 +33,30 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
 
   const placePickerRef = useRef<HTMLElement | null>(null);
 
-  const clearLocation = () => {
+  const clearLocation = useCallback(() => {
     dispatch(updateField({ path: "location.city", value: "" }));
     dispatch(updateField({ path: "location.country", value: "" }));
     dispatch(updateField({ path: "location.lat", value: null }));
     dispatch(updateField({ path: "location.lng", value: null }));
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     setHasSaved(!!city && !!country);
   }, [city, country]);
 
-  const handlePlaceChange = useCallback((e: any) => {
-    const place = e.target?.value;
+
+  const handlePlaceChange = useCallback((e: Event) => {
+    const place = (e.target as { value?: PlaceObject })?.value;
+
     if (!place?.addressComponents) return;
 
     const getComponent = (type: string) =>
-      place.addressComponents.find((c: any) => c.types.includes(type))?.longText ?? "";
+      place.addressComponents?.find((c) => c.types.includes(type))?.longText ?? "";
 
     const extractedCity = getComponent("locality");
     const extractedCountry = getComponent("country");
-    const lat = place?.location?.lat?.();
-    const lng = place?.location?.lng?.();
+    const lat = place.location?.lat?.();
+    const lng = place.location?.lng?.();
 
     if (!extractedCity || !extractedCountry) {
       if (!extractedCity && !extractedCountry) {
@@ -66,17 +76,16 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
     dispatch(updateField({ path: "location.lng", value: lng }));
 
     setError(null);
-  }, [dispatch]);
+  }, [dispatch, clearLocation]);
 
-  const handleInput = (e: any) => {
-    const inputValue = e?.target?.value;
+  const handleInput = (e: Event) => {
+    const inputValue = (e.target as HTMLInputElement)?.value;
     if (!inputValue) {
       clearLocation();
       setError(null);
     }
   };
 
-  // expose ref
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (!city || !country) {
@@ -111,7 +120,7 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
             id="place-picker"
             placeholder="Start typing a city..."
             onPlaceChange={handlePlaceChange}
-            onInput={handleInput}
+            onInput={(e) => handleInput(e as unknown as Event)}
             className={styles.cityInput}
             ref={(el) => { placePickerRef.current = el }}
           />

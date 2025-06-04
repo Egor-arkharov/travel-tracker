@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
 const ImageField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const storeImageUrl = useAppSelector((state) => state.travelForm.media.imageUrl);
+  const storeImageUrl = useAppSelector((state) => state.form.media.imageUrl);
   const [previewUrl, setPreviewUrl] = useState<string | null>(storeImageUrl || null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
@@ -74,7 +75,12 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
 
         {previewUrl && (
           <div className={styles.imagePreview}>
-            <img src={previewUrl} alt="Your image preview" />
+            <Image
+              src={previewUrl}
+              alt="Your image preview"
+              layout="fill"
+              className={styles.image}
+            />
           </div>
         )}
 

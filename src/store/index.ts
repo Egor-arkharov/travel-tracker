@@ -1,28 +1,30 @@
 // store/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
-import travelFormReducer from "./slices/travelFormSlice";
+import formReducer from "./slices/formSlice";
 import tripsReducer from "./slices/tripsSlice";
 
 export const store = configureStore({
   reducer: {
-    travelForm: travelFormReducer,
+    form: formReducer,
     auth: authReducer,
     trips: tripsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredPaths: ["travelForm.media.imageFile"],
+        ignoredPaths: ["form.media.imageFile"],
         ignoredActionPaths: ["payload.value"],
       },
     }),
 });
 
 store.subscribe(() => {
-  const state = store.getState().travelForm;
+  const state = store.getState().form;
 
-  const { imageFile: _, ...mediaWithoutFile } = state.media;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { imageFile: __, ...mediaWithoutFile } = state.media;
+  
   const serializableData = {
     ...state,
     media: mediaWithoutFile,

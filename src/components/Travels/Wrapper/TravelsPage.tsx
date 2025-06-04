@@ -3,7 +3,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { deleteTrip } from "@/store/slices/tripsSlice";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { filterTravels } from "@/utils/filterTravels";
 import { sortTravels } from "@/utils/sortTravels";
 import TravelsGrid from "./TravelsGrid";
@@ -15,9 +15,8 @@ import styles from "./Travels.module.scss";
 import { LayoutGroup, AnimatePresence } from "framer-motion";
 import TravelModal from "../TravelModal/TravelModal";
 import { Travel } from "@/types/travel";
-import TravelsMap from "../TravelMap/TravelsMap";
+import TravelsMap from "../TravelMap/TravelsMap.client";
 import { useRouter, useSearchParams } from "next/navigation";
-
 
 const TravelsPage = ({
   mode = "full",
@@ -26,37 +25,30 @@ const TravelsPage = ({
   mode?: "full" | "compact";
   source?: "firebase" | "local" | "mock";
 }) => {
-  // const user = useAppSelector((state) => state.auth.user);
-
   const dispatch = useAppDispatch();
 
+  // 🔄 Стейт из Redux
   const userTrips = useAppSelector((state) => state.trips.user);
   const mockTrips = useAppSelector((state) => state.trips.mock);
   const loading = useAppSelector((state) => state.trips.loading);
 
-  const trips: Travel[] =
-    source === "mock"
-      ? mockTrips
-      : userTrips;
+  const trips: Travel[] = source === "mock" ? mockTrips : userTrips;
 
-
-
-  console.log("Trips data:", trips);
-
+  // 🧠 Управляемое состояние и сортировка
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("date");
-  const [view, setView] = useState("grid"); // 'grid' или 'list'
+  const [view, setView] = useState("grid");
   const [isDeleting, setIsDeleting] = useState(false);
-
 
   const filtered = useMemo(() => filterTravels(trips, search), [trips, search]);
   const sorted = useMemo(() => sortTravels(filtered, sort), [filtered, sort]);
   const visibleTravels: Travel[] = mode === "compact" ? sorted.slice(0, 4) : sorted;
 
+  // 🔍 Работа с модалкой
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const selectedId = searchParams.get("id");
+
   const selectedTravel = useMemo(
     () => visibleTravels.find((t) => t.id === selectedId) || null,
     [selectedId, visibleTravels]
@@ -72,7 +64,6 @@ const TravelsPage = ({
     if (!selectedTravel || selectedTravel.meta.isMock) return;
 
     setIsDeleting(true);
-
     setTimeout(() => {
       dispatch(deleteTrip(selectedTravel.id!));
       setIsDeleting(false);
@@ -80,7 +71,12 @@ const TravelsPage = ({
     }, 600);
   }, [selectedTravel, dispatch, handleCloseModal]);
 
+  // 🪵 Логгирование
+  useEffect(() => {
+    console.log("Trips data:", trips);
+  }, [trips]);
 
+  // 🖼️ Рендер
   return (
     <section>
       <Header title="My Travels" icon="train" />
@@ -104,7 +100,6 @@ const TravelsPage = ({
               onViewChange={setView}
             />
           )}
-
 
           {mode === "full" && visibleTravels.length > 0 && (
             <TravelsMap travels={visibleTravels} />

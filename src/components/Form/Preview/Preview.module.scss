@@ -23,6 +23,17 @@
   text-align: center;
 }
 
+.previewImage {
+  width: 280px;
+  height: 140px;
+  margin-top: 10px;
+
+  img {
+    position: relative !important;
+    object-fit: cover;
+  }
+}
+
 .title {
   font-size: 50px;
   margin-bottom: 30px;

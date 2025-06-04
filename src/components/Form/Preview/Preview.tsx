@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Preview.module.scss";
 import { Travel } from "@/types/travel";
 
@@ -27,12 +28,13 @@ const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
           <p><b>Rating:</b> {trip.rating} ⭐</p>
 
           {trip.media.imageUrl && (
-            <img
-              src={trip.media.imageUrl}           
-              alt="Trip preview"
-              width="100%"
-              style={{ borderRadius: "8px", marginTop: "10px" }}
-            />
+            <div className={styles.previewImage}>
+              <Image
+                src={trip.media.imageUrl}
+                alt="Trip preview"
+                layout="fill"
+              />
+            </div>
           )}
         </div>
 

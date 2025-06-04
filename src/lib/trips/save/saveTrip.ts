@@ -1,10 +1,10 @@
-import { TravelFormState } from "@/types/travel";
+import { formState } from "@/types/travel";
 import { User } from "@/types/user";
 import { saveFirebase } from "./saveFirebase";
 import { saveLocal } from "./saveLocal";
 
 export const saveTrip = async (
-  form: TravelFormState,
+  form: formState,
   user: User | null,
   isEditMode: boolean
 ) => {

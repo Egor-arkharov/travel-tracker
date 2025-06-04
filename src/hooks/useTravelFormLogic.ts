@@ -1,6 +1,6 @@
 import { useRef, useState, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { resetForm } from "@/store/slices/travelFormSlice";
+import { resetForm } from "@/store/slices/formSlice";
 import { saveTrip } from "@/lib/trips/save/saveTrip";
 import { Travel } from "@/types/travel";
 import { FieldRef } from "@/types/formField";
@@ -14,7 +14,7 @@ interface UseTravelFormLogicProps {
 
 export const useTravelFormLogic = ({ isEditMode, onSuccess }: UseTravelFormLogicProps) => {
   const dispatch = useAppDispatch();
-  const formState = useAppSelector((state) => state.travelForm);
+  const formState = useAppSelector((state) => state.form);
   const user = useAppSelector((state) => state.auth.user);
 
   const fieldRefs = useRef<FieldRef[]>([]);

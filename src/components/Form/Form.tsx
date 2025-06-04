@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch } from "@/store/hooks";
-import { resetForm } from "@/store/slices/travelFormSlice";
+import { resetForm } from "@/store/slices/formSlice";
 import styles from "./Form.module.scss";
 
 import Header from "@/components/UI/Header/Header";
@@ -38,7 +38,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
 
   const {
     isSubmitting,
-    formErrors,
+    submitError,
     registerRef,
     handleSubmit,
     handleReset,
@@ -85,7 +85,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
           isEditMode={isEditMode}
           isReadyToSubmit={isReadyToSubmit}
           isFormDirty={isFormDirty}
-          formErrors={formErrors}
+          submitError={submitError} 
           onReset={handleReset}
         />
       </form>

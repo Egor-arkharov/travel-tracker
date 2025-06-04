@@ -34,9 +34,10 @@ export interface FirestoreTravel extends Omit<Travel, "id"> {
   createdAt: number;
 }
 
-export interface TravelFormState extends Omit<Travel, "id"> {
+export interface formState extends Omit<Travel, "id"> {
   id?: string;
   media: Travel["media"] & {
     imageFile: File | null;
   };
+  createdAt?: number;
 }

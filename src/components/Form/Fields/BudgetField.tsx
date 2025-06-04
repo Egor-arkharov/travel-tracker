@@ -2,7 +2,7 @@
 
 import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
@@ -12,7 +12,7 @@ const STEP = 100;
 
 const BudgetField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const budget = useAppSelector((state) => state.travelForm.budget);
+  const budget = useAppSelector((state) => state.form.budget);
   const [local, setLocal] = useState(budget);
   const [error, setError] = useState<string | null>(null);
 

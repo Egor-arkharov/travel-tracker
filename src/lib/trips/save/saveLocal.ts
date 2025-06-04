@@ -1,6 +1,6 @@
-import { TravelFormState, Travel } from "@/types/travel";
+import { formState, Travel } from "@/types/travel";
 
-export const saveLocal = (form: TravelFormState, isEditMode: boolean): Travel => {
+export const saveLocal = (form: formState, isEditMode: boolean): Travel => {
   const formClone = structuredClone(form);
   formClone.media.imageFile = null;
 

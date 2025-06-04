@@ -3,13 +3,13 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import RatingIcon from "@/components/icons/rating.svg";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
 const RatingField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const storeRating = useAppSelector((state) => state.travelForm.rating);
+  const storeRating = useAppSelector((state) => state.form.rating);
 
   const [localRating, setLocalRating] = useState(storeRating);
   const [hovered, setHovered] = useState<number | null>(null);

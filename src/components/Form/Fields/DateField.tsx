@@ -4,14 +4,14 @@ import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { updateField } from "@/store/slices/travelFormSlice";
+import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "../Form.module.scss";
 import { CalendarIcon } from "@/components/icons";
 
 const DateField = forwardRef<FieldRef>((_, ref) => {
   const dispatch = useAppDispatch();
-  const { start, end } = useAppSelector((state) => state.travelForm.dates);
+  const { start, end } = useAppSelector((state) => state.form.dates);
 
   const [range, setRange] = useState<[Date | null, Date | null]>([
     start ? new Date(start) : null,

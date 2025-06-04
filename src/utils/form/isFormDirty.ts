@@ -1,6 +1,6 @@
-import { TravelFormState } from "@/types/travel";
+import { formState } from "@/types/travel";
 
-export const isFormDirty = (form: TravelFormState): boolean => {
+export const isFormDirty = (form: formState): boolean => {
   return (
     !!form.location.city ||
     !!form.location.country ||
