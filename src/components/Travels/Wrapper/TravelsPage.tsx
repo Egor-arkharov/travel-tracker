@@ -12,7 +12,7 @@ import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
 import Header from "@/components/UI/Header/Header";
 import Link from "next/link";
 import styles from "./Travels.module.scss";
-import { LayoutGroup, AnimatePresence } from "framer-motion";
+import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
 import TravelModal from "../TravelModal/TravelModal";
 import { Travel } from "@/types/travel";
 import TravelsMap from "../TravelMap/TravelsMap.client";
@@ -38,6 +38,7 @@ const TravelsPage = ({
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("date");
   const [view, setView] = useState("grid");
+  const [showMap, setShowMap] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const filtered = useMemo(() => filterTravels(trips, search), [trips, search]);
@@ -98,11 +99,25 @@ const TravelsPage = ({
               onSortChange={setSort}
               view={view}
               onViewChange={setView}
+              showMap={showMap}
+              onToggleMap={() => setShowMap((v) => !v)}
             />
           )}
 
           {mode === "full" && visibleTravels.length > 0 && (
-            <TravelsMap travels={visibleTravels} />
+            <motion.div
+              initial={false}
+              animate={
+                showMap
+                  ? { height: "auto", opacity: 1, scale: 1, x: 0, y: 0 }
+                  : { height: 0, opacity: 0, scale: 0.2, x: 50, y: -50 }
+              }
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ overflow: "hidden", originX: 1, originY: 0 }}
+              className={styles.mapWrap}
+            >
+              <TravelsMap travels={visibleTravels} />
+            </motion.div>
           )}
 
           <LayoutGroup>

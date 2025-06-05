@@ -22,7 +22,31 @@
 }
 
 .link {
+  display: flex;
+  width: fit-content;
+
+  margin-top: 25px;
+  margin-inline: auto;
+  padding: 3px 100px;
+
   font-size: 20px;
+  font-weight: 700;
+
+  color: black;
+  border: 2px solid black;
+
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease;
+
+  @include hover {
+    color: white;
+    background-color: black;
+  }
+}
+
+.mapWrap {
+  margin-bottom: 32px;
 }
 
 .grid {

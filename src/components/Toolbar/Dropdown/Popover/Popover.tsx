@@ -14,19 +14,23 @@ interface Option {
 interface DropdownPopoverProps {
   label: string;
   icon: React.ElementType;
+  iconSize: number;
   options: Option[];
   value: string;
   onChange: (val: string) => void;
   withDirection?: boolean;
+  triggerClass?: string;
 }
 
 const DropdownPopover = ({
   label,
   icon: TriggerIcon,
+  iconSize,
   options,
   value,
   onChange,
   withDirection = false,
+  triggerClass,
 }: DropdownPopoverProps) => {
   const [open, setOpen] = useState(false);
   const [direction, setDirection] = useState<"asc" | "desc">("asc");
@@ -68,12 +72,12 @@ const DropdownPopover = ({
     <div className={styles.wrapper}>
       <button
         ref={triggerRef}
-        className={styles.trigger}
+        className={triggerClass}
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <TriggerIcon width={16} height={16} />
+        <TriggerIcon width={iconSize} height={iconSize} />
         <span>{label}</span>
       </button>
 

@@ -51,7 +51,7 @@ const TravelsMap = ({ travels }: { travels: Travel[] }) => {
 
 	if (!isLoaded) return <p>Loading map...</p>;
 
-	const imageSrc = activeTrip?.media.imagePath ?? activeTrip?.media.imageUrl;
+	const imageSrc = activeTrip?.media.imageUrl ?? activeTrip?.media.imagePath ?? "";
 
 	return (
 		<div className={styles.map}>
@@ -81,13 +81,17 @@ const TravelsMap = ({ travels }: { travels: Travel[] }) => {
 							onCloseClick={() => setActiveTrip(null)}
 						>
 							<div className={styles.mapCard}>
+
 								{imageSrc && (
-									<img
-										src={imageSrc}
-										alt={activeTrip.location.city}
-										className={styles.image}
-									/>
+									<div className={styles.mapImg}>
+										<img
+											src={imageSrc}
+											alt={activeTrip.location.city}
+											className={styles.image}
+										/>
+									</div>
 								)}
+
 
 								<p className={styles.title}>{activeTrip.location.country}</p>
 

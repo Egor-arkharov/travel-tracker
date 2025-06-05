@@ -3,13 +3,19 @@
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Header.module.scss";
-import { PlaneIcon, TrainIcon, ShipIcon, CarIcon } from "@/components/icons";
+import { 
+  PlaneIcon, 
+  TrainIcon, 
+  ShipIcon, 
+  CarIcon,
+  HelicopterIcon } from "@/components/icons";
 
 const ICONS_MAP = {
   plane: PlaneIcon,
   train: TrainIcon,
   ship: ShipIcon,
   car: CarIcon,
+  helicopter: HelicopterIcon,
 };
 
 interface HeaderProps {

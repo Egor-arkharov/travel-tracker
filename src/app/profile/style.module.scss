@@ -1,0 +1,73 @@
+@use "@/styles/global" as *;
+
+.statsList {
+	display: grid;
+	gap: 1.5rem;
+
+	grid-template-columns: repeat(2, 1fr);
+
+	@include media-min(md) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include media-min(lg) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	li {
+		background-color: #f9f9f9;
+		border-radius: 12px;
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+		transition: transform 0.2s ease;
+
+		&:hover {
+			transform: translateY(-2px);
+		}
+
+		// svg {
+		// 	width: 32px;
+		// 	height: 32px;
+		// 	margin-bottom: 0.75rem;
+		// 	color: var(--accent, #4c7aff);
+		// }
+
+		span {
+			font-size: 1rem;
+			font-weight: 500;
+
+			strong {
+				display: block;
+				margin-top: 0.25rem;
+				font-size: 1.1rem;
+				color: #111;
+			}
+		}
+	}
+}
+
+.icon {
+  flex-shrink: 0;
+	margin-bottom: 0.75rem;
+  color: #999;
+}
+
+.iconGreen {
+  color: #4caf50;
+}
+
+.iconRed {
+  color: #f44336;
+}
+
+.iconBlue {
+  color: #2196f3;
+}
+
+.iconYellow {
+  color: #ffb300;
+}

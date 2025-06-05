@@ -1,21 +1,8 @@
+@use "@/styles/global" as *;
+
 .wrapper {
-  position: relative;
-}
-
-.trigger {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  font-size: 14px;
-  background: #f4f4f4;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-
-  &:hover {
-    background: #eaeaea;
-  }
+  position: relative;
 }
 
 .dropdownWrapper {
