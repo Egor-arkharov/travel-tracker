@@ -1,3 +1,44 @@
+@use "@/styles/layout/layout" as *;
+
 .footer {
-	padding: 20px 0;
+  @include layout-section;
+
+  width: 100%;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  color: #666;
+}
+
+.inner {
+  @include layout-inner;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+
+
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    margin-left: 1.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  @media (width <= 600px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }

@@ -7,6 +7,9 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  --layout-width: 1500px;
+  --layout-padding: 16px;
+
 
   --color-green: #317039;
   --color-yellow: #F1BE49;
@@ -34,13 +37,14 @@
   --green-soft: #E8F9DF;
   --green-light: #A9EA87;
   --green-dark: #71DD37;
+  --green-2: #4caf50;
 
   --red-soft: #FFE0DB;
   --red-light: #FF8B77;
   --red-dark: #FF3E1D;
 
   --blue-soft: #9AE7F7;
-  --blue-light: #00719a;
+  --blue-light: #2196f3;
   --blue-dark: #00456e;
 
   --purple-soft: #C3C4FF;
@@ -82,8 +86,11 @@ html  {
 }
 
 body {
-  display: grid;
-  grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
+  // display: grid;
+  // grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
+
+  display: flex;
+  flex-direction: column;
   min-height: 100svh;
 
   color: var(--foreground);
@@ -96,15 +103,18 @@ header {
   height: var(--header-h);
 }
 
-.layout {
-  grid-column: 2;
+.layout-section {
+  display: grid;
+  grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
+}
 
-  display: flex;
-  flex-direction: column;
-  padding-top: var(--header-h);
+.layout-inner {
+  grid-column: 2;
+  width: 100%;
 }
 
 main {
+  padding-top: var(--header-h);
   flex-grow: 1;
   padding-bottom: 100px;
 }

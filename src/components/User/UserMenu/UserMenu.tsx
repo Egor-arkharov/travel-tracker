@@ -84,11 +84,11 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
 
       <div className={styles.menu}>
         <Link
-          href="/profile"
+          href="/stats"
           className={styles.menuItem}
           onClick={() => setIsOpen(false)}
         >
-          <span className={styles.menuItemText}>My Profile</span>
+          <span className={styles.menuItemText}>My Stats</span>
           <span className={styles.menuItemIcon}>
             <UserIcon width={22} height={22} />
           </span>

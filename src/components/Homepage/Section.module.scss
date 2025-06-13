@@ -1,0 +1,48 @@
+.section {
+  padding: 6rem 0;
+  background: #fff;
+
+  &:nth-of-type(even) {
+    .text {
+      order: 1;
+    }
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+  }
+
+  .bgDecor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 600px;
+    height: 100%;
+    display: flex;
+    opacity: 0.2;
+  }
+
+  .text {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+  }
+
+  .imageWrapper {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    width: 60%;
+    max-height: 300px;
+  }
+}

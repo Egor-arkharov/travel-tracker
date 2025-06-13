@@ -1,7 +1,9 @@
 import Hero from "@/components/Hero/Hero";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import About from "@/components/About/About";
+import SectionMap from "@/components/Homepage/SectionMap";
 import { Suspense } from "react";
+import SectionStats from "@/components/Homepage/SectionStats";
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
         backgroundPosition="center 30%" 
       />
       <About />
+      <SectionMap />
+      <SectionStats />
       <Suspense fallback={<div>Loading travels...</div>}>
       		<TravelsPage mode={"compact"} source="mock" />
       </Suspense>

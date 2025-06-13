@@ -4,7 +4,22 @@ function getDays(start: string, end: string) {
   return Math.ceil((new Date(end).getTime() - new Date(start).getTime()) / (1000 * 60 * 60 * 24));
 }
 
-export function getTripStats(trips: Travel[]) {
+export interface TripStatsResult {
+  totalTrips: number;
+  totalBudget: number;
+  totalDays: number;
+  avgRating: number;
+  newestTrip: Travel;
+  oldestTrip: Travel;
+  cheapestTrip: Travel;
+  mostExpensiveTrip: Travel;
+  shortestTrip: Travel & { length: number };
+  longestTrip: Travel & { length: number };
+  highestRatedTrip: Travel;
+  lowestRatedTrip: Travel;
+}
+
+export function getTripStats(trips: Travel[]): TripStatsResult {
   const totalTrips = trips.length;
   const totalBudget = trips.reduce((sum, t) => sum + t.budget, 0);
   const totalDays = trips.reduce((sum, t) => sum + getDays(t.dates.start, t.dates.end), 0);

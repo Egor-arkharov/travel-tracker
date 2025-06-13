@@ -1,35 +1,36 @@
+@use "@/styles/layout/layout" as *;
 @use "@/styles/global" as *;
 
 .header {
+	@include layout-section;
+
 	height: var(--header-h);
-  position: absolute;
-  top: 0;
+	position: absolute;
+	top: 0;
 	left: 0;
-  width: 100%;
-  z-index: 10;
-  transition: all 0.3s ease;
+	width: 100%;
+	z-index: 10;
+	transition: all 0.3s ease;
 
 	display: grid;
 	grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
 
 	background-color: transparent;
 	border-radius: 0 0 12px 12px;
-
-	.inner {
-		grid-column: 2;
-	}
 }
 
 .inner {
+	@include layout-inner;
+
 	display: flex;
-			align-items: center;
-			justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .fixed {
-  position: fixed;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
 	.title,
 	.link {
@@ -80,10 +81,10 @@
 	transition: color 0.1s ease;
 	color: white;
 
-  &:hover,
-  &:active,
+	&:hover,
+	&:active,
 	&.active {
-    color: var(--blue-soft);
+		color: var(--blue-soft);
 
 		.fixed & {
 			color: var(--blue-light);

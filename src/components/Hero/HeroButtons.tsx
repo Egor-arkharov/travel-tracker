@@ -16,14 +16,14 @@ const HeroButtons = () => {
       )}
 
       {isCreatePage && (
-        <Link href="/profile" className="button button--primary button--large">My Profile</Link>
+        <Link href="/stats" className="button button--primary button--large">My Stats</Link>
       )}
 
       {!isLoggedIn ? (
         <button className="button button--secondary button--large" onClick={login}>Log in</button>
       ) : (
         !isCreatePage && (
-          <Link href="/profile" className="button button--secondary button--large">My Profile</Link>
+          <Link href="/stats" className="button button--secondary button--large">My Stats</Link>
         )
       )}
     </div>
