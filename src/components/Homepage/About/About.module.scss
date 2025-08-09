@@ -1,0 +1,62 @@
+.inner {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+
+	overflow: hidden;
+
+
+	&::before {
+		content: "";
+		position: absolute;
+
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+
+		background-image: url("/images/backgrounds/about.svg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		opacity: 0.01;
+
+		scale: 1.5;
+		transition: scale 1.35s ease-in-out, opacity 1.35s ease-in-out;
+	}
+
+	&.scale-bg::before {
+		scale: 1;
+		opacity: 0.1;
+	}
+}
+
+.text {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 25px;
+	
+	font-size: 26px;
+	padding: 20px;
+}
+
+.visual {
+	position: relative;
+	height: auto;
+	border-radius: 20px;
+
+	img {
+		border-radius: 20px;
+		height: 100%;
+	}
+}
+
+.text p,
+.visual {
+	will-change: transform, opacity;
+}

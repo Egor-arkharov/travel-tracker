@@ -1,0 +1,82 @@
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 3rem 2rem;
+  margin-bottom: 60px;
+
+  height: 400px;
+
+
+  &:nth-of-type(even) {
+    .text {
+      order: 1;
+    }
+
+    .bgDecor {
+      justify-content: end;
+      left: unset;
+      right: 0;
+    }
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
+  position: relative;
+}
+
+.bgDecor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 600px;
+  height: 100%;
+  display: flex;
+  opacity: 0.2;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &[data-type="map"] {
+    background-image: url("/images/backgrounds/features-map.svg");
+  }
+
+  &[data-type="stats"] {
+    background-image: url("/images/backgrounds/features-stats.svg");
+  }
+
+  &[data-type="form"] {
+    background-image: url("/images/backgrounds/features-form.svg");
+  }
+}
+
+.text {
+  position: relative;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+.imageWrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-shrink: 0;
+
+  img {
+    position: relative !important;
+  }
+}
