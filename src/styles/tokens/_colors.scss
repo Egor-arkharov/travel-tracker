@@ -1,0 +1,45 @@
+@mixin tokens-colors {
+  --color-green: #317039;
+  --color-yellow: #F1BE49;
+  --color-red: #CC4B24;
+
+  /* Hover */
+  --color-green-hover: #275D30;
+  --color-yellow-hover: #D9A931;
+  --color-red-hover: #B43F1F;
+
+  /* Active */
+  --color-green-active: #1D4C24;
+  --color-yellow-active: #C18F24;
+  --color-red-active: #9D331A;
+
+  /* Фоны */
+  --color-bg-beige: #F8EDD9;
+  --color-bg-papaya: #FFF1D4;
+  --color-bg-light: #FFFBEA;
+
+  --green-soft: #E8F9DF;
+  --green-light: #A9EA87;
+  --green-dark: #71DD37;
+  --green-2: #4caf50;
+
+  --red-soft: #FFE0DB;
+  --red-light: #FF8B77;
+  --red-dark: #FF3E1D;
+
+  --blue-soft: #9AE7F7;
+  --blue-light: #2196f3;
+  --blue-dark: #00456e;
+
+  --purple-soft: #C3C4FF;
+  --purple-light: #5154e7;
+  --purple-dark: #3336c9;
+
+  --yellow-soft: #FFE5B4;
+  --yellow-light: #FFD480;
+  --yellow-dark: #FFB318;
+
+  --grey-soft: #EBEDF0;
+  --grey-light: #8592A3;
+  --grey-dark: #8592A3;
+}

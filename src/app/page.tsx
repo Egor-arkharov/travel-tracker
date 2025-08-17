@@ -1,10 +1,10 @@
 import Hero from "@/components/Hero/Hero";
 import About from "@/components/Homepage/About/About";
-import Explore from "@/components/Homepage/Explore/Explore";
-import Features from "@/components/Homepage/Features/Features";
-import Tools from "@/components/Homepage/Tools/Tools";
-import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
-import { Suspense } from "react";
+// import Explore from "@/components/Homepage/Explore/Explore";
+// import Features from "@/components/Homepage/Features/Features";
+// import Tools from "@/components/Homepage/Tools/Tools";
+// import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
+// import { Suspense } from "react";
 
 const Home = () => {
   return (
@@ -16,12 +16,12 @@ const Home = () => {
         backgroundPosition="center 30%" 
       />
       <About />
-      <Features />
+      {/* <Features />
       <Suspense fallback={<div>Loading travels...</div>}>
       		<TravelsPage mode={"compact"} source="mock" />
       </Suspense>
       <Tools />
-      <Explore />
+      <Explore /> */}
     </>
   );
 }

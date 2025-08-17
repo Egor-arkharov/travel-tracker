@@ -1,11 +1,12 @@
+@use "@/styles/mixins" as *;
+
 .inner {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
-	gap: 50px;
+	gap: clamp(20px, 4vw, 50px);
 
 	overflow: hidden;
-
 
 	&::before {
 		content: "";
@@ -31,28 +32,40 @@
 		scale: 1;
 		opacity: 0.1;
 	}
+
+	@include media-max(sm) {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .text {
 	position: relative;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: grid;
+	place-content: center;
 	gap: 25px;
-	
-	font-size: 26px;
+
+	font-size: clamp(20px, 1vw + 0.6rem, 26px);
 	padding: 20px;
 }
 
 .visual {
 	position: relative;
-	height: auto;
-	border-radius: 20px;
+	aspect-ratio: 4 / 5;
+	width: clamp(200px, 30%, 450px);
+	flex-shrink: 0;
 
 	img {
+		object-fit: cover;
+		object-position: 50% 80%;
+
 		border-radius: 20px;
-		height: 100%;
+	}
+
+	@include media-max(sm) {
+		width: 100%;
+		aspect-ratio: 16 / 9;
 	}
 }
 

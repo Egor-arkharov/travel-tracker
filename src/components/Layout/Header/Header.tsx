@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 import { motion } from "framer-motion";
-import UserMenu from "@/components/User/UserMenu/UserMenu";
+import Menu from "@/components/UI/Menu/Menu";
 
 const Header = () => {
   const pathname = usePathname();
@@ -45,9 +45,12 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <div className={styles.inner}>
-        <p className={styles.title}>
+        <Link
+          href="/"
+          className={styles.title}
+        >
           Travel Tracker
-        </p>
+        </Link>
         <nav className={styles.nav}>
           <ul className={styles.list}>
             <li className={styles.item}>
@@ -77,7 +80,7 @@ const Header = () => {
                 Create
               </Link>
             </li>
-            <li className={styles.item}>
+            {/* <li className={styles.item}>
               <Link
                 href="/debug"
                 className={`${styles.link} ${pathname === "/debug" ? styles.active : ""
@@ -85,10 +88,10 @@ const Header = () => {
               >
                 Debug
               </Link>
-            </li>
+            </li> */}
           </ul>
 
-          <UserMenu fixed={fixed} />
+          <Menu fixed={fixed} />
         </nav>
       </div>
 

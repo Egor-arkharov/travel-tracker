@@ -1,0 +1,14 @@
+@mixin tokens-fonts {
+  --font-12: clamp(10px, 1vw + 0.2rem, 12px);
+  --font-14: clamp(12px, 1vw + 0.35rem, 14px);
+  --font-16: clamp(14px, 1.2vw + 0.3rem, 16px);
+  --font-18: clamp(15px, 1.3vw + 0.4rem, 18px);
+  --font-19: clamp(16px, 1.4vw + 0.4rem, 19px);
+  --font-20: clamp(17px, 1.5vw + 0.4rem, 20px);
+  --font-24: clamp(20px, 2vw + 0.5rem, 24px);
+  --font-26: clamp(21px, 2vw + 0.6rem, 26px);
+  --font-32: clamp(26px, 2.5vw + 0.8rem, 32px);
+  --font-40: clamp(22px, 2vw + 1rem, 40px);
+  --font-50: clamp(38px, 3.5vw + 1.2rem, 50px);
+  --font-60: clamp(45px, 4vw + 1.4rem, 60px);
+}

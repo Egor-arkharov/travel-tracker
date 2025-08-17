@@ -40,16 +40,19 @@
 
 .title {
 	font-weight: 700;
-	font-size: 24px;
+	font-size: var(--font-24);
 	color: white;
-	// color: black;
+	white-space: nowrap;
+
+	pointer-events: none;
 }
 
 .nav {
+	height: 100%;
+
 	display: flex;
 	align-items: center;
-	gap: 50px;
-	height: 100%;
+	gap: clamp(10px, 2vw, 50px);
 }
 
 .list {
@@ -76,7 +79,7 @@
 }
 
 .link {
-	font-size: 18px;
+	font-size: var(--font-18);
 	font-weight: 700;
 	transition: color 0.1s ease;
 	color: white;
@@ -93,5 +96,17 @@
 
 	&.active {
 		anchor-name: --active;
+	}
+}
+
+@include media-max(sm) {
+	.title {
+		pointer-events: all;
+	}
+}
+
+@include media-max(xs) {
+	.list {
+		display: none;
 	}
 }

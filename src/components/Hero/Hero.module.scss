@@ -3,7 +3,6 @@
 .hero {
 	position: relative;
 	height: calc(95svh - var(--header-h));
-	padding-top: 45px;
 
 	display: flex;
 	flex-direction: column;
@@ -11,7 +10,8 @@
 	align-items: center;
 	text-align: center;
 
-	margin-bottom: 30px;
+	padding-top: clamp(20px, 6vw, 115px);
+	margin-bottom: clamp(16px, 4vw, 30px);
 }
 
 .background {
@@ -31,32 +31,39 @@
 }
 
 .inner {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	text-align: center;
+	display: grid;
+	place-items: center;
+	width: 70vw;
 }
 
 .title {
-	margin-bottom: 26px;
-	font-size: 60px;
+	font-size: var(--font-60);
 	line-height: 1.1;
+
+	margin-bottom: clamp(14px, 2vw, 26px);
+
 	color: white;
-	white-space: nowrap;
 }
 
 .subtitle {
-	font-size: 40px;
+	font-size: var(--font-40);
 	line-height: 1;
+
+	margin-bottom: clamp(40px, 6vw, 70px);
+
 	text-wrap: balance;
 	color: white;
-	width: 60%;
 }
 
 .buttons {
 	display: flex;
 	gap: 10px;
 
-	margin-top: 70px;
+	@include media-max(xs) {
+		flex-direction: column;
+
+		button {
+			width: 100%;
+		}
+	}
 }

@@ -65,8 +65,7 @@ const About = () => {
           <MImage
             src="/images/img.jpg"
             alt="Map illustration"
-            width={400}
-            height={500}
+            fill
             className={styles.image}
           />
         </motion.div>

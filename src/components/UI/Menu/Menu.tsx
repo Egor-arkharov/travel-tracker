@@ -1,21 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import styles from "./UserMenu.module.scss";
+import styles from "./Menu.module.scss";
 import {
   UserIcon,
   PlaneIcon,
   PlusIcon,
   LogInIcon,
   LogOutIcon,
+  BoardIcon
 } from "@/components/icons";
 import { useAuth } from "@/hooks/useAuth";
 
-interface UserMenuProps {
+interface MenuProps {
   fixed?: boolean;
 }
 
-const UserMenu = ({ fixed }: UserMenuProps) => {
+const Menu = ({ fixed }: MenuProps) => {
   const { user, login, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,26 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
 
       <div className={styles.menu}>
         <Link
+          href="/create"
+          className={`${styles.menuItem} ${styles.menuItemMob}`}
+          onClick={() => setIsOpen(false)}
+        >
+          <span className={styles.menuItemText}>Add Trip</span>
+          <span className={styles.menuItemIcon}>
+            <PlusIcon width={22} height={22} />
+          </span>
+        </Link>
+        <Link
+          href="/example"
+          className={`${styles.menuItem} ${styles.menuItemMob}`}
+          onClick={() => setIsOpen(false)}
+        >
+          <span className={styles.menuItemText}>Example</span>
+          <span className={styles.menuItemIcon}>
+            <BoardIcon width={22} height={22} />
+          </span>
+        </Link>
+        <Link
           href="/stats"
           className={styles.menuItem}
           onClick={() => setIsOpen(false)}
@@ -101,16 +122,6 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
           <span className={styles.menuItemText}>My Trips</span>
           <span className={styles.menuItemIcon}>
             <PlaneIcon width={22} height={22} />
-          </span>
-        </Link>
-        <Link
-          href="/create"
-          className={styles.menuItem}
-          onClick={() => setIsOpen(false)}
-        >
-          <span className={styles.menuItemText}>Add Trip</span>
-          <span className={styles.menuItemIcon}>
-            <PlusIcon width={22} height={22} />
           </span>
         </Link>
         {user ? (
@@ -145,4 +156,4 @@ const UserMenu = ({ fixed }: UserMenuProps) => {
   );
 };
 
-export default UserMenu;
+export default Menu;

@@ -11,6 +11,8 @@ export { default as PlusIcon } from "./plus.svg";
 export { default as LogInIcon } from "./login.svg";
 export { default as LogOutIcon } from "./logout.svg";
 export { default as TimeIcon } from "./time.svg";
+export { default as BoardIcon } from "./board.svg";
+
 
 export { default as ArrowBackIcon } from "./arrow-back.svg";
 export { default as ArrowNextIcon } from "./arrow-next.svg";
