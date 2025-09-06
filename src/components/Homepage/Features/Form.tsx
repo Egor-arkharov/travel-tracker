@@ -8,7 +8,6 @@ import { decor, slide, viewport } from "./anim";
 const Form = () => {
   return (
     <section className={styles.section}>
-      {/* decor: слева (вылет сверху-слева) */}
       <motion.div
         className={styles.bgDecor}
 				data-type="form"
@@ -18,13 +17,12 @@ const Form = () => {
       </motion.div>
 
       <div className={styles.inner}>
-        {/* текст: слева */}
         <motion.div
           className={styles.text}
           {...slide("left")}
           viewport={viewport}
         >
-          <h2>Craft your perfect trip</h2>
+          <h3>Craft your perfect trip</h3>
           <p>
             Select a city with autocomplete, pick your travel dates, set a budget,
             give it a rating, write a description and attach a photo — all in one
@@ -32,7 +30,6 @@ const Form = () => {
           </p>
         </motion.div>
 
-        {/* картинка: справа */}
         <motion.div
           className={styles.imageWrapper}
           {...slide("right")}

@@ -7,13 +7,11 @@
 }
 
 .cardItem {
-  background: white;
+  // background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  // border-radius: 12px;
-  overflow: hidden;
   height: 100%;
-  border-radius: 12px;
   transition: all 0.2s ease-in-out;
+    border-radius: 12px;
 
   @include hover {
     translate: 0 3px;
@@ -22,12 +20,15 @@
 }
 
 .link {
-  display: flex;
+  display: grid;
+  place-items: center;
+
   width: fit-content;
 
   margin-top: 25px;
   margin-inline: auto;
-  padding: 3px 100px;
+  padding: 3px 16px;
+  width: 300px;
 
   font-size: 20px;
   font-weight: 700;
@@ -42,6 +43,10 @@
   @include hover {
     color: white;
     background-color: black;
+  }
+
+  @include media-max(xs) {
+    width: 100%;
   }
 }
 

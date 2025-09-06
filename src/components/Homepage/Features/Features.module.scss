@@ -1,18 +1,19 @@
+@use "@/styles/mixins" as *;
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
 .section {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 3rem 2rem;
-  margin-bottom: 60px;
 
-  height: 400px;
-
+  padding: 48px 32px;
 
   &:nth-of-type(even) {
-    .text {
-      order: 1;
-    }
-
     .bgDecor {
       justify-content: end;
       left: unset;
@@ -60,13 +61,13 @@
 .text {
   position: relative;
 
-  h2 {
-    font-size: 2rem;
+  h3 {
+    font-size: var(--font-32);
     margin-bottom: 1rem;
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: var(--font-18);
   }
 }
 
@@ -78,5 +79,41 @@
 
   img {
     position: relative !important;
+  }
+}
+
+@include media-min(md) {
+  .section {
+    &:nth-of-type(even) {
+      .text {
+        order: 1;
+      }
+    }
+  }
+}
+
+@include media-max(md) {
+  .featuresList {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .section {
+    padding: 0;
+    padding-top: 40px;
+  }
+
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text {
+    padding-inline: 5vw;
+  }
+
+  .imageWrapper {
+    width: 100%;
   }
 }

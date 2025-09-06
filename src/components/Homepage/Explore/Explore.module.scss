@@ -1,53 +1,57 @@
-.modesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+@use "@/styles/mixins" as *;
+
+.modes {
+  display: flex;
+  gap: 16px;
 }
 
 .modeCard {
-  background: #f8faff;
-  border: 1px solid #e4e9ff;
   border-radius: 16px;
   padding: 18px;
-  text-align: left;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  gap: 8px;
-  transition: transform .2s ease, box-shadow .2s ease;
-  will-change: transform;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(50,64,125,.06);
-  }
+  background-color: var(--background-soft);
 }
 
 .icon {
   display: inline-grid;
   place-items: center;
+
   width: 30px;
   height: 30px;
+  margin-bottom: 20px;
 }
 
 .title {
-  margin: 0;
   font-size: 18px;
+
+  margin: 0;
+  margin-bottom: 8px;
 }
 
 .text {
   margin: 0;
-  opacity: .9;
+  margin-bottom: 14px;
+  opacity: 0.9;
 }
 
 .badge {
-  justify-self: start;
-  margin-top: 6px;
+  width: fit-content;
+  margin: 0;
+  padding: 6px 10px;
+
   font-size: 12px;
   font-weight: 700;
   line-height: 1;
-  padding: 6px 10px;
+
   border-radius: 20px;
-  color: #32407d;
-  background: #e9efff;
-  border: 1px solid #cfd6ff;
+
+  color: var(--purple-dark);
+  background: var(--background-light);
+  border: 1px solid var(--background-dark);
+}
+
+@include media-max(md) {
+  .modes {
+    flex-direction: column;
+  }
 }

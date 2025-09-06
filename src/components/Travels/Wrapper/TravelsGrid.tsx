@@ -8,12 +8,14 @@ import {
 } from "@/lib/layout/tripsGridPattern";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface TravelsGridProps {
   travels: Travel[];
   view: string;
   onSelect: (id: string) => void;
   selectedId: string | null;
+  hiddenId: string | null;
 }
 
 const TravelsGrid = ({
@@ -21,6 +23,7 @@ const TravelsGrid = ({
   view,
   onSelect,
   selectedId,
+  hiddenId,
 }: TravelsGridProps) => {
   const windowWidth = useWindowWidth();
 
@@ -49,25 +52,38 @@ const TravelsGrid = ({
     return <p>No travels to display matching your criteria.</p>;
   }
 
+ const items = hiddenId
+   ? travelsWithGridClasses.filter(t => t.id !== hiddenId)
+   : travelsWithGridClasses;
+
   return (
-    <ul className={`${styles[view]} ${styles.travelsGridContainer}`}>
-      {travelsWithGridClasses.map((travel) => (
-        <li
-          key={travel.id}
-          className={travel.gridItemClassName || styles.cardItem}
-        >
-          <TravelCard
-            travel={travel}
-            view={view}
-            onClick={() => {
-              if (travel.id) onSelect(travel.id);
-            }}
-            imageLayoutId={`image-${travel.id}`}
-            isSelected={selectedId === travel.id}
-          />
-        </li>
-      ))}
-    </ul>
+    <motion.ul
+      className={`${styles[view]} ${styles.travelsGridContainer}`}
+      layout
+      transition={{ type: "spring", stiffness: 500, damping: 40 }}
+    >
+      <AnimatePresence initial={false}>
+        {items.map((travel) => (
+          <motion.li
+            key={travel.id}
+            className={travel.gridItemClassName || styles.cardItem}
+            layout
+            initial={false}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.18 }}
+          >
+            <TravelCard
+              travel={travel}
+              view={view}
+              onClick={() => travel.id && onSelect(travel.id)}
+              cardLayoutId={`card-${travel.id}`}
+              imageLayoutId={`image-${travel.id}`}
+              isSelected={selectedId === travel.id}
+            />
+          </motion.li>
+        ))}
+      </AnimatePresence>
+    </motion.ul>
   );
 };
 

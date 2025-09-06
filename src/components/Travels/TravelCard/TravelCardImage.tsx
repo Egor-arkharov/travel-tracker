@@ -8,9 +8,11 @@ import { Travel } from "@/types/travel";
 const TravelImage = ({
   travel,
   layoutId,
+  priority = false,
 }: {
   travel: Travel;
   layoutId: string;
+  priority?: boolean;
 }) => {
   const imageSrc = travel.meta.isMock
     ? travel.media.imagePath
@@ -19,14 +21,12 @@ const TravelImage = ({
   if (!imageSrc) return null;
 
   return (
-    <motion.div
-      layoutId={layoutId}
-      className={styles.imageWrapper}
-    >
+    <motion.div layoutId={layoutId} className={styles.imageWrapper}>
       <Image
         src={imageSrc}
         alt={travel.location.city}
         fill
+        priority={priority}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className={styles.image}
       />

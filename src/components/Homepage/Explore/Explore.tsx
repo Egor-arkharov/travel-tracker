@@ -1,9 +1,11 @@
 "use client";
 
-// components/Homepage/Explore/UsageModes.tsx
 import styles from "./Explore.module.scss";
 import Header from "@/components/UI/Header/Header";
 import { LoupeIcon, DataIcon, CloudIcon } from "@/components/icons";
+import { motion } from "framer-motion";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
+import { useEffect, useState } from "react";
 
 const modes = [
   {
@@ -27,22 +29,50 @@ const modes = [
 ];
 
 const UsageModes = () => {
+  const width = useWindowWidth();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isMobile = mounted && width <= 900;
+
+  const variants = {
+    hidden: isMobile
+      ? { opacity: 0, x: 10 }
+      : { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 1.0, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className={styles.section}>
       <Header title="Your way" icon="rocket" />
 
-      <div className={styles.modesGrid}>
+      <div className={styles.modes}>
         {modes.map((m) => {
           const Icon = m.icon;
           return (
-            <article className={styles.modeCard} key={m.title}>
+            <motion.article
+              key={m.title}
+              className={styles.modeCard}
+              variants={variants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <div className={styles.icon} aria-hidden>
                 <Icon className={styles.iconSvg} />
               </div>
               <h3 className={styles.title}>{m.title}</h3>
               <p className={styles.text}>{m.text}</p>
-              <span className={styles.badge}>{m.badge}</span>
-            </article>
+              <p className={styles.badge}>{m.badge}</p>
+            </motion.article>
           );
         })}
       </div>

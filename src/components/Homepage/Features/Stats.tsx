@@ -10,14 +10,24 @@ const Stats = () => {
     <section className={styles.section}>
       <motion.div
         className={styles.bgDecor}
-				data-type="stats"
+        data-type="stats"
         {...decor("tr")}
         viewport={viewport}
       >
       </motion.div>
 
       <div className={styles.inner}>
-				
+        <motion.div
+          className={styles.text}
+          {...slide("right")}
+          viewport={viewport}
+        >
+          <h3>Track your travel stats</h3>
+          <p>
+            Total trips, budgets, days on the road, countries visited and more — your data is automatically calculated and beautifully presented.
+          </p>
+        </motion.div>
+
         <motion.div
           className={styles.imageWrapper}
           {...slide("left")}
@@ -31,17 +41,6 @@ const Stats = () => {
             className={styles.image}
             unoptimized
           />
-        </motion.div>
-
-        <motion.div
-          className={styles.text}
-          {...slide("right")}
-          viewport={viewport}
-        >
-          <h2>Track your travel stats</h2>
-          <p>
-            Total trips, budgets, days on the road, countries visited and more — your data is automatically calculated and beautifully presented.
-          </p>
         </motion.div>
       </div>
     </section>

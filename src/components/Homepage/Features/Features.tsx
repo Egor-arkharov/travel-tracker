@@ -10,7 +10,7 @@ const Features = () => {
   return (
     <section className={styles.features}>
       <Header title="Powerful Features" icon="plane" />
-      <div className={styles.blocks}>
+      <div className={styles.featuresList}>
         <Map />
         <Stats />
         <Form />

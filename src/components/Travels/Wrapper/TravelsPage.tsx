@@ -18,6 +18,8 @@ import { Travel } from "@/types/travel";
 import TravelsMap from "../TravelMap/TravelsMap.client";
 import { useRouter, useSearchParams } from "next/navigation";
 
+const DELETE_DURATION_MS = 1000;
+
 const TravelsPage = ({
   mode = "full",
   source,
@@ -27,33 +29,50 @@ const TravelsPage = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  // 🔄 Стейт из Redux
+  // 🔄 Redux
   const userTrips = useAppSelector((state) => state.trips.user);
   const mockTrips = useAppSelector((state) => state.trips.mock);
   const loading = useAppSelector((state) => state.trips.loading);
-
   const trips: Travel[] = source === "mock" ? mockTrips : userTrips;
 
-  // 🧠 Управляемое состояние и сортировка
+  // 🔍 modal via ?id=
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedId = searchParams.get("id");
+
+  // 🧠 UI state
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("date");
   const [view, setView] = useState("grid");
   const [showMap, setShowMap] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+  const hiddenId = pendingDeleteId;
+
+  const [modalTravel, setModalTravel] = useState<Travel | null>(null);
 
   const filtered = useMemo(() => filterTravels(trips, search), [trips, search]);
   const sorted = useMemo(() => sortTravels(filtered, sort), [filtered, sort]);
   const visibleTravels: Travel[] = mode === "compact" ? sorted.slice(0, 4) : sorted;
 
-  // 🔍 Работа с модалкой
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const selectedId = searchParams.get("id");
 
-  const selectedTravel = useMemo(
-    () => visibleTravels.find((t) => t.id === selectedId) || null,
-    [selectedId, visibleTravels]
-  );
+  // const selectedTravel = useMemo(
+  //   () => visibleTravels.find((t) => t.id === selectedId) || null,
+  //   [selectedId, visibleTravels]
+  // );
+
+  // Когда открываем модалку по id — один раз фиксируем данные.
+  useEffect(() => {
+    if (!selectedId) {
+      setModalTravel(null);
+      return;
+    }
+    // Если уже есть снапшот той же карточки — оставляем.
+    if (modalTravel?.id === selectedId) return;
+    const found = visibleTravels.find(t => t.id === selectedId);
+    if (found) setModalTravel(found);
+    // если в списке уже нет (например, мы удалили) — оставляем старый снапшот
+  }, [selectedId, visibleTravels, modalTravel]);
 
   const handleCloseModal = useCallback(() => {
     const params = new URLSearchParams(searchParams.toString());
@@ -61,23 +80,25 @@ const TravelsPage = ({
     router.push(`?${params.toString()}`, { scroll: false });
   }, [router, searchParams]);
 
+
   const handleDelete = useCallback(() => {
-    if (!selectedTravel || selectedTravel.meta.isMock) return;
-
+    if (!modalTravel || modalTravel.meta.isMock) return;
     setIsDeleting(true);
-    setTimeout(() => {
-      dispatch(deleteTrip(selectedTravel.id!));
-      setIsDeleting(false);
-      handleCloseModal();
-    }, 600);
-  }, [selectedTravel, dispatch, handleCloseModal]);
+    setPendingDeleteId(modalTravel.id!);
 
-  // 🪵 Логгирование
+    // 1) удаляем из стора сразу — грид перетасуется прямо сейчас
+    dispatch(deleteTrip(modalTravel.id!));
+    // 2) закрываем модалку ровно по окончании её анимации удаления
+    setTimeout(() => {
+      handleCloseModal();
+    }, DELETE_DURATION_MS);
+  }, [modalTravel, dispatch, handleCloseModal]);
+
+
   useEffect(() => {
     console.log("Trips data:", trips);
   }, [trips]);
 
-  // 🖼️ Рендер
   return (
     <section>
       <Header title="My Travels" icon="train" />
@@ -85,10 +106,7 @@ const TravelsPage = ({
       {loading ? (
         <p>Loading...</p>
       ) : trips.length === 0 ? (
-        <EmptyNotice
-          title="No trips yet. Start creating your adventures!"
-          buttonHref="/create"
-        />
+        <EmptyNotice title="No trips yet. Start creating your adventures!" buttonHref="/create" />
       ) : (
         <>
           {mode === "full" && (
@@ -124,21 +142,29 @@ const TravelsPage = ({
             <TravelsGrid
               travels={visibleTravels}
               view={view}
-              onSelect={(id) => {
-                router.push(`?id=${id}`, { scroll: false });
-              }}
+              onSelect={(id) => router.push(`?id=${id}`, { scroll: false })}
               selectedId={selectedId}
+              hiddenId={hiddenId}
             />
 
-            <AnimatePresence>
-              {selectedId && selectedTravel && (
+            <AnimatePresence
+              mode="popLayout"
+              onExitComplete={() => {
+                // просто чистим состояния после закрытия модалки
+                setPendingDeleteId(null);
+                setIsDeleting(false);
+              }}
+            >
+              {selectedId && modalTravel && (
                 <TravelModal
                   key={selectedId}
-                  travel={selectedTravel}
+                  travel={modalTravel}
                   onClose={handleCloseModal}
                   onDelete={handleDelete}
                   isDeleting={isDeleting}
+                  cardLayoutId={`card-${selectedId}`}
                   imageLayoutId={`image-${selectedId}`}
+                  deleteDurationMs={DELETE_DURATION_MS}
                 />
               )}
             </AnimatePresence>

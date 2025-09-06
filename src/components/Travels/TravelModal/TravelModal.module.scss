@@ -9,39 +9,51 @@
 
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  inset: 50%;
   translate: -50% -50%;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 11;
+
   width: 90svw;
   height: 80svh;
-  z-index: 11;
 }
 
-.modal.deleting::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
 
+.modalInner {
   width: 100%;
   height: 100%;
 
+  display: flex;
+  gap: 1vw;
+
   border-radius: 12px;
-  border: 3px dotted var(--red-dark);
-  
-  z-index: 1;
+  overflow: hidden;
+
+  background-color: white;
 }
 
-.modalInner {
-  display: flex;
-  height: 100%;
-  background: white;
-  border-radius: 12px;
+.modalInner.deleting {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 12px;
+    border: 3px dotted var(--red-dark);
+
+    z-index: 1;
+  }
 }
 
 .modalInfo {
-  width: 40%;
+  flex-grow: 1;
 }
 
 .close {

@@ -14,13 +14,13 @@ const TravelCardActions = ({ travel, onDelete }: Props) => {
     <div className={styles.actions}>
       <Link
         href={`/edit/${travel.id}`}
-            className="button button--triary"
+        className="button button--triary"
         aria-disabled={travel.meta.isMock}
       >
         Edit
       </Link>
       <button
-            className="button button--danger"
+        className="button button--danger"
         disabled={travel.meta.isMock}
         onClick={() => {
           if (!travel.meta.isMock && onDelete) onDelete();

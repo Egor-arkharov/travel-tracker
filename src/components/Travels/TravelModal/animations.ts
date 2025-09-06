@@ -1,3 +1,5 @@
+// Travels/TravelModal/animation.ts
+
 export const overlayVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 0.6, transition: { duration: 0.3 } },

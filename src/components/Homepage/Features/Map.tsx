@@ -1,4 +1,3 @@
-// components/Homepage/Features/Map.tsx
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -20,7 +19,7 @@ const Map = () => {
           {...slide("left")}
           viewport={viewport}
         >
-          <h2>See your trips on the map</h2>
+          <h3>See your trips on the map</h3>
           <p>Visualize every journey, country, and memory at a glance.</p>
         </motion.div>
 
