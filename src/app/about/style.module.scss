@@ -1,16 +1,290 @@
-.wrapper {
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
+// @use "@/styles/global" as *;
 
-  h1 {
-    font-size: 2rem;
+.wrapper {
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  // background: #f7f8fb;
+  color: #0f1222;
+  overflow: hidden;
+}
+
+.container {
+  // max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  /* Контейнерные квери для более точного адаптива */
+  @supports (container-type: inline-size) {
+    container-type: inline-size;
+  }
+}
+
+/* ---- First impression ---- */
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+  text-align: center;
+  color: #0b0e1a;
+}
+
+.lead {
+  max-width: 820px;
+  margin: 0 auto 2.25rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
+  color: #3a3f55;
+  text-align: center;
+
+  em {
+    font-style: normal;
+    color: #1a5cff;
+  }
+
+  strong {
+    font-weight: 800;
+    color: #0b0e1a;
+  }
+}
+
+.tech {
+  margin-bottom: 50px;
+}
+
+/* ---- Features grid ---- */
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  margin-bottom: clamp(2rem, 6vw, 3rem);
+
+  /* базовое авто-раскладывание карточек */
+  >.featureCard {
+    grid-column: span 6;
+  }
+
+  @media (max-width: 900px) {
+    >.featureCard {
+      grid-column: span 12;
+    }
+  }
+
+  /* контейнерные квери, если доступны — упростят адаптив */
+  @supports (container-type: inline-size) {
+    @container (max-width: 820px) {
+      >.featureCard {
+        grid-column: span 12;
+      }
+    }
+  }
+}
+
+.featureCard {
+  position: relative;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e6e9f2;
+  box-shadow:
+    0 1px 0 rgba(16, 24, 40, 0.02),
+    0 8px 24px rgba(16, 24, 40, 0.06);
+  padding: clamp(16px, 2.2vw, 20px);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 2px 0 rgba(16, 24, 40, 0.03),
+      0 12px 30px rgba(16, 24, 40, 0.1);
+    border-color: #d9deeb;
+  }
+
+  h3 {
+    font-size: clamp(1.05rem, 1.6vw, 1.15rem);
     font-weight: 700;
-    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    color: #0b0e1a;
   }
 
   p {
-    line-height: 1.6;
-    color: #444;
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #3d4460;
   }
 }
+
+/* ---- Challenges & Solutions ---- */
+
+.challenges {
+  margin-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.subtitle {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0b0e1a;
+  margin: 0 0 1rem;
+  position: relative;
+  padding-left: 12px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .25em;
+    height: 1.2em;
+    width: 4px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #1a5cff 0%, #7aa8ff 100%);
+  }
+}
+
+.challenge {
+  position: relative;
+  border: 1px solid #e6e9f2;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: clamp(14px, 2.2vw, 18px);
+  box-shadow: 0 4px 16px rgba(16, 24, 40, 0.06);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  margin-bottom: 12px;
+
+  &:hover {
+    border-color: #d9deeb;
+    box-shadow: 0 8px 22px rgba(16, 24, 40, 0.09);
+  }
+
+  h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0b0e1a;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin: 0;
+    color: #3a3f55;
+    line-height: 1.65;
+  }
+}
+
+/* ---- Why this matters ---- */
+
+.why {
+  margin-top: clamp(2rem, 6vw, 3.5rem);
+  border-radius: 14px;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(122, 168, 255, 0.12), transparent 60%),
+    radial-gradient(1000px 500px at 90% 0%, rgba(26, 92, 255, 0.08), transparent 60%),
+    #ffffff;
+  border: 1px solid #e6e9f2;
+  box-shadow:
+    0 1px 0 rgba(16, 24, 40, 0.02),
+    0 10px 30px rgba(16, 24, 40, 0.06);
+  padding: clamp(18px, 3vw, 24px);
+
+  p {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.05rem);
+    line-height: 1.7;
+    color: #2f3550;
+
+    em {
+      font-style: normal;
+      color: #1a5cff;
+      font-weight: 600;
+    }
+  }
+}
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .featureCard,
+  .challenge {
+    transition: none;
+    transform: none;
+  }
+}
+
+// .mySwiperWrapper {
+//   background-color: lightcoral;
+//   height: 400px;
+//   overflow: hidden;
+
+//   margin-block: 50px;
+
+//   .mySwiper {
+//     position: relative;
+//     width: 100vw;
+
+//     left: 50%;
+//     translate: -50vw 0;
+//     aspect-ratio: 1;
+//     border-radius: 50%;
+//     background-color: lightblue;
+
+//     transition: rotate 1s linear;
+//     rotate: -20deg;
+//   }
+
+//   @mixin circle-rotation($count, $step) {
+//     @for $i from 1 through $count {
+//       .mySlide:nth-child(#{$i}) {
+//         --rotation: #{($i - 1) * $step};
+//       }
+//     }
+//   }
+
+//   // Использование:
+//   @include circle-rotation(18, 20deg);
+
+//   .mySlide {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     transform: rotate(var(--rotation));
+
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .mySlideInner {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     text-align: center;
+//     gap: 10px;
+//     max-width: 200px;
+//   }
+
+//   .mySlideIcon {
+//     height: auto;
+//   }
+
+//   .mySlideName {
+//     font-size: var(--font-32);
+//     line-height: 1;
+//     margin: 0;
+//   }
+
+// }
+
+
+
+
+
+

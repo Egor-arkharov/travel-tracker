@@ -1,5 +1,7 @@
-import GridIcon from "@/components/icons/grid.svg";
-import ListIcon from "@/components/icons/list.svg";
+import {
+  GridIcon,
+  ListIcon,
+} from "@/components/icons";
 
 export const viewOptions = [
   { key: "grid", label: "Grid", Icon: GridIcon, colorClass: "purple" },

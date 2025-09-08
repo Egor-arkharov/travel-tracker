@@ -60,7 +60,7 @@ const TravelsGrid = ({
     <motion.ul
       className={`${styles[view]} ${styles.travelsGridContainer}`}
       layout
-      transition={{ type: "spring", stiffness: 500, damping: 40 }}
+      transition={{ type: "spring", stiffness: 450, damping: 45 }}
     >
       <AnimatePresence initial={false}>
         {items.map((travel) => (
@@ -70,7 +70,7 @@ const TravelsGrid = ({
             layout
             initial={false}
             exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.18 }}
+            transition={{ type: "spring", stiffness: 450, damping: 45 }}
           >
             <TravelCard
               travel={travel}

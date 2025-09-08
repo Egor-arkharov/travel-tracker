@@ -67,7 +67,7 @@ const TravelModal = ({
           }
           transition={
             isDeleting
-              ? { duration: deleteDurS, ease: "easeInOut" }
+              ? { duration: deleteDurS, ease: [0.36, 0, 0.66, -0.56] }
               : { type: "spring", stiffness: 400, damping: 35 }
           }
           style={{ willChange: "transform, opacity" }}
