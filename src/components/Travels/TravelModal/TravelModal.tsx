@@ -53,6 +53,7 @@ const TravelModal = ({
         layoutId={cardLayoutId}
         className={styles.modal}
         transition={{ type: "spring", stiffness: 450, damping: 42 }}
+        data-mode="modal" 
       >
         <motion.div
           className={`${styles.modalInner} ${isDeleting ? styles.deleting : ""}`}

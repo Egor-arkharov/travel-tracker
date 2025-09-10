@@ -30,6 +30,7 @@ const TravelCard = ({
     <motion.article
       layoutId={cardLayoutId}
       className={`${styles.card} ${styles[view]}`}
+      data-mode="card"
       onClick={onClick}
       transition={{ type: "spring", stiffness: 400, damping: 35 }}
     >

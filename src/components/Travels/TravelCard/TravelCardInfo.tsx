@@ -25,8 +25,8 @@ const TravelInfo = forwardRef<HTMLDivElement, TravelInfoProps>(
     const isModal = mode === "modal";
 
     return (
-      <div className={styles.info} ref={ref}>
-        <h3>{travel.location.country}</h3>
+      <div className={styles.info} ref={ref} data-mode={mode} >
+        <h3 className={styles.infoTitle}>{travel.location.country}</h3>
         <p className={styles.infoItem}>
           <CountryIcon className={styles.icon} width={14} height={14} />
           <span>{travel.location.city}</span>

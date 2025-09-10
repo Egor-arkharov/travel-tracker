@@ -7,10 +7,10 @@ const Footer = () => {
   return (
 			<footer className={styles.footer}>
 				<div className={styles.inner}>
-        <div className={styles.left}>© {year} Travel Tracker</div>
-        <div className={styles.right}>
-          <Link href="/about">About</Link>
-          <Link href="/author">Author</Link>
+        <div className={styles.copyright}>© {year} Travel Tracker</div>
+        <div className={styles.linkWrapper}>
+          <Link className={styles.link} href="/about">About</Link>
+          <Link className={styles.link} href="/author">Author</Link>
         </div>
       </div>
     </footer>

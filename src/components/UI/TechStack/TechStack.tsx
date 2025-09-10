@@ -2,7 +2,12 @@
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import styles from "./TechStack.module.scss";
 
-type StackItem = { name: string; Icon: React.ComponentType<any> };
+type SvgIcon = React.FC<React.SVGProps<SVGSVGElement>>;
+
+type StackItem = { 
+  name: string; 
+  Icon: SvgIcon;
+};
 
 import {
   FirebaseIcon,
@@ -145,7 +150,7 @@ export default function TechStack() {
             key={`${name}-${i}`}
             className={styles.slide}
             data-active={i === activeIndex}
-            style={{ ["--rotation" as any]: `${i * STEP_DEG}deg` }}
+            style={{ "--rotation": `${i * STEP_DEG}deg` } as React.CSSProperties}
           >
             <div className={styles.inner}>
               <div className={styles.iconWrapper}>

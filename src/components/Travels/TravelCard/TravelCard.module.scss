@@ -168,8 +168,7 @@
   flex-shrink: 0;
 
   [data-mode="modal"] & {
-    width: auto;
-    flex: 0 0 60%;
+    width: 60%;
   }
 
   .image {
@@ -194,18 +193,22 @@
 
   color: black;
 
-  h3 {
-    margin-bottom: 6px;
-
-    [data-mode="modal"] & {
-      font-size: 42px;
-    }
-  }
 
   [data-mode="modal"] & {
     gap: 8px;
+    padding-inline-end: 20px;
   }
 }
+
+.infoTitle {
+  font-size: 22px;
+  margin-bottom: 6px;
+
+  [data-mode="modal"] & {
+    font-size: var(--font-40);
+  }
+}
+
 
 .infoItem {
   display: flex;

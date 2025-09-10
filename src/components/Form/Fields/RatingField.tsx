@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useImperativeHandle, useState } from "react";
-import RatingIcon from "@/components/icons/rating.svg";
+import { RatingIcon } from "@/components/icons";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";

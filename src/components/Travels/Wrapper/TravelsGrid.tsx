@@ -52,9 +52,9 @@ const TravelsGrid = ({
     return <p>No travels to display matching your criteria.</p>;
   }
 
- const items = hiddenId
-   ? travelsWithGridClasses.filter(t => t.id !== hiddenId)
-   : travelsWithGridClasses;
+  const items = hiddenId
+    ? travelsWithGridClasses.filter(t => t.id !== hiddenId)
+    : travelsWithGridClasses;
 
   return (
     <motion.ul
@@ -62,27 +62,26 @@ const TravelsGrid = ({
       layout
       transition={{ type: "spring", stiffness: 450, damping: 45 }}
     >
-      <AnimatePresence initial={false}>
-        {items.map((travel) => (
-          <motion.li
-            key={travel.id}
-            className={travel.gridItemClassName || styles.cardItem}
-            layout
-            initial={false}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 450, damping: 45 }}
-          >
-            <TravelCard
-              travel={travel}
-              view={view}
-              onClick={() => travel.id && onSelect(travel.id)}
-              cardLayoutId={`card-${travel.id}`}
-              imageLayoutId={`image-${travel.id}`}
-              isSelected={selectedId === travel.id}
-            />
-          </motion.li>
-        ))}
-      </AnimatePresence>
+      {items.map((travel) => (
+        <motion.li
+          key={travel.id}
+          className={travel.gridItemClassName || styles.cardItem}
+          layout
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <TravelCard
+            travel={travel}
+            view={view}
+            onClick={() => travel.id && onSelect(travel.id)}
+            cardLayoutId={`card-${travel.id}`}
+            imageLayoutId={`image-${travel.id}`}
+            isSelected={selectedId === travel.id}
+          />
+        </motion.li>
+      ))}
     </motion.ul>
   );
 };
