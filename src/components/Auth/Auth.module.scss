@@ -1,39 +1,39 @@
-.loginButton {
-  display: flex;
-  align-items: center;
-  gap: 5px; 
+// .loginButton {
+//   display: flex;
+//   align-items: center;
+//   gap: 5px; 
   
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+//   border: none;
+//   padding: 6px 12px;
+//   border-radius: 6px;
+//   cursor: pointer;
 
-  background-color: var(--purple-soft);
+//   background-color: var(--purple-soft);
 
-  &:hover {
-    background-color: var(--purple-light);
-  }
+//   &:hover {
+//     background-color: var(--purple-light);
+//   }
 
-  &:active {
-    color: white;
-    background-color: var(--purple-dark);
-  }
+//   &:active {
+//     color: white;
+//     background-color: var(--purple-dark);
+//   }
 
-  img {
-    display: block;
-  }
-}
+//   img {
+//     display: block;
+//   }
+// }
 
-.avatarButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+// .avatarButton {
+//   background: none;
+//   border: none;
+//   cursor: pointer;
+//   padding: 0;
 
-  .avatar {
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: block;
-  }
-}
+//   .avatar {
+//     border-radius: 50%;
+//     width: 32px;
+//     height: 32px;
+//     display: block;
+//   }
+// }

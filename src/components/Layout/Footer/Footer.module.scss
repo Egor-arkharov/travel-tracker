@@ -1,29 +1,24 @@
-@use "@/styles/mixins" as *;
-@use "@/styles/layout/layout" as *;
+@use "@/styles/global" as *;
 
 .footer {
-  @include layout-section;
-
   width: 100%;
   border-top: 1px solid var(--grey-soft);
 }
 
 .inner {
-  @include layout-inner;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding-block: 1.5rem;
 
   @include media-max(xs) {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
 
-    padding: 1rem 1.5rem;
+    padding-block: 1rem;
   }
 }
 

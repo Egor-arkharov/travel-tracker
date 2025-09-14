@@ -5,6 +5,8 @@ export const useAuth = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
 
+  console.log(user)
+
   const login = () => loginWithPopup(dispatch);
   const logout = () => logoutFromFirebase(dispatch);
 

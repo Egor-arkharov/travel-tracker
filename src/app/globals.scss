@@ -11,7 +11,7 @@
   --foreground: #171717;
 
   --layout-width: 1500px;
-  --layout-padding: 16px;
+  --layout-padding: 4vw;
 
 
   @include tokens-colors;
@@ -27,6 +27,10 @@
   --gmpx-font-size-base: var(--input-font-size);
   --gmpx-color-on-surface: var(--input-color);
   --gmpx-color-primary: var(--input-focus-color);
+
+  @include media-max(lg) {
+    --layout-padding: 1rem;
+  }
 }
 
 * {
@@ -41,14 +45,11 @@ body {
   overflow-x: hidden;
 }
 
-html  {
+html {
   scrollbar-gutter: stable;
 }
 
 body {
-  // display: grid;
-  // grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
-
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -59,17 +60,10 @@ body {
   font-family: var(--font-body);
 }
 
-header {
-  height: var(--header-h);
-}
-
 .layout-section {
   display: grid;
-  grid-template-columns: minmax(50px, 1fr) minmax(0, 1500px) minmax(50px, 1fr);
-
-  @include media-max(lg) {
-    grid-template-columns: minmax(16px, 1fr) minmax(0, 1500px) minmax(16px, 1fr);
-  }
+  grid-template-columns:
+    minmax(var(--layout-padding), 1fr) minmax(0, var(--layout-width)) minmax(var(--layout-padding), 1fr);
 }
 
 .layout-inner {

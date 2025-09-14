@@ -14,7 +14,7 @@ interface TripsState {
 const initialState: TripsState = {
   mock: [],
   user: [],
-  loading: false,
+  loading: true,
   loaded: false,
 };
 

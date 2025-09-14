@@ -1,6 +1,7 @@
+// app/stats/page.tsx
+
 "use client";
 
-import { useEffect, useState } from "react";
 import Hero from "@/components/Hero/Hero";
 import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
 import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
@@ -11,20 +12,12 @@ import { buildStatsData } from "./statsData";
 import styles from "./style.module.scss";
 
 const StatsPage = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   const user = useAppSelector((state) => state.auth.user);
   const trips = useAppSelector((state) => state.trips.user);
   const mockTrips = useAppSelector((state) => state.trips.mock);
 
   const isDemo = !user;
   const isEmpty = trips.length < 2;
-
-  if (!isClient) return null;
 
   const renderStats = (title: string, dataSource: typeof trips) => {
     const stats = getTripStats(dataSource);

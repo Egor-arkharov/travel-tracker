@@ -2,6 +2,7 @@
   height: clamp(140px, 100px + 12vw, 340px);
   overflow: hidden;
   overscroll-behavior: contain;
+  cursor: ew-resize;
 }
 
 .wheel {

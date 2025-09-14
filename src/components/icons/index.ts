@@ -14,6 +14,7 @@ export { default as LogInIcon } from "./menu/login.svg";
 export { default as LogOutIcon } from "./menu/logout.svg";
 export { default as BoardIcon } from "./menu/board.svg";
 export { default as UserIcon } from "./menu/user.svg";
+export { default as BurgerIcon } from "./menu/burger.svg";
 
 export { default as ArrowBackIcon } from "./stats/arrow-back.svg";
 export { default as ArrowNextIcon } from "./stats/arrow-next.svg";
