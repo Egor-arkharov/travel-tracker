@@ -8,9 +8,10 @@ interface PreviewModalProps {
   open: boolean;
   onClose: () => void;
   trip: Travel;
+  isEditMode?: boolean;
 }
 
-const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
+const Preview = ({ open, onClose, trip, isEditMode }: PreviewModalProps) => {
   if (!open) return null;
 
   return (
@@ -18,7 +19,7 @@ const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>×</button>
 
-        <h2>Trip Created!</h2>
+        <h2>{isEditMode ? "Trip Edited!" : "Trip Created!"}</h2>
 
         <div className={styles.tripPreview}>
           <p><b>City:</b> {trip.location.city}</p>
@@ -38,7 +39,7 @@ const Preview = ({ open, onClose, trip }: PreviewModalProps) => {
           )}
         </div>
 
-        <a href="/trips" className={styles.goToTripsButton}>
+        <a href="/trips" className={`button button--primary ${styles.goToTripsButton}`}>
           Go to My Trips
         </a>
       </div>

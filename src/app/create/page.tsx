@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 const Form = dynamic(() => import("@/components/Form/Form"), { ssr: false });
 
-export default function Create() {
+const CreatePage = () => {
   return (
     <>
       <Hero
@@ -20,3 +20,5 @@ export default function Create() {
     </>
   );
 }
+
+export default CreatePage;

@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
-import { useAppDispatch } from "@/store/hooks";
-import { resetForm } from "@/store/slices/formSlice";
 import styles from "./Form.module.scss";
 
 import Header from "@/components/UI/Header/Header";
@@ -27,8 +25,6 @@ interface FormProps {
 }
 
 const Form = ({ isEditMode = false }: FormProps) => {
-  const dispatch = useAppDispatch();
-
   const {
     isModalOpen: showSuccessModal,
     activeTrip: savedTrip,
@@ -50,22 +46,16 @@ const Form = ({ isEditMode = false }: FormProps) => {
   });
 
   useEffect(() => {
-    if (!isEditMode && !localStorage.getItem("localForm")) {
-      dispatch(resetForm());
+    if (!isEditMode) {
+      handleReset();
     }
-  }, [isEditMode, dispatch]);
+  }, [isEditMode, handleReset]);
 
-  // Очистка формы после успешного создания
   useEffect(() => {
     if (showSuccessModal) {
-      dispatch(resetForm());
-      localStorage.removeItem("localForm");
+      handleReset();
     }
-  }, [showSuccessModal, dispatch]);
-
-  // useLayoutEffect(() => {
-  //   clearFieldRefs();
-  // });
+  }, [showSuccessModal, handleReset]);
 
   return (
     <>
@@ -91,7 +81,12 @@ const Form = ({ isEditMode = false }: FormProps) => {
       </form>
 
       {savedTrip && (
-        <Preview open={showSuccessModal} onClose={handleCloseModal} trip={savedTrip} />
+        <Preview 
+          open={showSuccessModal} 
+          onClose={handleCloseModal} 
+          trip={savedTrip} 
+          isEditMode={isEditMode}
+        />
       )}
     </>
   );
