@@ -9,7 +9,7 @@ import Form from "./Form";
 const Features = () => {
   return (
     <section className={styles.features}>
-      <Header title="Powerful Features" icon="plane" />
+      <Header title="Powerful Features" icon="helicopter" />
       <div className={styles.featuresList}>
         <Map />
         <Stats />

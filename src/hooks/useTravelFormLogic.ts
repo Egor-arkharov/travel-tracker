@@ -6,8 +6,11 @@ import { resetForm } from "@/store/slices/formSlice";
 import { saveTrip } from "@/lib/trips/save/saveTrip";
 import { Travel } from "@/types/travel";
 import { FieldRef } from "@/types/formField";
+
 import { isFormReadyToSubmit } from "@/utils/form/isFormReady";
-import { isFormDirty as checkFormDirty } from "@/utils/form/isFormDirty";
+import { isFormDirty } from "@/utils/form/isFormDirty";
+import { getMissingFields } from "@/utils/form/getMissingFields";
+
 
 interface UseTravelFormLogicProps {
   isEditMode: boolean;
@@ -58,6 +61,8 @@ export const useTravelFormLogic = ({ isEditMode, onSuccess }: UseTravelFormLogic
     setSubmitError(null);
   }, [dispatch]);
 
+  const missingFields = getMissingFields(formState);
+
   return {
     isSubmitting,
     submitError,
@@ -65,6 +70,7 @@ export const useTravelFormLogic = ({ isEditMode, onSuccess }: UseTravelFormLogic
     handleSubmit,
     handleReset,
     isReadyToSubmit: isFormReadyToSubmit(formState),
-    isFormDirty: checkFormDirty(formState),
+    isFormDirty: isFormDirty(formState),
+    missingFields,
   };
 };

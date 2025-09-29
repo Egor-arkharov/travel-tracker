@@ -75,6 +75,8 @@ main {
   padding-top: var(--header-h);
   flex-grow: 1;
   padding-bottom: 100px;
+
+  overflow: hidden;
 }
 
 h1,

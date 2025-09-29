@@ -1,8 +1,15 @@
 // TravelCardActions.tsx
 
+"use client";
+
 import Link from "next/link";
+import Tippy from "@tippyjs/react";
+import { useRouter } from "next/navigation";
+
 import styles from "./TravelCard.module.scss";
 import { Travel } from "@/types/travel";
+import { useAppSelector } from "@/store/hooks";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Props {
   travel: Travel;
@@ -10,24 +17,78 @@ interface Props {
 }
 
 const TravelCardActions = ({ travel, onDelete }: Props) => {
+  const user = useAppSelector((state) => state.auth.user);
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const isMock = travel.meta.isMock;
+  const isLoggedIn = Boolean(user);
+
+  const isDisabled = !isLoggedIn || isMock;
+
+  const handleLogin = async () => {
+    try {
+      await login();
+      router.push("/trips");
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
+  };
+
+  const tooltipContent = !isLoggedIn ? (
+    <span>
+      Available only for authorized users.{" "}
+      <button onClick={handleLogin} className={styles.loginButton}>
+        Log in
+      </button>
+    </span>
+  ) : isMock ? (
+    "This is just a demo trip and cannot be edited or removed."
+  ) : null;
+
+  const EditButton = (
+    <Link
+      href={`/edit/${travel.id}`}
+      className="button button--triary"
+      aria-disabled={isDisabled}
+      tabIndex={isDisabled ? -1 : 0}
+    >
+      Edit
+    </Link>
+  );
+
+  const RemoveButton = (
+    <button
+      className="button button--danger"
+      disabled={isDisabled}
+      onClick={() => {
+        if (!isDisabled && onDelete) onDelete();
+      }}
+    >
+      Remove
+    </button>
+  );
+
+  const wrapWithTippy = (content: React.ReactNode, child: React.ReactNode) =>
+    content ? (
+      <Tippy
+        content={content}
+        interactive={true}
+        arrow={false}
+        maxWidth={400}
+        duration={0} 
+        className={styles.tooltip}
+      >
+        <span>{child}</span>
+      </Tippy>
+    ) : (
+      child
+    );
+
   return (
     <div className={styles.actions}>
-      <Link
-        href={`/edit/${travel.id}`}
-        className="button button--triary"
-        aria-disabled={travel.meta.isMock}
-      >
-        Edit
-      </Link>
-      <button
-        className="button button--danger"
-        disabled={travel.meta.isMock}
-        onClick={() => {
-          if (!travel.meta.isMock && onDelete) onDelete();
-        }}
-      >
-        Remove
-      </button>
+      {wrapWithTippy(tooltipContent, EditButton)}
+      {wrapWithTippy(tooltipContent, RemoveButton)}
     </div>
   );
 };

@@ -40,6 +40,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
     handleReset,
     isReadyToSubmit,
     isFormDirty,
+    missingFields
   } = useTravelFormLogic({
     isEditMode,
     onSuccess: showPreviewForTrip,
@@ -77,6 +78,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
           isFormDirty={isFormDirty}
           submitError={submitError} 
           onReset={handleReset}
+          missingFields={missingFields} 
         />
       </form>
 

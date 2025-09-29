@@ -1,3 +1,5 @@
+@use "@/styles/global" as *;
+
 .demoNotice {
   display: block;
   margin-bottom: 30px;
@@ -19,4 +21,8 @@
   color: inherit;
   text-decoration: underline;
   cursor: pointer;
+
+  @include hover {
+    text-decoration: none;
+  }
 }

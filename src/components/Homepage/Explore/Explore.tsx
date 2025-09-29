@@ -38,33 +38,25 @@ const UsageModes = () => {
 
   const isMobile = mounted && width <= 900;
 
-  const variants = {
-    hidden: isMobile
-      ? { opacity: 0, x: 10 }
-      : { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: { duration: 1.0, ease: "easeOut" },
-    },
-  };
-
   return (
     <section className={styles.section}>
       <Header title="Your way" icon="rocket" />
 
       <div className={styles.modes}>
-        {modes.map((m) => {
+        {modes.map((m, index) => {
           const Icon = m.icon;
           return (
             <motion.article
               key={m.title}
               className={styles.modeCard}
-              variants={variants}
-              initial="hidden"
-              whileInView="visible"
+              initial={isMobile ? { opacity: 0, x: 10 } : { opacity: 0, y: 20 }}
+              whileInView={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: index * 0.25,
+              }}
             >
               <div className={styles.icon} aria-hidden>
                 <Icon className={styles.iconSvg} />

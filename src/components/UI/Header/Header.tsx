@@ -9,7 +9,11 @@ import {
   ShipIcon, 
   CarIcon,
   HelicopterIcon,
-  RocketIcon } from "@/components/icons";
+  BikeIcon,
+  RocketIcon,
+  RopeWayIcon,
+  YachtIcon
+} from "@/components/icons";
 
 const ICONS_MAP = {
   plane: PlaneIcon,
@@ -17,7 +21,10 @@ const ICONS_MAP = {
   ship: ShipIcon,
   car: CarIcon,
   helicopter: HelicopterIcon,
+  bike: BikeIcon,
   rocket: RocketIcon,
+  ropeway: RopeWayIcon,
+  yacht: YachtIcon,
 };
 
 interface HeaderProps {

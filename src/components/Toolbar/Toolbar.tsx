@@ -1,12 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./Toolbar.module.scss";
 import DropdownPopover from "./Dropdown/Popover/Popover";
 import { sortOptions } from "./Options/sortOptions";
 import { viewOptions } from "./Options/viewOptions";
-import {
-  SortIcon,
-  GridIcon,
-  MapIcon
-} from "@/components/icons";
+import { SortIcon, GridIcon, MapIcon } from "@/components/icons";
 
 interface ToolbarProps {
   search: string;
@@ -27,8 +26,11 @@ const Toolbar = ({
   view,
   onViewChange,
   showMap,
-  onToggleMap
+  onToggleMap,
 }: ToolbarProps) => {
+  const [sortOpen, setSortOpen] = useState(false);
+  const [viewOpen, setViewOpen] = useState(false);
+
   return (
     <div className={styles.toolbar}>
       <input
@@ -46,8 +48,11 @@ const Toolbar = ({
         options={sortOptions}
         value={sort}
         onChange={onSortChange}
-        withDirection={true}
-        triggerClass={`${styles.trigger} ${styles.triggerSort}`}
+        withDirection
+        triggerClass={`${styles.trigger} ${styles.triggerSort} ${
+          sortOpen ? styles.active : ""
+        }`}
+        onOpenChange={setSortOpen}
       />
 
       <DropdownPopover
@@ -57,19 +62,22 @@ const Toolbar = ({
         options={viewOptions}
         value={view}
         onChange={onViewChange}
-        withDirection={false}
-        triggerClass={`${styles.trigger} ${styles.triggerView}`}
+        triggerClass={`${styles.trigger} ${styles.triggerView} ${
+          viewOpen ? styles.active : ""
+        }`}
+        onOpenChange={setViewOpen}
       />
 
       <button
-        className={`${styles.trigger} ${styles.triggerMap} ${showMap ? styles.active : ""}`}
+        className={`${styles.trigger} ${styles.triggerMap} ${
+          showMap ? styles.active : ""
+        }`}
         onClick={onToggleMap}
         title={showMap ? "Hide map" : "Show map"}
       >
         <MapIcon width={20} height={20} />
         <span>Map</span>
       </button>
-
     </div>
   );
 };

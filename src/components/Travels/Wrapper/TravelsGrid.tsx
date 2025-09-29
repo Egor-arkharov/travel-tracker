@@ -8,7 +8,7 @@ import {
 } from "@/lib/layout/tripsGridPattern";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface TravelsGridProps {
   travels: Travel[];

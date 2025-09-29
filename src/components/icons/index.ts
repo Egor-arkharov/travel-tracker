@@ -38,7 +38,6 @@ export { default as BikeIcon } from "./header/bike.svg";
 export { default as RocketIcon } from "./header/rocket.svg";
 export { default as RopeWayIcon } from "./header/ropeway.svg";
 export { default as YachtIcon } from "./header/yacht.svg";
-export { default as Plane2Icon } from "./header/airplane-2.svg";
 
 export { default as FirebaseIcon } from "./stack/firebase.svg";
 export { default as FramerMotionIcon } from "./stack/framer-motion.svg";

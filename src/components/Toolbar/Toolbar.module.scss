@@ -3,9 +3,8 @@
 .toolbar {
   display: flex;
   align-items: stretch;
-  gap: 16px;
-  margin-block: 32px;
-
+  gap: 1rem;
+  margin-block: 2rem;
 }
 
 .search {
@@ -20,40 +19,21 @@
   font-size: 1rem;
 }
 
-.toggleMap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  background-color: var(--gray-100);
-  border: 1px solid transparent;
-  cursor: pointer;
-
-  &.active {
-    background-color: var(--primary-100);
-    border-color: var(--primary-300);
-    color: var(--primary-800);
-  }
-
-  &:hover {
-    background-color: var(--primary-200);
-  }
-}
-
 .trigger {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  font-size: 16px;
+
+  font-size: 1rem;
   font-weight: 700;
+
   border-radius: 6px;
   cursor: pointer;
-  background: transparent;
 
-  border: 2px solid var(--trigger-clr);
   color: var(--trigger-clr);
+  border: 2px solid var(--trigger-clr);
+  background-color: transparent;
 
 	transition:
 		color 0.2s ease,

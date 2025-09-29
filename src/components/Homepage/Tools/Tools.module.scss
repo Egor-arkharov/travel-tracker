@@ -1,3 +1,5 @@
+@use "@/styles/global" as *;
+
 .section {
   padding: 4rem 2rem;
 }
@@ -7,6 +9,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 2rem;
+
 }
 
 .card {
@@ -37,9 +40,35 @@
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
+}
 
-  p {
-    color: #555;
-    font-size: 0.95rem;
+
+@include media-max(md) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .videoWrap {
+    height: 300px;
+  }
+
+  .video {
+    object-position: right;
+
+    &[data-video="search"] {
+      object-position: left;
+    }
+  }
+}
+
+@include media-max(sm) {
+  .videoWrap {
+    height: 400px;
+  }
+}
+
+@include media-max(xs) {
+  .videoWrap {
+    height: 450px;
   }
 }

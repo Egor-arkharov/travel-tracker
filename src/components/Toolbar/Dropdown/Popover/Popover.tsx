@@ -18,6 +18,7 @@ interface DropdownPopoverProps {
   options: Option[];
   value: string;
   onChange: (val: string) => void;
+  onOpenChange?: (open: boolean) => void;
   withDirection?: boolean;
   triggerClass?: string;
 }
@@ -29,6 +30,7 @@ const DropdownPopover = ({
   options,
   value,
   onChange,
+  onOpenChange,
   withDirection = false,
   triggerClass,
 }: DropdownPopoverProps) => {
@@ -36,6 +38,10 @@ const DropdownPopover = ({
   const [direction, setDirection] = useState<"asc" | "desc">("asc");
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -65,27 +71,30 @@ const DropdownPopover = ({
     }
   };
 
-  const currentKey = withDirection && value.includes(":") ? value.split(":")[0] : value;
-  const currentDirection = withDirection && value.includes(":") ? value.split(":")[1] : "asc";
+  const handleToggle = () => {
+    setOpen(prev => !prev);
+  };
+
+  const currentKey =
+    withDirection && value.includes(":") ? value.split(":")[0] : value;
+  const currentDirection =
+    withDirection && value.includes(":") ? value.split(":")[1] : "asc";
 
   return (
     <div className={styles.wrapper}>
       <button
         ref={triggerRef}
         className={triggerClass}
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={handleToggle}
         aria-haspopup="dialog"
         aria-expanded={open}
+        title={open ? `Hide ${label.toLowerCase()}` : `Show ${label.toLowerCase()}`}
       >
         <TriggerIcon width={iconSize} height={iconSize} />
         <span>{label}</span>
       </button>
 
-      <dialog
-        ref={dialogRef}
-        open={open}
-        className={styles.dropdownWrapper}
-      >
+      <dialog ref={dialogRef} open={open} className={styles.dropdownWrapper}>
         <div className={styles.dropdownContent}>
           {options.map(({ key, label, Icon, colorClass }) => (
             <OptionButton
@@ -93,7 +102,11 @@ const DropdownPopover = ({
               label={label}
               Icon={Icon}
               active={currentKey === key}
-              direction={withDirection && currentKey === key ? (currentDirection as "asc" | "desc") : undefined}
+              direction={
+                withDirection && currentKey === key
+                  ? (currentDirection as "asc" | "desc")
+                  : undefined
+              }
               colorClass={colorClass}
               onClick={() => handleClick(key)}
             />
