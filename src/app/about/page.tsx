@@ -3,102 +3,161 @@
 import styles from "./style.module.scss";
 import TechStack from "@/components/UI/TechStack/TechStack";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import {
+  ArrowPrev,
+  ArrowNext,
+} from "@/components/icons";
+import { useRef, useState } from "react";
+
 const AboutPage = () => {
+  const gridSlides = [
+    { src: "/images/grid/grid-32.jpg", caption: "Grid 3x2" },
+    { src: "/images/grid/grid-33.jpg", caption: "Grid 3x3" },
+    { src: "/images/grid/grid-43.jpg", caption: "Grid 4x3" },
+    { src: "/images/grid/grid-44.jpg", caption: "Grid 4x4" },
+  ];
+
+
+  const swiperRef = useRef<SwiperType>();
+  const [active, setActive] = useState(0);
 
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.container}>
-        <section className={styles.block}>
-          {/* 1. First impression */}
-          <h1 className={styles.title}>About This Project</h1>
-          <p className={styles.lead}>
-            <strong>Travel Tracker</strong> is a portfolio project built like a real product.
-            It uses <em>Next.js 14, React 18, TypeScript, Redux Toolkit, Firebase, SCSS Modules and Framer Motion</em>.
-            The goal was to demonstrate not only technical skills but also the ability to design architecture,
-            invent solutions, and polish UX details.
-          </p>
-        </section>
+    <div className={styles.wrapper}>
+      <section className={styles.block}>
+        <h1 className={styles.title}>About This Project</h1>
 
-        <section className={`${styles.block} ${styles.tech}`}>
-          <h3 className={styles.section}>Tech Stack</h3>
-          <TechStack />
-        </section>
+        <p className={styles.lead}>
+          <strong>Travel Tracker</strong> is a portfolio project built like a
+          real product. It uses{" "}
+          <em>
+            Next.js 14, React 18, TypeScript, Redux Toolkit, Firebase, SCSS
+            Modules and Framer Motion
+          </em>
+          . The goal was to demonstrate not only technical skills but also the
+          ability to design architecture, invent solutions, and polish UX
+          details.
+        </p>
+      </section>
 
-        <section className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
+      <section className={`${styles.block} ${styles.tech}`}>
+        <h2 className={styles.subtitle}>Tech Stack</h2>
+        <TechStack />
+      </section>
+
+      <section className={styles.features}>
+        <h2 className={styles.subtitle}>Features</h2>
+
+        <ul className={styles.featureList}>
+          <li className={styles.featureCard}>
             <h3>Flexible Data Flow</h3>
-            <p>Trips work in three modes: demo mock data, localStorage (no login), and Firebase (with login).
-              Everything is handled through one architecture.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <h3>Custom Travel Form</h3>
-            <p>Google Place Picker, DatePicker, rating stars, budget range and image upload — all unified
-              through manual validation and refs.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <h3>Card → Modal Animation</h3>
-            <p>App Store–like expand effect: a card image morphs into a modal with synchronized text and overlay animations.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <h3>Complex Grid Layout</h3>
-            <p>A unique adaptive grid with grouping, mirrored variants and container queries — designed to make the UI
-              look dynamic and varied on any screen.</p>
-          </div>
-        </section>
-
-        <section className={styles.challenges}>
-          <h2 className={styles.subtitle}>Challenges & Solutions</h2>
-
-          <div className={styles.challenge}>
-            <h3>Complex Card Grid</h3>
             <p>
-              I wanted the cards to look alive and non-repetitive.
-              Standard CSS grid wasn’t enough, so I designed a system of groups of four with mirrored variants
-              and container queries. This was fully custom — no ready-made solution existed.
+              Trips work in&nbsp;three modes: demo mock data, localStorage
+              (no&nbsp;login), and Firebase (with login). Everything
+              is&nbsp;handled through one architecture.
+            </p>
+          </li>
+          <li className={styles.featureCard}>
+            <h3>Animated Header</h3>
+            <p>
+              A&nbsp;fully custom heading component with a&nbsp;dynamic
+              decorative line and icon reveal. Unlike static SVGs, the border
+              adapts to&nbsp;multiline text, remains fully fluid, and animates
+              smoothly when entering the viewport.
+            </p>
+          </li>
+          <li className={styles.featureCard}>
+            <h3>Travel Form</h3>
+            <p>
+              Google Place Picker, DatePicker, rating stars, budget range and
+              image upload&nbsp;&mdash; all unified through manual validation
+              and refs.
+            </p>
+          </li>
+          <li className={styles.featureCard}>
+            <h3>Tech-Stack Wheel</h3>
+            <p>
+              A&nbsp;completely custom interactive wheel to&nbsp;showcase the
+              stack. Built entirely from scratch without libraries, fully
+              responsive and fluid, with smooth highlighting and rotation that
+              make it&nbsp;both functional and visually unique.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section className={styles.challenges}>
+        <h2 className={styles.subtitle}>Challenges & Solutions</h2>
+
+        <div className={styles.challengesList}>
+          <div className={styles.challenge}>
+            <h3 className={styles.challengeTitle}>Complex Card Grid</h3>
+
+            <div className={styles.sliderWrapper}>
+              <Swiper
+                className={styles.slider}
+                slidesPerView={1}
+                spaceBetween={16}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSlideChange={(swiper) => setActive(swiper.activeIndex)}
+              >
+                {gridSlides.map((s) => (
+                  <SwiperSlide key={s.caption} className={styles.sliderSlide}>
+                    <figure className={styles.sliderFigure}>
+                      <img src={s.src} className={styles.sliderImg} alt={s.caption} />
+                    </figure>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className={styles.sliderControls}>
+                <button
+                  className={styles.sliderArrow}
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  disabled={active === 0}
+                >
+                  <ArrowPrev width={32} height={32} />
+                </button>
+                <span className={styles.sliderCaption}>{gridSlides[active].caption}</span>
+                <button
+                  className={styles.sliderArrow}
+                  onClick={() => swiperRef.current?.slideNext()}
+                  disabled={active === gridSlides.length - 1}
+                >
+                  <ArrowNext width={32} height={32} />
+                </button>
+              </div>
+            </div>
+
+            <p className={styles.challengeText}>
+              I wanted the travel cards to feel dynamic and alive, not locked to a fixed
+              template. Instead of relying on standard CSS grid, I built a custom grouping
+              system that rearranges itself automatically depending on how many items are
+              loaded. Whether it’s six, nine or twelve cards, the layout always stays
+              balanced, varied and visually clear.
             </p>
           </div>
 
           <div className={styles.challenge}>
-            <h3>Three Data Modes</h3>
-            <p>
-              The app had to work even without login.
-              I created a universal flow: mock demo trips, localStorage trips, and Firebase trips all behave the same way.
-              This flexibility is unusual for portfolio apps and shows thinking about multiple user scenarios.
-            </p>
+            <h3 className={styles.challengeTitle}>Adaptive</h3>
+            <p className={styles.challengeText}></p>
           </div>
 
           <div className={styles.challenge}>
-            <h3>Custom Form</h3>
-            <p>
-              No standard inputs here: Google Place Picker, DatePicker, rating stars, budget slider, file upload.
-              I connected them with a manual validation system using refs.
-              Building a unified UX from such different fields was a challenge I solved from scratch.
-            </p>
+            <h3 className={styles.challengeTitle}>Animation</h3>
+            <p className={styles.challengeText}></p>
           </div>
 
           <div className={styles.challenge}>
-            <h3>Card → Modal Animation</h3>
-            <p>
-              I didn’t want a basic popup — I wanted the “App Store” effect.
-              The card image morphs, the background overlay fades in, and text enters in sync.
-              It required manual control and fixing Framer Motion quirks, but the result feels smooth and natural.
-            </p>
+            <h3 className={styles.challengeTitle}>Form</h3>
+            <p className={styles.challengeText}></p>
           </div>
-        </section>
-
-        {/* 4. Why it matters */}
-        <section className={styles.why}>
-          <h2 className={styles.subtitle}>Why This Project Matters</h2>
-          <p>
-            Travel Tracker is not just another CRUD.
-            It combines <em>architecture, UX thinking and attention to detail</em>.
-            I wanted to prove that I can not only implement known patterns, but also invent new solutions —
-            from a custom grid and form handling to refined animations.
-            That is what defines me as a developer.
-          </p>
-        </section>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 };
 

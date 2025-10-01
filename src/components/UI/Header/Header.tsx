@@ -15,7 +15,19 @@ import {
   YachtIcon
 } from "@/components/icons";
 
-const ICONS_MAP = {
+export type IconKey =
+  | "plane"
+  | "train"
+  | "ship"
+  | "car"
+  | "helicopter"
+  | "bike"
+  | "rocket"
+  | "ropeway"
+  | "yacht";
+
+// 2. Карта иконок
+const ICONS_MAP: Record<IconKey, React.ElementType> = {
   plane: PlaneIcon,
   train: TrainIcon,
   ship: ShipIcon,

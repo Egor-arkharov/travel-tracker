@@ -41,43 +41,42 @@ const Toolbar = ({
         onChange={(e) => onSearchChange(e.target.value)}
       />
 
-      <DropdownPopover
-        label="Sort"
-        icon={SortIcon}
-        iconSize={22}
-        options={sortOptions}
-        value={sort}
-        onChange={onSortChange}
-        withDirection
-        triggerClass={`${styles.trigger} ${styles.triggerSort} ${
-          sortOpen ? styles.active : ""
-        }`}
-        onOpenChange={setSortOpen}
-      />
+      <div className={styles.buttons}>
+        <DropdownPopover
+          label="Sort"
+          icon={SortIcon}
+          iconSize={22}
+          options={sortOptions}
+          value={sort}
+          onChange={onSortChange}
+          withDirection
+          triggerClass={`${styles.trigger} ${styles.triggerSort} ${sortOpen ? styles.active : ""
+            }`}
+          onOpenChange={setSortOpen}
+        />
 
-      <DropdownPopover
-        label="View"
-        icon={GridIcon}
-        iconSize={18}
-        options={viewOptions}
-        value={view}
-        onChange={onViewChange}
-        triggerClass={`${styles.trigger} ${styles.triggerView} ${
-          viewOpen ? styles.active : ""
-        }`}
-        onOpenChange={setViewOpen}
-      />
+        <DropdownPopover
+          label="View"
+          icon={GridIcon}
+          iconSize={18}
+          options={viewOptions}
+          value={view}
+          onChange={onViewChange}
+          triggerClass={`${styles.trigger} ${styles.triggerView} ${viewOpen ? styles.active : ""
+            }`}
+          onOpenChange={setViewOpen}
+        />
 
-      <button
-        className={`${styles.trigger} ${styles.triggerMap} ${
-          showMap ? styles.active : ""
-        }`}
-        onClick={onToggleMap}
-        title={showMap ? "Hide map" : "Show map"}
-      >
-        <MapIcon width={20} height={20} />
-        <span>Map</span>
-      </button>
+        <button
+          className={`${styles.trigger} ${styles.triggerMap} ${showMap ? styles.active : ""
+            }`}
+          onClick={onToggleMap}
+          title={showMap ? "Hide map" : "Show map"}
+        >
+          <MapIcon width={20} height={20} />
+          <span>Map</span>
+        </button>
+      </div>
     </div>
   );
 };

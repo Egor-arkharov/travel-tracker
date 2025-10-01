@@ -13,6 +13,17 @@
   transition: all 0.2s ease-in-out;
   border-radius: 12px;
 
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    border-radius: 12px;
+    outline: 5px solid red;
+  }
+
   @include hover {
     translate: 0 3px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
@@ -56,6 +67,7 @@
 
 .grid {
   --card-base-height: 300px;
+  --card-base-height: 190px;
   --grid-gap: 10px;
 
   display: grid;

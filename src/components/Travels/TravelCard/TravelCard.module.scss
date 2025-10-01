@@ -181,6 +181,21 @@
   @media (width <=500px) {
     order: var(--image-order, 0);
   }
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    width: calc(100% - 13px);
+    height: calc(100% - 16px);
+    border-radius: 12px;
+    outline: 5px solid green;
+  }
+
+  .image {
+    opacity: 0.1 !important;
+  }
 }
 
 .info {
@@ -192,6 +207,9 @@
   gap: 4px;
 
   color: black;
+
+
+  opacity: 0.1 !important;
 
 
   [data-mode="modal"] & {
