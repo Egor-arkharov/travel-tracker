@@ -19,7 +19,6 @@
 	}
 }
 
-
 .form {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -36,6 +35,11 @@
 	position: relative;
 
 	border: none;
+
+	&:has([disabled]) {
+		opacity: 0.6;
+		pointer-events: none;
+	}
 }
 
 .label {
@@ -288,12 +292,12 @@
 }
 
 .tooltip {
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.85rem;
+	border-radius: 8px;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.85rem;
 
-  color: black;
-  background-color: var(--yellow-soft);
+	color: black;
+	background-color: var(--yellow-soft);
 }
 
 @keyframes shake {
@@ -315,5 +319,17 @@
 
 	100% {
 		transform: translateX(0);
+	}
+}
+
+.api {
+	display: none;
+}
+
+@include media-max(sm) {
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
 	}
 }

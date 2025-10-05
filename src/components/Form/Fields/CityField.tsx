@@ -23,7 +23,7 @@ type PlaceObject = {
   };
 };
 
-const CityField = forwardRef<FieldRef>((_, ref) => {
+const CityField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const { city, country } = useAppSelector((state) => state.form.location);
 
@@ -43,6 +43,16 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
   useEffect(() => {
     setHasSaved(!!city && !!country);
   }, [city, country]);
+
+  useEffect(() => {
+    if (placePickerRef.current) {
+      if (disabled) {
+        placePickerRef.current.setAttribute("disabled", "");
+      } else {
+        placePickerRef.current.removeAttribute("disabled");
+      }
+    }
+  }, [disabled]);
 
 
   const handlePlaceChange = useCallback((e: Event) => {
@@ -124,7 +134,7 @@ const CityField = forwardRef<FieldRef>((_, ref) => {
             className={styles.cityInput}
             ref={(el) => { placePickerRef.current = el }}
           />
-          {(hasSaved || error) && (
+          {(hasSaved || error) && !disabled && (
             <button
               type="button"
               className={styles.customClear}

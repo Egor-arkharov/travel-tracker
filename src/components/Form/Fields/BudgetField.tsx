@@ -10,7 +10,7 @@ const MIN = 0;
 const MAX = 10000;
 const STEP = 100;
 
-const BudgetField = forwardRef<FieldRef>((_, ref) => {
+const BudgetField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const budget = useAppSelector((state) => state.form.budget);
   const [local, setLocal] = useState(budget);
@@ -70,6 +70,7 @@ const BudgetField = forwardRef<FieldRef>((_, ref) => {
               value={local}
               onChange={(e) => handleInput(+e.target.value)}
               ref={budgetRef}
+              disabled={disabled}
             />
             <div ref={bubbleRef} className={styles.budgetBubble}>
               {local}$
@@ -87,6 +88,7 @@ const BudgetField = forwardRef<FieldRef>((_, ref) => {
           value={local}
           onChange={(e) => handleInput(+e.target.value)}
           className={styles.budgetNumberInput}
+          disabled={disabled}
         />
       </div>
 

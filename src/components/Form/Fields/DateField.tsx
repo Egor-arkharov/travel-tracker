@@ -9,7 +9,7 @@ import { FieldRef } from "@/types/formField";
 import styles from "../Form.module.scss";
 import { CalendarIcon } from "@/components/icons";
 
-const DateField = forwardRef<FieldRef>((_, ref) => {
+const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const { start, end } = useAppSelector((state) => state.form.dates);
 
@@ -75,6 +75,7 @@ const DateField = forwardRef<FieldRef>((_, ref) => {
             maxDate={new Date()}
             placeholderText="Select trip dates"
             ref={datePickerRef}
+            disabled={disabled}
           />
           {hasDates && (
             <button

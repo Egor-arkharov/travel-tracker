@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/formSlice";
 import styles from "@/components/Form/Form.module.scss";
 
-const DescriptionField = () => {
+const DescriptionField = ({ disabled = false }: { disabled?: boolean }) => {
   const dispatch = useAppDispatch();
   const description = useAppSelector((state) => state.form.description || "");
 
@@ -22,6 +22,7 @@ const DescriptionField = () => {
           }
           placeholder="Describe your trip…"
           className={`${styles.textarea}`}
+          disabled={disabled}
         />
       </div>
     </fieldset>

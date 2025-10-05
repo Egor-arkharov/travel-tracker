@@ -7,7 +7,7 @@ import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
-const ImageField = forwardRef<FieldRef>((_, ref) => {
+const ImageField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const storeImageUrl = useAppSelector((state) => state.form.media.imageUrl);
   const [previewUrl, setPreviewUrl] = useState<string | null>(storeImageUrl || null);
@@ -71,9 +71,10 @@ const ImageField = forwardRef<FieldRef>((_, ref) => {
           onChange={handleFileChange}
           ref={fileInputRef}
           className={styles.imageInput}
+          disabled={disabled}
         />
 
-        {previewUrl && (
+        {!disabled && previewUrl && (
           <div className={styles.imagePreview}>
             <Image
               src={previewUrl}

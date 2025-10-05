@@ -61,15 +61,15 @@ const Form = ({ isEditMode = false }: FormProps) => {
   return (
     <>
       <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" />
-      <APILoader apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
+      <APILoader className={styles.api} apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <CityField ref={registerRef} />
-        <DateField ref={registerRef} />
-        <RatingField ref={registerRef} />
-        <BudgetField ref={registerRef} />
-        <DescriptionField />
-        <ImageField ref={registerRef} />
+        <CityField ref={registerRef} disabled={isSubmitting} />
+        <DateField ref={registerRef} disabled={isSubmitting} />
+        <RatingField ref={registerRef} disabled={isSubmitting} />
+        <BudgetField ref={registerRef} disabled={isSubmitting} />
+        <DescriptionField disabled={isSubmitting} />
+        <ImageField ref={registerRef} disabled={isSubmitting} />
 
         <FormActions
           isSubmitting={isSubmitting}

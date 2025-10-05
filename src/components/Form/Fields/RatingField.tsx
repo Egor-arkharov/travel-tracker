@@ -7,7 +7,7 @@ import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "@/components/Form/Form.module.scss";
 
-const RatingField = forwardRef<FieldRef>((_, ref) => {
+const RatingField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const storeRating = useAppSelector((state) => state.form.rating);
 
@@ -52,6 +52,7 @@ const RatingField = forwardRef<FieldRef>((_, ref) => {
               onMouseEnter={() => setHovered(star)}
               onMouseLeave={() => setHovered(null)}
               style={{ background: "transparent", border: "none", padding: 0, cursor: "pointer" }}
+              disabled={disabled}
             >
               <RatingIcon
                 name="star"

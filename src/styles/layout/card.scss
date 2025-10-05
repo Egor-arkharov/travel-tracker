@@ -1,0 +1,8 @@
+@mixin card {
+  position: relative;
+  padding: clamp(16px, 2.2vw, 20px);
+  border-radius: 12px;
+  background-color: white;
+  border: 1px solid var(--background-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
