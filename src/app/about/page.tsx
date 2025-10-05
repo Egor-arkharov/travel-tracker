@@ -52,19 +52,19 @@ const AboutPage = () => {
             <li className={styles.featureCard}>
               <h3>Flexible Data Flow</h3>
               <p>
-                Trips work in&nbsp;three modes&nbsp;&mdash; demo, localStorage (no&nbsp;login), and Firebase (with login)&nbsp;&mdash; all handled by&nbsp;a&nbsp;unified architecture that keeps logic clean and consistent.
+                Trips work in&nbsp;three modes&nbsp;&mdash; demo, localStorage (no&nbsp;login), and Firebase (with login). All three share one logic layer, so&nbsp;switching between them doesn&rsquo;t break data or&nbsp;behavior. This unified setup keeps the codebase consistent and easy to&nbsp;maintain.
               </p>
             </li>
             <li className={styles.featureCard}>
               <h3>Animated Header</h3>
               <p>
-                A&nbsp;custom heading component with a&nbsp;dynamic decorative line and icon reveal. The border adapts to&nbsp;any text length, stays fluid across breakpoints, and animates smoothly on&nbsp;scroll.
+                A&nbsp;fully custom heading component with a&nbsp;decorative animated line and icon reveal. The border adapts to&nbsp;text length, works across any layout, and animates fluidly on&nbsp;scroll&nbsp;&mdash; a&nbsp;small visual detail that makes the interface feel alive.
               </p>
             </li>
             <li className={styles.featureCard}>
               <h3>Travel Form</h3>
               <p>
-                Google Place Picker, DatePicker, rating stars, budget range, and image upload&nbsp;&mdash; all unified through manual validation and ref-based control instead of&nbsp;generic form libraries.
+                A&nbsp;full-featured form that supports creating, editing, and deleting trips in&nbsp;real time. It&nbsp;handles everything&nbsp;&mdash; city, dates, rating, budget, and image&nbsp;&mdash; and gives instant feedback with every interaction.
               </p>
             </li>
             <li className={styles.featureCard}>
@@ -120,7 +120,7 @@ const AboutPage = () => {
               </div>
 
               <p className={styles.challengeText}>
-                I&nbsp;wanted the travel cards to&nbsp;feel dynamic and alive, not locked to&nbsp;a&nbsp;fixed template. Instead of&nbsp;relying on&nbsp;standard CSS grid, I&nbsp;built a&nbsp;custom grouping system that rearranges itself automatically depending on&nbsp;how many items are loaded. Whether it&rsquo;s six, nine or&nbsp;twelve cards, the layout always stays balanced, varied and visually clear.
+                I&nbsp;wanted the travel cards to&nbsp;feel dynamic&nbsp;&mdash; not just a&nbsp;static grid, but something that looked designed no&nbsp;matter how many items appeared. Standard CSS grid patterns couldn&rsquo;t handle that variety, so&nbsp;I built a&nbsp;custom grouping system that rearranges itself automatically depending on&nbsp;the number of&nbsp;cards&nbsp;&mdash; six, nine, twelve, or&nbsp;anything in&nbsp;between. Each layout keeps the same visual rhythm: no&nbsp;broken rows, no&nbsp;gaps, no&nbsp;duplicates. Just a&nbsp;clean, intentional composition every time.
               </p>
             </div>
             <div className={styles.challengesItem}>
@@ -138,7 +138,7 @@ const AboutPage = () => {
                 />
               </div>
               <p className={styles.challengeText}>
-                Not only is&nbsp;the card system complex and varied, it&rsquo;s also fully adaptive. At&nbsp;any screen size the layout automatically rearranges itself into a&nbsp;new grid, keeping both images and text clear and visually balanced. This was built with modern container queries and custom rules to&nbsp;handle every breakpoint smoothly.
+                But that wasn&rsquo;t enough&nbsp;&mdash; the grid also had to&nbsp;adapt beautifully. When the screen changes, the layout doesn&rsquo;t just shrink&nbsp;&mdash; it&nbsp;re-composes itself into a&nbsp;new pattern using container queries. Each breakpoint has its own logic to&nbsp;keep the cards balanced and legible, so&nbsp;both images and text stay in&nbsp;perfect visual order. The goal was not &laquo;responsive design,&raquo; but adaptive harmony&nbsp;&mdash; a&nbsp;grid that always feels right, whatever the screen.
               </p>
             </div>
             <div className={styles.challengesItem}>
@@ -156,7 +156,7 @@ const AboutPage = () => {
                 />
               </div>
               <p className={styles.challengeText}>
-                The animation system is&nbsp;fully built with <strong>Framer Motion</strong>&nbsp;&mdash; and it&nbsp;runs everywhere: when cards appear, when the grid sorts or&nbsp;filters, when items are deleted, and even when the modal opens or&nbsp;closes. Each element reacts fluidly to&nbsp;layout changes, with smooth morphing between card and modal states. During deletions the grid rebalances itself with animated motion, preserving rhythm and visual harmony. Every transition&nbsp;&mdash; from filtering to&nbsp;resizing&nbsp;&mdash; is&nbsp;coordinated and feels seamless, even though it&rsquo;s all handcrafted and runs without any external animation tools.
+                Then came motion. Every action in&nbsp;the app&nbsp;&mdash; filtering, sorting, deleting, opening a&nbsp;modal&nbsp;&mdash; triggers an&nbsp;animation that connects states instead of&nbsp;snapping between them. Cards morph smoothly into modals; when an&nbsp;item disappears, the grid shifts naturally to&nbsp;fill the space. It&rsquo;s all powered by&nbsp;Framer Motion, but the orchestration&nbsp;&mdash; how animations chain and align&nbsp;&mdash; was designed manually. The result is&nbsp;a&nbsp;layout that feels fluid and alive, even when everything underneath it&nbsp;is&nbsp;changing.
               </p>
             </div>
             <div className={styles.challengesItem}>
@@ -174,7 +174,7 @@ const AboutPage = () => {
                 />
               </div>
               <p className={styles.challengeText}>
-                The form is&nbsp;built entirely from scratch&nbsp;&mdash; no&nbsp;<em>react-hook-form</em>, no&nbsp;generic&nbsp;UI kits. Each field is&nbsp;a&nbsp;standalone component with its own logic, refs and validation. Google Place Picker, date range picker, rating stars, range slider, image upload&nbsp;&mdash; all unified through a&nbsp;manual validation system that communicates via <code>ref</code> handles and Redux state. Submission, reset and local persistence are coordinated through a&nbsp;custom hook that controls refs, Redux sync, and Firebase upload logic. Despite this complexity, UX remains instant, predictable and fully reactive&nbsp;&mdash; every input visually responds, validates itself, and resets in&nbsp;perfect sync.
+                The form turned out to&nbsp;be&nbsp;one of&nbsp;the hardest parts. Typical libraries like react-hook-form didn&rsquo;t fit my&nbsp;setup&nbsp;&mdash; I&nbsp;needed Google Place Autocomplete, custom date ranges, rating stars, sliders, file uploads, and full edit support. Each field had to&nbsp;be&nbsp;independent but still communicate as&nbsp;part of&nbsp;one system. So&nbsp;I&nbsp;built a&nbsp;manual validation and state flow: every field knows when it&rsquo;s valid, when it&rsquo;s saved, and when it&nbsp;needs attention. You can create, edit, or&nbsp;delete a&nbsp;trip, reset the form, and everything stays perfectly in&nbsp;sync. That independence with coordination was the key challenge&nbsp;&mdash; and the most rewarding to&nbsp;solve.
               </p>
             </div>
           </div>
