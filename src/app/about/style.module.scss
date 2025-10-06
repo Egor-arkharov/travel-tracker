@@ -1,8 +1,8 @@
-@use "@/styles/layout/card" as *;
+@use "@/styles/layout/elements" as *;
 @use "@/styles/global" as *;
 
 .wrapper {
-  padding-top: clamp(2.5rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 6vw, 4rem);
 
   display: flex;
   flex-direction: column;
@@ -256,15 +256,7 @@
   }
 
   a {
-    color: var(--blue-2);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
-
-    @include hover {
-      border-color: currentColor;
-      color: var(--blue-21);
-    }
+    @include link;
   }
 
   @include media-max(md) {

@@ -4,104 +4,117 @@ import styles from "./style.module.scss";
 
 const AuthorPage = () => {
   return (
-    <section className={styles.author}>
-      <div className={styles.inner}>
+    <div className={styles.wrapper}>
+      <section className={`${styles.section} ${styles.intro}`}>
         <h1 className={styles.title}>About the Author</h1>
 
-        <div className={styles.text}>
-          <p>
-            Hi, I’m <strong>Egor Arkharov</strong> — a frontend developer with
-            3+ years of experience building interactive, scalable, and
-            accessible web interfaces. I focus on clean architecture, semantic
-            HTML, and smooth, performance-friendly animations. Over the years
-            I’ve worked on a wide range of projects — from small single-page
-            widgets to complex multi-section interfaces and reusable UI systems.
-          </p>
+        <div className={styles.lead}>
+          <p>Hi, I&rsquo;m Egor Arkharov&nbsp;&mdash; a&nbsp;frontend developer with 3+&nbsp;years of&nbsp;experience building interactive, scalable, and accessible web interfaces. I&rsquo;ve worked on&nbsp;both single-page applications built with Vue and React, and large multi-page corporate websites with complex component systems. My&nbsp;focus is&nbsp;on&nbsp;clean, maintainable architecture, semantic markup, and a&nbsp;consistent user experience across projects of&nbsp;any size.</p>
 
-          <p>
-            I specialize in developing modern UI components and improving
-            existing architectures. My experience includes refactoring legacy
-            codebases, replacing outdated libraries with native JavaScript, and
-            optimizing rendering performance through{" "}
-            <code>requestAnimationFrame</code>-based animations. I’ve built
-            layouts, forms, navigation systems, tables, share panels, and
-            animation frameworks — always aiming for minimal, maintainable, and
-            predictable code.
-          </p>
+          <p>In&nbsp;my&nbsp;work I&rsquo;ve developed and optimized&nbsp;UI libraries, rewritten legacy components, and introduced modern approaches to&nbsp;structure and styling. I&rsquo;ve worked on&nbsp;everything from data-driven dashboards and offline-ready pages to&nbsp;animated interfaces and visualization tools for financial XBRL documents. My&nbsp;goal is&nbsp;to&nbsp;build interfaces that are reliable, performant, and easy to&nbsp;maintain&nbsp;&mdash; both for users and developers.</p>
         </div>
+      </section>
 
-        <div className={styles.project}>
-          <h2>Pet Project — My Fests</h2>
-          <p>
-            Before this project, I created <strong>My Fests</strong>, a
-            Vue-based web app for generating fictional music festivals. It
-            allowed users to create custom festivals by uploading text, images,
-            and dates — or generate random ones using dynamic data.
-          </p>
-          <p>
-            <strong>Tech stack:</strong> Vue (Composition API, Vuex, Vue Router),
-            Firebase (DB & Hosting), Axios, Sass, Webpack.
-          </p>
-          <p>
-            That project helped me solidify my understanding of Vue’s
-            architecture and Firebase integration, and later inspired the
-            current project — <strong>Travel Tracker</strong>, where I applied
-            the same ideas using <strong>React + Next.js + TypeScript</strong>.
-          </p>
-        </div>
+      <section className={`${styles.section} ${styles["section--wide"]} ${styles.project}`}>
+        <h2 className={styles.subtitle}>Previous Pet Project (Vue)</h2>
 
-        <div className={styles.tech}>
-          <h2>Tech Stack</h2>
-          <ul>
-            <li>
-              <strong>Core:</strong> JavaScript (ES6+), TypeScript, React, Redux
-              Toolkit, Vue, SCSS (BEM, animations), HTML5 (semantics &
-              accessibility)
-            </li>
-            <li>
-              <strong>Tools & Platforms:</strong> Firebase (Realtime DB, Auth,
-              Storage), Webpack, Git (GitHub/GitLab), npm/yarn
-            </li>
-            <li>
-              <strong>Additional:</strong> RegExp data parsing, SVG animations,
-              Canvas, basic Three.js, performance optimization
-            </li>
-          </ul>
-        </div>
+        <div className={styles.projectContent}>
+          <div className={styles.projectText}>
 
-        <div className={styles.contacts}>
-          <h2>Contacts</h2>
-          <ul>
-            <li>
-              <strong>Email:</strong>{" "}
-              <a href="mailto:egor.arkharov.dev@gmail.com">
-                egor.arkharov.dev@gmail.com
-              </a>
-            </li>
-            <li>
-              <strong>GitHub:</strong>{" "}
+
+            <p className={styles.text}>
+              Before starting Travel Tracker, I&nbsp;built My&nbsp;Fests&nbsp;&mdash; a&nbsp;Vue-based web application for creating and exploring fictional music festivals. It&nbsp;was developed from scratch with Firebase integration for hosting and data storage, featuring dynamic form handling, image uploads, real-time synchronization, and Vuex-based state management. The project combined creativity with dynamic data generation, allowing users to&nbsp;build custom festivals or&nbsp;generate random ones through custom logic.
+            </p>
+
+            <p>
+              <strong>Tech stack:</strong> Vue (Composition API, Vuex, Vue Router),
+              Firebase (DB & Hosting), Axios, Sass, Webpack.
+            </p>
+
+            <p className={styles.links}>
               <a
-                href="https://github.com/egorarkharov"
+                href="https://my-fests.web.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                github.com/egorarkharov
+                Live Demo
               </a>
-            </li>
-            <li>
-              <strong>Telegram:</strong>{" "}
+              {" · "}
               <a
-                href="https://t.me/egorarkharov"
+                href="https://github.com/Egor-arkharov/myfests"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                @egorarkharov
+                GitHub Repository
               </a>
-            </li>
-          </ul>
+            </p>
+          </div>
+
+          <div className={styles.projectImage}>
+            <img
+              src="/images/vue-project.jpg"
+              alt="My Fests project preview"
+              loading="lazy"
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className={`${styles.section} ${styles.tech}`}>
+        <h2 className={styles.subtitle}>Tech Stack</h2>
+
+        {/* <p>Technologies and tools I use across both professional and personal projects:</p> */}
+
+        <ul className={styles.techList}>
+          <li>
+            <strong>Core:</strong> Next.js (App Router), React 18, TypeScript 5, JavaScript (ES6+), Vue 3 (Composition API, Vuex)
+          </li>
+          <li>
+            <strong>Tools & Platforms:</strong> Firebase (Realtime DB, Auth, Storage, Hosting), REST APIs, Webpack, Vite, Git (GitHub / GitLab), npm / yarn
+          </li>
+          <li>
+            <strong>UI & Performance:</strong> SCSS, BEM, Framer Motion, CSS & SVG animations, accessibility, optimization for rendering and load speed
+          </li>
+          <li>
+            <strong>Additional:</strong> RegExp data parsing, XBRL data visualization, documentation & UI library refactoring, basic testing (Jest), MongoDB basics
+          </li>
+        </ul>
+
+      </section>
+
+      <section className={`${styles.section} ${styles.contacts}`}>
+        <h2 className={styles.subtitle}>Contacts</h2>
+
+        <ul className={styles.contactsList}>
+          <li>
+            <strong>Email:</strong>{" "}
+            <a href="mailto:egorarkharov@gmail.com">
+              egorarkharov@gmail.com
+            </a>
+          </li>
+          <li>
+            <strong>GitHub:</strong>{" "}
+            <a
+              href="https://github.com/egorarkharov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/egorarkharov
+            </a>
+          </li>
+          <li>
+            <strong>Telegram:</strong>{" "}
+            <a
+              href="https://t.me/egorarkharov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @egorarkharov
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
   );
 }
 

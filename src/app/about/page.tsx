@@ -22,7 +22,6 @@ const AboutPage = () => {
     { src: "/images/grid/grid-44.jpg", caption: "Grid 4x4" },
   ];
 
-
   const swiperRef = useRef<SwiperType | null>(null);
   const [active, setActive] = useState(0);
 
@@ -33,7 +32,7 @@ const AboutPage = () => {
           <h1 className={styles.title}>About This Project</h1>
 
           <p className={styles.lead}>
-            <strong>Travel Tracker</strong> is&nbsp;a&nbsp;portfolio project built like a&nbsp;real product. It&nbsp;uses <em>Next.js 14, React&nbsp;18, TypeScript, Redux Toolkit, Firebase, SCSS Modules and Framer Motion</em>. The goal was to&nbsp;demonstrate not only technical skills but also the ability to&nbsp;design architecture, invent solutions, and polish&nbsp;UX details.
+            <strong>Travel Tracker</strong> is&nbsp;a&nbsp;portfolio project built like a&nbsp;real product. It&nbsp;uses <em>Next.js 15, React&nbsp;18, TypeScript, Redux Toolkit, Firebase, SCSS Modules and Framer Motion</em>. The goal was to&nbsp;demonstrate not only technical skills but also the ability to&nbsp;design architecture, invent solutions, and polish&nbsp;UX details.
           </p>
         </div>
       </section>
@@ -82,7 +81,7 @@ const AboutPage = () => {
           <h2 className={styles.subtitle}>Challenges & Solutions</h2>
           <div className={styles.challengesList}>
             <div className={styles.challengesItem}>
-              <h3 className={styles.challengeTitle}>Complex Card Grid</h3>
+              <h3 className={styles.challengeTitle}>Card Grid</h3>
 
               <div className={styles.challengeMedia}>
                 <Swiper
