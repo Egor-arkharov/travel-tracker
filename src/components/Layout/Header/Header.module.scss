@@ -111,6 +111,10 @@
 	background: none;
 	box-shadow: none;
 
+	transition: color, background-color, border-color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+
 	&.isFixed {
 		--btn-color: black;
 		--btn-bg: transparent;

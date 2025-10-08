@@ -46,8 +46,7 @@
   border-radius: 20px;
 
   color: var(--purple-dark);
-  background: var(--background-light);
-  border: 1px solid var(--background-dark);
+  border: 1px solid var(--purple-soft);
 }
 
 @include media-max(md) {

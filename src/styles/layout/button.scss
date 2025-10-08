@@ -14,19 +14,17 @@
 	text-decoration: none;
 
 	border-radius: 12px;
-	border: 5px solid transparent;
 	cursor: pointer;
 	outline: none;
 
-	transition:
-		scale 0.2s ease,
-		color 0.2s ease,
-		background-color 0.2s ease,
-		border 0.2s ease;
+	transition: color, background-color, border-color, scale;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
 
 	color: var(--clr);
 	background-color: var(--bg);
-	border: 5px solid var(--brdr);
+	border: 5px solid;
+	border-color: var(--brdr);
 
 	@include hover {
 		color: var(--hover-clr);
@@ -84,22 +82,22 @@
 }
 
 .button--secondary {
-	--clr: var(--color-green);
+	--clr: var(--green-dark);
 	--bg: var(--background);
-	--brdr: var(--color-green);
+	--brdr: var(--green-dark);
 
 	--hover-clr: var(--background);
-	--hover-bg: var(--color-green);
-	--hover-brdr: var(--color-green);
+	--hover-bg: var(--green-dark);
+	--hover-brdr: var(--green-dark);
 
 	--focus-clr: var(--background);
-	--focus-bg: var(--color-green);
-	--focus-brdr: var(--color-green);
+	--focus-bg: var(--green-dark);
+	--focus-brdr: var(--green-dark);
 	--focus-outline: var(--background);
 
 	--active-clr: var(--background);
-	--active-bg: var(--color-green);
-	--active-brdr: var(--color-green);
+	--active-bg: var(--green-dark);
+	--active-brdr: var(--green-dark);
 }
 
 .button--triary {
@@ -122,20 +120,20 @@
 }
 
 .button--danger {
-	--clr: var(--color-red);
+	--clr: var(--red-soft);
 	--bg: var(--background);
-	--brdr: var(--color-red);
+	--brdr: var(--red-soft);
 
 	--hover-clr: var(--background);
-	--hover-bg: var(--color-red);
-	--hover-brdr: var(--color-red);
+	--hover-bg: var(--red-soft);
+	--hover-brdr: var(--red-soft);
 
 	--focus-clr: var(--background);
-	--focus-bg: var(--color-red);
-	--focus-brdr: var(--color-red);
+	--focus-bg: var(--red-soft);
+	--focus-brdr: var(--red-soft);
 	--focus-outline: var(--foreground);
 
 	--active-clr: var(--background);
-	--active-bg: var(--color-red);
-	--active-brdr: var(--color-red);
+	--active-bg: var(--red-soft);
+	--active-brdr: var(--red-soft);
 }

@@ -1,15 +1,12 @@
 @use "@/styles/global" as *;
 
 .header {
-	/* --- General --- */
-	--decor-border-left-w: 4px;
 	/* Ширина левой линии и отступ нижней */
+	--decor-border-left-w: 4px;
 	--decor-border-top-h: 10px;
-	/* Высота верхней линии */
-	--decor-bg-color: #000000;
-	/* Цвет внешней рамки clip-path */
-	--decor-top-visible-line-width: 10%;
+
 	/* Ширина верхней линии при раскрытии */
+	--decor-top-visible-line-width: 10%;
 
 	/* --- Reveal Animation --- */
 	--top-duration: 0.3s;
@@ -17,7 +14,6 @@
 
 	--bottom-icon-duration: 1s;
 	--bottom-icon-delay: calc(var(--top-duration) + var(--left-duration));
-
 
 	position: relative;
 	display: flex;
@@ -48,7 +44,6 @@
 		top: 0;
 		left: 0;
 
-		// background-color: var(--decor-bg-color);
 		background: linear-gradient(90deg, #f78c6b, #ef476f, #118ab2, #83d483);
 
 		/* Generated from Figma */

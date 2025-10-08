@@ -64,11 +64,11 @@
 }
 
 .triggerView {
-  --trigger-clr: var(--color-red);
+  --trigger-clr: var(--red-soft);
 }
 
 .triggerMap {
-  --trigger-clr: var(--color-green);
+  --trigger-clr: var(--green-dark);
 }
 
 @include media-max(xs) {

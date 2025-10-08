@@ -1,20 +1,15 @@
+@use "@/styles/global" as *;
+
 .empty {
   text-align: center;
   padding: 2rem;
 }
 
 .message {
-  margin-top: 0.5rem;
-  color: #666;
   font-size: 0.95rem;
+  margin-block: 0.5rem 8px;
 }
 
-.addButton {
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
+.button {
+  @include link;
 }

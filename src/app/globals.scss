@@ -4,18 +4,14 @@
 @use "@/styles/tokens/fonts" as *;
 
 :root {
+  @include tokens-colors;
+  @include tokens-fonts;
+
   --font-body: 'Nunito', sans-serif;
   --font-heading: 'Readex Pro', sans-serif;
 
-  --background: #ffffff;
-  --foreground: #171717;
-
   --layout-width: 1500px;
   --layout-padding: 4vw;
-
-
-  @include tokens-colors;
-  @include tokens-fonts;
 
   --header-h: 60px;
 

@@ -116,10 +116,6 @@
 		cursor: pointer;
 
 		z-index: 2;
-
-		&:hover {
-			color: #333;
-		}
 	}
 }
 
@@ -135,7 +131,7 @@
 
 .errorMessage {
 	position: absolute;
-	color: #e00;
+	color: var(--red-dark);
 	top: 105%;
 }
 
@@ -180,7 +176,7 @@
 			width: 100%;
 			appearance: none;
 			height: 6px;
-			background: #eee;
+			background: var(--grey-light);
 			border-radius: 4px;
 			outline: none;
 
@@ -287,7 +283,7 @@
 }
 
 .inputError {
-	outline: 1px solid red;
+	outline: 1px solid var(--red-dark);
 	animation: shake 0.25s ease;
 }
 

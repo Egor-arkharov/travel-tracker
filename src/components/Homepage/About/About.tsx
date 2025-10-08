@@ -63,7 +63,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.5 }}
         >
           <MImage
-            src="/images/img.jpg"
+            src="/images/homepage/about.jpg"
             alt="Map illustration"
             fill
             className={styles.image}

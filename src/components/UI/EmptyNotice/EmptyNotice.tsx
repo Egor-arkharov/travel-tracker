@@ -12,7 +12,9 @@ interface EmptyNoticeProps {
 const EmptyNotice = ({ title, message, buttonHref }: EmptyNoticeProps) => (
   <div className={styles.empty}>
     <p>{title}</p>
+    
     {message && <p className={styles.message}>{message}</p>}
+
     <Link href={buttonHref} className={styles.button}>
       Add Trip
     </Link>

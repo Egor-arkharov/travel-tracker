@@ -11,7 +11,6 @@
 
   &.active {
     font-weight: bold;
-    background: #eaeaea;
   }
 
   svg {
@@ -52,7 +51,6 @@
   }
 }
 
-/* Цвета по желанию */
 .purple.active {
   color: #7c3aed;
   background: #f3e8ff;
@@ -60,7 +58,7 @@
 
 .green.active {
   color: #16a34a;
-  background: #dcfce7;
+  background: var(--green-soft);
 }
 
 .orange.active {
