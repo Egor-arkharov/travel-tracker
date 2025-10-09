@@ -47,13 +47,13 @@ export function buildStatsData(stats: TripStatsResult) {
     },
     {
       icon: TimeIcon,
-      color: styles.iconGreen,
+      color: styles.iconYellow,
       label: "Total travel time",
       value: `${totalDays} days`,
     },
     {
       icon: RatingIcon,
-      color: styles.iconGreen,
+      color: styles.iconYellow,
       label: "Average rating",
       value: avgRating.toFixed(1),
     },
@@ -83,13 +83,13 @@ export function buildStatsData(stats: TripStatsResult) {
     },
     {
       icon: LongIcon,
-      color: styles.iconYellow,
+      color: styles.iconOrange,
       label: "Longest",
       value: `${longestTrip.location.city} — ${pluralizeDays(longestTrip.length)}`,
     },
     {
       icon: ShortIcon,
-      color: styles.iconYellow,
+      color: styles.iconOrange,
       label: "Shortest",
       value: `${shortestTrip.location.city} — ${pluralizeDays(shortestTrip.length)}`,
     },

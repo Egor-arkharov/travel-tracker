@@ -21,10 +21,9 @@
 
 	min-height: 110px;
 
+	margin-block: 100px 50px;
 	padding-block: 10px;
 	padding-inline-start: 30px;
-
-	margin-block: 50px;
 
 	@include media-max(sm) {
 		padding-inline-start: 16px;

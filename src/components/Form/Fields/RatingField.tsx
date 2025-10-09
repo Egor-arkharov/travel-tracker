@@ -58,7 +58,7 @@ const RatingField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = f
                 name="star"
                 width={32}
                 height={32}
-                className={isFilled ? "icon--filled" : "icon--outlined"}
+                className={isFilled ? styles['star--filled'] : styles['star--outlined']}
               />
             </button>
           );

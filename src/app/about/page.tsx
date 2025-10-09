@@ -46,7 +46,7 @@ const AboutPage = () => {
           <li className={styles.featureCard}>
             <h3>Flexible Data Flow</h3>
             <p>
-              Trips work in&nbsp;three modes&nbsp;&mdash; demo, localStorage (no&nbsp;login), and Firebase (with login). All three share one logic layer, so&nbsp;switching between them doesn&rsquo;t break data or&nbsp;behavior. This unified setup keeps the codebase consistent and easy to&nbsp;maintain.
+              Data work in&nbsp;three modes&nbsp;&mdash; demo, localStorage (no&nbsp;login), and Firebase (with login). All three share one logic layer, so&nbsp;switching between them doesn&rsquo;t break data or&nbsp;behavior. This unified setup keeps the codebase consistent and easy to&nbsp;maintain.
             </p>
           </li>
           <li className={styles.featureCard}>
@@ -166,7 +166,7 @@ const AboutPage = () => {
               />
             </div>
             <p className={styles.challengeText}>
-              The form turned out to&nbsp;be&nbsp;one of&nbsp;the hardest parts. Typical libraries like react-hook-form didn&rsquo;t fit my&nbsp;setup&nbsp;&mdash; I&nbsp;needed Google Place Autocomplete, custom date ranges, rating stars, sliders, file uploads, and full edit support. Each field had to&nbsp;be&nbsp;independent but still communicate as&nbsp;part of&nbsp;one system. So&nbsp;I&nbsp;built a&nbsp;manual validation and state flow: every field knows when it&rsquo;s valid, when it&rsquo;s saved, and when it&nbsp;needs attention. You can create, edit, or&nbsp;delete a&nbsp;trip, reset the form, and everything stays perfectly in&nbsp;sync. That independence with coordination was the key challenge&nbsp;&mdash; and the most rewarding to&nbsp;solve.
+              The form turned out to&nbsp;be&nbsp;one of&nbsp;the hardest parts. Typical libraries like react-hook-form didn&rsquo;t fit my&nbsp;setup&nbsp;&mdash; I&nbsp;needed Google Place Autocomplete, custom date ranges, file uploads, and full edit support. Each field had to&nbsp;be&nbsp;independent but still communicate as&nbsp;part of&nbsp;one system. So&nbsp;I&nbsp;built a&nbsp;manual validation and state flow: every field knows when it&rsquo;s valid, when it&rsquo;s saved, and when it&nbsp;needs attention. You can create, edit, or&nbsp;delete a&nbsp;trip, reset the form, and everything stays perfectly in&nbsp;sync. That independence with coordination was the key challenge&nbsp;&mdash; and the most rewarding to&nbsp;solve.
             </p>
           </div>
         </div>

@@ -99,7 +99,7 @@
 	--anim-dur: 0.2s;
 
 	--btn-color: white;
-	--btn-bg: #{rgba(#8592a3, 0.5)};
+	--btn-bg: rgb(from var(--grey-dark) r g b / 0.5);
 	--btn-border: transparent;
 
 	position: relative;
@@ -111,9 +111,9 @@
 	background: none;
 	box-shadow: none;
 
-	transition: color, background-color, border-color;
-	transition-duration: 0.2s;
-	transition-timing-function: ease;
+	// transition: color, background-color, border-color;
+	// transition-duration: 0.2s;
+	// transition-timing-function: ease;
 
 	&.isFixed {
 		--btn-color: black;
@@ -267,7 +267,7 @@
 	padding-inline: 10px var(--icon-size);
 
 	color: white;
-	background: var(--grey-dark);
+	background: var(--grey-deep);
 
 	z-index: -1;
 	pointer-events: none;

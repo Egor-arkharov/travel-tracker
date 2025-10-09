@@ -18,7 +18,7 @@
   /* Fonts */
   --input-font-size: 14px;
   --input-color: black;
-  --input-focus-color: var(--purple-dark);
+  --input-focus-color: var(--indigo-dark);
 
   --gmpx-font-size-base: var(--input-font-size);
   --gmpx-color-on-surface: var(--input-color);
@@ -107,16 +107,6 @@ button {
     opacity: 0.5 !important;
     pointer-events: none !important;
   }
-}
-
-.icon--filled {
-  color: gold;
-  fill: gold;
-}
-
-.icon--outlined {
-  color: #ccc;
-  fill: #ccc;
 }
 
 .react-datepicker-wrapper {

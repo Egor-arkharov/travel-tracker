@@ -33,17 +33,16 @@
 }
 
 .link {
-	font-size: var(--font-16);
-  text-decoration: none;
+  @include link;
 
+  font-size: var(--font-16);
   color: black;
 
   @include hover {
     color: var(--blue-dark);
   }
 
-	&:active {
-		color: var(--blue-dark);
-	}
+  &:active {
+    color: var(--blue-dark);
+  }
 }
-

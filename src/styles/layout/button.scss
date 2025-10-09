@@ -102,21 +102,21 @@
 
 .button--triary {
 	--clr: var(--background);
-	--bg: var(--purple-light);
-	--brdr: var(--purple-light);
+	--bg: var(--indigo-light);
+	--brdr: var(--indigo-light);
 
 	--hover-clr: var(--background);
-	--hover-bg: var(--purple-dark);
-	--hover-brdr: var(--purple-dark);
+	--hover-bg: var(--indigo-dark);
+	--hover-brdr: var(--indigo-dark);
 
 	--focus-clr: var(--background);
-	--focus-bg: var(--purple-dark);
-	--focus-brdr: var(--purple-dark);
+	--focus-bg: var(--indigo-dark);
+	--focus-brdr: var(--indigo-dark);
 	--focus-outline: var(--foreground);
 
 	--active-clr: var(--background);
-	--active-bg: var(--purple-dark);
-	--active-brdr: var(--purple-dark);
+	--active-bg: var(--indigo-dark);
+	--active-brdr: var(--indigo-dark);
 }
 
 .button--danger {

@@ -4,7 +4,7 @@
   align-items: center;
   padding: 10px;
   border-radius: 10px;
-  background: #f4f4f4;
+  background: var(--grey-light);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -52,21 +52,21 @@
 }
 
 .purple.active {
-  color: #7c3aed;
-  background: #f3e8ff;
+  color: var(--purple-light);
+  background: var(--purple-soft);
 }
 
 .green.active {
-  color: #16a34a;
+  color: var(--green-light);
   background: var(--green-soft);
 }
 
 .orange.active {
-  color: #ea580c;
-  background: #ffedd5;
+  color: var(--orange-light);
+  background: var(--orange-soft);
 }
 
 .blue.active {
-  color: #0284c7;
-  background: #e0f2fe;
+  color: var(--sky-light);
+  background: var(--sky-soft);
 }

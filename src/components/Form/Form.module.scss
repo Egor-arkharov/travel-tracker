@@ -10,7 +10,7 @@
 	font-family: inherit;
 	font-size: inherit;
 
-	border: 1px solid #80868b;
+	border: 1px solid var(--grey-dark);
 	border-radius: 4px;
 	color: var(--input-color);
 
@@ -45,7 +45,7 @@
 .label {
 	font-size: 26px;
 	font-weight: bold;
-	color: var(--purple-dark);
+	color: var(--indigo-dark);
 }
 
 .fieldBody {
@@ -74,7 +74,7 @@
 
 		box-sizing: border-box;
 
-		border: 1px solid #80868b;
+		border: 1px solid var(--grey-dark);
 		background-color: white;
 		z-index: 1;
 	}
@@ -315,6 +315,18 @@
 
 	100% {
 		transform: translateX(0);
+	}
+}
+
+.star {
+	&--filled {
+		color: gold;
+		fill: gold;
+	}
+
+	&--outlined {
+		color: lightgray;
+		fill: lightgray;
 	}
 }
 

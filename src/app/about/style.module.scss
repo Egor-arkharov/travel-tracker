@@ -49,7 +49,7 @@
 
   em {
     font-style: normal;
-    color: var(--purple-dark);
+    color: var(--indigo-dark);
   }
 }
 
@@ -188,13 +188,12 @@
 
 .sliderCaption {
   font-size: 0.95em;
-  color: var(--grey-dark);
+  color: var(--grey-deep);
 }
 
 /* ---- Summary ---- */
 
 .summary {
-  border-top: 1px solid #e6e9f2;
   padding-block: clamp(2rem, 5vw, 3rem);
   text-align: center;
 

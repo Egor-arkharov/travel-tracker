@@ -1,5 +1,6 @@
 // Travels.module.scss
-@use "@/styles/layout/travel-grid-blocks" as *;
+// @use "@/styles/layout/travel-grid-blocks" as *;
+@use "./TravelsGrid.module.scss" as *;
 @use "@/styles/global" as *;
 
 .section {
