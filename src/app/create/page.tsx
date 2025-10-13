@@ -1,7 +1,6 @@
 "use client";
 
 import Hero from "@/components/Hero/Hero";
-import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
 import dynamic from "next/dynamic";
 
 const Form = dynamic(() => import("@/components/Form/Form"), { ssr: false });
@@ -15,7 +14,6 @@ const CreatePage = () => {
 				image="/images/hero/hero-3.jpg"
         backgroundPosition="center 100%" 
       />
-      <DemoNotice />
       <Form />
     </>
   );

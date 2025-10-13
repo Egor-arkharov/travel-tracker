@@ -25,7 +25,7 @@
 	padding-block: 10px;
 	padding-inline-start: 30px;
 
-	@include media-max(sm) {
+	@include media-max(md) {
 		padding-inline-start: 16px;
 	}
 }
@@ -173,5 +173,15 @@
 .headerText {
 	position: relative;
 	z-index: 1;
-	width: 50%;
+	width: 60%;
+
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+
+.noticeIcon {
+	display: flex;
+	align-items: center;
 }

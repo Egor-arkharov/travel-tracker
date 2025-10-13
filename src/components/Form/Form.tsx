@@ -60,7 +60,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
 
   return (
     <>
-      <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" />
+      <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" showDemoNotice/>
       <APILoader className={styles.api} apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
 
       <form className={styles.form} onSubmit={handleSubmit}>

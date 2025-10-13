@@ -74,12 +74,7 @@ const TravelModal = ({
           style={{ willChange: "transform, opacity" }}
         >
           <TravelImage travel={travel} layoutId={imageLayoutId} priority />
-          <motion.div
-            className={styles.modalInfo}
-            transition={{ duration: 0.18 }}
-          >
-            <TravelInfo travel={travel} mode="modal" onDelete={onDelete} />
-          </motion.div>
+          <TravelInfo travel={travel} mode="modal" onDelete={onDelete} />
         </motion.div>
 
         <motion.button

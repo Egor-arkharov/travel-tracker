@@ -15,15 +15,6 @@
 
   --header-h: 60px;
 
-  /* Fonts */
-  --input-font-size: 14px;
-  --input-color: black;
-  --input-focus-color: var(--indigo-dark);
-
-  --gmpx-font-size-base: var(--input-font-size);
-  --gmpx-color-on-surface: var(--input-color);
-  --gmpx-color-primary: var(--input-focus-color);
-
   @include media-max(lg) {
     --layout-padding: 1rem;
   }
@@ -107,8 +98,4 @@ button {
     opacity: 0.5 !important;
     pointer-events: none !important;
   }
-}
-
-.react-datepicker-wrapper {
-  width: 100%;
 }

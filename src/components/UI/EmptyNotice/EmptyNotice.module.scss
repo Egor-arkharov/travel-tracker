@@ -1,13 +1,21 @@
 @use "@/styles/global" as *;
 
 .empty {
-  text-align: center;
-  padding: 2rem;
-}
+  display: block;
+  margin-bottom: 30px;
+  padding: 16px 20px;
 
-.message {
-  font-size: 0.95rem;
-  margin-block: 0.5rem 8px;
+  border-radius: 12px;
+
+  color: black;
+  background-color: var(--sky-soft);
+
+  text-align: center;
+  text-wrap: balance;
+
+  p {
+    margin-bottom: 8px;
+  }
 }
 
 .button {

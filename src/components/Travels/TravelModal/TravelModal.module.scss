@@ -1,4 +1,5 @@
 // Travels/TravelModal/TravelModal.module.scss
+@use "@/styles/global" as *;
 
 .overlay {
   position: fixed;
@@ -21,18 +22,20 @@
   height: 80svh;
 }
 
-
 .modalInner {
   width: 100%;
   height: 100%;
 
   display: flex;
-  gap: 1vw;
 
   border-radius: 12px;
   overflow: hidden;
 
   background-color: white;
+
+  @include media-max(md) {
+    flex-direction: column;
+  }
 }
 
 .modalInner.deleting {
@@ -52,16 +55,24 @@
   }
 }
 
-.modalInfo {
-  flex-grow: 1;
-}
-
 .close {
   position: absolute;
   top: 8px;
   right: 12px;
   font-size: 24px;
+  line-height: 1;
   background: none;
   border: none;
   cursor: pointer;
+
+  @include media-max(md) {
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background-color: var(--background);
+  }
 }

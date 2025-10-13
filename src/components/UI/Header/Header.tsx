@@ -3,6 +3,8 @@
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Header.module.scss";
+import DemoTooltip from "@/components/UI/DemoTooltip/DemoTooltip";
+
 import { 
   PlaneIcon, 
   TrainIcon, 
@@ -12,7 +14,7 @@ import {
   BikeIcon,
   RocketIcon,
   RopeWayIcon,
-  YachtIcon
+  YachtIcon,
 } from "@/components/icons";
 
 export type IconKey =
@@ -42,9 +44,10 @@ const ICONS_MAP: Record<IconKey, React.ElementType> = {
 interface HeaderProps {
   title: string;
   icon: keyof typeof ICONS_MAP;
+  showDemoNotice?: boolean;
 }
 
-const Header = ({ title, icon }: HeaderProps) => {
+const Header = ({ title, icon, showDemoNotice = false }: HeaderProps) => {
   const ref = useRef<HTMLHeadingElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20% 0px -20% 0px" });
 
@@ -63,7 +66,14 @@ const Header = ({ title, icon }: HeaderProps) => {
       <span className={styles.headerIcon}>
         {IconComponent && <IconComponent width={50} height={50} />}
       </span>
-      <span className={styles.headerText}>{title}</span>
+      <span className={styles.headerText}>
+        {title}
+        {showDemoNotice && (
+          <span className={styles.noticeIcon}>
+            <DemoTooltip />
+          </span>
+        )}
+      </span>
     </h2>
   );
 };

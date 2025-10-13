@@ -1,9 +1,6 @@
-// app/stats/page.tsx
-
 "use client";
 
 import Hero from "@/components/Hero/Hero";
-import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
 import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
 import Header from "@/components/UI/Header/Header";
 import { useAppSelector } from "@/store/hooks";
@@ -12,11 +9,9 @@ import { buildStatsData } from "./statsData";
 import styles from "./style.module.scss";
 
 const StatsPage = () => {
-  const user = useAppSelector((state) => state.auth.user);
   const trips = useAppSelector((state) => state.trips.user);
   const mockTrips = useAppSelector((state) => state.trips.mock);
 
-  const isDemo = !user;
   const isEmpty = trips.length < 2;
 
   const renderStats = (title: string, dataSource: typeof trips) => {
@@ -25,12 +20,18 @@ const StatsPage = () => {
 
     return (
       <section className={styles.stats}>
-        <Header title={title} icon={"helicopter"} />
+        <Header title={title} icon="helicopter" showDemoNotice />
         <ul className={styles.statsList}>
           {statsData.map(({ icon: Icon, color, label, value }, index) => (
             <li key={index}>
-              <Icon className={`${styles.icon} ${color}`} width={32} height={32} />
-              <span>{label}: <strong>{value}</strong></span>
+              <Icon
+                className={`${styles.icon} ${color}`}
+                width={32}
+                height={32}
+              />
+              <span>
+                {label}: <strong>{value}</strong>
+              </span>
             </li>
           ))}
         </ul>
@@ -41,23 +42,21 @@ const StatsPage = () => {
   return (
     <>
       <Hero
-        title={`Welcome ${user?.displayName || "Traveler"}`}
+        title="Welcome Traveler"
         subtitle="View your stats, trips, and continue exploring the world."
         image="/images/hero/hero-4.jpg"
         backgroundPosition="center 30%"
       />
 
       <section className={styles.stats}>
-        {isDemo && <DemoNotice />}
-
         {isEmpty ? (
           <>
             <EmptyNotice
-              title="Not enough trips to show statistics"
-              message="Here's how your stats might look based on example trips."
-              buttonHref="/create"
+              title="Not enough trips to&nbsp;show statistics."
+              message="Here&rsquo;s how your stats might look based on&nbsp;example trips."
             />
-            {mockTrips.length >= 2 && renderStats("Example Stats", mockTrips)}
+            {mockTrips.length >= 2 &&
+              renderStats("Example Stats", mockTrips)}
           </>
         ) : (
           renderStats("Your Travel Stats", trips)

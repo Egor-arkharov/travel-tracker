@@ -2,7 +2,6 @@
 
 import Hero from "@/components/Hero/Hero";
 import styles from "./style.module.scss";
-import DemoNotice from "@/components/UI/DemoNotice/DemoNotice";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import { useAppSelector } from "@/store/hooks";
 import { Suspense } from "react";
@@ -20,13 +19,10 @@ const Trips = () => {
       />
 
       <section className={styles.tripsSection}>
-        <div className="container">
-          <DemoNotice />
-
+        <div>
           <Suspense fallback={<div>Loading travels...</div>}>
             <TravelsPage mode="full" source={user ? "firebase" : "local"} />
           </Suspense>
-
         </div>
       </section>
     </>

@@ -30,6 +30,7 @@ export { default as DataIcon } from "./other/data.svg";
 export { default as CloudIcon } from "./other/cloud.svg";
 export { default as ArrowPrev } from "./other/arrow-prev.svg";
 export { default as ArrowNext } from "./other/arrow-next.svg";
+export { default as NoticeIcon } from "./other/notice.svg";
 
 export { default as PlaneIcon } from "./header/airplane.svg";
 export { default as TrainIcon } from "./header/train.svg";

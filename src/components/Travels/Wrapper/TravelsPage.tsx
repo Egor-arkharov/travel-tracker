@@ -101,12 +101,12 @@ const TravelsPage = ({
 
   return (
     <section>
-      <Header title="My Travels" icon="train" />
+      <Header title="My Travels" icon="train" showDemoNotice={mode === "full"}/>
 
       {loading ? (
         <p>Loading...</p>
       ) : trips.length === 0 ? (
-        <EmptyNotice title="No trips yet. Start creating your adventures!" buttonHref="/create" />
+        <EmptyNotice title="No trips yet." message="Start creating your adventures!" />
       ) : (
         <>
           {mode === "full" && (
