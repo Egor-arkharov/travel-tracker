@@ -26,7 +26,7 @@
   $min: map-get($breakpoints, $minKey);
   $max: map-get($breakpoints, $maxKey);
 
-  @media (min-width: calc(#{$min} + 1px)) and (max-width: $max) {
+  @media (min-width: $min) and (max-width: $max) {
     @content;
   }
 }

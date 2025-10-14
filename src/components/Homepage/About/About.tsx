@@ -45,13 +45,15 @@ const About = () => {
           onViewportEnter={() => setBgActive(true)}
         >
           <motion.p variants={fromLeft}>
-            Whether you&rsquo;re planning your next big adventure or&nbsp;reflecting on&nbsp;journeys past, Travel Tracker helps you organize, visualize and relive your experiences like never before. Add trips, mark destinations, rate your travels, set budgets and attach memories&nbsp;&mdash; all in&nbsp;one place.
+            Travel Tracker isn&rsquo;t just a&nbsp;place to&nbsp;store your trips&nbsp;&mdash; it&rsquo;s your personal travel hub. Add destinations with a&nbsp;live map, set dates, ratings and budgets, upload photos, and keep every journey organized in&nbsp;one clean, interactive timeline.
           </motion.p>
+
           <motion.p variants={fromLeft}>
-            You can create a&nbsp;private journal just for yourself or&nbsp;share your favorite places with the world. Every trip is&nbsp;more than just a&nbsp;location on&nbsp;a&nbsp;map&nbsp;&mdash; it&rsquo;s a&nbsp;story, a&nbsp;memory, a&nbsp;feeling.
+            Whether you travel often or&nbsp;once a&nbsp;year, you can browse your past adventures, compare memories, and even see your journeys come alive through visuals and data. The more you add, the richer your story becomes.
           </motion.p>
+
           <motion.p variants={fromLeft}>
-            With a&nbsp;simple and elegant interface, Travel Tracker makes it&nbsp;easy to&nbsp;turn your scattered travel notes, photos, and plans into something meaningful. Whether it&rsquo;s your weekend city break or&nbsp;a&nbsp;months-long expedition, your journey deserves to&nbsp;be&nbsp;remembered&nbsp;&mdash; beautifully.
+            It&rsquo;s a&nbsp;calm, focused space built for people who love to&nbsp;remember where they&rsquo;ve been &mdash;&nbsp;and to&nbsp;dream about where they&rsquo;ll go&nbsp;next. Every click feels intentional, every trip looks like it&nbsp;belongs to&nbsp;you.
           </motion.p>
         </motion.div>
 
@@ -67,6 +69,8 @@ const About = () => {
             alt="Map illustration"
             fill
             className={styles.image}
+            priority
+            sizes="(max-width: 768px) 100vw, 40vw"
           />
         </motion.div>
       </div>

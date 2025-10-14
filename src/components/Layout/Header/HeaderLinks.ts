@@ -1,4 +1,4 @@
-// components/HeaderLinks.ts
+// HeaderLinks.ts
 import { UserIcon, PlaneIcon, PlusIcon, BoardIcon } from "@/components/icons";
 
 export const HeaderLinks = [

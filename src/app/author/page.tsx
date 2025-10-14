@@ -63,8 +63,6 @@ const AuthorPage = () => {
       <section className={`${styles.section} ${styles.tech}`}>
         <h2 className={styles.subtitle}>Tech Stack</h2>
 
-        {/* <p>Technologies and tools I use across both professional and personal projects:</p> */}
-
         <ul className={styles.techList}>
           <li>
             <strong>Core:</strong> Next.js (App Router), React 18, TypeScript 5, JavaScript (ES6+), Vue 3 (Composition API, Vuex)

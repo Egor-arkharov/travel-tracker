@@ -23,9 +23,7 @@ const Stats = () => {
           viewport={viewport}
         >
           <h3>Track your travel stats</h3>
-          <p>
-            Total trips, budgets, days on the road, countries visited and more — your data is automatically calculated and beautifully presented.
-          </p>
+          <p>Trips, budgets, days and countries&nbsp;&mdash; everything is&nbsp;calculated for you and displayed with clarity.</p>
         </motion.div>
 
         <motion.div

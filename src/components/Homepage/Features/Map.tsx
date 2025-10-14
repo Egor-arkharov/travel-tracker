@@ -19,8 +19,8 @@ const Map = () => {
           {...slide("left")}
           viewport={viewport}
         >
-          <h3>See your trips on the map</h3>
-          <p>Visualize every journey, country, and memory at a glance.</p>
+          <h3>See your journeys on&nbsp;the map</h3>
+          <p>Instantly view every trip, country, and memory&nbsp;&mdash; your travels visualized as&nbsp;a&nbsp;story.</p>
         </motion.div>
 
         <motion.div

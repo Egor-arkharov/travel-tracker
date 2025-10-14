@@ -6,7 +6,6 @@ import TechStack from "@/components/UI/TechStack/TechStack";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
-import "swiper/css/navigation";
 
 import {
   ArrowPrev,
@@ -127,6 +126,8 @@ const AboutPage = () => {
                 muted
                 playsInline
                 poster={`/videos/adaptive.jpg`}
+                title="Adaptive grid"
+                preload="metadata"
               />
             </div>
             <p className={styles.challengeText}>
@@ -145,6 +146,8 @@ const AboutPage = () => {
                 muted
                 playsInline
                 poster={`/videos/animation.jpg`}
+                title="Animation cards"
+                preload="metadata"
               />
             </div>
             <p className={styles.challengeText}>
@@ -163,6 +166,8 @@ const AboutPage = () => {
                 muted
                 playsInline
                 poster={`/videos/form.jpg`}
+                title="Custom Form"
+                preload="metadata"
               />
             </div>
             <p className={styles.challengeText}>
@@ -202,9 +207,9 @@ const AboutPage = () => {
             <li><strong>Hosting:</strong> <span>Firebase Hosting</span></li>
           </ul>
           <ul>
-            <li><strong>Images:</strong> <span><a href="https://unsplash.com" target="_blank">Unsplash</a></span></li>
-            <li><strong>Icons:</strong> <span><a href="https://www.svgrepo.com" target="_blank">SVG Repo</a></span></li>
-            <li><strong>Fonts:</strong> <span><a href="https://fonts.google.com" target="_blank">Google Fonts</a></span></li>
+            <li><strong>Images:</strong> <span><a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></span></li>
+            <li><strong>Icons:</strong> <span><a href="https://www.svgrepo.com" target="_blank" rel="noopener noreferrer">SVG Repo</a></span></li>
+            <li><strong>Fonts:</strong> <span><a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a></span></li>
           </ul>
         </div>
 

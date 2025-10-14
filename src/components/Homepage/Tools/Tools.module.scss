@@ -1,9 +1,5 @@
 @use "@/styles/global" as *;
 
-.section {
-  padding: 4rem 2rem;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

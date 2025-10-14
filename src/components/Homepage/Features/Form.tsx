@@ -10,7 +10,7 @@ const Form = () => {
     <section className={styles.section}>
       <motion.div
         className={styles.bgDecor}
-				data-type="form"
+        data-type="form"
         {...decor("tl")}
         viewport={viewport}
       >
@@ -23,11 +23,7 @@ const Form = () => {
           viewport={viewport}
         >
           <h3>Craft your perfect trip</h3>
-          <p>
-            Select a city with autocomplete, pick your travel dates, set a budget,
-            give it a rating, write a description and attach a photo — all in one
-            elegant form. You’re in control of every detail.
-          </p>
+          <p>Choose a&nbsp;city, set dates, budget and rating, add a&nbsp;description and photo&nbsp;&mdash; all in&nbsp;one clean, thoughtful form.</p>
         </motion.div>
 
         <motion.div

@@ -1,4 +1,4 @@
-@use "@/styles/mixins" as *;
+@use "@/styles/global" as *;
 
 .inner {
 	position: relative;
@@ -22,7 +22,7 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 
-		opacity: 0.01;
+		opacity: 0;
 
 		scale: 1.5;
 		transition: scale 1.35s ease-in-out, opacity 1.35s ease-in-out;

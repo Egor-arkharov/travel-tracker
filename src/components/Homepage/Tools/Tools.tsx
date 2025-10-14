@@ -32,7 +32,7 @@ const VIDEO_SPEED = 0.8;
 const Tools = () => {
 
   return (
-    <section className={styles.section}>
+    <section>
       <Header title="Powerful tools" icon="ship" />
 
       <div className={styles.grid}>

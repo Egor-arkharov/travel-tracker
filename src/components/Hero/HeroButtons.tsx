@@ -8,23 +8,49 @@ const HeroButtons = () => {
   const { isLoggedIn, login } = useAuth();
 
   const isCreatePage = pathname === "/create";
+  const isTripsPage = pathname === "/trips";
 
   return (
     <div className={styles.buttons}>
-      {!isCreatePage && (
-        <Link href="/create" className="button button--primary button--large">Create a trip</Link>
-      )}
-
-      {isCreatePage && (
-        <Link href="/stats" className="button button--primary button--large">My Stats</Link>
-      )}
-
-      {!isLoggedIn ? (
-        <button className="button button--secondary button--large" onClick={login}>Log in</button>
+      {/* --- PRIMARY BUTTON --- */}
+      {isCreatePage ? (
+        <Link
+          href="/trips"
+          className="button button--primary button--large"
+        >
+          My Trips
+        </Link>
       ) : (
-        !isCreatePage && (
-          <Link href="/stats" className="button button--secondary button--large">My Stats</Link>
-        )
+        <Link
+          href="/create"
+          className="button button--primary button--large"
+        >
+          Create a trip
+        </Link>
+      )}
+
+      {/* --- SECONDARY BUTTON --- */}
+      {!isLoggedIn ? (
+        <button
+          className="button button--secondary button--large"
+          onClick={login}
+        >
+          Log in
+        </button>
+      ) : isTripsPage ? (
+        <Link
+          href="/stats"
+          className="button button--secondary button--large"
+        >
+          My Stats
+        </Link>
+      ) : (
+        <Link
+          href="/trips"
+          className="button button--secondary button--large"
+        >
+          My Trips
+        </Link>
       )}
     </div>
   );

@@ -2,7 +2,9 @@
 
 .hero {
 	position: relative;
+
 	height: calc(95svh - var(--header-h));
+	min-height: 500px;
 
 	display: flex;
 	flex-direction: column;

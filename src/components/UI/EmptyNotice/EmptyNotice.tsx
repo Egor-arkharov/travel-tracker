@@ -13,7 +13,7 @@ const EmptyNotice = ({ title, message }: EmptyNoticeProps) => (
     <p>{title}</p>
     <p>{message}</p>
 
-    <Link href="/create" className={styles.button}>
+    <Link href="/create" className={styles.emptyButton}>
       Add Trip
     </Link>
   </div>

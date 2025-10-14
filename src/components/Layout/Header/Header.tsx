@@ -114,6 +114,8 @@ const Header = () => {
             <button
               className={styles.menuButton}
               onClick={() => setIsOpen((prev) => !prev)}
+              aria-haspopup="menu"
+              aria-expanded={isOpen}
             >
               {user?.photoURL && (
                 <div className={styles.menuAvatar}>
@@ -130,7 +132,7 @@ const Header = () => {
               </span>
             </button>
 
-            <div className={styles.menu}>
+            <div className={styles.menu} role="menu">
               {HeaderLinks.filter(link => link.inMenu !== false).map(({ href, label, icon: Icon, inMenu }) => (
                 <Link
                   key={href}

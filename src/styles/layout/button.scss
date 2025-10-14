@@ -13,6 +13,11 @@
 	font-family: var(--font-body);
 	text-decoration: none;
 
+	color: var(--clr);
+	background-color: var(--bg);
+	border: 5px solid;
+	border-color: var(--brdr);
+
 	border-radius: 12px;
 	cursor: pointer;
 	outline: none;
@@ -20,11 +25,6 @@
 	transition: color, background-color, border-color, scale;
 	transition-duration: 0.2s;
 	transition-timing-function: ease;
-
-	color: var(--clr);
-	background-color: var(--bg);
-	border: 5px solid;
-	border-color: var(--brdr);
 
 	@include hover {
 		color: var(--hover-clr);
@@ -39,7 +39,6 @@
 
 		outline: 1px solid var(--focus-outline);
 		outline-offset: 2px;
-		scale: 0.95;
 	}
 
 	&:active {
@@ -51,7 +50,7 @@
 
 	&:disabled,
 	&[aria-disabled="true"] {
-		opacity: 0.6;
+		opacity: 0.5;
 		pointer-events: none;
 	}
 }

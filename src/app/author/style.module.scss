@@ -1,10 +1,9 @@
-@use "@/styles/layout/elements" as *;
 @use "@/styles/global" as *;
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: clamp(70px, 8vw, 100px);
 }
 
 .section {
@@ -12,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
 
-  padding-inline: 10vw;
+  padding-inline: clamp(1rem, 10vw, 8rem);
 
   a {
     @include link;
@@ -50,8 +49,6 @@
 }
 
 .project {
-  // padding-inline: 5vw;
-
   .projectContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -68,7 +65,7 @@
     justify-content: space-between;
     gap: 16px;
 
-    font-size: var(--font-16);
+    font-size: var(--font-18);
     line-height: 1.6;
   }
 
@@ -89,22 +86,25 @@
       gap: 26px;
     }
   }
-
-  // @include media-max(xs) {
-  //   padding-inline: 10px;
-  // }
 }
 
 .techList {
   display: flex;
   flex-direction: column;
   gap: 14px;
+
+  font-size: var(--font-16);
+  line-height: 1.6;
 }
 
 .contactsList {
   display: flex;
   justify-content: center;
   gap: 50px;
+
+  li {
+    white-space: nowrap;
+  }
 
   @include media-max(md) {
     flex-direction: column;

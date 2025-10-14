@@ -2,7 +2,12 @@
   height: clamp(140px, 100px + 12vw, 340px);
   overflow: hidden;
   overscroll-behavior: contain;
-  cursor: ew-resize;
+  
+  cursor: grab;
+
+  .wheel:active {
+    cursor: grabbing;
+  }
 }
 
 .wheel {
@@ -20,6 +25,7 @@
 
   transform: rotate(var(--wheel-rot));
   transition: transform .12s linear;
+  will-change: transform;
 }
 
 .slide {
@@ -68,7 +74,6 @@
 
 .iconWrapper {
   position: relative;
-  overflow: hidden;
 }
 
 .icon {

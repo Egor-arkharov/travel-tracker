@@ -5,22 +5,18 @@ import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import Tools from "@/components/Homepage/Tools/Tools";
 import Explore from "@/components/Homepage/Explore/Explore";
 
-import { Suspense } from "react";
-
 const Home = () => {
   return (
     <>
       <Hero
-        title="Track & Relive Your Journeys"
-        subtitle="Capture your travels, map your routes, and keep your memories in one place."
-				image="/images/hero/hero-1.jpg"
-        backgroundPosition="center 30%" 
+        title="Track &amp;&nbsp;Relive Your Journeys"
+        subtitle="Capture your travels, map your routes, and keep your memories in&nbsp;one place."
+        image="/images/hero/hero-1.jpg"
+        backgroundPosition="center 30%"
       />
       <About />
       <Features />
-      <Suspense fallback={<div>Loading travels...</div>}>
-      		<TravelsPage mode={"compact"} source="mock" />
-      </Suspense>
+      <TravelsPage mode={"compact"} source="mock" />
       <Tools />
       <Explore />
     </>

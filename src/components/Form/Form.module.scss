@@ -73,7 +73,6 @@
 	position: relative;
 	width: 100%;
 	border-radius: 4px;
-	z-index: 0;
 
 	&::before,
 	&::after {
@@ -129,6 +128,10 @@
 		cursor: pointer;
 
 		z-index: 2;
+	}
+
+	@include media-max(md) {
+		z-index: 0;
 	}
 }
 
