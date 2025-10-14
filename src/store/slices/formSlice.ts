@@ -35,12 +35,14 @@ const getInitialState = (): formState => {
   try {
     const saved = localStorage.getItem("localForm");
     if (saved) {
+      const parsed = JSON.parse(saved);
+
       return {
         ...defaultState,
-        ...JSON.parse(saved),
+        ...parsed,
         media: {
           ...defaultState.media,
-          ...JSON.parse(saved).media,
+          ...parsed.media,
           imageFile: null,
         },
       };
@@ -56,7 +58,10 @@ const formSlice = createSlice({
   name: "form",
   initialState: getInitialState(),
   reducers: {
-    updateField: (state, action: PayloadAction<{ path: string; value: unknown }>) => {
+    updateField: (
+      state,
+      action: PayloadAction<{ path: string; value: unknown }>
+    ) => {
       const { path, value } = action.payload;
       const keys = path.split(".");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -87,7 +92,7 @@ const formSlice = createSlice({
         start: trip.dates.start,
         end: trip.dates.end,
       };
-      
+
       state.rating = trip.rating;
       state.budget = trip.budget;
       state.description = trip.description ?? "";
@@ -95,7 +100,7 @@ const formSlice = createSlice({
       state.media.imagePath = trip.media.imagePath || "";
       state.media.imageFile = null;
       state.meta.isMock = trip.meta?.isMock ?? false;
-    }
+    },
   },
 });
 

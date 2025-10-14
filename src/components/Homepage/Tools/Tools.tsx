@@ -6,23 +6,23 @@ import Header from "@/components/UI/Header/Header";
 
 const toolItems = [
   {
-    title: "Search by name",
-    description: "Find your trip in seconds using built-in search.",
+    title: "Search by&nbsp;name",
+    description: "Find your trip in&nbsp;seconds using built-in search.",
     video: "search",
   },
   {
-    title: "Sort by country or budget",
-    description: "Quickly organize your trips by different parameters.",
+    title: "Sort by&nbsp;country or&nbsp;budget",
+    description: "Quickly organize your trips by&nbsp;different parameters.",
     video: "sort",
   },
   {
     title: "Switch between views",
-    description: "Toggle between grid and list layouts to match your style.",
+    description: "Toggle between grid and list layouts to&nbsp;match your style.",
     video: "view",
   },
   {
-    title: "Explore on map",
-    description: "See all your trips on an interactive world map.",
+    title: "Explore on&nbsp;map",
+    description: "See all your trips on&nbsp;an&nbsp;interactive world map.",
     video: "map",
   },
 ];
@@ -67,8 +67,8 @@ const Tools = () => {
             </div>
 
             <div className={styles.content}>
-              <h3>{tool.title}</h3>
-              <p>{tool.description}</p>
+              <h3 dangerouslySetInnerHTML={{ __html: tool.title }} />
+              <p dangerouslySetInnerHTML={{ __html: tool.description }} />
             </div>
           </motion.div>
         ))}

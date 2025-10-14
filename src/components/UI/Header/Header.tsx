@@ -28,7 +28,6 @@ export type IconKey =
   | "ropeway"
   | "yacht";
 
-// 2. Карта иконок
 const ICONS_MAP: Record<IconKey, React.ElementType> = {
   plane: PlaneIcon,
   train: TrainIcon,

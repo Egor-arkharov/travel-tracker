@@ -12,7 +12,7 @@ const DescriptionField = ({ disabled = false }: { disabled?: boolean }) => {
     <fieldset className={styles.fieldset}>
       <label className={styles.label} htmlFor="description">Description</label>
 
-      <div className={styles.fieldBody}>
+      <div className={`${styles.fieldBody} ${styles.description}`}>
         <textarea
           id="description"
           rows={4}

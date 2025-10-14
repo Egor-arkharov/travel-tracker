@@ -10,19 +10,19 @@ import { useEffect, useState } from "react";
 const modes = [
   {
     title: "Browse without signup",
-    text: "Explore demo trips and see how it works. No account needed.",
-    badge: "No signup",
+    text: "Explore demo trips and see how it&nbsp;works. No&nbsp;account needed.",
+    badge: "No&nbsp;signup",
     icon: LoupeIcon,
   },
   {
     title: "Add trips locally",
-    text: "Create trips and keep data on your device. Fast and private.",
+    text: "Create trips and keep data on&nbsp;your device. Fast and private.",
     badge: "Local only",
     icon: DataIcon,
   },
   {
-    title: "Log in for sync",
-    text: "Save to the cloud, access from any device, unlock all features.",
+    title: "Log in&nbsp;for sync",
+    text: "Save to&nbsp;the cloud, access from any device, unlock all features.",
     badge: "Cloud sync",
     icon: CloudIcon,
   },
@@ -42,13 +42,13 @@ const UsageModes = () => {
     <section className={styles.section}>
       <Header title="Your way" icon="rocket" />
 
-      <div className={styles.modes}>
+      <div className={styles.cardList}>
         {modes.map((m, index) => {
           const Icon = m.icon;
           return (
             <motion.article
               key={m.title}
-              className={styles.modeCard}
+              className={styles.card}
               initial={isMobile ? { opacity: 0, x: 10 } : { opacity: 0, y: 20 }}
               whileInView={isMobile ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -61,9 +61,19 @@ const UsageModes = () => {
               <div className={styles.icon} aria-hidden>
                 <Icon className={styles.iconSvg} />
               </div>
-              <h3 className={styles.title}>{m.title}</h3>
-              <p className={styles.text}>{m.text}</p>
-              <p className={styles.badge}>{m.badge}</p>
+              <h3
+                className={styles.title}
+                dangerouslySetInnerHTML={{ __html: m.title }}
+              />
+              <p
+                className={styles.text}
+                dangerouslySetInnerHTML={{ __html: m.text }}
+              />
+              <p
+                className={styles.badge}
+                dangerouslySetInnerHTML={{ __html: m.badge }}
+              />
+
             </motion.article>
           );
         })}

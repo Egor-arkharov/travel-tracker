@@ -7,6 +7,7 @@ import { useAppSelector } from "@/store/hooks";
 import { getTripStats } from "@/lib/trips/stats/getTripStats";
 import { buildStatsData } from "./statsData";
 import styles from "./style.module.scss";
+import { motion } from "framer-motion";
 
 const StatsPage = () => {
   const trips = useAppSelector((state) => state.trips.user);
@@ -21,9 +22,29 @@ const StatsPage = () => {
     return (
       <section className={styles.stats}>
         <Header title={title} icon="helicopter" showDemoNotice />
-        <ul className={styles.statsList}>
+        <motion.ul
+          className={styles.statsList}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+        >
           {statsData.map(({ icon: Icon, color, label, value }, index) => (
-            <li key={index}>
+            <motion.li
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 25 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.8, ease: "easeOut" },
+                },
+              }}
+            >
               <Icon
                 className={`${styles.icon} ${color}`}
                 width={32}
@@ -32,9 +53,9 @@ const StatsPage = () => {
               <span>
                 {label}: <strong>{value}</strong>
               </span>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </section>
     );
   };

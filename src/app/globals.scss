@@ -23,7 +23,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0s !important;
     transition-duration: 0s !important;
     scroll-behavior: auto !important;
@@ -34,6 +37,10 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+
+  &.no-scroll {
+    overflow: hidden !important;
+  }
 }
 
 html {

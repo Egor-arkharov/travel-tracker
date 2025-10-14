@@ -9,22 +9,17 @@ const HeroButtons = () => {
 
   const isCreatePage = pathname === "/create";
   const isTripsPage = pathname === "/trips";
+  const isStatsPage = pathname === "/stats";
 
   return (
     <div className={styles.buttons}>
       {/* --- PRIMARY BUTTON --- */}
       {isCreatePage ? (
-        <Link
-          href="/trips"
-          className="button button--primary button--large"
-        >
+        <Link href="/trips" className="button button--primary button--large">
           My Trips
         </Link>
       ) : (
-        <Link
-          href="/create"
-          className="button button--primary button--large"
-        >
+        <Link href="/create" className="button button--primary button--large">
           Create a trip
         </Link>
       )}
@@ -38,17 +33,19 @@ const HeroButtons = () => {
           Log in
         </button>
       ) : isTripsPage ? (
-        <Link
-          href="/stats"
-          className="button button--secondary button--large"
-        >
+        <Link href="/stats" className="button button--secondary button--large">
           My Stats
         </Link>
+      ) : isCreatePage ? (
+        <Link href="/stats" className="button button--secondary button--large">
+          My Stats
+        </Link>
+      ) : isStatsPage ? (
+        <Link href="/trips" className="button button--secondary button--large">
+          My Trips
+        </Link>
       ) : (
-        <Link
-          href="/trips"
-          className="button button--secondary button--large"
-        >
+        <Link href="/trips" className="button button--secondary button--large">
           My Trips
         </Link>
       )}

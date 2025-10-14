@@ -79,7 +79,7 @@ const ImageField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = fa
             <Image
               src={previewUrl}
               alt="Your image preview"
-              layout="fill"
+              fill
               className={styles.image}
             />
           </div>

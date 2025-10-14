@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import { APILoader } from "@googlemaps/extended-component-library/react";
+import { usePathname } from "next/navigation";
+import { useAppSelector } from "@/store/hooks";
 import styles from "./Form.module.scss";
 
 import Header from "@/components/UI/Header/Header";
@@ -40,17 +42,20 @@ const Form = ({ isEditMode = false }: FormProps) => {
     handleReset,
     isReadyToSubmit,
     isFormDirty,
-    missingFields
+    missingFields,
   } = useTravelFormLogic({
     isEditMode,
     onSuccess: showPreviewForTrip,
   });
 
+  const pathname = usePathname();
+  const formState = useAppSelector((state) => state.form);
+
   useEffect(() => {
-    if (!isEditMode) {
+    if (pathname === "/create" && formState.id) {
       handleReset();
     }
-  }, [isEditMode, handleReset]);
+  }, [pathname, formState.id, handleReset]);
 
   useEffect(() => {
     if (showSuccessModal) {
@@ -60,8 +65,16 @@ const Form = ({ isEditMode = false }: FormProps) => {
 
   return (
     <>
-      <Header title={isEditMode ? "Edit trip" : "Create trip"} icon="car" showDemoNotice/>
-      <APILoader className={styles.api} apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!} language="en" />
+      <Header
+        title={isEditMode ? "Edit trip" : "Create trip"}
+        icon="car"
+        showDemoNotice
+      />
+      <APILoader
+        className={styles.api}
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!}
+        language="en"
+      />
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <CityField ref={registerRef} disabled={isSubmitting} />
@@ -76,17 +89,17 @@ const Form = ({ isEditMode = false }: FormProps) => {
           isEditMode={isEditMode}
           isReadyToSubmit={isReadyToSubmit}
           isFormDirty={isFormDirty}
-          submitError={submitError} 
+          submitError={submitError}
           onReset={handleReset}
-          missingFields={missingFields} 
+          missingFields={missingFields}
         />
       </form>
 
       {savedTrip && (
-        <Preview 
-          open={showSuccessModal} 
-          onClose={handleCloseModal} 
-          trip={savedTrip} 
+        <Preview
+          open={showSuccessModal}
+          onClose={handleCloseModal}
+          trip={savedTrip}
           isEditMode={isEditMode}
         />
       )}

@@ -3,44 +3,57 @@
   inset: 0;
   width: 100%;
   height: 100%;
-
   display: grid;
   place-items: center;
-
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   border: none;
-
   z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
 .modalContent {
   position: relative;
-
   width: 90%;
   max-width: 400px;
   padding: 30px;
-
   border-radius: 12px;
   text-align: center;
   background-color: var(--background);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .previewImage {
   width: 280px;
   height: 140px;
-
   margin-top: 10px;
   margin-inline: auto;
 
   img {
     position: relative !important;
     object-fit: cover;
+    border-radius: 6px;
   }
-}
-
-.title {
-  font-size: 50px;
-  margin-bottom: 30px;
 }
 
 .closeButton {
@@ -51,9 +64,11 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--text-color, #333);
 }
 
-.goToTripsButton {
+.link {
   display: inline-flex;
   margin-top: 20px;
+  text-decoration: none;
 }

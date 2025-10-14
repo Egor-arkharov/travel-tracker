@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Preview.module.scss";
 import { Travel } from "@/types/travel";
 
@@ -12,12 +14,49 @@ interface PreviewModalProps {
 }
 
 const Preview = ({ open, onClose, trip, isEditMode }: PreviewModalProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (open) {
+      setIsVisible(true);
+      html.classList.add("no-scroll");
+      body.classList.add("no-scroll");
+    } else {
+      setIsVisible(false);
+      html.classList.remove("no-scroll");
+      body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      html.classList.remove("no-scroll");
+      body.classList.remove("no-scroll");
+    };
+  }, [open]);
+
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   if (!open) return null;
 
   return (
-    <dialog open className={styles.modal} onClick={onClose}>
+    <dialog
+      open
+      className={`${styles.modal} ${isVisible ? styles.visible : ""}`}
+      onClick={onClose}
+    >
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>×</button>
+        <button className={styles.closeButton} onClick={onClose}>
+          ×
+        </button>
 
         <h2>{isEditMode ? "Trip Edited!" : "Trip Created!"}</h2>
 
@@ -39,9 +78,9 @@ const Preview = ({ open, onClose, trip, isEditMode }: PreviewModalProps) => {
           )}
         </div>
 
-        <a href="/trips" className={`button button--primary ${styles.goToTripsButton}`}>
-          Go to My Trips
-        </a>
+        <Link href="/trips" className={`button button--primary ${styles.link}`}>
+          My&nbsp;Trips
+        </Link>
       </div>
     </dialog>
   );
