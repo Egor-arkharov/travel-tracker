@@ -1,37 +1,64 @@
-# ✈️ Travel Tracker
+# 🌍 Travel Tracker
 
-**Travel Tracker** — это дневник путешествий, в котором можно сохранять свои поездки, отмечать места на карте, оценивать впечатления и вдохновляться маршрутами других пользователей.
+**A polished, offline-first travel diary.**  
+Add trips, view them in an adaptive grid, open a fluid card-to-modal view, edit details, and sync everything to the cloud.
 
-## 🚀 Возможности
+Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolkit**, **Firebase**, **SCSS Modules**, **Framer Motion**, and **Google Maps & Places API**.
 
-- Просмотр лучших путешествий других пользователей
-- Добавление своих поездок (локация, даты, бюджет, фото, рейтинг)
-- Адаптивная сетка с Container Queries
-- Загрузка изображений в Firebase Storage
-- Работа с Firestore и Realtime Database
-- Авторизация (в разработке)
-- Интерактивная карта с маршрутом (в разработке)
+> A portfolio project built like a real product — with clean architecture, custom motion, and seamless data flow between demo, local and cloud modes.
 
-## 🛠️ Используемые технологии
+---
 
-- [Next.js 14 App Router](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Firebase (Auth, Firestore, Storage)](https://firebase.google.com/)
-- SCSS Modules
-- CSS Container Queries
+## ✨ Highlights
 
-## 🧪 В процессе
+- **Offline-first design:** works in demo, local (no login) and cloud (Firebase) modes  
+- **Unified data flow:** one Redux layer for all storage sources  
+- **Adaptive grid:** container queries + custom grouping keep layouts balanced  
+- **Card → Modal morph:** smooth Framer Motion transition with staged overlay/text  
+- **Real-world form:** Google Places, date ranges, rating, budget, image upload, manual validation  
+- **Clean UI system:** SCSS tokens, clamp typography, container queries
 
-Проект в активной разработке. В ближайших задачах:
-- 🔐 Авторизация через Firebase
-- ➕ Страница создания путешествия
-- 📍 Интеграция карты (Google Maps или Mapbox)
-- 🔎 Фильтрация и поиск по поездкам
+---
 
-## 📦 Установка
+## 🧭 Product Overview
+
+| Route | Description |
+|-------|--------------|
+| `/` | Main grid of trips (filter, sort, search, grid/list) |
+| `/create` | Add a new trip |
+| `/edit/[id]` | Edit existing trip |
+| `/about` | Case study — how it was built |
+| `/example` | Extended showcase |
+
+**Auth:** Google Login → Firebase Realtime DB (`users/${uid}/travels`)  
+**Demo / Local:** stored in browser — no auth required  
+**Modal logic:** open via click or `?id=…`, close by **Esc / overlay / ×**
+
+---
+
+## 🧱 Tech Stack
+
+- **Framework:** Next.js 15 (App Router), React 18  
+- **Language:** TypeScript 5  
+- **State:** Redux Toolkit  
+- **Backend:** Firebase (Realtime DB + Google Auth)  
+- **UI:** SCSS Modules (tokens, mixins, clamp typography)  
+- **Motion:** Framer Motion  
+- **Maps:** Google Maps & Places API  
+- **Utils:** Swiper, Tippy.js, Datepicker  
+- **Hosting:** Firebase Hosting / Vercel
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-git clone "link"
-cd travel-tracker
+# Install dependencies
 npm install
+
+# Run development server
 npm run dev
+
+# Build production
+npm run build
+npm start
