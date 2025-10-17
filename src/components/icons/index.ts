@@ -24,6 +24,7 @@ export { default as HeartHalfIcon } from "./stats/heart-half.svg";
 export { default as HeartIcon } from "./stats/heart.svg";
 export { default as LongIcon } from "./stats/long.svg";
 export { default as ShortIcon } from "./stats/short.svg";
+export { default as TimeIcon } from "./stats/time.svg";
 
 export { default as LoupeIcon } from "./other/loupe.svg";
 export { default as DataIcon } from "./other/data.svg";
@@ -51,5 +52,3 @@ export { default as ReduxIcon } from "./stack/redux.svg";
 export { default as SCSSIcon } from "./stack/scss.svg";
 export { default as TypeScriptIcon } from "./stack/typescript.svg";
 export { default as JavaScriptIcon } from "./stack/javascript.svg";
-
-export { default as TimeIcon } from "./time.svg";

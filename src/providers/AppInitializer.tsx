@@ -5,7 +5,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useAppDispatch } from "@/store/hooks";
 import { mapFirebaseUserToUser } from "@/lib/firebase/mapFirebaseUser";
 import { login } from "@/store/slices/authSlice";
-import { setLoading, setMockTrips, setUserTrips, setLoaded } from "@/store/slices/tripsSlice";
+import {
+  setLoading,
+  setMockTrips,
+  setUserTrips,
+  setLoaded,
+} from "@/store/slices/tripsSlice";
 import { getFirebase } from "@/lib/trips/get/getFirebase";
 import { getLocal } from "@/lib/trips/get/getLocal";
 import { getMock } from "@/lib/trips/get/getMock";
@@ -22,22 +27,28 @@ const AppInitializer = ({ children }: Props) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       dispatch(setLoading(true));
 
-      const mockTrips = await getMock();
-      dispatch(setMockTrips(mockTrips));
+      try {
+        const user = firebaseUser
+          ? mapFirebaseUserToUser(firebaseUser)
+          : null;
 
-      if (firebaseUser) {
-        const user = mapFirebaseUserToUser(firebaseUser);
-        dispatch(login(user));
+        if (user) {
+          dispatch(login(user));
+        }
 
-        const firebaseTrips = await getFirebase(user);
-        dispatch(setUserTrips(firebaseTrips));
-      } else {
-        const localTrips = getLocal();
-        dispatch(setUserTrips(localTrips));
+        const [mockTrips, userTrips] = await Promise.all([
+          getMock(),
+          user ? getFirebase(user) : Promise.resolve(getLocal()),
+        ]);
+
+        dispatch(setMockTrips(mockTrips));
+        dispatch(setUserTrips(userTrips));
+      } catch (err) {
+        console.error("Ошибка при инициализации приложения: ", err);
+      } finally {
+        dispatch(setLoading(false));
+        dispatch(setLoaded(true));
       }
-
-      dispatch(setLoading(false));
-      dispatch(setLoaded(true));
     });
 
     return () => unsubscribe();
@@ -45,6 +56,5 @@ const AppInitializer = ({ children }: Props) => {
 
   return <>{children}</>;
 };
-
 
 export default AppInitializer;

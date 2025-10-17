@@ -9,8 +9,8 @@ const CreatePage = () => {
   return (
     <>
       <Hero
-        title="Start a New Journey"
-        subtitle="Fill in the details and add your next unforgettable trip"
+        title="Start a&nbsp;New Journey"
+        subtitle="Fill in&nbsp;the details and add your next unforgettable trip"
 				image="/images/hero/hero-3.jpg"
         backgroundPosition="center 100%" 
       />

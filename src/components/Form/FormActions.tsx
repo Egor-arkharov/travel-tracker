@@ -46,6 +46,7 @@ const FormActions = ({
         arrow={false}
         placement="top"
         duration={0}
+        appendTo={document.body}
         className={styles.tooltip}
       >
         <div>{child}</div>

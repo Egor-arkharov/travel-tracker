@@ -21,7 +21,7 @@ const StatsPage = () => {
 
     return (
       <section className={styles.stats}>
-        <Header title={title} icon="helicopter" showDemoNotice />
+        <Header title={title} icon="helicopter" modeTooltip="auth" />
         <motion.ul
           className={styles.statsList}
           initial="hidden"

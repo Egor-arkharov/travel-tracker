@@ -39,6 +39,7 @@
 	white-space: nowrap;
 
 	pointer-events: none;
+	user-select: none;
 }
 
 .nav {
@@ -318,6 +319,7 @@
 @include media-max(sm) {
 	.title {
 		pointer-events: all;
+		user-select: all;
 	}
 
 	.menuWrapper {

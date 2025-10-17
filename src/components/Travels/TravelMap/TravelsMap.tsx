@@ -55,7 +55,10 @@ const TravelsMap = ({ travels }: { travels: Travel[] }) => {
 
 	return (
 		<div className={styles.map}>
-			<GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4}>
+			<GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4} options={{
+				gestureHandling: "cooperative",
+				fullscreenControl: false,
+			}}>
 				{travels.map((travel) => {
 					const { lat, lng } = travel.location ?? {};
 					if (lat == null || lng == null) return null;

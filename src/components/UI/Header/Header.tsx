@@ -3,7 +3,7 @@
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Header.module.scss";
-import DemoTooltip from "@/components/UI/DemoTooltip/DemoTooltip";
+import ModeTooltip from "@/components/UI/ModeTooltip/ModeTooltip";
 
 import { 
   PlaneIcon, 
@@ -43,10 +43,10 @@ const ICONS_MAP: Record<IconKey, React.ElementType> = {
 interface HeaderProps {
   title: string;
   icon: keyof typeof ICONS_MAP;
-  showDemoNotice?: boolean;
+  modeTooltip?: "demo" | "auth";
 }
 
-const Header = ({ title, icon, showDemoNotice = false }: HeaderProps) => {
+const Header = ({ title, icon, modeTooltip}: HeaderProps) => {
   const ref = useRef<HTMLHeadingElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20% 0px -20% 0px" });
 
@@ -67,9 +67,9 @@ const Header = ({ title, icon, showDemoNotice = false }: HeaderProps) => {
       </span>
       <span className={styles.headerText}>
         {title}
-        {showDemoNotice && (
+        {modeTooltip && (
           <span className={styles.noticeIcon}>
-            <DemoTooltip />
+            <ModeTooltip mode={modeTooltip} />
           </span>
         )}
       </span>

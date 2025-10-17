@@ -2,67 +2,8 @@
 @use "./TravelsGrid.module.scss" as *;
 @use "@/styles/global" as *;
 
-.section {
-  display: block;
-}
-
-.cardItem {
-  // background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  height: 100%;
-  transition: translate 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 12px;
-
-  // position: relative;
-  // &:before {
-  //   content: "";
-  //   position: absolute;
-  //   inset: 4px;
-  //   width: calc(100% - 8px);
-  //   height: calc(100% - 8px);
-  //   border-radius: 12px;
-  //   outline: 5px solid red;
-  // }
-
-  @include hover {
-    translate: 0 3px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-  }
-}
-
-.link {
-  display: grid;
-  place-items: center;
-
-  width: fit-content;
-
-  margin-top: 25px;
-  margin-inline: auto;
-  padding: 3px 16px;
-  width: 300px;
-
-  font-size: 20px;
-  font-weight: 700;
-
-  color: black;
-  border: 2px solid black;
-
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
-
-  @include hover {
-    color: white;
-    background-color: black;
-  }
-
-  @include media-max(xs) {
-    width: 100%;
-  }
-}
-
-.mapWrap {
-  margin-bottom: 32px;
+.travelsContainer {
+  padding-inline: 5px;
 }
 
 .grid {
@@ -121,8 +62,9 @@
 .list {
   display: grid;
   grid-auto-rows: 200px;
-  gap: 50px;
   grid-template-columns: 1fr 1fr;
+  gap: 30px;
+
   margin-bottom: 50px;
 
   @include media-max(lg) {
@@ -131,5 +73,48 @@
 
   @include media-max(xs) {
     gap: 20px;
+  }
+}
+
+.cardItem {
+  @include card;
+  padding: 0;
+
+  transition: translate 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  @include hover {
+    translate: 0 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
+.link {
+  display: grid;
+  place-items: center;
+
+  width: fit-content;
+
+  margin-top: 25px;
+  margin-inline: auto;
+  padding: 3px 16px;
+  width: 300px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: black;
+  border: 2px solid black;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  @include hover {
+    color: white;
+    background-color: black;
+  }
+
+  @include media-max(xs) {
+    width: 100%;
   }
 }

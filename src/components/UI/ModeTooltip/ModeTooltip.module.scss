@@ -1,6 +1,6 @@
 @use "@/styles/global" as *;
 
-.noticeButton {
+.tooltipButton {
   background: none;
   border: none;
   padding: 0;
@@ -8,18 +8,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   color: var(--yellow-dark);
 
   @include media-max(md) {
     position: fixed;
     bottom: 16px;
     right: 16px;
-
     width: 40px;
     height: 40px;
     padding: 6px;
-
     color: var(--background);
     background-color: var(--yellow-dark);
     border-radius: 50%;
@@ -30,7 +27,6 @@
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 0.85rem;
-
   color: black;
   background-color: var(--yellow-soft);
 }
@@ -39,23 +35,23 @@
   max-width: 260px;
   text-align: center;
   color: black;
-
   font-weight: 400;
 
   p {
     margin-bottom: 8px;
-
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
 
-.loginButton {
+.loginButton,
+.link {
   background: none;
   border: none;
   padding: 0;
   font: inherit;
+  font-weight: 700;
   color: inherit;
   text-decoration: underline;
   cursor: pointer;

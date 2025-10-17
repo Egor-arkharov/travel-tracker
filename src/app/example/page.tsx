@@ -7,7 +7,7 @@ export default function Example() {
 		<>
 			<Hero
         title="My Travel Collection"
-        subtitle="All your adventures — neatly organized and ready to explore"
+        subtitle="All your adventures&nbsp;&mdash; neatly organized and ready to&nbsp;explore"
 				image="/images/hero/hero-2.jpg"
 				backgroundPosition="center 50%" 
 			/>

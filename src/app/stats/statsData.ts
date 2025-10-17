@@ -82,16 +82,16 @@ export function buildStatsData(stats: TripStatsResult) {
       value: `${mostExpensiveTrip.location.city} — $${mostExpensiveTrip.budget}`,
     },
     {
-      icon: LongIcon,
-      color: styles.iconOrange,
-      label: "Longest",
-      value: `${longestTrip.location.city} — ${pluralizeDays(longestTrip.length)}`,
-    },
-    {
       icon: ShortIcon,
       color: styles.iconOrange,
       label: "Shortest",
       value: `${shortestTrip.location.city} — ${pluralizeDays(shortestTrip.length)}`,
+    },
+    {
+      icon: LongIcon,
+      color: styles.iconOrange,
+      label: "Longest",
+      value: `${longestTrip.location.city} — ${pluralizeDays(longestTrip.length)}`,
     },
     {
       icon: HeartHalfIcon,

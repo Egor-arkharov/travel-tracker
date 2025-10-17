@@ -56,10 +56,6 @@ const TravelsPage = ({
   const visibleTravels: Travel[] = mode === "compact" ? sorted.slice(0, 4) : sorted;
 
 
-  // const selectedTravel = useMemo(
-  //   () => visibleTravels.find((t) => t.id === selectedId) || null,
-  //   [selectedId, visibleTravels]
-  // );
 
   // Когда открываем модалку по id — один раз фиксируем данные.
   useEffect(() => {
@@ -86,22 +82,24 @@ const TravelsPage = ({
     setIsDeleting(true);
     setPendingDeleteId(modalTravel.id!);
 
-    // 1) удаляем из стора сразу — грид перетасуется прямо сейчас
     dispatch(deleteTrip(modalTravel.id!));
-    // 2) закрываем модалку ровно по окончании её анимации удаления
     setTimeout(() => {
       handleCloseModal();
     }, DELETE_DURATION_MS);
   }, [modalTravel, dispatch, handleCloseModal]);
 
 
-  useEffect(() => {
-    console.log("Trips data:", trips);
-  }, [trips]);
+  // useEffect(() => {
+  //   console.log("Trips data:", trips);
+  // }, [trips]);
 
   return (
     <section>
-      <Header title="My Travels" icon="train" showDemoNotice={mode === "full"}/>
+      <Header
+        title="My Travels"
+        icon="train"
+        modeTooltip={source === "mock" ? "demo" : "auth"}
+      />
 
       {loading ? (
         <p>Loading...</p>
@@ -128,7 +126,7 @@ const TravelsPage = ({
               animate={
                 showMap
                   ? { height: "auto", opacity: 1, scale: 1, x: 0, y: 0 }
-                  : { height: 0, opacity: 0, scale: 0.2, x: 50, y: -50 }
+                  : { height: 0, opacity: 0, scale: 0.2, x: 50, y: 0 }
               }
               transition={{ duration: 0.3, ease: "easeInOut" }}
               style={{ overflow: "hidden", originX: 1, originY: 0 }}

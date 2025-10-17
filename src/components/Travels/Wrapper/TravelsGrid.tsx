@@ -58,9 +58,9 @@ const TravelsGrid = ({
 
   return (
     <motion.ul
-      className={`${styles[view]} ${styles.travelsGridContainer}`}
+      className={`${styles[view]} ${styles.travelsContainer}`}
       layout
-      transition={{ type: "spring", stiffness: 450, damping: 45 }}
+      transition={{ type: "spring", stiffness: 300, damping: 35 }}
     >
       {items.map((travel) => (
         <motion.li

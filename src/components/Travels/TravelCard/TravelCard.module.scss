@@ -4,7 +4,7 @@
 .card {
   height: 100%;
   background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -270,6 +270,10 @@
 
   color: black;
   background-color: var(--yellow-soft);
+
+  @include media-max(xs) {
+    max-width: 300px;
+  }
 }
 
 .loginButton {

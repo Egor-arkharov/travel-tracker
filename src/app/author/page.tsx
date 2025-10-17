@@ -61,7 +61,7 @@ const AuthorPage = () => {
       </section>
 
       <section className={`${styles.section} ${styles.tech}`}>
-        <h2 className={styles.subtitle}>Tech Stack</h2>
+        <h2 className={styles.subtitle}>Tech Skills</h2>
 
         <ul className={styles.techList}>
           <li>

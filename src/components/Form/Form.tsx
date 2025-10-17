@@ -68,7 +68,7 @@ const Form = ({ isEditMode = false }: FormProps) => {
       <Header
         title={isEditMode ? "Edit trip" : "Create trip"}
         icon="car"
-        showDemoNotice
+        modeTooltip="auth"
       />
       <APILoader
         className={styles.api}

@@ -41,7 +41,7 @@ const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = fal
   useImperativeHandle(ref, () => ({
     validate: () => {
       if (!range[0] || !range[1]) {
-        setError("Select the trip dates");
+        setError("Select trip dates");
         return false;
       }
       setError(null);

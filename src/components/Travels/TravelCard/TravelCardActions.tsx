@@ -35,15 +35,15 @@ const TravelCardActions = ({ travel, onDelete }: Props) => {
     }
   };
 
-  const tooltipContent = !isLoggedIn ? (
+  const tooltipContent = isMock ? (
+    "This is just a demo trip and cannot be edited or removed."
+  ) : !isLoggedIn ? (
     <span>
       Available only for authorized users.{" "}
       <button onClick={handleLogin} className={styles.loginButton}>
         Log in
       </button>
     </span>
-  ) : isMock ? (
-    "This is just a demo trip and cannot be edited or removed."
   ) : null;
 
   const EditButton = (
@@ -75,8 +75,9 @@ const TravelCardActions = ({ travel, onDelete }: Props) => {
         content={content}
         interactive={true}
         arrow={false}
-        maxWidth={400}
+        maxWidth={'null'}
         duration={0} 
+        appendTo={document.body}
         className={styles.tooltip}
       >
         <span>{child}</span>
