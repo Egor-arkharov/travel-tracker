@@ -34,6 +34,12 @@ const tripsSlice = createSlice({
     setLoaded: (state, action: PayloadAction<boolean>) => {
       state.loaded = action.payload;
     },
+    addUserTrip: (state, action: PayloadAction<Travel>) => {
+      const exists = state.user.some((t) => t.id === action.payload.id);
+      if (!exists) {
+        state.user.push(action.payload);
+      }
+    },
     removeUserTrip: (state, action: PayloadAction<string>) => {
       state.user = state.user.filter((t) => t.id !== action.payload);
     },
@@ -41,7 +47,7 @@ const tripsSlice = createSlice({
   },
 });
 
-export const { setMockTrips, setUserTrips, setLoading, setLoaded, resetTrips, removeUserTrip } = tripsSlice.actions;
+export const { setMockTrips, setUserTrips, setLoading, setLoaded, addUserTrip, removeUserTrip, resetTrips } = tripsSlice.actions;
 export default tripsSlice.reducer;
 
 export const deleteTrip = (id: string): AppThunk => async (dispatch, getState) => {

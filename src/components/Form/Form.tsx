@@ -16,7 +16,7 @@ import ImageField from "./Fields/ImageField";
 import Preview from "./Preview/Preview";
 import FormActions from "./FormActions";
 
-import { useTravelFormLogic } from "@/hooks/useTravelFormLogic";
+import { useTravelFormLogic } from "@/hooks/useFormLogic";
 import { usePreviewModal } from "@/hooks/usePreviewModal";
 
 import { Travel } from "@/types/travel";
