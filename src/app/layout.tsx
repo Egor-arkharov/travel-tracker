@@ -42,7 +42,6 @@ export const metadata: Metadata = {
   manifest: "/favicon/site.webmanifest",
 };
 
-
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en" className={`${nunito.variable} ${readexPro.variable}`}>

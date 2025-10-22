@@ -98,7 +98,7 @@ const TravelsPage = ({
       <Header
         title="My Travels"
         icon="train"
-        modeTooltip={source === "mock" ? "demo" : "auth"}
+        modeTooltip={mode === "full" ? (source === "mock" ? "demo" : "auth") : undefined}
       />
 
       {loading ? (

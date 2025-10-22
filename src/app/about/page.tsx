@@ -12,6 +12,7 @@ import {
   ArrowNext,
 } from "@/components/icons";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 const AboutPage = () => {
   const gridSlides = [
@@ -214,7 +215,7 @@ const AboutPage = () => {
         </div>
 
         <p className={styles.summaryNote}>
-          Designed, developed and animated entirely by <a href="/author" className={styles.link}>Egor Arkharov</a>.
+          Designed, developed and animated entirely by <Link href="/author" className={styles.link}>Egor Arkharov</Link>.
         </p>
       </section>
     </div>
