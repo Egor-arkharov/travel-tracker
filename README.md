@@ -1,22 +1,22 @@
 # 🌍 Travel Tracker
 
-**A polished, offline-first travel diary.**  
-Add trips, explore them in an adaptive grid, open a fluid card-to-modal view, edit details, and sync everything to the cloud.
+A modern web app for recording and exploring your travels.  
+Add trips with city, dates, rating, budget, and photo — view them in a dynamic animated grid, open detailed modals, edit or delete any trip, and keep data synced through Firebase or local storage.
 
 Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolkit**, **Firebase**, **SCSS Modules**, **Framer Motion**, and **Google Maps & Places API**.
 
-> A portfolio project built like a real product — with clean architecture, custom motion, and seamless data flow between demo, local, and cloud modes.
+> A portfolio project built like a real product — combining solid architecture, smooth motion, and thoughtful UX.
 
 ---
 
 ## ✨ Highlights
 
-- **Offline-first design** — demo, local (no login), and cloud (Firebase) modes  
-- **Unified data flow** — one Redux layer for all storage sources  
-- **Adaptive grid** — container queries + custom grouping keep layouts balanced  
-- **Card → Modal morph** — App Store–like Framer Motion transition  
-- **Custom form system** — Google Places, dates, rating, budget, image upload, manual validation  
-- **Clean UI system** — SCSS tokens, clamp typography, container queries
+- **Dynamic card grid:** custom grouping logic keeps the layout balanced at any number of items  
+- **Framer Motion animations:** card-to-modal morph, staged text/overlay transitions, and smooth UI feedback  
+- **Full travel form:** Google Place Autocomplete, date ranges, rating stars, budget slider, image upload, manual validation & reset  
+- **Unified data flow:** one Redux slice for demo, local, and Firebase storage sources  
+- **Clean design system:** SCSS tokens, clamp-based typography, and container queries  
+- **Firebase sync:** Google Auth login with realtime database for saving personal trips  
 
 ---
 
@@ -30,56 +30,26 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 - **Motion:** Framer Motion  
 - **Maps:** Google Maps & Places API  
 - **Utilities:** Swiper, Tippy.js, Datepicker  
-- **Hosting:** Firebase Hosting / Vercel
+- **Hosting:** Firebase Hosting  
 
 ---
 
-## 🧩 Features
+## 🚀 Run locally
 
-- Responsive animated grid with container queries  
-- Framer Motion morph transitions between cards and modals  
-- Full-featured form with Google Places Autocomplete  
-- Manual validation and reset via Refs  
-- Demo Tooltip for guest mode  
-- Clean Redux state, login/logout logic  
-- Per-page SEO metadata, OG & Twitter cards  
-- Offline-ready structure (demo/local/cloud modes)  
+```bash
+npm install
+npm run dev
+```
 
----
+Environment variables (create `.env.local`):
 
-## 📸 Demo & Screens
-
-**Live demo:** _[add your deployed link here]_  
-**Code:** [github.com/Egor-arkharov/travel-tracker](https://github.com/Egor-arkharov/travel-tracker)
-
-**Media previews:**
-- Adaptive grid → `/videos/adaptive.mp4`  
-- Card morph → `/videos/animation.mp4`  
-- Form interaction → `/videos/form.mp4`  
-
----
-
-## 🚀 Product Overview
-
-| Route | Description |
-|-------|--------------|
-| `/` | Main grid of trips (filter, sort, search, grid/list) |
-| `/create` | Add a new trip |
-| `/edit/[id]` | Edit existing trip |
-| `/about` | Case study — how it was built |
-| `/author` | About the creator |
-
-**Auth:** Google Login → Firebase Realtime DB (`users/${uid}/travels`)  
-**Demo / Local:** stored in browser — no auth required  
-**Modal logic:** open via click or `?id=…`, close by **Esc / overlay / ×**
-
----
-
-## 🙌 Credits
-
-- Photos — [Unsplash](https://unsplash.com)  
-- Icons — [SVG Repo](https://www.svgrepo.com)  
-- Fonts — [Google Fonts](https://fonts.google.com)
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=xxxx
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=xxxx.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=https://xxxx.firebaseio.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=xxxx
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=xxxx
+```
 
 ---
 
@@ -88,11 +58,12 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 ### 👤 Author
 
 Designed, developed & animated by **Egor Arkharov**  
-🌐 [View the case study → `/about`](https://travel-tracker-demo.vercel.app/about)  
-💡 [Learn more about the author → `/author`](https://travel-tracker-demo.vercel.app/author)
+
+[🎨 View case study → /about](https://travel-tracker-demo.vercel.app/about)  
+[🧑‍💻 About the author → /author](https://travel-tracker-demo.vercel.app/author)
 
 </div>
 
 ---
 
-> **Travel Tracker** — a modern travel diary with adaptive grid, card-to-modal morph, and unified data flow across demo, local, and cloud modes.
+> **Travel Tracker** — a modern travel diary with adaptive animated grid, full-featured creation form, and Firebase integration built entirely from scratch.

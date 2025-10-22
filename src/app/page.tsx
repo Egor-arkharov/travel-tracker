@@ -4,6 +4,7 @@ import Features from "@/components/Homepage/Features/Features";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import Tools from "@/components/Homepage/Tools/Tools";
 import Explore from "@/components/Homepage/Explore/Explore";
+import { Suspense } from "react";
 
 const Home = () => {
   return (
@@ -16,7 +17,9 @@ const Home = () => {
       />
       <About />
       <Features />
-      <TravelsPage mode={"compact"} source="mock" />
+      <Suspense fallback={<div>Loading travels...</div>}>
+        <TravelsPage mode="compact" source="mock" />
+      </Suspense>
       <Tools />
       <Explore />
     </>
