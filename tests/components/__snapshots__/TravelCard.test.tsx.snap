@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TravelCard matches snapshot 1`] = `
+<DocumentFragment>
+  <article
+    class="card grid"
+    data-mode="card"
+  >
+    <div
+      class="inner"
+    >
+      <div
+        data-testid="mock-image"
+      />
+      <div
+        data-testid="mock-info"
+      />
+    </div>
+  </article>
+</DocumentFragment>
+`;

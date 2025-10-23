@@ -204,8 +204,8 @@ const AboutPage = () => {
           </ul>
           <ul>
             <li><strong>Maps &amp; Places:</strong> <span>Google Maps & Places API (Autocomplete, Geocoding)</span></li>
-            <li><strong>Utilities:</strong> <span>Datepicker, Swiper, Tippy.js</span></li>
-            <li><strong>Hosting:</strong> <span>Firebase Hosting</span></li>
+            <li><strong>Testing:</strong> <span>Jest + Testing Library (unit, snapshot, interaction)</span></li>
+            <li><strong>Hosting:</strong> <span>Vercel</span></li>
           </ul>
           <ul>
             <li><strong>Images:</strong> <span><a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></span></li>

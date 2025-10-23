@@ -72,7 +72,7 @@ const AuthorPage = () => {
             <strong>UI & Performance:</strong> SCSS, BEM, Framer Motion, CSS & SVG animations, accessibility, optimization for rendering and load speed
           </li>
           <li>
-            <strong>Additional:</strong> RegExp data parsing, XBRL data visualization, documentation & UI library refactoring, basic testing (Jest), MongoDB basics
+            <strong>Additional:</strong> Testing with Jest & Testing Library, documentation & UI library refactoring, XBRL data visualization, MongoDB basics
           </li>
         </ul>
 

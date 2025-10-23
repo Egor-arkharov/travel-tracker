@@ -17,6 +17,7 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 - **Unified data flow:** one Redux slice for demo, local, and Firebase storage sources  
 - **Clean design system:** SCSS tokens, clamp-based typography, and container queries  
 - **Firebase sync:** Google Auth login with realtime database for saving personal trips  
+- **Tested architecture:** Jest + Testing Library ensure stable logic and UI behavior  
 
 ---
 
@@ -26,11 +27,12 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 - **Language:** TypeScript 5  
 - **State:** Redux Toolkit  
 - **Backend:** Firebase (Realtime DB + Google Auth)  
-- **UI:** SCSS Modules (tokens, mixins, clamp typography)  
+- **UI:** SCSS Modules (tokens, mixins, clamp typography)
+- **Testing:** Jest + Testing Library (unit, snapshot, interaction)   
 - **Motion:** Framer Motion  
 - **Maps:** Google Maps & Places API  
 - **Utilities:** Swiper, Tippy.js, Datepicker  
-- **Hosting:** Firebase Hosting  
+- **Hosting:** Vercel 
 
 ---
 

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "mock:upload": "tsx scripts/uploadMockTravels.ts",
-    "mock:clear": "tsx scripts/clearMockTravels.ts"
+    "mock:clear": "tsx scripts/clearMockTravels.ts",
+    "test": "jest --passWithNoTests --maxWorkers=50%"
   },
   "dependencies": {
     "@googlemaps/extended-component-library": "^0.6.13",
@@ -31,13 +32,21 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@svgr/webpack": "^8.1.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/google.maps": "^3.58.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/webpack": "^5.28.5",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "ts-jest": "^29.4.5",
     "tsx": "^4.19.3",
     "typescript": "^5"
   }
