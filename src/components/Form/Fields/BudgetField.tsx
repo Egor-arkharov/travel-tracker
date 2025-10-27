@@ -13,6 +13,7 @@ const STEP = 100;
 const BudgetField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
   const budget = useAppSelector((state) => state.form.budget);
+
   const [local, setLocal] = useState(budget);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,27 +26,59 @@ const BudgetField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = f
         setError("Specify the trip budget");
         return false;
       }
+      if (local > MAX) {
+        setError(`Budget can't exceed ${MAX}$`);
+        return false;
+      }
       setError(null);
       return true;
     },
     reset: () => {
       setError(null);
       setLocal(0);
-    }
+      dispatch(updateField({ path: "budget", value: 0 }));
+    },
   }));
 
-
-
   const handleInput = (value: number) => {
+    if (Number.isNaN(value)) return;
     setLocal(value);
     dispatch(updateField({ path: "budget", value }));
     setError(null);
   };
 
+  const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const cleaned = raw.replace(/^0+/, "");
+    const value = Number(cleaned);
+
+    if (cleaned === "") {
+      setLocal(0);
+      return;
+    }
+
+    if (value < 1) {
+      setLocal(1);
+      setError(`Minimum value is 1$`);
+      dispatch(updateField({ path: "budget", value: 1 }));
+      return;
+    }
+
+    if (value > MAX) {
+      setLocal(MAX);
+      setError(`Maximum value is ${MAX}$`);
+      dispatch(updateField({ path: "budget", value: MAX }));
+      return;
+    }
+
+    setError(null);
+    handleInput(value);
+  };
+
   useEffect(() => {
-    const budget = budgetRef.current;
+    const range = budgetRef.current;
     const bubble = bubbleRef.current;
-    if (!budget || !bubble) return;
+    if (!range || !bubble) return;
 
     const percent = ((local - MIN) / (MAX - MIN)) * 100;
     const offset = 16 - (percent / 100) * 32;
@@ -82,11 +115,11 @@ const BudgetField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = f
 
         <input
           type="number"
-          min={MIN}
+          min={1}
           max={MAX}
-          step={STEP}
-          value={local}
-          onChange={(e) => handleInput(+e.target.value)}
+          step={1}
+          value={local || ""}
+          onChange={handleNumberChange}
           className={styles.budgetNumberInput}
           disabled={disabled}
         />

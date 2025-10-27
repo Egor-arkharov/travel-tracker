@@ -170,6 +170,20 @@
 	@include media-max(lg) {
 		translate: -100% -50%;
 	}
+
+	@include media-max(md) {
+		svg {
+			width: 45px;
+			height: 45px;
+		}
+	}
+
+	@include media-max(xs) {
+		svg {
+			width: 40px;
+			height: 40px;
+		}
+	}
 }
 
 .headerText {
@@ -181,7 +195,6 @@
 	align-items: center;
 	gap: 10px;
 }
-
 
 .noticeIcon {
 	display: flex;

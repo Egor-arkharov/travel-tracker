@@ -13,7 +13,7 @@ const Home = () => {
         title="Track &amp;&nbsp;Relive Your Journeys"
         subtitle="Capture your travels, map your routes, and keep your memories in&nbsp;one place."
         image="/images/hero/hero-1.jpg"
-        backgroundPosition="center 30%"
+        backgroundPosition="70% 30%"
       />
       <About />
       <Features />

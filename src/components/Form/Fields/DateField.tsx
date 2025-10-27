@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef, useState, ComponentPropsWithoutRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -59,6 +59,11 @@ const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = fal
     datePickerRef.current?.setFocus();
   };
 
+  const NoKeyboardInput = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<"input">>((props, ref) => (
+    <input {...props} ref={ref} inputMode="none" />
+  ));
+  NoKeyboardInput.displayName = "NoKeyboardInput";
+
   return (
     <fieldset className={styles.fieldset}>
       <label className={styles.label}>Trip Dates</label>
@@ -76,6 +81,7 @@ const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = fal
             placeholderText="Select trip dates"
             ref={datePickerRef}
             disabled={disabled}
+            customInput={<NoKeyboardInput />}
           />
           {hasDates && (
             <button

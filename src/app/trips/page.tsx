@@ -14,7 +14,7 @@ const Trips = () => {
         title="Your Adventures"
         subtitle="Browse through all your past trips, memories, and stories"
         image="/images/hero/hero-5.jpg"
-        backgroundPosition="center 100%"
+        backgroundPosition="70% 100%"
       />
 
       <Suspense fallback={<div>Loading travels...</div>}>

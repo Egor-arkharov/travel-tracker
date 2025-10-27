@@ -12,7 +12,7 @@ const CreatePage = () => {
         title="Start a&nbsp;New Journey"
         subtitle="Fill in&nbsp;the details and add your next unforgettable trip"
 				image="/images/hero/hero-3.jpg"
-        backgroundPosition="center 100%" 
+        backgroundPosition="center 55%" 
       />
       <Form />
     </>

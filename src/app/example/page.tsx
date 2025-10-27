@@ -9,7 +9,7 @@ export default function Example() {
         title="My Travel Collection"
         subtitle="All your adventures&nbsp;&mdash; neatly organized and ready to&nbsp;explore"
 				image="/images/hero/hero-2.jpg"
-				backgroundPosition="center 50%" 
+				backgroundPosition="60% 50%" 
 			/>
 			<Suspense fallback={<div>Loading travels...</div>}>
 				<TravelsPage source="mock"/>
