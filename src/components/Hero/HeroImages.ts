@@ -11,8 +11,8 @@ import hero3min from "@/assets/hero/hero-3-min.jpg";
 import hero4 from "@/assets/hero/hero-4.jpg";
 import hero4min from "@/assets/hero/hero-4-min.jpg";
 
-import hero5 from "@/assets/hero/hero-4.jpg";
-import hero5min from "@/assets/hero/hero-4-min.jpg";
+import hero5 from "@/assets/hero/hero-5.jpg";
+import hero5min from "@/assets/hero/hero-5-min.jpg";
 
 export const heroImages = {
   1: { image: hero1, blur: hero1min },
