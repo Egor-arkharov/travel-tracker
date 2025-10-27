@@ -30,7 +30,6 @@ const Hero = ({
           fill
           priority
           placeholder="blur"
-          blurDataURL={selected.blur.src}
           style={{ objectFit: "cover", objectPosition: backgroundPosition }}
         />
       </div>

@@ -15,11 +15,11 @@ import hero5 from "@/assets/hero/hero-5.jpg";
 import hero5min from "@/assets/hero/hero-5-min.jpg";
 
 export const heroImages = {
-  1: { image: hero1, blur: hero1min },
-  2: { image: hero2, blur: hero2min },
-  3: { image: hero3, blur: hero3min },
-  4: { image: hero4, blur: hero4min },
-  5: { image: hero5, blur: hero5min },
+  1: { image: hero1, min: hero1min },
+  2: { image: hero2, min: hero2min },
+  3: { image: hero3, min: hero3min },
+  4: { image: hero4, min: hero4min },
+  5: { image: hero5, min: hero5min },
 } as const;
 
 export type HeroImageKey = keyof typeof heroImages;
