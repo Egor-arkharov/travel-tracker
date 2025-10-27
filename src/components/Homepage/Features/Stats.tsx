@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import statsImg from "@/assets/homepage/stats.jpg";
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
 
@@ -32,7 +33,7 @@ const Stats = () => {
           viewport={viewport}
         >
           <Image
-            src="/images/homepage/stats.jpg"
+            src={statsImg}
             alt="stats"
             fill
             sizes="(max-width: 768px) 100vw, 600px"

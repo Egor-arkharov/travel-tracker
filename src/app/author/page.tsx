@@ -1,4 +1,6 @@
 import styles from "./style.module.scss";
+import vueProject from "@/assets/other/vue-project.jpg";
+import Image from "next/image";
 
 const AuthorPage = () => {
   return (
@@ -49,12 +51,15 @@ const AuthorPage = () => {
           </div>
 
           <div className={styles.projectImage}>
-            <img
-              src="/images/vue-project.jpg"
+            <Image
+              src={vueProject}
               alt="My Fests project preview"
-              loading="lazy"
+              className={styles.projectImg}
+              placeholder="blur"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
+
         </div>
       </section>
 

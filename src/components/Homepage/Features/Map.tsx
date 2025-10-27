@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import mapImg from "@/assets/homepage/map.jpg";
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
 
@@ -29,7 +30,7 @@ const Map = () => {
           viewport={viewport}
         >
           <Image
-            src="/images/homepage/map.jpg"
+            src={mapImg}
             alt="Map"
             fill
             sizes="(max-width: 768px) 100vw, 600px"

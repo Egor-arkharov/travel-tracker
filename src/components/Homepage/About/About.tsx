@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Header from "@/components/UI/Header/Header";
 import styles from "./About.module.scss";
 import { useState } from "react";
+import aboutImg from "@/assets/homepage/about.jpg";
 
 const About = () => {
   const prefersReduced = useReducedMotion();
@@ -65,7 +66,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.5 }}
         >
           <MImage
-            src="/images/homepage/about.jpg"
+            src={aboutImg}
             alt="Map illustration"
             fill
             className={styles.image}

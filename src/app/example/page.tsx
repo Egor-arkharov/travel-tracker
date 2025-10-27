@@ -8,7 +8,7 @@ export default function Example() {
 			<Hero
         title="My Travel Collection"
         subtitle="All your adventures&nbsp;&mdash; neatly organized and ready to&nbsp;explore"
-				image="/images/hero/hero-2.jpg"
+				image={2}
 				backgroundPosition="60% 50%" 
 			/>
 			<Suspense fallback={<div>Loading travels...</div>}>

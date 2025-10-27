@@ -11,7 +11,7 @@ const CreatePage = () => {
       <Hero
         title="Start a&nbsp;New Journey"
         subtitle="Fill in&nbsp;the details and add your next unforgettable trip"
-				image="/images/hero/hero-3.jpg"
+				image={3}
         backgroundPosition="center 55%" 
       />
       <Form />

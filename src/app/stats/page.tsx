@@ -65,7 +65,7 @@ const StatsPage = () => {
       <Hero
         title="Welcome Traveler"
         subtitle="View your stats, trips, and continue exploring the world."
-        image="/images/hero/hero-4.jpg"
+        image={4}
         backgroundPosition="center 30%"
       />
 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import formImg from "@/assets/homepage/form.jpg";
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
 
@@ -32,7 +33,7 @@ const Form = () => {
           viewport={viewport}
         >
           <Image
-            src="/images/homepage/form.jpg"
+            src={formImg}
             alt="Form"
             fill
             sizes="(max-width: 768px) 100vw, 600px"

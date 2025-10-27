@@ -13,7 +13,7 @@ const Trips = () => {
       <Hero
         title="Your Adventures"
         subtitle="Browse through all your past trips, memories, and stories"
-        image="/images/hero/hero-5.jpg"
+        image={5}
         backgroundPosition="70% 100%"
       />
 

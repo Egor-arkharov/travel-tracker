@@ -1,12 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./style.module.scss";
 import TechStack from "@/components/UI/TechStack/TechStack";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
-
+import grid32 from "@/assets/grid/grid-32.jpg";
+import grid33 from "@/assets/grid/grid-33.jpg";
+import grid43 from "@/assets/grid/grid-43.jpg";
+import grid44 from "@/assets/grid/grid-44.jpg";
 import {
   ArrowPrev,
   ArrowNext,
@@ -16,10 +20,10 @@ import Link from "next/link";
 
 const AboutPage = () => {
   const gridSlides = [
-    { src: "/images/grid/grid-32.jpg", caption: "Grid 3x2" },
-    { src: "/images/grid/grid-33.jpg", caption: "Grid 3x3" },
-    { src: "/images/grid/grid-43.jpg", caption: "Grid 4x3" },
-    { src: "/images/grid/grid-44.jpg", caption: "Grid 4x4" },
+    { src: grid32, caption: "Grid 3x2" },
+    { src: grid33, caption: "Grid 3x3" },
+    { src: grid43, caption: "Grid 4x3" },
+    { src: grid44, caption: "Grid 4x4" },
   ];
 
   const swiperRef = useRef<SwiperType | null>(null);
@@ -28,16 +32,16 @@ const AboutPage = () => {
   return (
     <div className={styles.wrapper}>
       <section className={`${styles.section} ${styles.intro}`}>
-          <h1 className={styles.title}>About This Project</h1>
+        <h1 className={styles.title}>About This Project</h1>
 
-          <p className={styles.lead}>
-            <strong>Travel Tracker</strong> is&nbsp;a&nbsp;portfolio project built like a&nbsp;real product. It&nbsp;uses <em>Next.js 15, React&nbsp;18, TypeScript, Redux Toolkit, Firebase, SCSS Modules and Framer Motion</em>. The goal was to&nbsp;demonstrate not only technical skills but also the ability to&nbsp;design architecture, invent solutions, and polish&nbsp;UX details.
-          </p>
+        <p className={styles.lead}>
+          <strong>Travel Tracker</strong> is&nbsp;a&nbsp;portfolio project built like a&nbsp;real product. It&nbsp;uses <em>Next.js 15, React&nbsp;18, TypeScript, Redux Toolkit, Firebase, SCSS Modules and Framer Motion</em>. The goal was to&nbsp;demonstrate not only technical skills but also the ability to&nbsp;design architecture, invent solutions, and polish&nbsp;UX details.
+        </p>
       </section>
 
       <section className={`${styles.section} ${styles["section--wide"]} ${styles.tech}`}>
-          <h2 className={styles.subtitle}>Tech Stack</h2>
-          <TechStack />
+        <h2 className={styles.subtitle}>Tech Stack</h2>
+        <TechStack />
       </section>
 
       <section className={`${styles.section} ${styles["section--wide"]} ${styles.features}`}>
@@ -87,7 +91,12 @@ const AboutPage = () => {
                 {gridSlides.map((s) => (
                   <SwiperSlide key={s.caption} className={styles.sliderSlide}>
                     <figure className={styles.sliderFigure}>
-                      <img src={s.src} className={styles.sliderImg} alt={s.caption} />
+                      <Image
+                        src={s.src}
+                        alt={s.caption}
+                        className={styles.sliderImg}
+                        placeholder="blur"
+                      />
                     </figure>
                   </SwiperSlide>
                 ))}

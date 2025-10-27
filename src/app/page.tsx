@@ -12,7 +12,7 @@ const Home = () => {
       <Hero
         title="Track &amp;&nbsp;Relive Your Journeys"
         subtitle="Capture your travels, map your routes, and keep your memories in&nbsp;one place."
-        image="/images/hero/hero-1.jpg"
+        image={1}
         backgroundPosition="70% 30%"
       />
       <About />
