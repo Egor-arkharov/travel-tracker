@@ -3,12 +3,17 @@
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Header.module.scss";
-import ModeTooltip from "@/components/UI/ModeTooltip/ModeTooltip";
 
-import { 
-  PlaneIcon, 
-  TrainIcon, 
-  ShipIcon, 
+import dynamic from "next/dynamic";
+const ModeTooltip = dynamic(
+  () => import("@/components/UI/ModeTooltip/ModeTooltip"),
+  { ssr: false }
+);
+
+import {
+  PlaneIcon,
+  TrainIcon,
+  ShipIcon,
   CarIcon,
   HelicopterIcon,
   BikeIcon,
@@ -46,17 +51,14 @@ interface HeaderProps {
   modeTooltip?: "demo" | "auth";
 }
 
-const Header = ({ title, icon, modeTooltip}: HeaderProps) => {
+const Header = ({ title, icon, modeTooltip }: HeaderProps) => {
   const ref = useRef<HTMLHeadingElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20% 0px -20% 0px" });
 
   const IconComponent = ICONS_MAP[icon];
 
   return (
-    <h2
-      ref={ref}
-      className={`${styles.header} ${isInView ? styles.anim : ""}`}
-    >
+    <h2 ref={ref} className={`${styles.header} ${isInView ? styles.anim : ""}`}>
       <span className={styles.headerBorder}></span>
       <span className={styles.headerUnderDecorTopLeft}></span>
       <span className={styles.headerUnderDecorTopRight}></span>
@@ -67,6 +69,7 @@ const Header = ({ title, icon, modeTooltip}: HeaderProps) => {
       </span>
       <span className={styles.headerText}>
         {title}
+        {/* Рендерим тултип только когда реально нужен */}
         {modeTooltip && (
           <span className={styles.noticeIcon}>
             <ModeTooltip mode={modeTooltip} />

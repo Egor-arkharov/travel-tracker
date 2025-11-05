@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { APILoader } from "@googlemaps/extended-component-library/react";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 import styles from "./Form.module.scss";
@@ -25,6 +25,14 @@ interface FormProps {
   isEditMode?: boolean;
   initialTrip?: Travel;
 }
+
+const APILoader = dynamic(
+  () =>
+    import("@googlemaps/extended-component-library/react").then(
+      (m) => m.APILoader
+    ),
+  { ssr: false }
+);
 
 const Form = ({ isEditMode = false }: FormProps) => {
   const {

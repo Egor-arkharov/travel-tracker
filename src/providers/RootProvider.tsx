@@ -1,26 +1,23 @@
 "use client";
 
 import { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "@/store";
 import AppInitializer from "./AppInitializer";
-import { MotionConfig, useReducedMotion } from "framer-motion";
+
+const MotionConfig = dynamic(
+  () => import("framer-motion").then((m) => m.MotionConfig),
+  { ssr: false }
+);
 
 interface Props {
   children: ReactNode;
 }
 
 const MotionWrapper = ({ children }: Props) => {
-  const reduce = useReducedMotion();
-
   return (
-    <MotionConfig
-      transition={{
-        duration: reduce ? 0 : 0.4,
-        ease: reduce ? "linear" : "easeOut",
-      }}
-      reducedMotion={reduce ? "user" : "never"}
-    >
+    <MotionConfig transition={{ duration: 0.4, ease: "easeOut" }}>
       {children}
     </MotionConfig>
   );

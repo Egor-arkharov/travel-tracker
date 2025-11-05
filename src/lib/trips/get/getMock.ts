@@ -1,24 +1,22 @@
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "@/app/firebase";
 import { FirestoreTravel, Travel } from "@/types/travel";
 
 export const getMock = async (): Promise<Travel[]> => {
-  const querySnapshot = await getDocs(collection(db, "travels"));
+  const { getFirestoreAsync } = await import("@/app/firebase");
+  const db = await getFirestoreAsync();
+  const { getDocs, collection } = await import("firebase/firestore");
 
-  const trips = querySnapshot.docs.map((doc) => {
+  const snap = await getDocs(collection(db, "travels"));
+
+  const trips = snap.docs.map((doc) => {
     const d = doc.data() as FirestoreTravel;
     if (!d.meta?.isMock) return null;
 
     return {
       ...d,
       id: doc.id,
-      media: {
-        ...d.media,
-        imageUrl: d.media.imageUrl,
-      },
+      media: { ...d.media, imageUrl: d.media.imageUrl },
     };
   });
 
   return trips.filter(Boolean) as Travel[];
 };
-

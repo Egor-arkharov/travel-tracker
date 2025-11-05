@@ -1,5 +1,4 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
@@ -14,12 +13,16 @@ const firebaseConfig = {
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
 const rtdb = getDatabase(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const storage = getStorage(app);
 
-export { db, rtdb, auth, provider, storage };
+export async function getFirestoreAsync() {
+  const { getFirestore } = await import("firebase/firestore");
+  return getFirestore(app);
+}
+
+export { app, rtdb, auth, provider, storage };

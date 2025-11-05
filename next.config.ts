@@ -1,18 +1,28 @@
-import path from 'path';
+import path from "path";
+import { fileURLToPath } from "url";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+import type { NextConfig } from "next";
+import type { Configuration as WebpackConfig } from "webpack";
 
-const nextConfig = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const config: NextConfig = {
   reactStrictMode: true,
+
   sassOptions: {
-    includePaths: [path.join(__dirname, 'src', 'styles')],
+    includePaths: [path.join(__dirname, "src", "styles")],
   },
+
   images: {
     domains: [
       "firebasestorage.googleapis.com",
-      "lh3.googleusercontent.com"
-    ]
+      "lh3.googleusercontent.com",
+    ],
+    formats: ["image/avif", "image/webp"] as const,
   },
-  webpack(config: any) {
-    config.module.rules.push({
+
+  webpack(config: WebpackConfig) {
+    config.module?.rules?.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
@@ -20,6 +30,17 @@ const nextConfig = {
 
     return config;
   },
+
+  compiler: {
+    removeConsole: true,
+  },
+
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(config);

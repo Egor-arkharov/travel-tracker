@@ -8,12 +8,12 @@ import {
   useRef,
   useEffect,
 } from "react";
-import { PlacePicker } from "@googlemaps/extended-component-library/react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
 import styles from "../Form.module.scss";
 import { CountryIcon } from "@/components/icons";
+import dynamic from "next/dynamic";
 
 type PlaceObject = {
   addressComponents?: { types: string[]; longText: string }[];
@@ -22,6 +22,14 @@ type PlaceObject = {
     lng?: () => number;
   };
 };
+
+const PlacePicker = dynamic(
+  () =>
+    import("@googlemaps/extended-component-library/react").then(
+      (m) => m.PlacePicker
+    ),
+  { ssr: false }
+);
 
 const CityField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
