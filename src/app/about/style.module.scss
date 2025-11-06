@@ -264,5 +264,8 @@
 }
 
 .summaryNote {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   text-wrap: balance;
 }

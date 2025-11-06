@@ -223,9 +223,26 @@ const AboutPage = () => {
           </ul>
         </div>
 
-        <p className={styles.summaryNote}>
-          Designed, developed and animated entirely by <Link href="/author" className={styles.link}>Egor Arkharov</Link>.
-        </p>
+        <div className={styles.summaryNote}>
+          <p>
+            Designed, developed and animated entirely by{" "}
+            <Link href="/author" className={styles.link}>
+              Egor Arkharov
+            </Link>.
+          </p>
+
+          <p>
+            View the full project on{" "}
+            <a
+              href="https://github.com/Egor-arkharov/travel-tracker"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              GitHub
+            </a>.
+          </p>
+        </div>
       </section>
     </div>
   );
