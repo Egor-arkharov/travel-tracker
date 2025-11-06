@@ -116,6 +116,10 @@
 }
 
 @include media-max(md) {
+	.cardItem {
+		grid-column: 1 / span 4;
+	}
+
 	.block-type-3-sm-normal {
 		&-pos-1 {
 			grid-column: 1 / span 2;
