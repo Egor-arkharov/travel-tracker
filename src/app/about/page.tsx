@@ -121,7 +121,7 @@ const AboutPage = () => {
             </div>
 
             <p className={styles.challengeText}>
-              I&nbsp;wanted the travel cards to&nbsp;feel dynamic&nbsp;&mdash; not just a&nbsp;static grid, but something that looked designed no&nbsp;matter how many items appeared. Standard CSS grid patterns couldn&rsquo;t handle that variety, so&nbsp;I built a&nbsp;custom grouping system that rearranges itself automatically depending on&nbsp;the number of&nbsp;cards&nbsp;&mdash; six, nine, twelve, or&nbsp;anything in&nbsp;between. Each layout keeps the same visual rhythm: no&nbsp;broken rows, no&nbsp;gaps, no&nbsp;duplicates. Just a&nbsp;clean, intentional composition every time.
+              I&nbsp;wanted the travel cards to&nbsp;feel dynamic&nbsp;&mdash; not just a&nbsp;static grid, but something that looked designed no&nbsp;matter how many items appeared. Standard CSS grid patterns couldn&rsquo;t handle that variety, so&nbsp;I built a&nbsp;custom grouping system that automatically adapts to&nbsp;any number of&nbsp;cards, dynamically rearranging itself for the best visual balance. Each layout keeps the same visual rhythm: no&nbsp;broken rows, no&nbsp;gaps, no&nbsp;duplicates. Just a&nbsp;clean, intentional composition every time.
             </p>
           </div>
           <div className={styles.challengesItem}>

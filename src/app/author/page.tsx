@@ -71,16 +71,15 @@ const AuthorPage = () => {
             <strong>Core:</strong> Next.js (App Router), React 18, TypeScript 5, JavaScript (ES6+), Vue 3 (Composition API, Vuex)
           </li>
           <li>
-            <strong>Tools & Platforms:</strong> Firebase (Realtime DB, Auth, Storage, Hosting), REST APIs, Webpack, Vite, Git (GitHub / GitLab), npm / yarn
+            <strong>Tools & Platforms:</strong> Firebase (Realtime DB, Auth, Storage, Hosting), REST APIs, Webpack, Git (GitHub / GitLab), npm / yarn
           </li>
           <li>
-            <strong>UI & Performance:</strong> SCSS, BEM, Framer Motion, CSS & SVG animations, accessibility, optimization for rendering and load speed
+            <strong>UI & Performance:</strong> SCSS, BEM, Framer Motion, CSS & SVG animations, accessibility (A11y), optimization for rendering and load speed
           </li>
           <li>
             <strong>Additional:</strong> Testing with Jest & Testing Library, documentation & UI library refactoring, XBRL data visualization, MongoDB basics
           </li>
         </ul>
-
       </section>
 
       <section className={`${styles.section} ${styles.contacts}`}>

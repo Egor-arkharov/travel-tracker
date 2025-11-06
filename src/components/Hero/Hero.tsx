@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.scss";
 import HeroButtons from "./HeroButtons";
@@ -20,19 +21,33 @@ const Hero = ({
 }: HeroProps) => {
   const key = Number(image) as HeroImageKey;
   const selected = heroImages[key] || heroImages[1];
+  const [isLoaded, setIsLoaded] = useState(false);
+  const SIZES = "100vw";
 
   return (
     <section className={styles.hero} id="hero">
-      <div className={styles.background}>
+      <div className={`${styles.background} ${isLoaded ? styles.loaded : ""}`}>
         <Image
-          src={selected.image}
+          src={selected.min}
           alt=""
           fill
+          className={`${styles.image} ${styles.lowres}`}
+          sizes={SIZES}
+          style={{ objectFit: "cover", objectPosition: backgroundPosition }}
           priority
           fetchPriority="high"
-          sizes="100vw"
-          placeholder="blur"
+          decoding="async"
+        />
+
+        <Image
+          src={selected.image}
+          alt="Hero background"
+          fill
+          sizes={SIZES}
+          className={`${styles.image} ${styles.highres}`}
+          onLoadingComplete={() => setIsLoaded(true)}
           style={{ objectFit: "cover", objectPosition: backgroundPosition }}
+          decoding="async"
         />
       </div>
 
