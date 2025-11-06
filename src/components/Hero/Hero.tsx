@@ -23,18 +23,19 @@ const Hero = ({
   const selected = heroImages[key] || heroImages[1];
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px";
+
   return (
     <section className={styles.hero} id="hero">
-      <div
-        className={`${styles.background} ${isLoaded ? styles.loaded : ""}`}
-      >
+      <div className={`${styles.background} ${isLoaded ? styles.loaded : ""}`}>
         <Image
           src={selected.min}
           alt=""
           fill
-          priority
           className={`${styles.image} ${styles.lowres}`}
+          sizes={SIZES}
           style={{ objectFit: "cover", objectPosition: backgroundPosition }}
+          priority={false}
         />
 
         <Image
@@ -42,6 +43,7 @@ const Hero = ({
           alt="Hero background"
           fill
           priority
+          sizes={SIZES}
           className={`${styles.image} ${styles.highres}`}
           onLoadingComplete={() => setIsLoaded(true)}
           style={{ objectFit: "cover", objectPosition: backgroundPosition }}

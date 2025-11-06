@@ -4,6 +4,7 @@
 
 .travelsContainer {
   padding-inline: 5px;
+  padding-bottom: 20px;
 }
 
 .grid {
@@ -18,7 +19,6 @@
   grid-auto-flow: row dense;
 
   overflow: hidden;
-  padding-bottom: 30px;
 
   @include media-max(xl) {
     --card-base-height: 350px;
@@ -64,8 +64,6 @@
   grid-auto-rows: 200px;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-
-  margin-bottom: 50px;
 
   @include media-max(lg) {
     grid-template-columns: 1fr;

@@ -4,7 +4,7 @@ import { useRef, useState, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { resetForm } from "@/store/slices/formSlice";
 import { saveTrip } from "@/lib/trips/save/saveTrip";
-import { addUserTrip } from "@/store/slices/tripsSlice";
+import { addOrUpdateUserTrip } from "@/store/slices/tripsSlice";
 import { Travel } from "@/types/travel";
 import { FieldRef } from "@/types/formField";
 
@@ -45,7 +45,7 @@ export const useTravelFormLogic = ({ isEditMode, onSuccess }: UseTravelFormLogic
 
     try {
       const saved = await saveTrip(formState, user, isEditMode);
-      dispatch(addUserTrip(saved));
+      dispatch(addOrUpdateUserTrip(saved));
       fieldRefs.current.forEach((ref) => ref.reset?.());
       onSuccess?.(saved);
     } catch (error) {

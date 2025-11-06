@@ -34,10 +34,13 @@ const tripsSlice = createSlice({
     setLoaded: (state, action: PayloadAction<boolean>) => {
       state.loaded = action.payload;
     },
-    addUserTrip: (state, action: PayloadAction<Travel>) => {
-      const exists = state.user.some((t) => t.id === action.payload.id);
-      if (!exists) {
-        state.user.push(action.payload);
+    addOrUpdateUserTrip: (state, action: PayloadAction<Travel>) => {
+      const trip = action.payload;
+      const idx = state.user.findIndex((t) => t.id === trip.id);
+      if (idx >= 0) {
+        state.user[idx] = trip;
+      } else {
+        state.user.push(trip);
       }
     },
     removeUserTrip: (state, action: PayloadAction<string>) => {
@@ -47,23 +50,33 @@ const tripsSlice = createSlice({
   },
 });
 
-export const { setMockTrips, setUserTrips, setLoading, setLoaded, addUserTrip, removeUserTrip, resetTrips } = tripsSlice.actions;
+export const {
+  setMockTrips,
+  setUserTrips,
+  setLoading,
+  setLoaded,
+  addOrUpdateUserTrip,
+  removeUserTrip,
+  resetTrips,
+} = tripsSlice.actions;
 export default tripsSlice.reducer;
 
-export const deleteTrip = (id: string): AppThunk => async (dispatch, getState) => {
-  const state = getState();
-  const allTrips = [...state.trips.user, ...state.trips.mock];
-  const trip = allTrips.find((t) => t.id === id);
-  const uid = state.auth.user?.uid;
+export const deleteTrip =
+  (id: string): AppThunk =>
+  async (dispatch, getState) => {
+    const state = getState();
+    const allTrips = [...state.trips.user, ...state.trips.mock];
+    const trip = allTrips.find((t) => t.id === id);
+    const uid = state.auth.user?.uid;
 
-  if (!trip || trip.meta.isMock) return;
+    if (!trip || trip.meta.isMock) return;
 
-  if (uid) {
-    await deleteTripFromFirebase(uid, id);
-    dispatch(removeUserTrip(id));
-  } else {
-    const updated = state.trips.user.filter((t) => t.id !== id);
-    localStorage.setItem("trips", JSON.stringify(updated));
-    dispatch(removeUserTrip(id));
-  }
-};
+    if (uid) {
+      await deleteTripFromFirebase(uid, id);
+      dispatch(removeUserTrip(id));
+    } else {
+      const updated = state.trips.user.filter((t) => t.id !== id);
+      localStorage.setItem("trips", JSON.stringify(updated));
+      dispatch(removeUserTrip(id));
+    }
+  };
