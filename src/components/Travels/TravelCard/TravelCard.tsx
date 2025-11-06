@@ -14,6 +14,7 @@ interface TravelCardProps {
   cardLayoutId: string;
   imageLayoutId: string;
   isSelected: boolean;
+  priority?: boolean;
 }
 
 const TravelInfoMotion = motion.create(TravelInfo);
@@ -25,6 +26,7 @@ const TravelCard = ({
   cardLayoutId,
   imageLayoutId,
   isSelected,
+  priority
 }: TravelCardProps) => {
   return (
     <motion.article
@@ -38,7 +40,7 @@ const TravelCard = ({
         <TravelImage
           travel={travel}
           layoutId={imageLayoutId}
-          priority={isSelected}
+          priority={priority}
         />
         <TravelInfoMotion
           travel={travel}

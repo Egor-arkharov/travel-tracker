@@ -35,23 +35,6 @@
 		z-index: 2;
 		pointer-events: none;
 	}
-
-	.lowres {
-		opacity: 1;
-	}
-
-	.highres {
-		opacity: 0;
-	}
-
-	&.loaded {
-		.highres {
-			opacity: 1;
-		}
-		.lowres {
-			opacity: 0;
-		}
-	}
 }
 
 .inner {

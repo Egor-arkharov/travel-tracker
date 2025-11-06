@@ -26,9 +26,10 @@ const TravelImage = ({
         src={imageSrc}
         alt={travel.location.city}
         fill
-        priority={priority}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className={styles.image}
+        priority={priority}
+        fetchPriority={priority ? "high" : "auto"}
+        sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
       />
     </motion.div>
   );

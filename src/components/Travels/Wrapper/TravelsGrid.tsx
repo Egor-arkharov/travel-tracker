@@ -62,7 +62,7 @@ const TravelsGrid = ({
       layout
       transition={{ type: "spring", stiffness: 300, damping: 35 }}
     >
-      {items.map((travel) => (
+      {items.map((travel, idx) => (
         <motion.li
           key={travel.id}
           className={travel.gridItemClassName || styles.cardItem}
@@ -79,6 +79,7 @@ const TravelsGrid = ({
             cardLayoutId={`card-${travel.id}`}
             imageLayoutId={`image-${travel.id}`}
             isSelected={selectedId === travel.id}
+            priority={idx < 2}
           />
         </motion.li>
       ))}

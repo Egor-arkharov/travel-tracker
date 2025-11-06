@@ -13,13 +13,12 @@ export const metadata: Metadata = {
   },
   description:
     "Create, explore and track your journeys with Travel Tracker — a personal travel diary built with Next.js and Firebase.",
-  // metadataBase: new URL("https://travel-tracker.vercel.app")
-
+  metadataBase: new URL("https://ea-travel-tracker.vercel.app"),
   openGraph: {
     title: "Travel Tracker — Egor Arkharov",
     description:
       "Plan, record and explore your travels with a clean, modern interface.",
-    // url: "https://travel-tracker.vercel.app",
+    url: "https://ea-travel-tracker.vercel.app",
     siteName: "Travel Tracker",
     locale: "en_US",
     type: "website",
