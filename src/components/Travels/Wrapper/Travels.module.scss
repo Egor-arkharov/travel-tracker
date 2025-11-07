@@ -39,7 +39,7 @@
   }
 
   @include media-max(xs) {
-    --card-base-height: 230px;
+    --card-base-height: 240px;
 
     display: flex;
     flex-direction: column;

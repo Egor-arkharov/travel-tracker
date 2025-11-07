@@ -13,7 +13,7 @@
 
 # next.js
 /.next/
-/out/
+ /out/
 
 # production
 /build
@@ -39,5 +39,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Firebase admin credentials
+# Firebase
 serviceAccountKey.json
+firebase-debug.log
+.firebase/
+.runtimeconfig.json
+/firebase/firebase.json
+/firebase/*.rules
