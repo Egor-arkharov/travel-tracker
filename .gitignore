@@ -44,5 +44,3 @@ serviceAccountKey.json
 firebase-debug.log
 .firebase/
 .runtimeconfig.json
-/firebase/firebase.json
-/firebase/*.rules

@@ -1,0 +1,10 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /travels/{tripId} {
+      allow read: if true;   // все могут читать
+      allow write: if false; // никто не может менять
+    }
+  }
+}

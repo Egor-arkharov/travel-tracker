@@ -36,6 +36,18 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 
 ---
 
+## 🛠 Infrastructure & Deployment
+
+- **Firebase rules** are versioned in `/firebase` and deployed via local CLI (`firebase-tools`).  
+- Realtime DB and Storage rules enforce per-user access; Firestore is read-only for mock data.  
+- Quick deployment of all rules:  
+  ```bash
+  npm run fb:deploy:rules
+  ```  
+- Non-secret environment variables stored in `.env.local` (see below).  
+
+---
+
 ## 🚀 Run locally
 
 ```bash
@@ -71,4 +83,5 @@ Designed, developed & animated by **Egor Arkharov**
 
 ---
 
-> **Travel Tracker** — a modern travel diary with adaptive animated grid, full-featured creation form, and Firebase integration built entirely from scratch.
+> **Travel Tracker** — a modern travel diary with adaptive animated grid, full-featured creation form, and Firebase integration built entirely from scratch.  
+> Built as a **production-level showcase project** for portfolio and interviews.

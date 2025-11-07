@@ -6,16 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-
+    "analyze": "ANALYZE=true next build",
     "lint": "next lint",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
     "fix:styles": "stylelint \"src/**/*.{css,scss}\" --fix",
-
     "mock:upload": "tsx scripts/uploadMockTravels.ts",
     "mock:clear": "tsx scripts/clearMockTravels.ts",
-
     "test": "jest --passWithNoTests --maxWorkers=50%",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "fb:deploy:rules": "firebase-tools deploy --config firebase/firebase.json --project travel-tracker-58323 --only firestore:rules,database,storage"
   },
   "dependencies": {
     "@googlemaps/extended-component-library": "^0.6.13",
@@ -24,7 +23,6 @@
     "@tippyjs/react": "^4.2.6",
     "date-fns": "^4.1.0",
     "firebase": "^11.6.0",
-    "firebase-admin": "^13.2.0",
     "framer-motion": "^12.6.3",
     "next": "15.2.4",
     "react": "^19.0.0",
@@ -66,5 +64,8 @@
     "stylelint-config-standard-scss": "^16.0.0",
     "tsx": "^4.19.3",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18 <23"
   }
 }

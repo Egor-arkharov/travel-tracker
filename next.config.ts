@@ -33,12 +33,7 @@ const config: NextConfig = {
   },
 
   compiler: {
-    removeConsole: true,
-  },
-
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
+    removeConsole: { exclude: ['error', 'warn'] },
   },
 };
 
