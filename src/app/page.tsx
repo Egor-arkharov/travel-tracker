@@ -1,10 +1,11 @@
+import { Suspense } from "react";
+
 import Hero from "@/components/Hero/Hero";
 import About from "@/components/Homepage/About/About";
 import Features from "@/components/Homepage/Features/Features";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import Tools from "@/components/Homepage/Tools/Tools";
 import Explore from "@/components/Homepage/Explore/Explore";
-import { Suspense } from "react";
 
 const Home = () => {
   return (

@@ -7,9 +7,11 @@ import {
 	InfoWindow,
 	useLoadScript,
 } from "@react-google-maps/api";
-import { Travel } from "@/types/travel";
 import { useMemo, useState } from "react";
+
 import styles from "./TravelsMap.module.scss";
+
+import { Travel } from "@/types/travel";
 
 const containerStyle = {
 	width: "100%",

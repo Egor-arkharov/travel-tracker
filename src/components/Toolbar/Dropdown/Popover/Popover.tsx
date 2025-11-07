@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import styles from "./Popover.module.scss";
+
 import OptionButton from "../Option/Option";
+
+import styles from "./Popover.module.scss";
 
 interface Option {
   key: string;

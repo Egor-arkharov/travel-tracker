@@ -1,14 +1,17 @@
 // Travels/Wrapper/TravelsGrid.tsx
+import { useMemo } from "react";
+import { motion } from "framer-motion";
+
 import TravelCard from "../TravelCard/TravelCard";
+
 import styles from "./Travels.module.scss";
+
 import { Travel } from "@/types/travel";
 import {
   applyGridClassesToTravels,
   resolveGridPattern
 } from "@/lib/layout/tripsGridPattern";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
-import { useMemo } from "react";
-import { motion } from "framer-motion";
 
 interface TravelsGridProps {
   travels: Travel[];

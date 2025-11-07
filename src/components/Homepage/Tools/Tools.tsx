@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+
 import styles from "./Tools.module.scss";
+
 import Header from "@/components/UI/Header/Header";
 
 const toolItems = [

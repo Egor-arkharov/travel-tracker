@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState, useEffect, useMemo, useCallback } from "react";
+
 import styles from "./TechStack.module.scss";
 
 type SvgIcon = React.FC<React.SVGProps<SVGSVGElement>>;

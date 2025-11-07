@@ -2,12 +2,19 @@
 
 import { forwardRef, useImperativeHandle, useRef, useState, ComponentPropsWithoutRef } from "react";
 import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
+import styles from "../Form.module.scss";
+
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateField } from "@/store/slices/formSlice";
 import { FieldRef } from "@/types/formField";
-import styles from "../Form.module.scss";
 import { CalendarIcon } from "@/components/icons";
+
+  const NoKeyboardInput = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<"input">>((props, ref) => (
+    <input {...props} ref={ref} inputMode="none" />
+  ));
+  NoKeyboardInput.displayName = "NoKeyboardInput";
 
 const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = false }, ref) => {
   const dispatch = useAppDispatch();
@@ -58,11 +65,6 @@ const DateField = forwardRef<FieldRef, { disabled?: boolean }>(({ disabled = fal
     clearDates();
     datePickerRef.current?.setFocus();
   };
-
-  const NoKeyboardInput = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<"input">>((props, ref) => (
-    <input {...props} ref={ref} inputMode="none" />
-  ));
-  NoKeyboardInput.displayName = "NoKeyboardInput";
 
   return (
     <fieldset className={styles.fieldset}>

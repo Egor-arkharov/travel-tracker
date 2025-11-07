@@ -1,22 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./style.module.scss";
-import TechStack from "@/components/UI/TechStack/TechStack";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
+import { useRef, useState } from "react";
+import Link from "next/link";
 import "swiper/css";
+
+import styles from "./style.module.scss";
+
+import TechStack from "@/components/UI/TechStack/TechStack";
 import grid32 from "@/assets/grid/grid-32.jpg";
 import grid33 from "@/assets/grid/grid-33.jpg";
 import grid43 from "@/assets/grid/grid-43.jpg";
 import grid44 from "@/assets/grid/grid-44.jpg";
-import {
-  ArrowPrev,
-  ArrowNext,
-} from "@/components/icons";
-import { useRef, useState } from "react";
-import Link from "next/link";
+import { ArrowPrev, ArrowNext } from "@/components/icons";
 
 const AboutPage = () => {
   const gridSlides = [

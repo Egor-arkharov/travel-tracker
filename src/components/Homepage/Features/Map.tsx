@@ -1,9 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import mapImg from "@/assets/homepage/map.jpg";
+
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
+
+import mapImg from "@/assets/homepage/map.jpg";
 
 const Map = () => {
   return (

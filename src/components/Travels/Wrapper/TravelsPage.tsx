@@ -1,22 +1,27 @@
 // Travels/Wrapper/TravelsPage.tsx
 "use client";
 
+import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
+
+import TravelModal from "../TravelModal/TravelModal";
+import TravelsMap from "../TravelMap/TravelsMap.client";
+
+import TravelsGrid from "./TravelsGrid";
+import styles from "./Travels.module.scss";
+
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { deleteTrip } from "@/store/slices/tripsSlice";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { filterTravels } from "@/utils/filterTravels";
 import { sortTravels } from "@/utils/sortTravels";
-import TravelsGrid from "./TravelsGrid";
 import Toolbar from "@/components/Toolbar/Toolbar";
 import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
 import Header from "@/components/UI/Header/Header";
-import Link from "next/link";
-import styles from "./Travels.module.scss";
-import { LayoutGroup, AnimatePresence, motion } from "framer-motion";
-import TravelModal from "../TravelModal/TravelModal";
 import { Travel } from "@/types/travel";
-import TravelsMap from "../TravelMap/TravelsMap.client";
-import { useRouter, useSearchParams } from "next/navigation";
+
+
 
 const DELETE_DURATION_MS = 1000;
 
@@ -60,6 +65,7 @@ const TravelsPage = ({
   // Когда открываем модалку по id — один раз фиксируем данные.
   useEffect(() => {
     if (!selectedId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setModalTravel(null);
       return;
     }

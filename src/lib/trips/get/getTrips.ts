@@ -1,6 +1,7 @@
 import { getFirebase } from "./getFirebase";
 import { getMock } from "./getMock";
 import { getLocal } from "./getLocal";
+
 import { Travel } from "@/types/travel";
 import { User } from "@/types/user";
 

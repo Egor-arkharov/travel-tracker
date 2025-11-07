@@ -3,10 +3,8 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { useAppSelector } from "@/store/hooks";
-import styles from "./Form.module.scss";
 
-import Header from "@/components/UI/Header/Header";
+import styles from "./Form.module.scss";
 import CityField from "./Fields/CityField";
 import DateField from "./Fields/DateField";
 import RatingField from "./Fields/RatingField";
@@ -16,9 +14,10 @@ import ImageField from "./Fields/ImageField";
 import Preview from "./Preview/Preview";
 import FormActions from "./FormActions";
 
+import Header from "@/components/UI/Header/Header";
+import { useAppSelector } from "@/store/hooks";
 import { useTravelFormLogic } from "@/hooks/useFormLogic";
 import { usePreviewModal } from "@/hooks/usePreviewModal";
-
 import { Travel } from "@/types/travel";
 
 interface FormProps {

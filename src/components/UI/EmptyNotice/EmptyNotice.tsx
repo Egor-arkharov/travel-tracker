@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import styles from "./EmptyNotice.module.scss";
 
 interface EmptyNoticeProps {

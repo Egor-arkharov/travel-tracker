@@ -2,9 +2,11 @@
 
 import Tippy from "@tippyjs/react";
 import Link from "next/link";
+
+import styles from "./ModeTooltip.module.scss";
+
 import { useAuth } from "@/hooks/useAuth";
 import { NoticeIcon } from "@/components/icons";
-import styles from "./ModeTooltip.module.scss";
 
 interface ModeTooltipProps {
   mode: "demo" | "auth";

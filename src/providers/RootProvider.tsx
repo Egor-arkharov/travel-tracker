@@ -3,8 +3,10 @@
 import { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { Provider as ReduxProvider } from "react-redux";
-import { store } from "@/store";
+
 import AppInitializer from "./AppInitializer";
+
+import { store } from "@/store";
 
 const MotionConfig = dynamic(
   () => import("framer-motion").then((m) => m.MotionConfig),

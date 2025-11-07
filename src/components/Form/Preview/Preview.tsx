@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "./Preview.module.scss";
+
 import { Travel } from "@/types/travel";
 
 interface PreviewModalProps {
@@ -21,6 +23,7 @@ const Preview = ({ open, onClose, trip, isEditMode }: PreviewModalProps) => {
     const body = document.body;
 
     if (open) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(true);
       html.classList.add("no-scroll");
       body.classList.add("no-scroll");

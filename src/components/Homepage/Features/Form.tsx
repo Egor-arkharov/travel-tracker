@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import formImg from "@/assets/homepage/form.jpg";
+
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
+
+import formImg from "@/assets/homepage/form.jpg";
 
 const Form = () => {
   return (

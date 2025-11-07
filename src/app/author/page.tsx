@@ -1,6 +1,8 @@
-import styles from "./style.module.scss";
-import vueProject from "@/assets/other/vue-project.jpg";
 import Image from "next/image";
+
+import styles from "./style.module.scss";
+
+import vueProject from "@/assets/other/vue-project.jpg";
 
 const AuthorPage = () => {
   return (

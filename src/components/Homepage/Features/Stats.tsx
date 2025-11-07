@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import statsImg from "@/assets/homepage/stats.jpg";
+
 import styles from "./Features.module.scss";
 import { decor, slide, viewport } from "./anim";
+
+import statsImg from "@/assets/homepage/stats.jpg";
 
 const Stats = () => {
   return (

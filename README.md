@@ -43,14 +43,17 @@ npm install
 npm run dev
 ```
 
-Environment variables (create `.env.local`):
+Create a `.env.local` file in the root of the project (do **not** commit it).  
+Use `.env.example` as a template and fill in your real keys.
 
 ```bash
-NEXT_PUBLIC_FIREBASE_API_KEY=xxxx
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=xxxx.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_DATABASE_URL=https://xxxx.firebaseio.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=xxxx
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=xxxx
+NEXT_PUBLIC_GOOGLE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=
 ```
 
 ---

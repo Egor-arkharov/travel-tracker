@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+
 import styles from "./Hero.module.scss";
 import HeroButtons from "./HeroButtons";
 import { heroImages, HeroImageKey } from "./HeroImages";

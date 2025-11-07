@@ -1,19 +1,28 @@
+/** @type {import('jest').Config} */
 module.exports = {
-  testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
+  testMatch: ['<rootDir>/tests/**/*.(test|spec).(ts|tsx)'],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
-    "\\.(css|scss|sass)$": "identity-obj-proxy",
-    "\\.(svg|png|jpg|jpeg|gif)$": "identity-obj-proxy",
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|scss|sass)$': 'identity-obj-proxy',
+    '\\.(svg|png|jpg|jpeg|gif|webp)$': '<rootDir>/tests/__mocks__/fileMock.js',
   },
   transform: {
-    "^.+\\.(t|j)sx?$": [
-      "ts-jest",
+    '^.+\\.(ts|tsx)$': [
+      '@swc/jest',
       {
-        tsconfig: "tsconfig.json",
-        isolatedModules: true,
-        useESM: false,
-      },
+        jsc: {
+          parser: { syntax: 'typescript', tsx: true },
+          transform: {
+            react: {
+              runtime: 'automatic',
+              importSource: 'react',
+              development: false
+            }
+          }
+        }
+      }
     ],
   },
 };

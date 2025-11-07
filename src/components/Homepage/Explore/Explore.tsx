@@ -1,11 +1,14 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 import styles from "./Explore.module.scss";
+
 import Header from "@/components/UI/Header/Header";
 import { LoupeIcon, DataIcon, CloudIcon } from "@/components/icons";
-import { motion } from "framer-motion";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
-import { useEffect, useState } from "react";
+
 
 const modes = [
   {
@@ -33,6 +36,7 @@ const UsageModes = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

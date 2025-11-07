@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import styles from "./Toolbar.module.scss";
 import DropdownPopover from "./Dropdown/Popover/Popover";
 import { sortOptions } from "./Options/sortOptions";
 import { viewOptions } from "./Options/viewOptions";
+
 import { SortIcon, GridIcon, MapIcon } from "@/components/icons";
 
 interface ToolbarProps {

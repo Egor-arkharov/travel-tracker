@@ -2,7 +2,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 import styles from "./TravelCard.module.scss";
+
 import { Travel } from "@/types/travel";
 
 const TravelImage = ({

@@ -1,10 +1,11 @@
 "use client";
 
 import styles from "./Features.module.scss";
-import Header from "@/components/UI/Header/Header";
 import Map from "./Map";
 import Stats from "./Stats";
 import Form from "./Form";
+
+import Header from "@/components/UI/Header/Header";
 
 const Features = () => {
   return (

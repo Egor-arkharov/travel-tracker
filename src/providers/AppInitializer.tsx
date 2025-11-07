@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
+
 import { useAppDispatch } from "@/store/hooks";
 import { mapFirebaseUserToUser } from "@/lib/firebase/mapFirebaseUser";
 import { login } from "@/store/slices/authSlice";

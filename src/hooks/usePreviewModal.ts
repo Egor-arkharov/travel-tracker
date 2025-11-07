@@ -1,6 +1,7 @@
 //hooks/usePreviewModal
 
 import { useState, useCallback } from "react";
+
 import { Travel } from "@/types/travel";
 
 export const usePreviewModal = () => {

@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+
 import Hero from "@/components/Hero/Hero";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 

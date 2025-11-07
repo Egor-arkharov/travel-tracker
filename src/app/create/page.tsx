@@ -1,7 +1,8 @@
 "use client";
 
-import Hero from "@/components/Hero/Hero";
 import dynamic from "next/dynamic";
+
+import Hero from "@/components/Hero/Hero";
 
 const Form = dynamic(() => import("@/components/Form/Form"), { ssr: false });
 

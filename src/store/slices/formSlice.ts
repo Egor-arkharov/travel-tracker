@@ -1,6 +1,7 @@
 // formslice
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { Travel, formState } from "@/types/travel";
 
 const defaultState: formState = {

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+
 import styles from "./Hero.module.scss";
+
+import { useAuth } from "@/hooks/useAuth";
 
 const HeroButtons = () => {
   const pathname = usePathname();

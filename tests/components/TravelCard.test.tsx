@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+
 import TravelCard from "@/components/Travels/TravelCard/TravelCard";
 import type { Travel } from "@/types/travel";
 

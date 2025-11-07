@@ -1,7 +1,9 @@
 // store/slices/tripsSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Travel } from "@/types/travel";
+
 import { AppThunk } from "../index";
+
+import { Travel } from "@/types/travel";
 import { deleteTripFromFirebase } from "@/lib/trips/delete/deleteTripFromFirebase";
 
 interface TripsState {

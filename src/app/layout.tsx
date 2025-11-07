@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+
+import { nunito, readexPro } from "./fonts";
+
 import RootProvider from "@/providers/RootProvider";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
 import Main from "@/components/Layout/Main/Main";
-import { nunito, readexPro } from "./fonts";
 import "./globals.scss";
 
 export const metadata: Metadata = {

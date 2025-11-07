@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
+
 import Hero from "@/components/Hero/Hero";
 import TravelsPage from "@/components/Travels/Wrapper/TravelsPage";
 import { useAppSelector } from "@/store/hooks";
-import { Suspense } from "react";
 
 const Trips = () => {
   const user = useAppSelector((state) => state.auth.user);

@@ -6,11 +6,14 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./Header.module.scss";
 import { motion } from "framer-motion";
+
+import styles from "./Header.module.scss";
+import { HeaderLinks } from "./HeaderLinks";
+
 import { BurgerIcon, LogInIcon, LogOutIcon } from "@/components/icons";
 import { useAuth } from "@/hooks/useAuth";
-import { HeaderLinks } from "./HeaderLinks";
+
 
 const Header = () => {
   const pathname = usePathname();
@@ -26,6 +29,7 @@ const Header = () => {
     const hero = document.getElementById("hero");
 
     if (!hero) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFixed(true);
       return;
     }

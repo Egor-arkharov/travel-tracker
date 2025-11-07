@@ -2,9 +2,10 @@
 
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
+
 import styles from "./Header.module.scss";
 
-import dynamic from "next/dynamic";
 const ModeTooltip = dynamic(
   () => import("@/components/UI/ModeTooltip/ModeTooltip"),
   { ssr: false }

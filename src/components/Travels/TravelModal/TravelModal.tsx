@@ -3,10 +3,13 @@
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import styles from "./TravelModal.module.scss";
-import { Travel } from "@/types/travel";
+
 import TravelImage from "../TravelCard/TravelCardImage";
 import TravelInfo from "../TravelCard/TravelCardInfo";
+
+import styles from "./TravelModal.module.scss";
+
+import { Travel } from "@/types/travel";
 
 interface TravelModalProps {
   travel: Travel;

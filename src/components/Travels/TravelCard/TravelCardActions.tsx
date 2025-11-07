@@ -7,6 +7,7 @@ import Tippy from "@tippyjs/react";
 import { useRouter } from "next/navigation";
 
 import styles from "./TravelCard.module.scss";
+
 import { Travel } from "@/types/travel";
 import { useAppSelector } from "@/store/hooks";
 import { useAuth } from "@/hooks/useAuth";

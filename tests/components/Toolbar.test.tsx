@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+
 import Toolbar from "@/components/Toolbar/Toolbar";
 
 jest.mock("@/components/icons", () => ({

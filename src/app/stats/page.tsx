@@ -1,13 +1,16 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+import { buildStatsData } from "./statsData";
+import styles from "./style.module.scss";
+
 import Hero from "@/components/Hero/Hero";
 import EmptyNotice from "@/components/UI/EmptyNotice/EmptyNotice";
 import Header from "@/components/UI/Header/Header";
 import { useAppSelector } from "@/store/hooks";
 import { getTripStats } from "@/lib/trips/stats/getTripStats";
-import { buildStatsData } from "./statsData";
-import styles from "./style.module.scss";
-import { motion } from "framer-motion";
+
 
 const StatsPage = () => {
   const trips = useAppSelector((state) => state.trips.user);

@@ -1,6 +1,11 @@
 // Travels/TravelCard/TravelCardInfo.tsx
 "use client";
 
+import { forwardRef } from "react";
+
+import styles from "./TravelCard.module.scss";
+import TravelCardActions from "./TravelCardActions";
+
 import {
   CountryIcon,
   CalendarIcon,
@@ -8,11 +13,9 @@ import {
   RatingIcon,
   DescriptionIcon,
 } from "@/components/icons";
-
-import styles from "./TravelCard.module.scss";
 import { Travel } from "@/types/travel";
-import { forwardRef } from "react";
-import TravelCardActions from "./TravelCardActions";
+
+
 
 interface TravelInfoProps {
   travel: Travel;

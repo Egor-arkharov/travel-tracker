@@ -1,11 +1,14 @@
 // Travels/TravelCard/TravelCard.tsx
 "use client";
 
-import { Travel } from "@/types/travel";
+import { motion } from "framer-motion";
+
 import styles from "./TravelCard.module.scss";
 import TravelImage from "./TravelCardImage";
 import TravelInfo from "./TravelCardInfo";
-import { motion } from "framer-motion";
+
+import { Travel } from "@/types/travel";
+
 
 interface TravelCardProps {
   travel: Travel;

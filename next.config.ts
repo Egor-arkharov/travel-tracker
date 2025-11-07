@@ -1,5 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
+
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import type { NextConfig } from "next";
 import type { Configuration as WebpackConfig } from "webpack";

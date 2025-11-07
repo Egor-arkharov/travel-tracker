@@ -3,10 +3,14 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import Header from "@/components/UI/Header/Header";
-import styles from "./About.module.scss";
 import { useState } from "react";
+
+import styles from "./About.module.scss";
+
+import Header from "@/components/UI/Header/Header";
 import aboutImg from "@/assets/homepage/about.jpg";
+
+const MImage = motion(Image);
 
 const About = () => {
   const prefersReduced = useReducedMotion();
@@ -30,8 +34,6 @@ const About = () => {
     hidden: { opacity: 0, x: prefersReduced ? 0 : 64 },
     visible: { opacity: 1, x: 0, transition: { duration: 2, ease: easeOutSoft } },
   };
-
-  const MImage = motion(Image);
 
   return (
     <section className={styles.about}>
