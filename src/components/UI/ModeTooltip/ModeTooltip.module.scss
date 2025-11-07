@@ -1,44 +1,54 @@
 @use "@/styles/global" as *;
 
 .tooltipButton {
-  background: none;
-  border: none;
-  padding: 0;
   cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  padding: 0;
+  border: none;
+
   color: var(--yellow-dark);
+
+  background: none;
 
   @include media-max(md) {
     position: fixed;
-    bottom: 16px;
     right: 16px;
+    bottom: 16px;
+
     width: 40px;
     height: 40px;
     padding: 6px;
-    color: var(--background);
-    background-color: var(--yellow-dark);
     border-radius: 50%;
+
+    color: var(--background);
+
+    background-color: var(--yellow-dark);
   }
 }
 
 .tooltip {
-  border-radius: 8px;
   padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+
   font-size: 0.85rem;
   color: black;
+
   background-color: var(--yellow-soft);
 }
 
 .tooltipContent {
   max-width: 260px;
-  text-align: center;
-  color: black;
   font-weight: 400;
+  color: black;
+  text-align: center;
 
   p {
     margin-bottom: 8px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -47,14 +57,17 @@
 
 .loginButton,
 .link {
-  background: none;
-  border: none;
+  cursor: pointer;
+
   padding: 0;
+  border: none;
+
   font: inherit;
   font-weight: 700;
   color: inherit;
   text-decoration: underline;
-  cursor: pointer;
+
+  background: none;
 
   @include hover {
     text-decoration: none;

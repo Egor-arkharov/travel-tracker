@@ -24,20 +24,21 @@
 }
 
 .trigger {
+  cursor: pointer;
+
   display: flex;
+  gap: 0.5em;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+
   padding: 0.4em 0.6em;
+  border: 2px solid var(--trigger-clr);
+  border-radius: 6px;
 
   font-size: 1rem;
   font-weight: 700;
-
-  border-radius: 6px;
-  cursor: pointer;
-
   color: var(--trigger-clr);
-  border: 2px solid var(--trigger-clr);
+
   background-color: transparent;
 
 	transition:
@@ -55,7 +56,7 @@
   }
 
   svg {
-    stroke: currentColor;
+    stroke: currentcolor;
   }
 }
 
@@ -77,8 +78,8 @@
   }
 
   .buttons {
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
 
     >* {
       flex-grow: 1;

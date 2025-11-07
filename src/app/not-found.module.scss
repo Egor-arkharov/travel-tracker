@@ -3,15 +3,15 @@
 .notFound {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   text-align: center;
   text-wrap: balance;
 
   h1 {
-    font-size: var(--font-50);
     margin-bottom: 30px;
+    font-size: var(--font-50);
   }
 
   p {

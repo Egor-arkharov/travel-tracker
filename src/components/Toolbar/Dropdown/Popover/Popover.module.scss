@@ -1,36 +1,40 @@
 @use "@/styles/global" as *;
 
 .wrapper {
-  display: flex;
   position: relative;
+  display: flex;
 }
 
 .dropdownWrapper {
   position: absolute;
-  top: calc(100% + 8px);
-  left: unset;
-  right: 0;
   z-index: 1;
-  outline: none;
+  top: calc(100% + 8px);
+  right: 0;
+  left: unset;
+
   border: none;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  outline: none;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
 }
 
 .dropdownContent {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  background: white;
+
+  min-width: 240px;
   padding: 12px;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  min-width: 240px;
+
+  background: white;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
 }
 
 @include media-max(xs) {
   .dropdownWrapper {
-    left: 0;
     right: unset;
+    left: 0;
   }
 }

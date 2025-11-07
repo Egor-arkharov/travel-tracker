@@ -3,21 +3,22 @@
 .hero {
 	position: relative;
 
-	height: calc(95svh - var(--header-h));
-	min-height: 500px;
-
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
-	text-align: center;
+	justify-content: space-between;
 
-	padding-top: clamp(20px, 6vw, 115px);
+	height: calc(95svh - var(--header-h));
+	min-height: 500px;
 	margin-bottom: clamp(16px, 4vw, 30px);
+	padding-top: clamp(20px, 6vw, 115px);
+
+	text-align: center;
 }
 
 .background {
 	position: absolute;
+	z-index: -1;
 	top: 0;
 	left: 50%;
 	translate: -50% calc(var(--header-h) * -1);
@@ -25,15 +26,15 @@
 	width: 100vw;
 	height: calc(100% + var(--header-h));
 
-	z-index: -1;
-
 	&::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background: rgba(0, 0, 0, 0.45);
-		z-index: 2;
 		pointer-events: none;
+		content: "";
+
+		position: absolute;
+		z-index: 2;
+		inset: 0;
+
+		background: rgb(0 0 0 / 45%);
 	}
 
 
@@ -63,22 +64,19 @@
 }
 
 .title {
+	margin-bottom: clamp(14px, 2vw, 26px);
 	font-size: var(--font-60);
 	line-height: 1.1;
-
-	margin-bottom: clamp(14px, 2vw, 26px);
-
 	color: white;
 }
 
 .subtitle {
-	font-size: var(--font-40);
-	line-height: 1;
-
 	margin-bottom: clamp(40px, 6vw, 70px);
 
-	text-wrap: balance;
+	font-size: var(--font-40);
+	line-height: 1;
 	color: white;
+	text-wrap: balance;
 }
 
 .buttons {

@@ -1,40 +1,30 @@
 @mixin tokens-colors {
-  --background: #FFFFFF;
+  --background: #FFF;
   --foreground: #171717;
-
   --green-soft: #DCFCE7;
   --green-light: #16A34A;
   --green-dark: #317039;
-
   --red-soft: #CC4B24;
   --red-light: #FF3E1D;
-  --red-dark: #EE0000;
-
+  --red-dark: #E00;
   --blue-soft: #9AE7F7;
   --blue-light: #2196F3;
   --blue-dark: #00456E;
-
   --purple-soft: #F3E8FF;
   --purple-light: #7C3AED;
-
   --indigo-light: #5154E7;
   --indigo-dark: #3336C9;
-
   --sky-soft: #E0F2FE;
   --sky-light: #0284C7;
-
   --yellow-soft: #FFE5B4;
   --yellow-light: #FFD480;
   --yellow-dark: #FFB318;
-
   --orange-soft: #FFEDD5;
   --orange-light: #EA580C;
-
   --grey-soft: #F8FAFF;
   --grey-light: #EBEDF0;
   --grey-dark: #8592A3;
   --grey-deep: #3D4460;
-
   --link-clr: #1A5CFF;
   --link-clr-hover: #003EE6;
 }

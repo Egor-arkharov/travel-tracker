@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding-inline: clamp(1rem, 10vw, 8rem);
 
   &--wide {
@@ -27,9 +26,9 @@
 }
 
 .subtitle {
+  margin-bottom: 2rem;
   font-size: var(--font-40);
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 /* ---- Intro ---- */
@@ -38,9 +37,9 @@
 }
 
 .title {
+  margin-bottom: 2rem;
   font-size: var(--font-50);
   text-align: center;
-  margin-bottom: 2rem;
   text-wrap: balance;
 }
 
@@ -76,8 +75,8 @@
   @include card;
 
   h3 {
-    font-size: var(--font-18);
     margin-bottom: 8px;
+    font-size: var(--font-18);
   }
 
   p {
@@ -108,13 +107,14 @@
 
 .challengesItem {
   @include card;
+
   padding: clamp(1.5rem, 2.5vw, 1.75rem) clamp(1rem, 2vw, 1.25rem);
 }
 
 .challengeTitle {
+  margin-bottom: 20px;
   font-size: var(--font-26);
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .challengeText {
@@ -124,15 +124,14 @@
 .challengeMedia {
   position: relative;
 
+  overflow: hidden;
+  display: flex;
+
+  box-sizing: content-box;
   width: 100%;
   height: var(--media-h);
-  padding-bottom: var(--controls-h);
-
-  display: flex;
   margin-bottom: 10px;
-
-  overflow: hidden;
-  box-sizing: content-box;
+  padding-bottom: var(--controls-h);
 }
 
 .challengeVideo {
@@ -152,15 +151,15 @@
 }
 
 .sliderFigure {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .sliderImg {
-  object-fit: contain;
   flex-grow: 1;
+  object-fit: contain;
 }
 
 .sliderControls {
@@ -169,23 +168,23 @@
   left: 50%;
   translate: -50% 0;
 
-  height: var(--controls-h);
-
   display: flex;
+  gap: 12px;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+
+  height: var(--controls-h);
 }
 
 .sliderArrow {
-  background: none;
-  border: none;
-  display: flex;
   cursor: pointer;
+  display: flex;
+  border: none;
+  background: none;
 
   &:disabled {
-    opacity: 0.4;
     cursor: default;
+    opacity: 0.4;
   }
 }
 
@@ -198,13 +197,14 @@
 
 .summary {
   padding-block: clamp(2rem, 5vw, 3rem);
+  border-radius: 12px;
+
   text-align: center;
 
   background:
-    radial-gradient(800px 400px at 70% 0%, rgba(26, 92, 255, 0.05), transparent 70%),
+    radial-gradient(800px 400px at 70% 0%, rgb(26 92 255 / 5%), transparent 70%),
     #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(16, 24, 40, 0.04);
+  box-shadow: 0 2px 16px rgb(16 24 40 / 4%);
 
   @include media-max(xs) {
     padding-inline: var(--layout-padding);
@@ -212,15 +212,14 @@
 }
 
 .summaryText {
-  font-size: var(--font-18);
-  line-height: 1.6;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   margin-bottom: 55px;
 
+  font-size: var(--font-18);
+  line-height: 1.6;
   text-wrap: balance;
 }
 
@@ -231,25 +230,26 @@
   margin-bottom: 75px;
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
   }
 
   li {
     display: grid;
     grid-template-columns: minmax(130px, 160px) 1fr;
-    align-items: baseline;
     gap: 5px;
+    align-items: baseline;
 
     strong {
+      flex-shrink: 0;
       text-align: start;
       white-space: nowrap;
-      flex-shrink: 0;
     }
 
     span {

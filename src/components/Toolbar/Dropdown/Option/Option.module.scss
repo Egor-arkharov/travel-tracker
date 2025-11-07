@@ -1,12 +1,16 @@
 .button {
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   padding: 10px;
-  border-radius: 10px;
-  background: var(--grey-light);
   border: none;
-  cursor: pointer;
+  border-radius: 10px;
+
+  background: var(--grey-light);
+
   transition: background-color 0.2s ease;
 
   &.active {
@@ -14,20 +18,20 @@
   }
 
   svg {
-    fill: currentColor;
-    stroke: currentColor;
+    fill: currentcolor;
+    stroke: currentcolor;
   }
 }
 
 .icon {
-  font-size: 24px;
   margin-bottom: 4px;
+  font-size: 24px;
 }
 
 .labelRow {
   display: flex;
-  align-items: center;
   gap: 4px;
+  align-items: center;
 }
 
 .label {
@@ -39,15 +43,15 @@
   height: 0;
 
   &.up {
-    border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-bottom: 6px solid currentColor;
+    border-bottom: 6px solid currentcolor;
+    border-left: 4px solid transparent;
   }
 
   &.down {
-    border-left: 4px solid transparent;
+    border-top: 6px solid currentcolor;
     border-right: 4px solid transparent;
-    border-top: 6px solid currentColor;
+    border-left: 4px solid transparent;
   }
 }
 

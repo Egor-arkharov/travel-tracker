@@ -7,8 +7,8 @@
 
 .inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   margin: 0 auto;
   padding-block: 1.5rem;
@@ -16,9 +16,8 @@
   @include media-max(xs) {
     flex-direction: column;
     gap: 0.5rem;
-    text-align: center;
-
     padding-block: 1.5rem;
+    text-align: center;
   }
 }
 

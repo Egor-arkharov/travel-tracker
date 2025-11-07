@@ -3,16 +3,18 @@
 @use "@/styles/global" as *;
 
 .header {
-	height: var(--header-h);
 	position: absolute;
+	z-index: 10;
 	top: 0;
 	left: 0;
+
 	width: 100%;
-	z-index: 10;
-	transition: all 0.3s ease;
+	height: var(--header-h);
+	border-radius: 0 0 12px 12px;
 
 	background-color: transparent;
-	border-radius: 0 0 12px 12px;
+
+	transition: all 0.3s ease;
 }
 
 .inner {
@@ -24,7 +26,7 @@
 .fixed {
 	position: fixed;
 	background-color: white;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 
 	.title,
 	.link {
@@ -33,21 +35,20 @@
 }
 
 .title {
-	font-weight: 700;
-	font-size: var(--font-24);
-	color: white;
-	white-space: nowrap;
-
 	pointer-events: none;
 	user-select: none;
+
+	font-size: var(--font-24);
+	font-weight: 700;
+	color: white;
+	white-space: nowrap;
 }
 
 .nav {
-	height: 100%;
-
 	display: flex;
-	align-items: center;
 	gap: clamp(10px, 2vw, 50px);
+	align-items: center;
+	height: 100%;
 }
 
 .list {
@@ -56,15 +57,16 @@
 
 	&::before {
 		content: "";
+
 		position: absolute;
+		right: anchor(--active right, 0);
+		bottom: 13px;
+		left: anchor(--active left);
 
 		height: 2px;
-		bottom: 13px;
 
 		background-color: var(--blue-soft);
 
-		left: anchor(--active left);
-		right: anchor(--active right, 0);
 		transition: left 0.3s, right 0.3s;
 
 		.fixed & {
@@ -76,8 +78,8 @@
 .link {
 	font-size: var(--font-18);
 	font-weight: 700;
-	transition: color 0.1s ease;
 	color: white;
+	transition: color 0.1s ease;
 
 	&:hover,
 	&:active,
@@ -98,15 +100,17 @@
 	--link-w: 130px;
 	--icon-size: 40px;
 	--anim-dur: 0.2s;
-
 	--btn-color: white;
-	--btn-bg: rgb(from var(--grey-dark) r g b / 0.5);
+	--btn-bg: rgb(from var(--grey-dark) r g b / 50%);
 	--btn-border: transparent;
 
+	cursor: pointer;
+
 	position: relative;
+
 	display: flex;
 	align-items: center;
-	cursor: pointer;
+
 	height: 100%;
 
 	background: none;
@@ -132,32 +136,32 @@
 		}
 
 		.menuItem {
-			opacity: 1;
 			translate: 0 0;
+			opacity: 1;
 		}
 	}
 }
 
 .menuButton {
-	font-family: var(--font-body);
-	font-weight: 700;
-
-	display: flex;
-	align-items: center;
-	gap: 5px;
-
-	padding: 0.5em 10px;
-
-	color: var(--btn-color);
-	background-color: var(--btn-bg);
-	border: 1px solid var(--btn-border);
-
-	border-radius: 8px;
 	cursor: pointer;
 
-	transition-property: color, background-color, border-color;
-	transition-duration: var(--anim-dur);
+	display: flex;
+	gap: 5px;
+	align-items: center;
+
+	padding: 0.5em 10px;
+	border: 1px solid var(--btn-border);
+	border-radius: 8px;
+
+	font-family: var(--font-body);
+	font-weight: 700;
+	color: var(--btn-color);
+
+	background-color: var(--btn-bg);
+
 	transition-timing-function: ease-in;
+	transition-duration: var(--anim-dur);
+	transition-property: color, background-color, border-color;
 
 	@include hover {
 		--btn-color: white;
@@ -173,11 +177,12 @@
 }
 
 .menuAvatar {
-	width: 30px;
-	aspect-ratio: 1;
-	border-radius: 50%;
 	overflow: hidden;
 	flex-shrink: 0;
+
+	aspect-ratio: 1;
+	width: 30px;
+	border-radius: 50%;
 
 	img {
 		width: 100%;
@@ -192,36 +197,43 @@
 }
 
 .menu {
+	pointer-events: none;
+	cursor: auto;
+
 	position: absolute;
+	z-index: 10;
 	top: 100%;
 	right: 0;
 
-	width: 100%;
-	padding-top: 5px;
-
 	display: flex;
-	align-items: end;
 	flex-direction: column;
 	gap: 16px;
+	align-items: end;
 
-	z-index: 10;
-
-	cursor: auto;
-	pointer-events: none;
+	width: 100%;
+	padding-top: 5px;
 }
 
 .menuItem {
-	appearance: none;
-	border: none;
-	outline: none;
-	background: transparent;
 	cursor: pointer;
 
 	position: relative;
+	translate: 0 5px;
 
 	width: var(--icon-size);
 	height: var(--icon-size);
+	border: none;
 	border-radius: 50%;
+
+	appearance: none;
+	opacity: 0;
+	background: transparent;
+	outline: none;
+
+	transition: 
+		opacity 0.25s ease,
+		translate 0.25s ease;
+	transition-delay: 0s;
 
 
 	@include hover {
@@ -231,18 +243,10 @@
 		}
 
 		.menuItemText {
-			opacity: 1;
 			translate: 0 0;
+			opacity: 1;
 		}
 	}
-
-	opacity: 0;
-	translate: 0 5px;
-
-	transition: 
-		opacity 0.25s ease,
-		translate 0.25s ease;
-	transition-delay: 0s;
 
 	@for $i from 1 through 10 {
 		&:nth-child(#{$i}) {
@@ -252,13 +256,13 @@
 }
 
 .menuItemText {
-	font-family: var(--font-body);
-	font-size: var(--font-16);
-	font-weight: 700;
+	pointer-events: none;
 
 	position: absolute;
+	z-index: -1;
 	top: 0;
 	right: 0;
+	translate: 10px 0;
 
 	display: flex;
 	align-items: center;
@@ -266,22 +270,20 @@
 	width: var(--link-w);
 	height: var(--icon-size);
 	padding-inline: 10px var(--icon-size);
-
-	color: white;
-	background: var(--grey-deep);
-
-	z-index: -1;
-	pointer-events: none;
-
-	white-space: nowrap;
 	border-radius: 20px;
 
-	opacity: 0;
-	translate: 10px 0;
+	font-family: var(--font-body);
+	font-size: var(--font-16);
+	font-weight: 700;
+	color: white;
+	white-space: nowrap;
 
-	transition-property: opacity, translate, border-color;
-	transition-duration: var(--anim-dur);
+	opacity: 0;
+	background: var(--grey-deep);
+
 	transition-timing-function: ease-in-out;
+	transition-duration: var(--anim-dur);
+	transition-property: opacity, translate, border-color;
 }
 
 .menuItemIcon {
@@ -291,16 +293,16 @@
 
 	width: var(--icon-size);
 	height: var(--icon-size);
-
-	color: white;
-	background-color: black;
 	border: 2px solid black;
-
 	border-radius: 50%;
 
-	transition-property: color, background-color;
-	transition-duration: var(--anim-dur);
+	color: white;
+
+	background-color: black;
+
 	transition-timing-function: ease-in-out;
+	transition-duration: var(--anim-dur);
+	transition-property: color, background-color;
 }
 
 .menuItemIconReverse {
@@ -324,7 +326,6 @@
 
 	.menuWrapper {
 		--icon-size: 30px;
-
 		--btn-color: white;
 		--btn-bg: transparent;
 		--btn-border: transparent;
@@ -345,8 +346,8 @@
 			}
 
 			.menuItemText {
-				opacity: 1;
 				translate: 0 0;
+				opacity: 1;
 			}
 		}
 
@@ -366,11 +367,11 @@
 	}
 
 	.menuButton {
-		width: var(--icon-size);
-		height: var(--icon-size);
-
 		display: grid;
 		place-items: center;
+
+		width: var(--icon-size);
+		height: var(--icon-size);
 		padding: 0;
 
 		&:active {
@@ -382,10 +383,11 @@
 
 	.menu {
 		right: calc(var(--layout-padding) * -1);
-		padding-right: var(--layout-padding);
 
 		align-items: flex-end;
+
 		width: 100vw;
+		padding-right: var(--layout-padding);
 		padding-bottom: 30px;
 	}
 
@@ -394,26 +396,27 @@
 	}
 
 	.menuItem:not(.menuItemMob) {
+		display: flex;
 		width: auto;
 		height: auto;
-		display: flex;
 	}
 
 	.menuItemText {
 		position: relative;
-		padding: 10px;
 		inset: unset;
+
 		width: 130px;
 		height: auto;
-
+		padding: 10px;
 		padding-inline: 10px calc(var(--icon-size) + 12px);
 	}
 
 	.menuItemIcon {
 		position: absolute;
-		right: 0;
 		top: 50%;
+		right: 0;
 		translate: 0 -50%;
+
 		padding: 4px;
 	}
 }
@@ -424,8 +427,8 @@
 	}
 
 	.menuItemMob {
+		display: flex;
 		width: auto;
 		height: auto;
-		display: flex;
 	}
 }

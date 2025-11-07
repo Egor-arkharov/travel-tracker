@@ -3,22 +3,22 @@
 @use "@/styles/global" as *;
 
 .travelsContainer {
-  padding-inline: 5px;
   padding-bottom: 20px;
+  padding-inline: 5px;
 }
 
 .grid {
   --card-base-height: 300px;
+
   // --card-base-height: 190px;
   --grid-gap: 10px;
 
-  display: grid;
-  gap: var(--grid-gap);
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: var(--card-base-height);
-  grid-auto-flow: row dense;
-
   overflow: hidden;
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-rows: var(--card-base-height);
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--grid-gap);
 
   @include media-max(xl) {
     --card-base-height: 350px;
@@ -30,6 +30,7 @@
 
   @include media-max(md) {
     --card-base-height: 240px;
+
     grid-template-columns: repeat(4, 1fr);
   }
 
@@ -38,7 +39,7 @@
   }
 
   @include media-max(xs) {
-    --card-base-height: 200px;
+    --card-base-height: 230px;
 
     display: flex;
     flex-direction: column;
@@ -76,13 +77,13 @@
 
 .cardItem {
   @include card;
-  padding: 0;
 
+  padding: 0;
   transition: translate 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   @include hover {
     translate: 0 3px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 22%);
   }
 }
 
@@ -91,17 +92,15 @@
   place-items: center;
 
   width: fit-content;
-
+  width: 300px;
   margin-top: 25px;
   margin-inline: auto;
   padding: 3px 16px;
-  width: 300px;
+  border: 2px solid black;
 
   font-size: 20px;
   font-weight: 700;
-
   color: black;
-  border: 2px solid black;
 
   transition:
     color 0.2s ease,

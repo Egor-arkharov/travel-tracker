@@ -2,27 +2,29 @@
 @use "@/styles/global" as *;
 
 .card {
-  height: 100%;
-  background: white;
-  
-  display: flex;
-  flex-direction: column;
   cursor: pointer;
-  border-radius: inherit;
 
   container-type: size;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  border-radius: inherit;
+
+  background: white;
 }
 
 .inner {
-  display: flex;
-  height: 100%;
-  background: white;
-  border-radius: 12px;
   overflow: hidden;
+  display: flex;
+
+  height: 100%;
+  border-radius: 12px;
+
+  background: white;
 
   .grid & {
     @include media-min(xl) {
-
       // Высокая карточка
       @container (min-height: 301px) {
         flex-direction: column;
@@ -45,7 +47,6 @@
     }
 
     @include media-between(lg, xl) {
-
       // Обычная карточка
       @container (max-height: 351px) {
         flex-direction: column;
@@ -78,7 +79,6 @@
     }
 
     @include media-between(md, lg) {
-
       // Обычная карточка
       @container (max-height: 301px) {
         flex-direction: column;
@@ -111,7 +111,6 @@
     }
 
     @include media-between(sm, md) {
-
       // Обычная карточка
       @container (max-width: 430px) {
         flex-direction: column;
@@ -134,7 +133,6 @@
     }
 
     @include media-between(xs, sm) {
-
       // Обычная карточка
       @container (max-width: 430px) {
         flex-direction: column;
@@ -164,16 +162,16 @@
 
 .imageWrapper {
   position: relative;
-  width: 50%;
   flex-shrink: 0;
+  width: 50%;
 
   [data-mode="modal"] & {
     width: 60%;
 
     @include media-max(md) {
+      flex-shrink: unset;
       width: 100%;
       height: 50%;
-      flex-shrink: unset;
     }
   }
 
@@ -190,12 +188,12 @@
 }
 
 .info {
-  padding: 16px 12px;
-
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 4px;
+
+  padding: 16px 12px;
 
   color: black;
 
@@ -206,8 +204,8 @@
 }
 
 .infoTitle {
-  font-size: var(--font-24);
   margin-bottom: 6px;
+  font-size: var(--font-24);
 
   [data-mode="modal"] & {
     font-size: var(--font-40);
@@ -216,8 +214,8 @@
 
 .infoItem {
   display: flex;
-  align-items: center;
   gap: 7px;
+  align-items: center;
 
   [data-mode="modal"] & {
     font-size: 18px;
@@ -247,11 +245,12 @@
 }
 
 .tooltip {
-  border-radius: 8px;
   padding: 0.5rem 0.75rem;
-  font-size: 0.85rem;
+  border-radius: 8px;
 
+  font-size: 0.85rem;
   color: black;
+
   background-color: var(--yellow-soft);
 
   @include media-max(xs) {
@@ -260,14 +259,17 @@
 }
 
 .loginButton {
-  background: none;
-  border: none;
+  cursor: pointer;
+
   padding: 0;
+  border: none;
+
   font: inherit;
+  font-weight: 700;
   color: inherit;
   text-decoration: underline;
-  cursor: pointer;
-  font-weight: 700;
+
+  background: none;
 
   @include hover {
     text-decoration: none;

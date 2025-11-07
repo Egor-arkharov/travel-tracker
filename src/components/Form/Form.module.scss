@@ -1,17 +1,15 @@
 @use "@/styles/global" as *;
 
 @mixin inputDecor {
+	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-
 	padding: 4px 8px;
-
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: inherit;
-
 	border: 1px solid var(--grey-dark);
 	border-radius: 4px;
+
+	font-family: inherit;
+	font-size: inherit;
 	color: var(--input-color);
 
 	&:focus {
@@ -23,7 +21,6 @@
 	--input-font-size: 14px;
 	--input-color: black;
 	--input-focus-color: var(--indigo-dark);
-
 	--gmpx-font-size-base: var(--input-font-size);
 	--gmpx-color-on-surface: var(--input-color);
 	--gmpx-color-primary: var(--input-focus-color);
@@ -31,7 +28,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 100px 100px 260px auto;
-	grid-gap: 70px 50px;
+	gap: 70px 50px;
 
 	:global {
 		.react-datepicker-wrapper {
@@ -45,18 +42,18 @@
 }
 
 .fieldset {
+	position: relative;
+
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	gap: 20px;
-
-	position: relative;
+	justify-content: space-between;
 
 	border: none;
 
 	&:has([disabled]) {
-		opacity: 0.6;
 		pointer-events: none;
+		opacity: 0.6;
 	}
 }
 
@@ -68,10 +65,11 @@
 
 .fieldBody {
 	position: relative;
-	flex-grow: 1;
 
 	display: flex;
+	flex-grow: 1;
 	align-items: flex-end;
+
 	width: 100%;
 }
 
@@ -83,16 +81,15 @@
 	&::before,
 	&::after {
 		content: '';
-		position: absolute;
 
+		position: absolute;
 		top: 0;
 
+		box-sizing: border-box;
 		width: 35px;
 		height: 100%;
-
-		box-sizing: border-box;
-
 		border: 1px solid var(--grey-dark);
+
 		background-color: white;
 	}
 
@@ -110,32 +107,34 @@
 
 	.inputIcon {
 		position: absolute;
-		left: 8px;
-		top: 50%;
-		translate: 0 -50%;
 		z-index: 1;
+		top: 50%;
+		left: 8px;
+		translate: 0 -50%;
+
 		color: black;
 	}
 
 	.customClear {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 35px;
-		height: 100%;
-
-		background: transparent;
-		border: none;
-		font-size: 26px;
 		cursor: pointer;
 
+		position: absolute;
 		z-index: 2;
+		top: 0;
+		right: 0;
+
+		width: 35px;
+		height: 100%;
+		border: none;
+
+		font-size: 26px;
+
+		background: transparent;
 	}
 }
 
 .input {
 	position: relative;
-
 	max-height: 150px;
 
 	@include inputDecor;
@@ -145,8 +144,8 @@
 
 .errorMessage {
 	position: absolute;
-	color: var(--red-dark);
 	top: 105%;
+	color: var(--red-dark);
 }
 
 .cityInput {
@@ -155,12 +154,12 @@
 
 .cityStorageValue {
 	position: absolute;
+	z-index: 2;
 	top: calc(100% + 8px);
 	left: 35px;
 
 	font-size: 0.85em;
 	color: var(--input-color);
-	z-index: 2;
 }
 
 .rating {
@@ -170,16 +169,16 @@
 
 .budget {
 	display: flex;
-	align-items: center;
 	gap: 50px;
+	align-items: center;
 	width: 100%;
 
 	.budgetRow {
 		display: flex;
+		flex-grow: 1;
+		gap: 8px;
 		align-items: center;
 		justify-content: space-between;
-		gap: 8px;
-		flex-grow: 1;
 	}
 
 	.budgetLine {
@@ -188,30 +187,35 @@
 
 		input[type="range"] {
 			width: 100%;
-			appearance: none;
 			height: 6px;
-			background: var(--grey-light);
 			border-radius: 4px;
+
+			appearance: none;
+			background: var(--grey-light);
 			outline: none;
 
 			&::-webkit-slider-thumb {
-				appearance: none;
+				cursor: pointer;
+
 				width: 16px;
 				height: 16px;
-				background: var(--input-focus-color);
-				border-radius: 50%;
-				cursor: pointer;
-				border: none;
 				margin-top: -5px;
+				border: none;
+				border-radius: 50%;
+
+				appearance: none;
+				background: var(--input-focus-color);
 			}
 
 			&::-moz-budget-thumb {
+				cursor: pointer;
+
 				width: 16px;
 				height: 16px;
-				background: var(--input-focus-color);
 				border: none;
 				border-radius: 50%;
-				cursor: pointer;
+
+				background: var(--input-focus-color);
 			}
 		}
 
@@ -221,71 +225,74 @@
 		position: absolute;
 		top: -25px;
 		transform: translateX(-50%);
-		background: var(--input-focus-color);
-		color: white;
+
 		padding: 2px 6px;
-		font-size: 12px;
 		border-radius: 4px;
+
+		font-size: 12px;
+		color: white;
 		white-space: nowrap;
+
+		background: var(--input-focus-color);
 	}
 
 	.budgetNumberInput {
 		@include inputDecor;
+
 		width: 100px;
 	}
 }
 
 .textarea {
 	@include inputDecor;
+
 	resize: none;
 	scrollbar-gutter: stable;
 }
 
 .image {
 	.imageInput {
-		@include inputDecor;
-
 		cursor: pointer;
-
-		color: transparent;
 		border: 2px dashed #80868b;
-
-		&:focus {
-			outline: none;
-			border-color: var(--gmpx-color-primary);
-		}
+		color: transparent;
 
 		&::-webkit-file-upload-button,
 		&::file-selector-button {
 			visibility: hidden;
 		}
+
+		&:focus {
+			border-color: var(--gmpx-color-primary);
+			outline: none;
+		}
+
+		@include inputDecor;
 	}
 
 	.imagePreview {
 		position: absolute;
+		z-index: -1;
 		bottom: 4px;
 		left: 8px;
 
 		width: 280px;
 		height: 140px;
-		z-index: -1;
 
 		img {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
 			border-radius: 4px;
+			object-fit: cover;
 		}
 	}
 
 	.imageMessage {
 		position: absolute;
+		z-index: -1;
 		top: 10px;
 		left: 12px;
 
 		color: black;
-
-		z-index: -1;
 	}
 }
 
@@ -302,11 +309,12 @@
 }
 
 .tooltip {
-	border-radius: 8px;
 	padding: 0.5rem 0.75rem;
-	font-size: 0.85rem;
+	border-radius: 8px;
 
+	font-size: 0.85rem;
 	color: black;
+
 	background-color: var(--yellow-soft);
 }
 

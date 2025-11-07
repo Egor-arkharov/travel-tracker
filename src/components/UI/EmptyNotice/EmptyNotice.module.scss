@@ -2,16 +2,16 @@
 
 .empty {
   display: block;
+
   margin-bottom: 30px;
   padding: 16px 20px;
-
   border-radius: 12px;
 
   color: black;
-  background-color: var(--sky-soft);
-
   text-align: center;
   text-wrap: balance;
+
+  background-color: var(--sky-soft);
 
   p {
     margin-bottom: 8px;

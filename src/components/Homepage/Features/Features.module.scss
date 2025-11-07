@@ -10,39 +10,40 @@
   position: relative;
   display: flex;
   align-items: center;
-
   padding: 48px 32px;
 
   &:nth-of-type(even) {
     .bgDecor {
-      justify-content: end;
-      left: unset;
       right: 0;
+      left: unset;
+      justify-content: end;
     }
   }
 }
 
 .inner {
+  position: relative;
+
   display: flex;
+  gap: 40px;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-
-  position: relative;
 }
 
 .bgDecor {
   position: absolute;
+  z-index: 0;
   top: 0;
   left: 0;
-  z-index: 0;
+
+  display: flex;
+
   width: 600px;
   height: 100%;
-  display: flex;
-  opacity: 0.2;
 
-  background-position: center;
+  opacity: 0.2;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 
   &[data-type="map"] {
@@ -62,8 +63,8 @@
   position: relative;
 
   h3 {
-    font-size: var(--font-32);
     margin-bottom: 1rem;
+    font-size: var(--font-32);
   }
 
   p {
@@ -73,10 +74,10 @@
 }
 
 .imageWrapper {
-  width: 50%;
-  height: 100%;
   display: flex;
   flex-shrink: 0;
+  width: 50%;
+  height: 100%;
 
   img {
     position: relative !important;

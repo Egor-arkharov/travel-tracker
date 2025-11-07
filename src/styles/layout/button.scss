@@ -1,57 +1,58 @@
 @use "../mixins" as *;
 
 .button {
+	cursor: pointer;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	margin: 0;
 	padding: 0.5em 1.15em;
-
-	font-size: var(--font-19);
-	font-weight: 700;
-	font-family: var(--font-body);
-	text-decoration: none;
-
-	color: var(--clr);
-	background-color: var(--bg);
 	border: 5px solid;
 	border-color: var(--brdr);
-
 	border-radius: 12px;
-	cursor: pointer;
+
+	font-family: var(--font-body);
+	font-size: var(--font-19);
+	font-weight: 700;
+	color: var(--clr);
+	text-decoration: none;
+
+	background-color: var(--bg);
 	outline: none;
 
 	transition: color, background-color, border-color, scale;
-	transition-duration: 0.2s;
 	transition-timing-function: ease;
+	transition-duration: 0.2s;
 
 	@include hover {
+		border-color: var(--hover-brdr);
 		color: var(--hover-clr);
 		background-color: var(--hover-bg);
-		border-color: var(--hover-brdr);
 	}
 
 	&:focus-visible {
-		color: var(--focus-clr);
-		background-color: var(--focus-bg);
 		border-color: var(--focus-brdr);
 
+		color: var(--focus-clr);
+
+		background-color: var(--focus-bg);
 		outline: 1px solid var(--focus-outline);
 		outline-offset: 2px;
 	}
 
 	&:active {
+		scale: 0.95;
+		border-color: var(--active-brdr);
 		color: var(--active-clr);
 		background-color: var(--active-bg);
-		border-color: var(--active-brdr);
-		scale: 0.95;
 	}
 
 	&:disabled,
 	&[aria-disabled="true"] {
-		opacity: 0.5;
 		pointer-events: none;
+		opacity: 0.5;
 	}
 }
 
@@ -65,16 +66,13 @@
 	--clr: var(--background);
 	--bg: var(--blue-light);
 	--brdr: var(--blue-light);
-
 	--hover-clr: var(--background);
 	--hover-bg: var(--blue-dark);
 	--hover-brdr: var(--blue-dark);
-
 	--focus-clr: var(--background);
 	--focus-bg: var(--blue-dark);
 	--focus-brdr: var(--blue-dark);
 	--focus-outline: var(--background);
-
 	--active-clr: var(--background);
 	--active-bg: var(--blue-dark);
 	--active-brdr: var(--blue-dark);
@@ -84,16 +82,13 @@
 	--clr: var(--green-dark);
 	--bg: var(--background);
 	--brdr: var(--green-dark);
-
 	--hover-clr: var(--background);
 	--hover-bg: var(--green-dark);
 	--hover-brdr: var(--green-dark);
-
 	--focus-clr: var(--background);
 	--focus-bg: var(--green-dark);
 	--focus-brdr: var(--green-dark);
 	--focus-outline: var(--background);
-
 	--active-clr: var(--background);
 	--active-bg: var(--green-dark);
 	--active-brdr: var(--green-dark);
@@ -103,16 +98,13 @@
 	--clr: var(--background);
 	--bg: var(--indigo-light);
 	--brdr: var(--indigo-light);
-
 	--hover-clr: var(--background);
 	--hover-bg: var(--indigo-dark);
 	--hover-brdr: var(--indigo-dark);
-
 	--focus-clr: var(--background);
 	--focus-bg: var(--indigo-dark);
 	--focus-brdr: var(--indigo-dark);
 	--focus-outline: var(--foreground);
-
 	--active-clr: var(--background);
 	--active-bg: var(--indigo-dark);
 	--active-brdr: var(--indigo-dark);
@@ -122,16 +114,13 @@
 	--clr: var(--red-soft);
 	--bg: var(--background);
 	--brdr: var(--red-soft);
-
 	--hover-clr: var(--background);
 	--hover-bg: var(--red-soft);
 	--hover-brdr: var(--red-soft);
-
 	--focus-clr: var(--background);
 	--focus-bg: var(--red-soft);
 	--focus-brdr: var(--red-soft);
 	--focus-outline: var(--foreground);
-
 	--active-clr: var(--background);
 	--active-bg: var(--red-soft);
 	--active-brdr: var(--red-soft);

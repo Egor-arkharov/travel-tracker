@@ -11,21 +11,20 @@
 	/* --- Reveal Animation --- */
 	--top-duration: 0.3s;
 	--left-duration: 0.3s;
-
 	--bottom-icon-duration: 1s;
 	--bottom-icon-delay: calc(var(--top-duration) + var(--left-duration));
 
 	position: relative;
+
 	display: flex;
 	align-items: center;
 
-	font-size: var(--font-50);
-
 	min-height: 110px;
-
 	margin-block: 100px 50px;
 	padding-block: 10px;
 	padding-inline-start: 30px;
+
+	font-size: var(--font-50);
 
 	@include media-max(md) {
 		padding-inline-start: 16px;
@@ -37,13 +36,13 @@
 
 	&::before {
 		content: "";
+
 		position: absolute;
+		top: 0;
+		left: 0;
 
 		width: 100%;
 		height: 100%;
-
-		top: 0;
-		left: 0;
 
 		background: linear-gradient(90deg, #f78c6b, #ef476f, #118ab2, #83d483);
 
@@ -53,13 +52,13 @@
 
 	&::after {
 		content: "";
+
 		position: absolute;
+		top: 2px;
+		left: 2px;
 
 		width: 100%;
 		height: calc(100% - 3px);
-
-		top: 2px;
-		left: 2px;
 
 		background-color: var(--background);
 
@@ -77,6 +76,7 @@
 	height: var(--decor-border-top-h);
 
 	background-color: var(--background);
+
 	transition: var(--top-duration) ease-in-out;
 
 	.anim & {
@@ -86,6 +86,7 @@
 
 .headerUnderDecorTopRight {
 	position: absolute;
+	z-index: 1;
 	top: 0;
 	right: 0;
 
@@ -93,11 +94,10 @@
 	height: var(--decor-border-top-h);
 
 	background-color: var(--background);
-	z-index: 1;
 }
 
 .headerUnderDecorLeft {
-	//left
+	// left
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -115,15 +115,14 @@
 }
 
 .headerUnderDecorBottom {
-	//bottom
+	// bottom
 	position: absolute;
+	z-index: 1;
 	bottom: 0;
 	left: var(--decor-border-left-w);
 
 	width: calc(100% - var(--decor-border-left-w));
 	height: calc(100% - var(--decor-border-top-h));
-
-	z-index: 1;
 
 	background-color: var(--background);
 
@@ -136,16 +135,15 @@
 
 .headerIcon {
 	position: absolute;
+	z-index: 0;
 	top: 50%;
 	left: var(--decor-border-left-w);
+	translate: -50% -50%;
 
 	width: fit-content;
 	height: fit-content;
 
-	translate: -50% -50%;
 	opacity: 0;
-
-	z-index: 0;
 
 	.anim & {
 		right: 0;
@@ -160,9 +158,9 @@
 				opacity: 1;
 			}
 
-			to {
-				opacity: 1;
+			100% {
 				left: 100%;
+				opacity: 1;
 			}
 		}
 	}
@@ -189,11 +187,12 @@
 .headerText {
 	position: relative;
 	z-index: 1;
-	width: 60%;
 
 	display: flex;
-	align-items: center;
 	gap: 10px;
+	align-items: center;
+
+	width: 60%;
 }
 
 .noticeIcon {
