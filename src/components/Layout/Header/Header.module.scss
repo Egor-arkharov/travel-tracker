@@ -35,7 +35,6 @@
 }
 
 .title {
-	pointer-events: none;
 	user-select: none;
 
 	font-size: var(--font-24);
@@ -319,11 +318,6 @@
 }
 
 @include media-max(sm) {
-	.title {
-		pointer-events: all;
-		user-select: all;
-	}
-
 	.menuWrapper {
 		--icon-size: 30px;
 		--btn-color: white;

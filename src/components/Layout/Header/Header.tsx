@@ -137,7 +137,7 @@ const Header = () => {
             </button>
 
             <div className={styles.menu} role="menu">
-              {HeaderLinks.filter(link => link.inMenu !== false).map(({ href, label, icon: Icon, inMenu }) => (
+              {HeaderLinks.map(({ href, label, icon: Icon, inMenu }) => (
                 <Link
                   key={href}
                   href={href}

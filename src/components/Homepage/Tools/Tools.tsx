@@ -103,7 +103,7 @@ function AutoVideo({
 const Tools = () => {
   return (
     <section>
-      <Header title="Powerful tools" icon="ship" />
+      <Header title="Smart tools" icon="ship" />
 
       <div className={styles.grid}>
         {toolItems.map((tool, index) => (

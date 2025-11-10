@@ -1,14 +1,7 @@
 // HeaderLinks.ts
-import { UserIcon, PlaneIcon, PlusIcon, BoardIcon } from "@/components/icons";
+import { UserIcon, PlaneIcon, PlusIcon, BoardIcon, AboutIcon } from "@/components/icons";
 
 export const HeaderLinks = [
-  { 
-    href: "/", 
-    label: "Main", 
-    icon: false, 
-    inHeader: true, 
-    inMenu: false 
-  },
   {
     href: "/example",
     label: "Example",
@@ -24,11 +17,11 @@ export const HeaderLinks = [
     inMenu: "mobile",
   },
   {
-    href: "/stats",
-    label: "My Stats",
-    icon: UserIcon,
-    inHeader: false,
-    inMenu: "always",
+    href: "/about",
+    label: "About",
+    icon: AboutIcon,
+    inHeader: true,
+    inMenu: "mobile",
   },
   {
     href: "/trips",
@@ -37,4 +30,11 @@ export const HeaderLinks = [
     inHeader: false,
     inMenu: "always",
   },
+  {
+    href: "/stats",
+    label: "My Stats",
+    icon: UserIcon,
+    inHeader: false,
+    inMenu: "always",
+  }
 ];

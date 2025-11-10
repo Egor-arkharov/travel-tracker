@@ -10,7 +10,7 @@ import Header from "@/components/UI/Header/Header";
 const Features = () => {
   return (
     <section className={styles.features}>
-      <Header title="Powerful Features" icon="helicopter" />
+      <Header title="Powerful features" icon="helicopter" />
       <div className={styles.featuresList}>
         <Map />
         <Stats />

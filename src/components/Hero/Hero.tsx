@@ -7,6 +7,8 @@ import styles from "./Hero.module.scss";
 import HeroButtons from "./HeroButtons";
 import { heroImages, HeroImageKey } from "./HeroImages";
 
+import { ScrollDown } from "@/components/icons";
+
 interface HeroProps {
   title: string;
   subtitle: string;
@@ -24,6 +26,31 @@ const Hero = ({
   const selected = heroImages[key] || heroImages[1];
   const [isLoaded, setIsLoaded] = useState(false);
   const SIZES = "100vw";
+
+  const handleScrollDown = () => {
+    const hero = document.getElementById("hero");
+    const next = hero?.nextElementSibling as HTMLElement | null;
+
+    const headerHeightVar = getComputedStyle(document.documentElement)
+      .getPropertyValue("--header-h")
+      .trim();
+
+    const headerHeight = parseFloat(headerHeightVar) || 0;
+
+    if (next) {
+      const nextTop = next.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: nextTop - headerHeight - 10,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollBy({
+        top: window.innerHeight - headerHeight - 10,
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   return (
     <section className={styles.hero} id="hero">
@@ -57,6 +84,15 @@ const Hero = ({
         <p className={styles.subtitle}>{subtitle}</p>
         <HeroButtons />
       </div>
+
+      <button
+        type="button"
+        className={styles.scrollCue}
+        aria-label="Scroll to content"
+        onClick={handleScrollDown}
+      >
+        <ScrollDown width={50} height={50} />
+      </button>
     </section>
   );
 };

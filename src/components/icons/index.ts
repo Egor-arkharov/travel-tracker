@@ -14,6 +14,7 @@ export { default as LogInIcon } from "./menu/login.svg";
 export { default as LogOutIcon } from "./menu/logout.svg";
 export { default as BoardIcon } from "./menu/board.svg";
 export { default as UserIcon } from "./menu/user.svg";
+export { default as AboutIcon } from "./menu/about.svg";
 export { default as BurgerIcon } from "./menu/burger.svg";
 
 export { default as ArrowBackIcon } from "./stats/arrow-back.svg";
@@ -31,6 +32,7 @@ export { default as DataIcon } from "./other/data.svg";
 export { default as CloudIcon } from "./other/cloud.svg";
 export { default as ArrowPrev } from "./other/arrow-prev.svg";
 export { default as ArrowNext } from "./other/arrow-next.svg";
+export { default as ScrollDown } from "./other/scroll-down.svg";
 export { default as NoticeIcon } from "./other/notice.svg";
 
 export { default as PlaneIcon } from "./header/airplane.svg";

@@ -17,6 +17,7 @@ const StatsPage = () => {
   const mockTrips = useAppSelector((state) => state.trips.mock);
 
   const isEmpty = trips.length < 2;
+  const MIN_TRIPS_FOR_STATS = 2;
 
   const renderStats = (title: string, dataSource: typeof trips) => {
     const stats = getTripStats(dataSource);
@@ -76,10 +77,10 @@ const StatsPage = () => {
         {isEmpty ? (
           <>
             <EmptyNotice
-              title="Not enough trips to&nbsp;show statistics."
+              title={`Add at least ${MIN_TRIPS_FOR_STATS} trips to show statistics.`}
               message="Here&rsquo;s how your stats might look based on&nbsp;example trips."
             />
-            {mockTrips.length >= 2 &&
+            {mockTrips.length >= MIN_TRIPS_FOR_STATS  &&
               renderStats("Example Stats", mockTrips)}
           </>
         ) : (
