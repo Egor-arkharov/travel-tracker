@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About the Author",
   description:
-    "Learn more about Egor Arkharov — frontend developer with 3+ years of experience building interactive, scalable and accessible web interfaces using React, Next.js, and Vue.",
+    "Learn more about Egor Arkharov — frontend developer with 4+ years of experience building interactive, scalable and accessible web interfaces using React, Next.js, and Vue.",
   openGraph: {
     title: "About the Author — Travel Tracker",
     description:

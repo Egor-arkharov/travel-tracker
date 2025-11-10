@@ -11,7 +11,7 @@ const AuthorPage = () => {
         <h1 className={styles.title}>About the Author</h1>
 
         <div className={styles.lead}>
-          <p>Hi, I&rsquo;m Egor Arkharov&nbsp;&mdash; a&nbsp;frontend developer with 3+&nbsp;years of&nbsp;experience building interactive, scalable, and accessible web interfaces. I&rsquo;ve worked on&nbsp;both single-page applications built with Vue and React, and large multi-page corporate websites with complex component systems. My&nbsp;focus is&nbsp;on&nbsp;clean, maintainable architecture, semantic markup, and a&nbsp;consistent user experience across projects of&nbsp;any size.</p>
+          <p>Hi, I&rsquo;m Egor Arkharov&nbsp;&mdash; a&nbsp;frontend developer with 4+&nbsp;years of&nbsp;experience building interactive, scalable, and accessible web interfaces. I&rsquo;ve worked on&nbsp;both single-page applications built with Vue and React, and large multi-page corporate websites with complex component systems. My&nbsp;focus is&nbsp;on&nbsp;clean, maintainable architecture, semantic markup, and a&nbsp;consistent user experience across projects of&nbsp;any size.</p>
 
           <p>In&nbsp;my&nbsp;work I&rsquo;ve developed and optimized&nbsp;UI libraries, rewritten legacy components, and introduced modern approaches to&nbsp;structure and styling. I&rsquo;ve worked on&nbsp;everything from data-driven dashboards and offline-ready pages to&nbsp;animated interfaces and visualization tools for financial XBRL documents. My&nbsp;goal is&nbsp;to&nbsp;build interfaces that are reliable, performant, and easy to&nbsp;maintain&nbsp;&mdash; both for users and developers.</p>
         </div>
