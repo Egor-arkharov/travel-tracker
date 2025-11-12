@@ -16,7 +16,7 @@ const csp = [
   "connect-src 'self' https://*.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://*.gstatic.com https://*.firebaseio.com https://*.firebasedatabase.app https://firebasestorage.googleapis.com https://*.vercel-insights.com wss://*.firebasedatabase.app wss://*.firebaseio.com",
   "img-src 'self' data: blob: https://*.gstatic.com https://*.googleapis.com https://lh3.googleusercontent.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  "font-src 'self' https://fonts.gstatic.com data:",
   "frame-src https://www.google.com https://accounts.google.com https://*.firebaseapp.com",
   "frame-ancestors 'self'",
 ].join("; ");
