@@ -16,7 +16,7 @@ const csp = [
   "img-src 'self' data: blob: https://*.gstatic.com https://*.googleapis.com https://lh3.googleusercontent.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "frame-src https://www.google.com https://accounts.google.com",
+  "frame-src https://www.google.com https://accounts.google.com https://*.firebaseapp.com",
   "frame-ancestors 'self'",
 ].join("; ");
 
