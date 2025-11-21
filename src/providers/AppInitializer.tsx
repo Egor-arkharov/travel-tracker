@@ -4,7 +4,7 @@ import { ReactNode, useEffect } from "react";
 
 import { useAppDispatch } from "@/store/hooks";
 import { mapFirebaseUserToUser } from "@/lib/firebase/mapFirebaseUser";
-import { login } from "@/store/slices/authSlice";
+import { loginThunk } from "@/store/slices/authSlice";
 import {
   setLoading,
   setMockTrips,
@@ -32,6 +32,7 @@ const AppInitializer = ({ children }: Props) => {
       ]);
 
       unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+
         dispatch(setLoading(true));
 
         try {
@@ -40,7 +41,7 @@ const AppInitializer = ({ children }: Props) => {
             : null;
 
           if (user) {
-            dispatch(login(user));
+            dispatch(loginThunk(user));
           }
 
           const [mockTrips, userTrips] = await Promise.all([

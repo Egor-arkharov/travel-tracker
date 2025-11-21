@@ -3,17 +3,17 @@ import { signInWithPopup, signOut } from "firebase/auth";
 import { mapFirebaseUserToUser } from "./mapFirebaseUser";
 
 import { auth, provider } from "@/app/firebase";
-import { login, logout } from "@/store/slices/authSlice";
+import { loginThunk, logoutThunk  } from "@/store/slices/authSlice";
 import type { AppDispatch } from "@/store";
 
 export const loginWithPopup = async (dispatch: AppDispatch) => {
   const result = await signInWithPopup(auth, provider);
   const mappedUser = mapFirebaseUserToUser(result.user);
-  dispatch(login(mappedUser));
+  dispatch(loginThunk(mappedUser));
   return mappedUser;
 };
 
 export const logoutFromFirebase = async (dispatch: AppDispatch) => {
   await signOut(auth);
-  dispatch(logout());
+  dispatch(logoutThunk());
 };
