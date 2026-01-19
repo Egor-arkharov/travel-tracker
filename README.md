@@ -83,5 +83,5 @@ Designed, developed & animated by **Egor Arkharov**
 
 ---
 
-> **Travel Tracker** — a modern travel diary with adaptive animated grid, full-featured creation form, and Firebase integration built entirely from scratch.  
+> **Travel Tracker** — a modern travel diary with dynamic animated grid, full-featured creation form, and Firebase integration built entirely from scratch.  
 > Built as a **production-level showcase project** for portfolio and interviews.
