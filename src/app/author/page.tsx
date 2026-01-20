@@ -97,11 +97,11 @@ const AuthorPage = () => {
           <li>
             <strong>GitHub:</strong>{" "}
             <a
-              href="https://github.com/egorarkharov"
+              href="https://github.com/Egor-arkharov"
               target="_blank"
               rel="noopener noreferrer"
             >
-              github.com/egorarkharov
+              github.com/Egor-arkharov
             </a>
           </li>
           <li>
