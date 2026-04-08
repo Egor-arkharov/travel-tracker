@@ -11,13 +11,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://apis.google.com https://accounts.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebasedatabase.app https://*.firebaseio.com",
-  "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://apis.google.com https://accounts.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.firebasedatabase.app https://*.firebaseio.com",
-  "connect-src 'self' https://*.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://*.gstatic.com https://*.firebaseio.com https://*.firebasedatabase.app https://firebasestorage.googleapis.com https://*.vercel-insights.com wss://*.firebasedatabase.app wss://*.firebaseio.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
-  "img-src 'self' data: blob: https://*.gstatic.com https://*.googleapis.com https://lh3.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://apis.google.com https://accounts.google.com https://*.googletagmanager.com https://*.google-analytics.com https://*.firebasedatabase.app https://*.firebaseio.com",
+  "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://apis.google.com https://accounts.google.com https://*.googletagmanager.com https://*.google-analytics.com https://*.firebasedatabase.app https://*.firebaseio.com",
+  "connect-src 'self' https://*.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://oauth2.googleapis.com https://accounts.google.com https://*.gstatic.com https://*.firebaseio.com https://*.firebasedatabase.app https://firebasestorage.googleapis.com https://*.vercel-insights.com wss://*.firebasedatabase.app wss://*.firebaseio.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+  "img-src 'self' data: blob: https://*.gstatic.com https://*.googleapis.com https://lh3.googleusercontent.com https://*.google-analytics.com https://*.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "frame-src https://www.google.com https://accounts.google.com https://*.firebaseapp.com",
+  "frame-src https://www.google.com https://accounts.google.com https://*.firebaseapp.com https://*.googletagmanager.com", 
   "frame-ancestors 'self'",
 ].join("; ");
 
