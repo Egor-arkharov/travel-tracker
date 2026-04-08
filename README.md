@@ -76,8 +76,8 @@ NEXT_PUBLIC_FIREBASE_DATABASE_URL=
 
 Designed, developed & animated by **Egor Arkharov**  
 
-[🎨 View case study → /about](https://ea-travel-tracker.vercel.app/about)  
-[🧑‍💻 About the author → /author](https://ea-travel-tracker.vercel.app/author)
+[🎨 View case study → /about](https://travel-tracker.app/about)
+[🧑‍💻 About the author → /author](https://travel-tracker.app/author)
 
 </div>
 
