@@ -32,6 +32,7 @@ Built with **Next.js (App Router)**, **React 18**, **TypeScript**, **Redux Toolk
 - **Motion:** Framer Motion  
 - **Maps:** Google Maps & Places API  
 - **Utilities:** Swiper, Tippy.js, Datepicker  
+- **Analytics:** Google Analytics  
 - **Hosting:** Vercel 
 
 ---
@@ -76,7 +77,8 @@ NEXT_PUBLIC_FIREBASE_DATABASE_URL=
 
 Designed, developed & animated by **Egor Arkharov**  
 
-[🎨 View case study → /about](https://travel-tracker.app/about)
+[🎨 View case study → /about](https://travel-tracker.app/about)  
+<br />
 [🧑‍💻 About the author → /author](https://travel-tracker.app/author)
 
 </div>

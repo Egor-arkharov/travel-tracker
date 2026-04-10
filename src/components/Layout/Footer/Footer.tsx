@@ -12,6 +12,7 @@ const Footer = () => {
         <div className={styles.linkWrapper}>
           <Link className={styles.link} href="/about">About</Link>
           <Link className={styles.link} href="/author">Author</Link>
+          <Link className={styles.link} href="/privacy-policy">Privacy</Link>
         </div>
       </div>
     </footer>

@@ -1,0 +1,79 @@
+@use "@/styles/global" as *;
+
+.container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+
+  @include media-max(xs) {
+    bottom: 16px;
+    right: 0;
+    left: 0;
+    padding-inline: var(--layout-padding);
+  }
+}
+
+.wrapper {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 380px;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(12px, 1.5vw, 16px);
+  padding-inline: clamp(12px, 2vw, 16px) clamp(36px, 5vw, 42px);
+
+  background-color: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(16, 24, 40, 0.12), 0 1px 4px rgba(16, 24, 40, 0.05);
+  border: 1px solid var(--grey-light);
+}
+
+.text {
+  margin: 0;
+  font-size: var(--font-16);
+  line-height: 1.5;
+  color: var(--foreground);
+}
+
+.link {
+  @include link;
+  color: var(--link-clr);
+  font-weight: 500;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  color: var(--grey-dark);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    width: 85%;
+    height: 85%;
+  }
+
+  transition: all 0.2s ease;
+
+  @include hover {
+    color: var(--foreground);
+  }
+}

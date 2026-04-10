@@ -215,8 +215,8 @@ const AboutPage = () => {
             <li><strong>Hosting:</strong> <span>Vercel</span></li>
           </ul>
           <ul>
-            <li><strong>Images:</strong> <span><a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></span></li>
-            <li><strong>Icons:</strong> <span><a href="https://www.svgrepo.com" target="_blank" rel="noopener noreferrer">SVG Repo</a></span></li>
+            <li><strong>Analytics:</strong> <span>Google Analytics (GTM)</span></li>
+            <li><strong>Media:</strong> <span><a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>, <a href="https://www.svgrepo.com" target="_blank" rel="noopener noreferrer">SVG Repo</a></span></li>
             <li><strong>Fonts:</strong> <span><a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a></span></li>
           </ul>
         </div>

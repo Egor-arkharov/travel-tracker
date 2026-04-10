@@ -7,6 +7,7 @@ import RootProvider from "@/providers/RootProvider";
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
 import Main from "@/components/Layout/Main/Main";
+import PrivacyBanner from "@/components/UI/PrivacyBanner/PrivacyBanner";
 import "./globals.scss";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <RootProvider>
           <Header />
           <Main>{children}</Main>
+          <PrivacyBanner />
           <Footer />
         </RootProvider>
       </body>
