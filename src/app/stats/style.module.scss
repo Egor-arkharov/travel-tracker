@@ -22,13 +22,13 @@
 		text-align: center;
 
 		span {
-			font-size: 1rem;
+			font-size: var(--fz-body);
 			font-weight: 500;
 
 			strong {
 				display: block;
 				margin-top: 0.25rem;
-				font-size: 1.1rem;
+				font-size: var(--fz-subtitle);
 			}
 		}
 	}

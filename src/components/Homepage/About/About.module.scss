@@ -48,7 +48,7 @@
 
 	padding: 20px;
 
-	font-size: clamp(20px, 1vw + 0.6rem, 26px);
+	font-size: var(--fz-h3);
 }
 
 .visual {

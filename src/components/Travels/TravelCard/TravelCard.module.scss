@@ -25,6 +25,7 @@
 
   .grid & {
     @include media-min(xl) {
+
       // Высокая карточка
       @container (min-height: 301px) {
         flex-direction: column;
@@ -47,6 +48,7 @@
     }
 
     @include media-between(lg, xl) {
+
       // Обычная карточка
       @container (max-height: 351px) {
         flex-direction: column;
@@ -79,6 +81,7 @@
     }
 
     @include media-between(md, lg) {
+
       // Обычная карточка
       @container (max-height: 301px) {
         flex-direction: column;
@@ -111,6 +114,7 @@
     }
 
     @include media-between(sm, md) {
+
       // Обычная карточка
       @container (max-width: 430px) {
         flex-direction: column;
@@ -133,6 +137,7 @@
     }
 
     @include media-between(xs, sm) {
+
       // Обычная карточка
       @container (max-width: 430px) {
         flex-direction: column;
@@ -205,10 +210,10 @@
 
 .infoTitle {
   margin-bottom: 6px;
-  font-size: var(--font-24);
+  font-size: var(--fz-h4);
 
   [data-mode="modal"] & {
-    font-size: var(--font-40);
+    font-size: var(--fz-h1);
   }
 }
 
@@ -218,11 +223,7 @@
   align-items: center;
 
   [data-mode="modal"] & {
-    font-size: 18px;
-
-    @include media-max(md) {
-      font-size: 16px;
-    }
+    font-size: var(--fz-subtitle);
   }
 }
 

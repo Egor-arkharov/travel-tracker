@@ -24,7 +24,7 @@
 	padding-block: 10px;
 	padding-inline-start: 30px;
 
-	font-size: var(--font-50);
+	font-size: var(--fz-display);
 
 	@include media-max(md) {
 		padding-inline-start: 16px;

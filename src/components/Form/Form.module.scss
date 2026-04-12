@@ -58,7 +58,7 @@
 }
 
 .label {
-	font-size: 26px;
+	font-size: var(--fz-h3);
 	font-weight: bold;
 	color: var(--indigo-dark);
 }
@@ -251,8 +251,8 @@
 }
 
 .image {
-		@include inputDecor;
-		padding: 0;
+	@include inputDecor;
+	padding: 0;
 
 	.imageInput {
 		opacity: 0;

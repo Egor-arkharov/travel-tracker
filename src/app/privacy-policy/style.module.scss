@@ -19,7 +19,7 @@
 
 .title {
   margin-bottom: 2.5rem;
-  font-size: var(--font-50);
+  font-size: var(--fz-display);
   text-align: center;
   text-wrap: balance;
 }
@@ -29,12 +29,12 @@
   flex-direction: column;
   gap: 40px;
   line-height: 1.7;
-  font-size: var(--font-18);
+  font-size: var(--fz-subtitle);
   max-width: 900px;
   margin: 0 auto;
 
   h2 {
-    font-size: var(--font-32);
+    font-size: var(--fz-h2);
     line-height: 1.2;
     font-weight: 700;
     margin: 0;
@@ -67,6 +67,6 @@
 .date {
   margin-top: 24px;
   text-align: end;
-  font-size: var(--font-16);
+  font-size: var(--fz-body);
   color: var(--grey-dark);
 }

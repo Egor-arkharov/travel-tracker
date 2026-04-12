@@ -65,7 +65,7 @@
 
 .title {
 	margin-bottom: clamp(14px, 2vw, 26px);
-	font-size: var(--font-60);
+	font-size: var(--fz-hero);
 	line-height: 1.1;
 	color: white;
 }
@@ -73,7 +73,7 @@
 .subtitle {
 	margin-bottom: clamp(40px, 6vw, 70px);
 
-	font-size: var(--font-40);
+	font-size: var(--fz-h1);
 	line-height: 1;
 	color: white;
 	text-wrap: balance;

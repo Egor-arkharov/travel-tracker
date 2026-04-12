@@ -27,13 +27,13 @@
 
 .title {
   margin-bottom: 2rem;
-  font-size: var(--font-50);
+  font-size: var(--fz-display);
   text-align: center;
 }
 
 .subtitle {
   margin-bottom: 2rem;
-  font-size: var(--font-40);
+  font-size: var(--fz-h1);
   text-align: center;
 }
 
@@ -43,7 +43,7 @@
     flex-direction: column;
     gap: 10px;
 
-    font-size: var(--font-18);
+    font-size: var(--fz-subtitle);
     line-height: 1.6;
   }
 }
@@ -64,7 +64,7 @@
 
     height: 100%;
 
-    font-size: var(--font-18);
+    font-size: var(--fz-subtitle);
     line-height: 1.6;
   }
 
@@ -92,7 +92,7 @@
   flex-direction: column;
   gap: 14px;
 
-  font-size: var(--font-16);
+  font-size: var(--fz-body);
   line-height: 1.6;
 }
 

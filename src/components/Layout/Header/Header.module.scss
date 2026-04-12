@@ -37,7 +37,7 @@
 .title {
 	user-select: none;
 
-	font-size: var(--font-24);
+	font-size: var(--fz-h4);
 	font-weight: 700;
 	color: white;
 	white-space: nowrap;
@@ -75,7 +75,7 @@
 }
 
 .link {
-	font-size: var(--font-18);
+	font-size: var(--fz-subtitle);
 	font-weight: 700;
 	color: white;
 	transition: color 0.1s ease;
@@ -191,7 +191,7 @@
 }
 
 .menuName {
-	font-size: var(--font-16);
+	font-size: var(--fz-body);
 	font-weight: 600;
 }
 
@@ -229,7 +229,7 @@
 	background: transparent;
 	outline: none;
 
-	transition: 
+	transition:
 		opacity 0.25s ease,
 		translate 0.25s ease;
 	transition-delay: 0s;
@@ -272,7 +272,7 @@
 	border-radius: 20px;
 
 	font-family: var(--font-body);
-	font-size: var(--font-16);
+	font-size: var(--fz-body);
 	font-weight: 700;
 	color: white;
 	white-space: nowrap;

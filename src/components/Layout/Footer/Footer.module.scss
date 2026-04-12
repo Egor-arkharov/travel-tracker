@@ -22,7 +22,7 @@
 }
 
 .copyright {
-  font-size: var(--font-16);
+  font-size: var(--fz-body);
   color: black;
 }
 
@@ -34,7 +34,7 @@
 .link {
   @include link;
 
-  font-size: var(--font-16);
+  font-size: var(--fz-body);
   color: black;
 
   @include hover {
